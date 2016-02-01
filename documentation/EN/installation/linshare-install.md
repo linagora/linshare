@@ -15,16 +15,24 @@
    * [First access](#firstAccess)
 
 #### 2. [Installation of the Upload Request component (optional)](#instalUR)
-   * [Download of the module](#dlmoduleUR)
-   * [Deployment of the archive](#deployUR)
-   * [Apache configuration](#apacheUR)
-   * [First access](#firstAccessUR)
+   1. [Installation of the Upload Request component 1.X (dedicated Vhost)](#ur10)
+      * [Download of the module](#dlmoduleUR)
+      * [Deployment of the archive](#deployUR)
+      * [Apache configuration](#apacheUR)
+      * [First access](#firstAccessUR)
+   2. [Installation of the component Upload Request 1.1.X and above (in a directory)](#ur11)
+      * [Download of the module](#dlmoduleUR1)
+      * [Deployment of the archive](#deployUR1)
+      * [Apache configuration](#apacheUR1)
+      * [First access](#firstAccessUR1)
 
 #### 3. [Installation of the Upload Proposition component (optional)](#instalUP)
    * [Download of the module](#dlmoduleUP)
    * [Deployment of the archive](#deployUP)
-   * [Apache configuration](#apacheUP)
+   * [Apache configuration via dedicated vhost](#apacheUP)
    * [First access](#firstAccessUP)
+   * [Apache Configuration via directory](#apacheUP1)
+   * [First access](#firstAccessUP1)
 
 ###LINSHARE INSTALLATION
 
@@ -63,7 +71,7 @@ Create the configuration repository of __LinShare__ and past the configuration f
 ```
 [root@localhost ~]$ mv linshare-core-{VERSION}-without-SSO.war linshare.war
 [root@localhost ~]$ mkdir -p /etc/linshare
-[root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes{linshare,log4j}.*
+[root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
 ###Executive environment JAVA (JVM)
@@ -203,7 +211,7 @@ This section presents the installation of the Tomcat server.
 
 Install tomcat from the repositories :
 
-`[root@localhost ~]$ aptitude install `**`tomcat7`**
+`[root@localhost ~]$ aptitude install tomcat7
 
 ####Tomcat 7 configuration
 
@@ -237,7 +245,7 @@ This section presents the installation of Apache HTTP server.
 
 Install Apache 2 from the repositories :
 
-`[root@localhost ~]$ aptitude install `**`apache2`**
+`[root@localhost ~]$ aptitude install apache2
 
 #####Vhost configuration
 <a name="ui-user">
@@ -247,6 +255,8 @@ To deploy the LinShare application, it is necessary to activate the __mod_proxy_
 must add the configuration below to the default file provided by debian :
 
 ```
+[root@localhost ~]$ cd /var/www/
+[root@localhost ~]$ mkdir -p linshare
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-user.conf
 [root@localhost ~]$ a2dissite default
@@ -257,13 +267,20 @@ must add the configuration below to the default file provided by debian :
 ...
 ServerName linshare-user.local
 #The following is in the case of you create a root document.
-DocumentRoot /var/www/linshare-ui-user
+DocumentRoot /var/www/linshare
 # This option allows you to add a custom repository in the document root, where you can put your personal resources
 RedirectMatch ^/(?!custom|linshare) http://linshare-user.local/linshare/
 <Location /linshare>
     ProxyPass http://127.0.0.1:8080/linshare
     ProxyPassReverse http://127.0.0.1:8080/linshare
 </Location>
+
+<Directory /var/www/linshare>
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
 
 ErrorLog /var/log/apache2/linshare-user-error.log
 CustomLog /var/log/apache2/linshare-user-access.log combined
@@ -275,11 +292,7 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
    `[root@localhost ~]$ service apache2 reload` <br/>
    * In the recent versions of Apache, the default file can be named as default.conf.<br/>
    * If you create a document root, you can create a custom subrepository, in which you can add your logo :<br/>
-   ```
-   [root@localhost ~]$ cd /var/www/
-   [root@localhost ~]$ mkdir linshare-ui-user
-   [root@localhost ~]$ mkdir linshare-ui-user/custom
-   ```
+   `[root@localhost ~]$ mkdir -p linshare/custom`
 
 <a name="ui-admin">
 ####ui-admin
@@ -311,6 +324,13 @@ DocumentRoot /var/www/linshare-ui-admin
     #This header is added to avoid the  JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
+
+<Directory /var/www/linshare-ui-admin>
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
 
 ErrorLog /var/log/apache2/linshare-admin-error.log
 CustomLog /var/log/apache2/linshare-admin-access.log combined
@@ -378,6 +398,11 @@ For the user interface :
 
   * __http://linshare-user.local/linshare__
 
+Note :
+
+  > This url must also be inquired in the parameters of your domain. To do so go to the __domain__ functionality and
+  enter it in the __Notifcation url__ parameters fiels
+
 For the administration interface :
 
   * __http://linshare-admin.local/__
@@ -395,6 +420,11 @@ Then, to interconnect __Linshare__ with your LDAP user directory, create a new d
 <a name="instalUR">
 ##Installation of the Upload Request component (optional)
 </a>
+
+<a name="ur10">
+###Installation of the component Upload-Request 1.X (dedicated Vhost)
+</a>
+
 This module allows to an external account to access a file upload interface, which you can configure in the 
 administration interface.
 
@@ -435,16 +465,50 @@ To deploy the __LinShare__ upload request interface, it is necessary to activate
 [root@localhost ~]$ a2ensite linshare-upload-request.conf
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-upload-request.conf
+```
+#####Version 1.0.X
+
+```
 <VirtualHost *:80>
 ...
 ServerName linshare-uploadrequest.local
 DocumentRoot /var/www/linshare-ui-upload-request
 <Location /linshare>
-    ProxyPass http://127.0.0.1:8080/linshare/webservice/rest/upload-request
-    ProxyPassReverse http://127.0.0.1:8080/linshare/webservice/rest/upload-request
+    ProxyPass http://127.0.0.1:8080/linshare/webservice/rest/uploadrequest
+    ProxyPassReverse http://127.0.0.1:8080/linshare/webservice/rest/uploadrequest
     #This header is added to avoid the  JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
+
+<Directory /var/www/linshare-ui-upload-request>
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
+...
+</Virtualhost>
+```
+#####Version 1.1.X
+
+```
+<VirtualHost *:80>
+...
+ServerName linshare-uploadrequest.local
+DocumentRoot /var/www/linshare-ui-upload-request
+<Location /linshare>
+    ProxyPass http://127.0.0.1:8080/linshare
+    ProxyPassReverse http://127.0.0.1:8080/linshare
+    #This header is added to avoid the  JSON cache issue on IE.
+    Header set Cache-Control "max-age=0,no-cache,no-store"
+</Location>
+
+<Directory /var/www/linshare-ui-upload-request>
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
 ...
 </Virtualhost>
 ```
@@ -457,14 +521,79 @@ To access at __LinShare Upload Request__, first start the Core, then restart the
 </a>
 The __Upload Request service__ is now reachable at the address below :
 
-  * __http://linshare-upload-request.local/{uuid}__
+  * Decicated vhost installation : __http://linshare-upload-request.local/{uuid}__
 
 Note:
    > You need an avaible request form a mail sent by __LinShare__ to use this portal.<br/>
    If you don't have one, you will redirect to a 404 page. The complete url to this portal will be send by mail
    to the recipients of the upload request.
 
-##Install of the __Upload Proposition__ component (component)
+   > You need to inquire the url into your upload request url parameter<br/>
+   in your administration interface. To do so, go to your administration interface, choose the __Upload Request__ functionnality,<br/> and inquire the url in the "parameters" fields.
+
+<a name="ur11">
+###Installation of the component Upload-Request 1.1.X and above (in a directory)
+</a>
+
+<a name="dlmoduleUR1">
+####Download of the module
+</a>
+
+This module in on free download at the following address :
+
+  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+
+For this Installation, download the following file according to the version you want :
+
+  * linshare-ui-upload-request-{VERSION}.tar.bz2
+
+<a name="deployUR1">
+####deployment of the archive
+</a>
+Deploy the __LinShare__ UI UploadRequest archive in the Apache server repository :
+
+```
+[root@localhost ~]$ cd /var/www/linshare
+[root@localhost ~]$ tar xjf linshare-ui-upload-request-{VERSION}.tar.bz2
+[root@localhost ~]$ ln -s linshare-ui-upload-request-{VERSION} upload-request
+```
+<a name="apacheUR1">
+####Apache configuration in a directory
+</a>
+To deploy the Upload-Request interface of __LinShare__, you need to open your linshare-user.conf virtualhost file :
+
+```
+[root@localhost ~]$ cd /etc/apache2/sites-available
+[root@localhost ~]$ vim linshare-user.conf
+```
+And then add the following lines to the virtualhost section:
+
+```
+<Directory "upload-request">
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
+```
+To access at __LinShare Upload Request__, first start the Core, then restart the Apache2 service :
+
+`[root@localhost ~]$ service apache2 restart`
+
+<a name="firstAccessUR1">
+###First access
+</a>
+
+The __Upload Request service__ is now reachable at the address below :
+
+  * Repository installation version : __http://linshare-user.local/upload-request/{uuid}__
+
+Note :
+
+  > You need to inquire the url into your upload request url parameter<br/>
+  in your administration interface. To do so, go to your administration interface, choose the __Upload Request__ functionnality,<br/> and inquire the url in the "parameters" fields. 
+
+##Install of the __Upload Proposition__ component (optional)
 
 This module allows to an external user, to ask an internal user, to send him an upload request.
 
@@ -488,25 +617,26 @@ For this Installation, download the following file according to the version you 
 Enter the following Commands :
 
 ```
-[root@localhost ~]$ mv linshare-upload-proposition-<VERSION>.jar /usr/lib/sbin/linshare-upload-proposition.jar
+[root@localhost ~]$ mv linshare-upload-proposition-<VERSION>.jar /usr/local/sbin/linshare-upload-proposition.jar
 [root@localhost ~]$ cp linshare-upload-proposition-production.yml /etc/linshare/
-[root@localhost ~]$ update-rc.d linshare-upload-proposition.sh defaults
 [root@localhost ~]$ cp linshare-upload-proposition.sh /ect/init.d/
+[root@localhost ~]$ update-rc.d linshare-upload-proposition.sh defaults
 [root@localhost ~]$ chmod +x /etc/init.d/linshare-upload-proposition.sh
 ```
 You now have a script "linshare-upload-proposition.sh" allowing you to have the information on your process status, 
-and also to stop pr restart it. 
+and also to stop or restart it.
 
-Deploy the LinShare UI Upload-Proposition in the Apache2 server repository :
+<a name="apacheUP">
+###Apache configuration via dedicated vhost
+</a>
+
+Deploy the __LinShare UI Upload-Proposition__ in the Apache2 server repository :
 
 ```
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-proposition-<VERSION> /var/www/linshare-ui-upload-proposition
 ```
-<a name="apacheUP">
-###Apache configuration
-</a>
 To deploy the __LinShare__ Upload-Proposition interface, it is necessary to activate the __mod_proxy__ module on Apache2. Plus, you must add the the configuration below to the default file provided by debian :
 
 ```
@@ -521,20 +651,65 @@ To deploy the __LinShare__ Upload-Proposition interface, it is necessary to acti
 ServerName linshare-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
-    ProxyPass http://127.0.0.1:9080/upload-propositions
-    ProxyPassReverse http://127.0.0.1:9080/upload-propositions
+    ProxyPass http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
+    ProxyPassReverse http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
     #This header is added to avoid the JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
+<Directory /var/www/linshare-ui-upload-proposition>
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
 ...
 </Virtualhost>
 ```
 To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
+
 <a name="firstAccessUP">
 ###First access
 </a>
 The __Upload Proposition service__ is now reachable at the addresses below.
 
   * __http://linshare-upload-proposition.local/__
+
+<a name="apacheUP1">
+###Apache configuration via a directory
+</a>
+
+Deploy the LinShare UI Upload-Proposition in the linshare repository you created in the user section :
+
+```
+[root@localhost ~]$ cd /var/www/linshare
+[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
+[root@localhost ~]$ ln -s linshare-ui-upload-request-{VERSION} upload-proposition
+```
+To deploy the __LinShare__ Upload-Proposition interface, open the linshare-user.conf virtualhost configuration file :
+
+```
+[root@localhost ~]$ cd /etc/apache2/sites-available
+[root@localhost ~]$ vim linshare-user.conf
+```
+and add those lines to the virtualhost section :
+
+```
+<Directory "upload-proposition">
+	   Options -Indexes
+	   AllowOverride None
+	   Order Allow,Deny
+	   Allow from all
+</Directory>
+```
+To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
+
+`[root@localhost ~]$ service apache2 restart`
+
+<a name="firstAccessUP1">
+###First access
+</a>
+The __Upload Proposition service__ is now reachable at the addresses below.
+
+  * __http://linshare-user.local/upload-proposition/__
