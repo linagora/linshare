@@ -12,7 +12,12 @@ More information on http://www.linshare.org/
 
 
 LinShare is now splitted in multiple repositories.                                                                                                                                                               
-You can clone the whole project using the following command :                                                                                                                                                    
+You can clone the whole project using the following commands :                                                                                                                                                    
 
-git clone --recursive https://github.com/linagora/linshare.git
+git clone https://github.com/linagora/linshare.git
+git clone https://github.com/linagora/linshare-core.git
+git clone https://github.com/linagora/linshare-ui-admin.git
+git clone https://github.com/linagora/linshare-ui-upload-request.git
+git clone https://github.com/linagora/linshare-ui-upload-proposition.git
+git clone https://github.com/linagora/linshare-upload-proposition.git
 
