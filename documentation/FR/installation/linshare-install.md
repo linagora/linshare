@@ -691,7 +691,7 @@ Déployez l'interface __LinShare Upload-Proposition__ dans le repertoire linshar
 ```
 [root@localhost ~]$ cd /var/www/linshare
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
-[root@localhost ~]$ ln -s linshare-ui-upload-request-{VERSION} upload-proposition
+[root@localhost ~]$ ln -s linshare-ui-upload-proposition-{VERSION} upload-proposition
 ```
 Pour déployer l'interface __Linshare Upload-Proposition__, ouvrez le fichier de configuration de virtualhost linshare-user.conf :
 
