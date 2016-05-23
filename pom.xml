@@ -8,7 +8,7 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>1.5.10</linshare-core>
+    <linshare-core>1.5.11</linshare-core>
   </properties>
   <dependencies>
     <dependency>
