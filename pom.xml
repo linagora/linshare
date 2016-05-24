@@ -62,6 +62,11 @@
   </dependencies>
   <repositories>
     <repository>
+      <id>Linagora-LinShare-Releases</id>
+      <name>Linagora LinShare Releases</name>
+      <url>https://nexus.linagora.com/content/repositories/linshare-releases</url>
+    </repository>
+    <repository>
       <id>Linagora-LinShare-Snapshots</id>
       <name>Linagora LinShare Snapshots</name>
       <url>https://nexus.linagora.com/content/repositories/linshare-snapshots</url>
