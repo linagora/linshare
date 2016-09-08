@@ -4,17 +4,24 @@
   <groupId>org.linagora.linshare</groupId>
   <artifactId>linshare</artifactId>
   <packaging>pom</packaging>
-  <version>1.12.4-SNAPSHOT</version>
+  <version>2.0.0-SNAPSHOT</version>
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>1.12.3</linshare-core>
-    <linshare-ui-admin>2.6.0</linshare-ui-admin>
+    <linshare-core>2.0.0-beta1</linshare-core>
+    <linshare-ui-user>2.0.0-beta1</linshare-ui-user>
+    <linshare-ui-admin>3.0.0-beta1</linshare-ui-admin>
     <linshare-ui-upload-request>1.1.0</linshare-ui-upload-request>
     <linshare-ui-upload-proposition>1.0.2</linshare-ui-upload-proposition>
     <linshare-upload-proposition>1.0.0</linshare-upload-proposition>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>linshare-ui-user</artifactId>
+      <version>${linshare-ui-user}</version>
+      <type>tar.bz2</type>
+    </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
       <artifactId>linshare-ui-admin</artifactId>
@@ -31,8 +38,8 @@
       <groupId>org.linagora.linshare</groupId>
       <artifactId>linshare-core</artifactId>
       <version>${linshare-core}</version>
-      <classifier>sso</classifier>
-      <type>war</type>
+      <classifier>sql</classifier>
+      <type>tar.bz2</type>
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
