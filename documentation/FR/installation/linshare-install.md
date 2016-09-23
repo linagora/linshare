@@ -277,6 +277,12 @@ DocumentRoot /var/www/linshare-ui-user
     ProxyPass http://127.0.0.1:8080/linshare
     ProxyPassReverse http://127.0.0.1:8080/linshare
     ProxyPassReverseCookiePath /linshare /
+
+    # Workaround to remove httpOnly flag (could also be done with tomcat)
+    Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/"
+    # For https, you should add Secure flag.
+    # Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/; Secure"
+
     #This header is added to avoid the  JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
@@ -322,6 +328,12 @@ DocumentRoot /var/www/linshare-ui-admin
     ProxyPass http://127.0.0.1:8080/linshare/webservice/rest/admin
     ProxyPassReverse http://127.0.0.1:8080/linshare/webservice/rest/admin
     ProxyPassReverseCookiePath /linshare /
+
+    # Workaround to remove httpOnly flag (could also be done with tomcat)
+    Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/"
+    # For https, you should add Secure flag.
+    # Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/; Secure"
+
     #Cette entête est rajoutée pour éviter à IE de faire du cache sur le JSON
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
