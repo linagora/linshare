@@ -6,8 +6,8 @@
    * [Download of LinShare](#dlLinshare)
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJdk)
-   * [Databases (PostgreSQL installation)](#bdd)
-   * [Servlet container (Tomcat 7 installation)](#tomcat)
+   * [Databases (PostgreSQL & mongoDB installation)](#bdd)
+   * [Servlet container (Tomcat 8 installation)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Ui-user vhost configuration](#ui-user)
      2. [Ui-admin vhost configuration](#ui-admin)
@@ -37,9 +37,8 @@
 ###LINSHARE INSTALLATION
 
 > Note:<br/>
-    In this manual, we choosed the components that we recommend, which are PostgreSQL/Tomcat/Apache/JAVA.
+    In this manual, we choosed the components that we recommend, which are Mongo DB - PostgreSQL - Apache tomcat - Apache httpd - JAVA.
     You can however adapt depending upon the components you may choose.
-
 
 <a name="installmin">
 ###__Linshare__ minimum Installation
@@ -55,7 +54,7 @@ __LinShare__ is open, free and available at this address (the latest version) :
 
 For this installation, download the following files :
 
-  * __linshare-core-{VERSION}-without-SSO.war__
+  * __linshare-core-{VERSION}.war__
 
   * __linshare-ui-admin-{VERSION}.tar.bz2__
 
@@ -69,22 +68,28 @@ To manipulate the archives, it is necessary to use Unzip and Bzip tools :
 Create the configuration repository of __LinShare__ and past the configuration files :
 
 ```
-[root@localhost ~]$ mv linshare-core-{VERSION}-without-SSO.war linshare.war
+[root@localhost ~]$ mv linshare-core-{VERSION}.war linshare.war
 [root@localhost ~]$ mkdir -p /etc/linshare
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
 ###Executive environment JAVA (JVM)
 
-__LinShare__ works with OpenJDK and Sun/Oracle Java 7. This section is on OpenJDK Java 7.
+__LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJDK Java 8.
 
 <a name="instalOpenJdk">
 ####Installation of OpenDK
 </a>
 Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
+ > Note :
+
+   - If you are on a debian jessie, you might need to add jessie backport to your source.list file.
+   To do so follow the following instructions :
+   `[root@localhost ~]$ vim /etc/apt/sources.list` and add this line : `deb http://ftp.debian.org/debian jessie-backports main`. Then do : `aptitude  update; aptitude -t jessie-backports install your_package`.
+
 ```
-[root@localhost ~]$ aptitude install openjdk-7-jre
+[root@localhost ~]$ aptitude install openjdk-8-jre
 [root@localhost ~]$ update-alternatives --config java
 ```
 
@@ -193,30 +198,30 @@ linshare.db.password={PASSWORD}
 linshare.db.driver.class=org.postgresql.Driver
 linshare.db.url=jdbc:postgresql://localhost:5432/linshare
 linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
-linshare.db.persistence_manager=org.apache.jackrabbit.core.persistence.bundle.PostgreSQLPersistenceManager
 ```
+
+For the LinShare V2 installation, you have to install mongoDB too. You can do it by enterring the following commands :
+```
+[root@localhost ~]$ aptitude install mongodb
+```
+
 <a name="tomcat">
 ####Servlet container
 </a>
 LinShare is an Java application compiled and embedded under the WAR (#W#eb #A#pplication a#R#chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
-The application file **linshare.war** contains the heart (core) of the application __LinShare__ as well as the user interface. The administration interface of the solution is external to the application.
-
-> Note :<br/>
-   * The administration interface was externalized from the version 1.6.
-
 This section presents the installation of the Tomcat server.
 
-####Tomcat 7 installation
+####Tomcat 8 installation
 
 Install tomcat from the repositories :
 
-`[root@localhost ~]$ aptitude install tomcat7
+`[root@localhost ~]$ aptitude install tomcat8`
 
-####Tomcat 7 configuration
+####Tomcat 8 configuration
 
 To specify the location of the LinShare __configuration__ (_linshare.properties_ file) and also the default start 
-options, get the commented options in the first lines of the __linshare.properties__ file and coy-paste them in the tomcat file (/etc/default/tomcat7).
+options, get the commented options in the first lines of the __linshare.properties__ file and coy-paste them in the tomcat file (/etc/default/tomcat8).
 
 All starting needful options by default to Linshare are indicated in the header of the following configuration files :
 
@@ -228,9 +233,9 @@ All starting needful options by default to Linshare are indicated in the header 
 Deploy the archive of Linshare application in the tomcat server :
 
 ```
-[root@localhost ~]$ cp linshare.war /var/lib/tomcat7/webapps/
+[root@localhost ~]$ cp linshare.war /var/lib/tomcat8/webapps/
 [root@localhost ~]$ mkdir -p /var/lib/linshare
-[root@localhost ~]$ chown -R tomcat7:tomcat7 /var/lib/linshare
+[root@localhost ~]$ chown -R tomcat8:tomcat8 /var/lib/linshare
 ```
 <a name="apache>
 ####Web server
@@ -253,34 +258,27 @@ Install Apache 2 from the repositories :
 </a>
 To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you 
 must add the configuration below to the default file provided by debian :
-
 ```
 [root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ mkdir -p linshare
+[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-user.conf
 [root@localhost ~]$ a2dissite default
 [root@localhost ~]$ a2ensite linshare-user.conf
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-user.conf
+```
 <VirtualHost *:80>
 ...
 ServerName linshare-user.local
-#The following is in the case of you create a root document.
-DocumentRoot /var/www/linshare
-# This option allows you to add a custom repository in the document root, where you can put your personal resources
-RedirectMatch ^/(?!custom|linshare) http://linshare-user.local/linshare/
+DocumentRoot /var/www/linshare-ui-user
 <Location /linshare>
     ProxyPass http://127.0.0.1:8080/linshare
     ProxyPassReverse http://127.0.0.1:8080/linshare
+    ProxyPassReverseCookiePath /linshare /
+    #This header is added to avoid the  JSON cache issue on IE.
+    Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
-
-<Directory /var/www/linshare>
-	   Options -Indexes
-	   AllowOverride None
-	   Order Allow,Deny
-	   Allow from all
-</Directory>
 
 ErrorLog /var/log/apache2/linshare-user-error.log
 CustomLog /var/log/apache2/linshare-user-access.log combined
@@ -305,7 +303,6 @@ Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repo
 [root@localhost ~]$ mv linshare-ui-admin-{VERSION} /var/www/linshare-ui-admin
 ```
 To deploy the __LinShare__ administration interface, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you must add the configuration below to the default file provided by debian :
-
 ```
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-admin.conf
@@ -347,7 +344,6 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 </a>
 
 Configure the __storage location of the files__ :
-
 ```
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
@@ -364,16 +360,46 @@ mail.smtp.password=<SMTP-PASSWORD>
 mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
+On LinShare, you have two possible authentication mode, the first is the nominal mode, and the second is the sso mode. To start LinShare you must at least enable one of those two following modes :
+
+* default : default authentication process.
+* sso : Enable headers injection for SSO. This profile includes default profile capabilities
+
+The default profile is jcloud with filesystem for tests purpose.
+
+You can override this parameter using -Dspring.profiles.active=xxx
+Or you can use environment variable : SPRING_PROFILES_ACTIVE
+You must enable at least one authentication profile among authentication profiles  and one profile among file data store profiles described below.
+
+Available file data store profiles :
+
+* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem (test only).
+
+* gridfs : Using gridfs (mongodb) as file data store.
+
+* jackrabbit2 : Using jackrabbit as file data store.
+
+* jackrabbit-to-jcloud : Using Jcloud as new file data store, jackrabbit as fallback file data store.
+
+* jackrabbit-to-gridfs : Using GridFS as new file data store, jackrabbit as fallback file data store.
+
+Recommended profile for production is jcloud with Swift.
+
+The default profile is jcloud with filesystem for tests purpose.
+
+> Note
+
+    - We only use JackRabbit for the transition, it is deprecated.
+
 To __start LinShare__, start the tomcat service :
 
-`[root@localhost ~]$ service tomcat7 restart`
+`[root@localhost ~]$ service tomcat8 restart`
 
 To verify that __LinShare__ works, consult the __logs__ file :
 
-`[root@localhost ~]$ tail -f /var/log/tomcat7/catalina.out`
+`[root@localhost ~]$ tail -f /var/log/tomcat8/catalina.out`
 
 If the service start correctly, you should have those following messages:
-
 ```
 [...]
 org.apache.coyote.http11.Http11Protocol start
