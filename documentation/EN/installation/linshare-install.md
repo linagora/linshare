@@ -250,7 +250,9 @@ This section presents the installation of Apache HTTP server.
 
 Install Apache 2 from the repositories :
 
-`[root@localhost ~]$ aptitude install apache2
+```
+[root@localhost ~]$ aptitude install apache
+```
 
 #####Vhost configuration
 <a name="ui-user">
@@ -258,6 +260,7 @@ Install Apache 2 from the repositories :
 </a>
 To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you 
 must add the configuration below to the default file provided by debian :
+
 ```
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
@@ -267,6 +270,8 @@ must add the configuration below to the default file provided by debian :
 [root@localhost ~]$ a2ensite linshare-user.conf
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-user.conf
+```
+
 ```
 <VirtualHost *:80>
 ...
@@ -291,6 +296,7 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 ...
 </Virtualhost>
 ```
+
 > Note:<br/>
    * After any modification of a vhost, you nust reload the Apache 2 server :
    `[root@localhost ~]$ service apache2 reload` <br/>
@@ -308,7 +314,9 @@ Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repo
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
 [root@localhost ~]$ mv linshare-ui-admin-{VERSION} /var/www/linshare-ui-admin
 ```
+
 To deploy the __LinShare__ administration interface, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you must add the configuration below to the default file provided by debian :
+
 ```
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-admin.conf
@@ -346,6 +354,7 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ...
 </Virtualhost>
 ```
+
 > Note:
    * After any modification of a vhost, you nust reload the Apache 2 server :
    `[root@localhost ~]$ service apache2 reload` <br/>
@@ -356,12 +365,14 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 </a>
 
 Configure the __storage location of the files__ :
+
 ```
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
 linshare.signature.tmp.dir=/var/lib/linshare/tmp/linSignDocuments
 linshare.files.directory=/var/lib/linshare/repository
 ```
+
 Configure the __access of a SMTP server__, for the notification sending :
 
 ```
@@ -372,6 +383,7 @@ mail.smtp.password=<SMTP-PASSWORD>
 mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
+
 On LinShare, you have two possible authentication mode, the first is the nominal mode, and the second is the sso mode. To start LinShare you must at least enable one of those two following modes :
 
 * default : default authentication process.
@@ -412,6 +424,7 @@ To verify that __LinShare__ works, consult the __logs__ file :
 `[root@localhost ~]$ tail -f /var/log/tomcat8/catalina.out`
 
 If the service start correctly, you should have those following messages:
+
 ```
 [...]
 org.apache.coyote.http11.Http11Protocol start
@@ -419,6 +432,7 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+
 Then restart the Apache 2 service :
 
 `[root@localhost ~]$ service apache2 restart`
@@ -491,6 +505,7 @@ Deploy the __LinShare__ UI UploadRequest archive in the Apache server repository
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-uploadrequest-{VERSION}.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-request-{VERSION} /var/www/linshare-ui-upload-request
 ```
+
 <a name="apacheUR">
 ####Apache Configuration
 </a>
@@ -504,9 +519,11 @@ To deploy the __LinShare__ upload request interface, it is necessary to activate
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-upload-request.conf
 ```
+
 #####Version 1.0.X
 
 ```
+
 <VirtualHost *:80>
 ...
 ServerName linshare-uploadrequest.local
@@ -550,6 +567,7 @@ DocumentRoot /var/www/linshare-ui-upload-request
 ...
 </Virtualhost>
 ```
+
 To access at __LinShare Upload Request__, first start the Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
@@ -595,6 +613,7 @@ Deploy the __LinShare__ UI UploadRequest archive in the Apache server repository
 [root@localhost ~]$ tar xjf linshare-ui-upload-request-{VERSION}.tar.bz2
 [root@localhost ~]$ ln -s linshare-ui-upload-request-{VERSION} upload-request
 ```
+
 <a name="apacheUR1">
 ####Apache configuration in a directory
 </a>
@@ -604,6 +623,7 @@ To deploy the Upload-Request interface of __LinShare__, you need to open your li
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ vim linshare-user.conf
 ```
+
 And then add the following lines to the virtualhost section:
 
 ```
@@ -614,6 +634,7 @@ And then add the following lines to the virtualhost section:
 	   Allow from all
 </Directory>
 ```
+
 To access at __LinShare Upload Request__, first start the Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
@@ -661,6 +682,7 @@ Enter the following Commands :
 [root@localhost ~]$ update-rc.d linshare-upload-proposition.sh defaults
 [root@localhost ~]$ chmod +x /etc/init.d/linshare-upload-proposition.sh
 ```
+
 You now have a script "linshare-upload-proposition.sh" allowing you to have the information on your process status, 
 and also to stop or restart it.
 
@@ -675,6 +697,7 @@ Deploy the __LinShare UI Upload-Proposition__ in the Apache2 server repository :
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-proposition-<VERSION> /var/www/linshare-ui-upload-proposition
 ```
+
 To deploy the __LinShare__ Upload-Proposition interface, it is necessary to activate the __mod_proxy__ module on Apache2. Plus, you must add the the configuration below to the default file provided by debian :
 
 ```
@@ -703,6 +726,7 @@ DocumentRoot /var/www/linshare-ui-upload-proposition
 ...
 </Virtualhost>
 ```
+
 To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
@@ -726,12 +750,14 @@ Deploy the LinShare UI Upload-Proposition in the linshare repository you created
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
 [root@localhost ~]$ ln -s linshare-ui-upload-proposition-{VERSION} upload-proposition
 ```
+
 To deploy the __LinShare__ Upload-Proposition interface, open the linshare-user.conf virtualhost configuration file :
 
 ```
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ vim linshare-user.conf
 ```
+
 and add those lines to the virtualhost section :
 
 ```
@@ -742,6 +768,7 @@ and add those lines to the virtualhost section :
 	   Allow from all
 </Directory>
 ```
+
 To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
