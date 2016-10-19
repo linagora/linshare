@@ -25,8 +25,7 @@
 
 > Note :
 
- - In this document, we explain how to upgrade your LinShare version. The example token is the upgrade of Linshare without SSO. Note that it is the same as if it was with a SSO.
-
+ - In this document, we explain how to upgrade your LinShare version.
  - The core and the admin must be both upgraded at the same time. Indeed for each core version, there is an Admin version (CF ...)
  
 <a name="upgradecore">
@@ -43,7 +42,7 @@ __LinShare__ is avaible at the following address :
 
 You can download the latest release of the core version you want to upgrade to.
 
-  * __linshare-core-{VERSION}-without-SSO.war__
+  * __linshare-core-{VERSION}.war__
 
 <a name="deploy">
 ###Deployment of the archive
@@ -53,7 +52,7 @@ To deploy the archive you downloaded and upgrade your __LinShare core__ version,
 
 ```
 [root@localhost ~]$ service tomcat7 stop
-[root@localhost ~]$ cp linshare-core-{VERSION}-without-SSO.war /var/lib/tomcat7/webapps/linshare.war
+[root@localhost ~]$ cp linshare-core-{VERSION}.war /var/lib/tomcat7/webapps/linshare.war
 ```
 
 <a name="bdd">
@@ -79,6 +78,9 @@ You have then to update your database as the following :
     * Migration_1.6.0_to_1.7.0.sql
     * Migration_1.7.0_to_1.8.0.sql
     * Migration_1.8.0_to_1.9.0.sql
+
+> Note :
+  - you must read the following file which contains some particularities about each migration : https://github.com/linagora/linshare-core/blob/master/UPGRADE.md
 
 <a name="restart">
 ###Restart of your service
