@@ -25,6 +25,7 @@ You can clone the whole project using the following commands :
 
 * git clone https://github.com/linagora/linshare-core.git
 * git clone https://github.com/linagora/linshare-ui-admin.git
+* git clone https://github.com/linagora/linshare-ui-user.git
 * git clone https://github.com/linagora/linshare-ui-upload-request.git
 * git clone https://github.com/linagora/linshare-ui-upload-proposition.git
 * git clone https://github.com/linagora/linshare-upload-proposition.git
