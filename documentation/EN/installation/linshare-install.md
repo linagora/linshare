@@ -48,9 +48,9 @@
 ###Download of __LinShare__
 </a>
 
-__LinShare__ is open, free and available at this address (the latest version) :
+__LinShare__ is open, free and available at this address (the LATEST version) :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 For this installation, download the following files :
 
@@ -489,7 +489,7 @@ Note :
 </a>
 This module in on free download at the following address :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 For this Installation, download the following file according to the version you want :
 
@@ -597,7 +597,7 @@ Note:
 
 This module in on free download at the following address :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 For this Installation, download the following file according to the version you want :
 
@@ -661,7 +661,7 @@ This module allows to an external user, to ask an internal user, to send him an 
 </a>
 This module in on free download at the following address :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 For this Installation, download the following file according to the version you want :
 

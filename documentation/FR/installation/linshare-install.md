@@ -49,7 +49,7 @@
 
 __LinShare__ est en libre téléchargement à l’adresse suivante (la dernière version) :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 Pour cette installation, téléchargez les fichiers suivants :
 
@@ -482,7 +482,7 @@ Note :
 
 Ce module est en libre téléchargement à l'adresse suivante :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 Pour cette installation, téléchargez le fichier suivant selon la version désirée :
 
@@ -590,7 +590,7 @@ Note:
 </a>
 Ce module est en libre téléchargement à l'adresse suivante :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 Pour cette installation, téléchargez le fichier suivant selon la version désirée :
 
@@ -651,7 +651,7 @@ Ce module permet à un utilisateur externe de pouvoir demander à un utilisateur
 </a>
 Ce module est en libre téléchargement à l'adresse suivante :
 
-  * [http://download.linshare.org/versions/latest](http://download.linshare.org/versions/latest)
+  * [http://download.linshare.org/versions/LATEST](http://download.linshare.org/versions/LATEST)
 
 Pour cette installation, téléchargez les fichiers suivants selon la version désirée :
 
