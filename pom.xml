@@ -13,6 +13,7 @@
     <linshare-ui-upload-request>1.1.0</linshare-ui-upload-request>
     <linshare-ui-upload-proposition>1.0.2</linshare-ui-upload-proposition>
     <linshare-upload-proposition>1.0.0</linshare-upload-proposition>
+    <linshare-plugin-thunderbird>1.7.1</linshare-plugin-thunderbird>
   </properties>
   <dependencies>
     <dependency>
@@ -58,6 +59,12 @@
       <version>${linshare-upload-proposition}</version>
       <classifier>config</classifier>
       <type>yml</type>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>linshare-plugin-thunderbird</artifactId>
+      <version>${linshare-plugin-thunderbird}</version>
+      <type>tar.bz2</type>
     </dependency>
   </dependencies>
   <repositories>
