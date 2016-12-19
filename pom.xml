@@ -9,7 +9,7 @@
   <url>https://github.com/linagora/linshare</url>
   <properties>
     <linshare-core>1.12.4</linshare-core>
-    <linshare-ui-admin>2.6.0</linshare-ui-admin>
+    <linshare-ui-admin>2.6.1</linshare-ui-admin>
     <linshare-ui-upload-request>1.1.1</linshare-ui-upload-request>
     <linshare-ui-upload-proposition>1.0.2</linshare-ui-upload-proposition>
     <linshare-upload-proposition>1.0.0</linshare-upload-proposition>
