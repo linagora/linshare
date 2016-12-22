@@ -8,10 +8,10 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>2.0.0-beta2</linshare-core>
-    <linshare-ui-user>2.0.0-beta2</linshare-ui-user>
-    <linshare-ui-admin>3.0.0-beta1</linshare-ui-admin>
-    <linshare-ui-upload-request>1.1.0</linshare-ui-upload-request>
+    <linshare-core>2.0.0-beta3</linshare-core>
+    <linshare-ui-user>2.0.0-beta3</linshare-ui-user>
+    <linshare-ui-admin>3.0.0-beta3</linshare-ui-admin>
+    <linshare-ui-upload-request>1.1.1</linshare-ui-upload-request>
     <linshare-ui-upload-proposition>1.0.2</linshare-ui-upload-proposition>
     <linshare-upload-proposition>1.0.0</linshare-upload-proposition>
   </properties>
