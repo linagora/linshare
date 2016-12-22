@@ -4,7 +4,7 @@
   <groupId>org.linagora.linshare</groupId>
   <artifactId>linshare</artifactId>
   <packaging>pom</packaging>
-  <version>2.0.0-beta3</version>
+  <version>2.0.0-SNAPSHOT</version>
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
@@ -98,7 +98,7 @@
   <scm>
     <connection>scm:git:git://github.com/linagora/linshare.git</connection>
     <developerConnection>scm:git:ssh://git@ci-gsafe.linagora.com:8000/linshare/linshare-github.git</developerConnection>
-    <tag>2.0.0-beta3</tag>
+    <tag>HEAD</tag>
     <url>http://github.com/linagora/linshare/tree/master/</url>
   </scm>
   <build>
