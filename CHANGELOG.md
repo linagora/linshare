@@ -1,5 +1,5 @@
 <a name="2.0.0-beta3"></a>
-# [2.0.0-beta3](https://github.com/linagora/linshare/compare/2.0.0-beta2...2.0.0-beta3) (2016-09-08) [Download link](http://download.linshare.org/versions/2.0.0-beta3/)
+# [2.0.0-beta3](https://github.com/linagora/linshare/compare/2.0.0-beta2...2.0.0-beta3) (2016-12-22) [Download link](http://download.linshare.org/versions/2.0.0-beta3/)
 
 ## Upgraded components
 
