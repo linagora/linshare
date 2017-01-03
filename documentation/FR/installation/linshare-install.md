@@ -325,8 +325,8 @@ Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni p
 ServerName linshare-admin.local
 DocumentRoot /var/www/linshare-ui-admin
 <Location /linshare>
-    ProxyPass http://127.0.0.1:8080/linshare/webservice/rest/admin
-    ProxyPassReverse http://127.0.0.1:8080/linshare/webservice/rest/admin
+    ProxyPass http://127.0.0.1:8080/linshare
+    ProxyPassReverse http://127.0.0.1:8080/linshare
     ProxyPassReverseCookiePath /linshare /
 
     # Workaround to remove httpOnly flag (could also be done with tomcat)
