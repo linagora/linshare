@@ -100,7 +100,10 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 ###Databases
 </a>
 
-LinShare needs the use of a database (PostgreSQL) for its files and its configuration. 
+LinShare needs the use of a database (PostgreSQL) for its files and its configuration.
+
+Mysql is not supported yet in LinShare v2.
+ 
 This section present an installation with PostgreSQL.
 
 Install PostgreSQL from the repositories :
@@ -204,6 +207,7 @@ For the LinShare V2 installation, you have to install mongoDB too. You can do it
 ```
 [root@localhost ~]$ aptitude install mongodb
 ```
+Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
 <a name="tomcat">
 ####Servlet container
@@ -237,7 +241,7 @@ Deploy the archive of Linshare application in the tomcat server :
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 [root@localhost ~]$ chown -R tomcat8:tomcat8 /var/lib/linshare
 ```
-<a name="apache>
+<a name="apache">
 ####Web server
 </a>
 
@@ -368,9 +372,9 @@ Configure the __storage location of the files__ :
 
 ```
 [root@localhost ~]$ mkdir -p /var/lib/linshare
+linshare.documents.storage.filesystem.directory=/var/lib/linshare/filesystemstorage
 linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
-linshare.signature.tmp.dir=/var/lib/linshare/tmp/linSignDocuments
-linshare.files.directory=/var/lib/linshare/repository
+
 ```
 
 Configure the __access of a SMTP server__, for the notification sending :
@@ -712,8 +716,8 @@ To deploy the __LinShare__ Upload-Proposition interface, it is necessary to acti
 ServerName linshare-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
-    ProxyPass http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
-    ProxyPassReverse http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
+    ProxyPass http://127.0.0.1:9080/uploadpropositions
+    ProxyPassReverse http://127.0.0.1:9080/uploadpropositions
     #This header is added to avoid the JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
