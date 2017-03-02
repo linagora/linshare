@@ -103,7 +103,6 @@ Edit the PostgreSQL's access gestion file :
  local   linshare,linshare_data    linshare                           md5
  host    linshare,linshare_data    linshare      127.0.0.1/32         md5
  host    linshare,linshare_data    linshare      ::1/128              md5
-
 ```
 
 > Note :<br/>
@@ -170,6 +169,7 @@ Password for user linshare: {PASSWORD}
 [root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/import-postgresql.sql | psql -U linshare -W -d linshare
 Password for user linshare: {PASSWORD}
 ```
+
 Edit LinShare's configuration file :
 
 ```
@@ -192,6 +192,7 @@ With the vi editor, create a .repo file for yum, the package management utility 
 ```
 [root@localhost ~]$ vi /etc/yum.repos.d/mongodb-org.repo
 ```
+
 Then, add the repository information for the latest stable release to the file:
 
 ```
@@ -201,19 +202,21 @@ baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
 gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
-
 ```
+
 We can install the mongodb-org package from the repository using the yum utility:
 
 ```
 [root@localhost ~]$ yum install mongodb-org
 ```
+
 Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
 Next, start the MongoDB service with the systemctl utility:
+
 ```
 [root@localhost ~]$ systemctl start mongod
-
+```
 
 <a name="tomcat">
 ####Servlet container
@@ -255,6 +258,7 @@ Deploy the archive of Linshare application in the Tomcat server :
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 [root@localhost ~]$ chown -R tomcat:tomcat /var/lib/linshare
 ```
+
 <a name="apache">
 ####Web server
 </a>
@@ -270,6 +274,7 @@ Install Apache 2 from the repositories :
 ```
 [root@localhost ~]$ yum install httpd
 ```
+
 It will bring Apache/2.4.6 (CentOS)
 
 #####Vhost configuration
@@ -290,7 +295,6 @@ To deploy the LinShare application, it is necessary to create the virtualhost co
 ```
 [root@localhost ~]$ cd /etc/httpd/conf.d
 [root@localhost ~]$ vim linshare-ui-user.conf
-
 ```
 
 ```
@@ -331,6 +335,7 @@ Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repo
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
 ```
+
 To deploy the __LinShare__ administration interface, it is necessary to activate the __mod_proxy__ module on Apache 2.
 
 ```
@@ -360,7 +365,7 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 </Virtualhost>
 ```
 
-> Note:
+> Note:<br/>
    * After any modification of a vhost, you must reload the Apache 2 server :
    `[root@localhost ~]$ apachectl restart` <br/>
 
@@ -374,7 +379,6 @@ Configure the __storage location of the files__ :
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 linshare.documents.storage.filesystem.directory=/var/lib/linshare/filesystemstorage
 linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
-
 ```
 
 Configure the __access of a SMTP server__, for the notification sending :
@@ -415,7 +419,7 @@ Recommended profile for production is jcloud with Swift.
 
 The default profile is jcloud with filesystem for tests purpose.
 
-> Note
+> Note:<br/>
    - We only use JackRabbit for the transition, it is deprecated.
 
 To __start LinShare__, start the Tomcat service :
@@ -440,8 +444,8 @@ Then restart the Apache 2 service :
 
 `[root@localhost ~]$ apachectl restart`
 
-Note :
-   > You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
+> Note :<br/>
+    You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
 <a name="firstAccess">
 ###First access
@@ -452,9 +456,8 @@ For the user interface :
 
   * __http://linshare-user.local/linshare__
 
-Note :
-
-  > This url must also be inquired in the parameters of your domain. To do so, go to the __domain__ functionality and
+> Note:<br/>
+   This url must also be inquired in the parameters of your domain. To do so, go to the __domain__ functionality and
   enter it in the __notifcation url__ parameters fields
 
 For the administration interface :
@@ -469,7 +472,4 @@ Connect to LinShare as a Linshare _system administrator_ :
 
   * Password : __adminlinshare__
 
-Then, to interconnect __Linshare__ with your LDAP user directory, create a new domain from the section "DOMAINS". For further informations, please refer to the __Configuration and$
-
-
-
+Then, to interconnect __Linshare__ with your LDAP user directory, create a new domain from the section "DOMAINS". For further informations, please refer to the __Configuration and administration manual__ of __LinShare__ [__LINSHARE:CONF__].
