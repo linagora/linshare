@@ -251,7 +251,7 @@ Ensuite, lancez le service MongoDB avec l'utilitaire systemctl:
 
 </a>
 
-LinShare étant une application Java compilée et empaquetée au format WAR (**W**eb Application a**R**chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
+LinShare étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
@@ -498,7 +498,7 @@ Le __service LinShare__ est désormais accessible aux adresses suivantes:
 
 Pour l’interface utilisateur:
 
-  * __http://linshare-user.local/linshare__
+  * http://linshare-user.local/linshare
 
 > Note:<br/>
   Vous devez renseignez cette url dans les paramètres de votre domaine. Pour ce faire, choisissez la fonctionalité __domain__ dans la liste de vos fonctionalités
@@ -506,13 +506,13 @@ et renseignez les champs __Url de base pour les notifications__ dans la sous fon
 
 Pour l’interface d’administration :
 
-  * __http://linshare-admin.local/__
+  * http://linshare-admin.local/
 
 #### Paramétrage de LinShare
 
 Connectez vous à __LinShare__ en tant qu’ __administrateur système__ :
 
-  * Identifiant : __root@localhost.localdomain__
+  * Identifiant : root@localhost.localdomain
 
   * Mot de passe : __adminlinshare__
 

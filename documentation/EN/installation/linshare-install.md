@@ -87,7 +87,7 @@ __LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJD
 Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 > Note:<br/>
-   - If you are on a debian jessie, you might need to add jessie backport to your source.list file.
+   * If you are on a debian jessie, you might need to add jessie backport to your source.list file.<br/>
    To do so follow the following instructions :
    `[root@localhost ~]$ vim /etc/apt/sources.list` and add this line : `deb http://ftp.debian.org/debian jessie-backports main`. Then do : `aptitude  update; aptitude -t jessie-backports install your_package`.
 
@@ -217,7 +217,6 @@ For the LinShare V2 installation, you have to install mongoDB too. You can do it
 ```
 Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
-Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
 <a name="tomcat">
 
@@ -225,7 +224,7 @@ Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bin
 
 </a>
 
-LinShare is an Java application compiled and embedded under the WAR (#W#eb #A#pplication a#R#chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
+LinShare is an Java application compiled and embedded under the WAR (**W**eb **A**pplication a**R**chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
 This section presents the installation of the Tomcat server.
 
@@ -237,7 +236,7 @@ Install tomcat from the repositories :
 
 #### Tomcat 8 configuration
 
-To specify the location of the LinShare __configuration__ (_linshare.properties_ file) and also the default start 
+To specify the location of the LinShare __configuration__ (__linshare.properties__ file) and also the default start 
 options, get the commented options in the first lines of the __linshare.properties__ file and coy-paste them in the tomcat file (/etc/default/tomcat8).
 
 All starting needful options by default to Linshare are indicated in the header of the following configuration files :
@@ -261,7 +260,7 @@ Deploy the archive of Linshare application in the tomcat server :
 
 </a>
 
-The administration interface of __LinShare_ is an application based on web languages HTML/CSS and JavaScript. 
+The administration interface of __LinShare__ is an application based on web languages HTML/CSS and JavaScript. 
 It just needs a simple web server like Apache or nginx.
 
 This section presents the installation of Apache HTTP server.
@@ -271,7 +270,7 @@ This section presents the installation of Apache HTTP server.
 Install Apache 2 from the repositories :
 
 ```
-[root@localhost ~]$ aptitude install apache
+[root@localhost ~]$ aptitude install apache2
 ```
 
 ##### Vhost configuration
@@ -322,7 +321,7 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 ```
 
 > Note:<br/>
-   * After any modification of a vhost, you nust reload the Apache 2 server :
+   * After any modification of a vhost, you nust reload the Apache 2 server :<br/>
    `[root@localhost ~]$ service apache2 reload` <br/>
    * In the recent versions of Apache, the default file can be named as default.conf.<br/>
    * If you create a document root, you can create a custom subrepository, in which you can add your logo :<br/>
@@ -383,9 +382,9 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ```
 
 > Note:<br/>
-   * After any modification of a vhost, you nust reload the Apache 2 server :
+   * After any modification of a vhost, you nust reload the Apache 2 server: <br/>
    `[root@localhost ~]$ service apache2 reload` <br/>
-   * In the recent versions of Apache, the default file can be named as default.conf.<br/>
+   * In the recent versions of Apache, the default file can be named as default.conf <br/>
 
 <a name="linconf">
 
@@ -477,7 +476,7 @@ The __LinShare service__ is now reachable at the following adresses :
 
 For the user interface :
 
-  * __http://linshare-user.local/linshare__
+  * http://linshare-user.local/linshare
 
 > Note:<br/>
    This url must also be inquired in the parameters of your domain. To do so go to the __domain__ functionality and
@@ -485,13 +484,13 @@ For the user interface :
 
 For the administration interface :
 
-  * __http://linshare-admin.local/__
+  *  http://linshare-admin.local/
 
 #### LinShare setting
 
 Connect to LinShare as a Linshare _system administrator_ :
 
-  * Login : __root@localhost.localdomain__
+  * Login : root@localhost.localdomain
 
   * Password : __adminlinshare__
 

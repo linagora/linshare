@@ -247,7 +247,7 @@ Next, start the MongoDB service with the systemctl utility:
 
 </a>
 
-LinShare is a Java application compiled and embedded under the WAR (#W#eb #A#pplication a#R#chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
+LinShare is a Java application compiled and embedded under the WAR (**W**eb **A**pplication a**R**chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
 This section presents the installation of the Tomcat server.
 
@@ -356,7 +356,7 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 ```
 
 > Note:<br/>
-   * After any modification of a vhost, you must reload the Apache 2 server :
+   * After any modification of a vhost, you must reload the Apache 2 server :<br/>
    `[root@localhost ~]$ apachectl restart` <br/>
 
 <a name="ui-admin">
@@ -402,7 +402,7 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 ```
 
 > Note:<br/>
-   * After any modification of a vhost, you must reload the Apache 2 server :
+   * After any modification of a vhost, you must reload the Apache 2 server :<br/>
    `[root@localhost ~]$ apachectl restart` <br/>
 
 <a name="linconf">
@@ -458,7 +458,7 @@ Recommended profile for production is jcloud with Swift.
 The default profile is jcloud with filesystem for tests purpose.
 
 > Note:<br/>
-   - We only use JackRabbit for the transition, it is deprecated.
+   * We only use JackRabbit for the transition, it is deprecated.<br/>
 
 To __start LinShare__, start the Tomcat service :
 
@@ -495,7 +495,7 @@ The __LinShare service__ is now reachable at the following adresses :
 
 For the user interface :
 
-  * __http://linshare-user.local/linshare__
+  * http://linshare-user.local/linshare
 
 > Note:<br/>
    This url must also be inquired in the parameters of your domain. To do so, go to the __domain__ functionality and
@@ -503,13 +503,13 @@ For the user interface :
 
 For the administration interface :
 
-  * __http://linshare-admin.local/__
+  * http://linshare-admin.local/
 
 #### LinShare setting
 
 Connect to LinShare as a Linshare _system administrator_ :
 
-  * Login : __root@localhost.localdomain__
+  * Login : root@localhost.localdomain
 
   * Password : __adminlinshare__
 

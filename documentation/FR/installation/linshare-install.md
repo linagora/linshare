@@ -84,9 +84,9 @@ __LinShare__ fonctionne avec OpenJDK et Sun/Oracle Java version 8. Ce guide port
 Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
 
 > Note:<br/>
-   - Si vous êtes sur Debian jessie, vous devez ajoutez les bakcports pour pouvoir installer JAVA 8.
+   * Si vous êtes sur Debian jessie, vous devez ajoutez les bakcports pour pouvoir installer JAVA 8.
    Pour ce faire vous devez ajouter cette ligne : `deb http://ftp.debian.org/debian jessie-backports mai` au fichier `/etc/apt/sources.list`.
-   Puis vous pouvez installer le package désiré comme suit : `aptitude update; aptitude -t jessie-backports install votre_package`.
+   Puis vous pouvez installer le package désiré comme suit : `aptitude update; aptitude -t jessie-backports install votre_package`.<br/>
 
 ```
 [root@localhost ~]$ aptitude install openjdk-8-jre
@@ -125,11 +125,11 @@ Adaptez le fichier de gestion des accès de PostgreSQL :
  host    linshare,linshare_data    linshare      ::1/128              md5
 ```
 
-> Note :<br/>
+> Note:<br/>
    * Ces lignes se trouvent généralement à la fin du fichier de configuration.<br/>
    * Pour des raisons de sécurité, le service PostgreSQL n’écoute qu’en local.<br/>
    * Pensez à redémarrer/recharger le serveur PostgreSQL après vos modifications pour qu'elles soient prises en compte:<br/>
-   `[root@localhost ~]$ service postgresql restart/reload`
+   `[root@localhost ~]$ service postgresql restart/reload`<br/>
 
 Il convient également d'ajouter ces règles dans les premières. En effet, PostgreSQL utilise la premère règle valide qui correspond à la demande d'authentification.
 
@@ -216,7 +216,7 @@ Pour l'installation de LinShare, vous aurez aussi besoin d'installer une base de
 
 </a>
 
-__LinShare__ étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un __conteneur de servlets Java__ (Tomcat ou Jetty) pour fonctionner.
+__LinShare__ étant une application Java compilée et empaquetée au format WAR ( **W**eb **A**pplication a**R**chive), il lui faut donc un __conteneur de servlets Java__ (Tomcat ou Jetty) pour fonctionner.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
@@ -230,7 +230,7 @@ Installez Tomcat depuis les dépôts :
 
 Pour spécifier l’emplacement de la __configuration__ de LinShare (fichier __linshare.properties__) ainsi que les 
 options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans 
-le fichier __linshare.properties__ et copier-coller les dans le fichier tomcat (__/etc/default/tomcat8__).
+le fichier __linshare.properties__ et copier-coller les dans le fichier tomcat ( __/etc/default/tomcat8__ ).
 
 L’ensemble des options de démarrage par défaut nécessaires à __LinShare__ sont indiquées dans les en-têtes des fichiers de configuration suivants :
 
@@ -317,9 +317,9 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
    * Après toute modification d'un vhost, il faut recharger le server Apache 2 :<br/>
    `[root@localhost ~]$ service apache2 reload` <br/>
    * Dans les versions récentes de Apache, le fichier default peut se nommer default.conf.<br/>
-   * Dans le cas où créez un document root, vous pourrez y créer un sous repertoire custom, 
+   * Dans le cas où créez un document root, vous pourrez y créer un sous repertoire custom,<br/> 
    dans lequel vous pourrez déployer votre logo :<br/>
-   `[root@localhost ~]$ mkdir -p linshare/custom`
+   `[root@localhost ~]$ mkdir -p linshare/custom` <br/>
 
 <a name="ui-admin">
 
@@ -379,7 +379,7 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 > Note:<br/>
    * Après toute modification d'un vhost. il faut recharger le server Apache 2 :<br/>
     `[root@localhost ~]$ service apache2 reload`<br/>
-   * Dans les version récentes de Apache, le fichier default peut se nommer default.conf.
+   * Dans les version récentes de Apache, le fichier default peut se nommer default.conf.<br/>
 
 <a name="linconf">
 
@@ -434,7 +434,7 @@ Available file data store profiles :
 Le profil recommandé est jcloud avec swift.
 
 > Note:<br/>
-    - Nous utilisons uniquement JackRabbit pour la transition, car il est dépricié.
+    - Nous utilisons uniquement JackRabbit pour la transition, car il est obsolète.
 
 
 Pour __démarrer LinShare__, démarrez le service Tomcat :
@@ -471,7 +471,7 @@ Le __service LinShare__ est désormais accessible aux adresses suivantes.
 
 Pour l’interface utilisateur :
 
-  * __http://linshare-user.local/linshare__
+  * http://linshare-user.local/linshare
 
 > Note:<br/>
   Vous devez renseignez cette url dans les paramètres de votre domaine.<br/>
@@ -480,13 +480,13 @@ Pour l’interface utilisateur :
 
 Pour l’interface d’administration :
 
-  * __http://linshare-admin.local/__
+  * http://linshare-admin.local/
 
 #### Paramétrage de LinShare
 
 Connectez vous à __LinShare__ en tant qu’__administrateur système__ de __LinShare__ :
 
-  * Identifiant : __root@localhost.localdomain__
+  * Identifiant : root@localhost.localdomain
 
   * Mot de passe : __adminlinshare__
 
