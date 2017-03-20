@@ -1,6 +1,6 @@
-##Sommaire
+## Sommaire
 
-###INSTALLATION LINSHARE
+### INSTALLATION LINSHARE
 
 #### 1. [Installation minimale de Linshare](#install-min)
    * [Téléchargement de LinShare](#dlLinshare)
@@ -14,31 +14,51 @@
    * [Premier accès](#firstAccess)
 
 
-###INSTALLATION LINSHARE
+### INSTALLATION LINSHARE
 
 > Note:<br/>
-    Dans ce guide d'installation, nous avons choisi les composants que nous recommandons à savoir Mongo DB - PostgresSql - Apache tomcat - Apache httpd - JAVA.
-   Vous pouvez néanmoins adapter en fonction des composants compatibles que vous aurez retenus.
+Ce guide d'installation est pour les versions 2.x LinShare.
+L'installation des versions précédentes de LinShare est disponible dans les
+branches github par exemple: [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/FR/installation/linshare-install.md)
+
+<a name="install-min">
+
+#### Installation minimale de __LinShare__
+
+</a>
 
 
-####Installation minimale de __LinShare__
-<a name="install-min"></a>
+<a name="dlLinshare">
 
+#### Téléchargement de __LinShare__
 
-####Téléchargement de __LinShare__
-<a name="dlLinshare"></a>
+</a>
 
-__LinShare__ est en libre téléchargement à l’adresse suivante (la dernière version) :
+__LinShare__ est en libre téléchargement à l’adresse suivante:
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
+> Note:<br/>
+Vous trouverez toutes les versions de LinShare à l'adresse [suivante] (http://download.linshare.org/versions/).
+Choisissez la version de LinShare en accord avec votre guide d'installation.
+Chaque version de LinShare contient tous les composants nécessaires liés à une version spécifique de LinShare.
+N'installez pas et n'utilisez pas un composant dont la version est différente de celles que vous trouverez dans le même dossier.
+Sinon, vous risquez de rencontrer des problèmes de dépendances et LinShare peut ne pas fonctionner correctement.
+
 Pour cette installation, téléchargez les fichiers suivants :
+
+  * __linshare-core-{VERSION}.war__
 
   * __linshare-ui-admin-{VERSION}.tar.bz2__
 
+  * __linshare-ui-user-{VERSION}.tar.bz2__
+
 <a name="instalFile">
-####Déploiement de l'archive et des fichiers de configurations
+
+#### Déploiement de l'archive et des fichiers de configurations
+
 </a>
+
 Afin de manipuler les archives, il est nécessaire d’utiliser les outils Unzip et Bzip :
 
 `[root@localhost ~]$ aptitude install unzip bzip2 vim`
@@ -51,13 +71,16 @@ Créez le répertoire de configuration de __LinShare__ et copiez les fichiers de
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
-###Environnement d’exécution Java (JVM)
+### Environnement d’exécution Java (JVM)
 
 __LinShare__ fonctionne avec OpenJDK et Sun/Oracle Java version 8. Ce guide porte sur OpenJDK Java 8.
 
 <a name="instalOpenJdk">
-####Installation de OpenJDK Java JRE
+
+#### Installation de OpenJDK Java JRE
+
 </a>
+
 Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
 
 > Note:<br/>
@@ -74,8 +97,11 @@ Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
     * les éventuelles erreurs relatives au plugin Java peuvent être ignorées.
 
 <a name="bdd">
-###Base de données
+
+### Base de données
+
 </a>
+
 __LinShare__ requière l’utilisation d’une base de données (PostgreSQL) 
 pour ses fichiers et sa configuration. Ce guide présente une installation avec PostgreSQL.
 
@@ -87,7 +113,7 @@ Démarrez le service PostgreSQL :
 
 `[root@localhost ~]$ service postgresql start`
 
-####Création des accès sécurisés
+#### Création des accès sécurisés
 
 Adaptez le fichier de gestion des accès de PostgreSQL :
 
@@ -185,19 +211,22 @@ Pour l'installation de LinShare, vous aurez aussi besoin d'installer une base de
 ```
 
 <a name="tomcat">
-###Conteneur de servlets
+
+### Conteneur de servlets
+
 </a>
+
 __LinShare__ étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un __conteneur de servlets Java__ (Tomcat ou Jetty) pour fonctionner.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
-###Installation de Tomcat 8
+### Installation de Tomcat 8
 
 Installez Tomcat depuis les dépôts :
 
 `[root@localhost ~]$ aptitude install tomcat8`
 
-####Configuration de Tomcat 8
+#### Configuration de Tomcat 8
 
 Pour spécifier l’emplacement de la __configuration__ de LinShare (fichier __linshare.properties__) ainsi que les 
 options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans 
@@ -208,7 +237,7 @@ L’ensemble des options de démarrage par défaut nécessaires à __LinShare__ 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
 
-####Déploiement de l'archive
+#### Déploiement de l'archive
 
 Déployez l’archive de l’application __LinShare__ dans le serveur Tomcat :
 
@@ -219,21 +248,27 @@ Déployez l’archive de l’application __LinShare__ dans le serveur Tomcat :
 ```
 
 <a name="apache">
-###Serveur web
+
+### Serveur web
+
 </a>
+
 L’interface d’administration de __LinShare__ est une application s’appuyant sur les langages web HTML/CSS et JavaScript. Elle nécessite un simple serveur web de type Apache ou nginx.
 
 Ce guide présente l’installation de Apache HTTP Server.
 
-####Installation de Apache 2
+#### Installation de Apache 2
 
 Installez Apache 2 depuis les dépôts :
 
 `[root@localhost ~]$ aptitude install apache2
 
-####Configuration du vhost
+#### Configuration du vhost
+
 <a name="ui-user">
-####ui-user
+
+#### ui-user
+
 </a>
 
 Deployer l'archive de LinShare application UI User dans le repertoire approprié d'Appache 2 :
@@ -287,8 +322,11 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
    `[root@localhost ~]$ mkdir -p linshare/custom`
 
 <a name="ui-admin">
-####ui-admin
+
+#### ui-admin
+
 </a>
+
 Déployez l’archive de l’application __LinShare UI Admin__ dans le répertoire du serveur Apache 2 :
 
 ```
@@ -344,8 +382,11 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
    * Dans les version récentes de Apache, le fichier default peut se nommer default.conf.
 
 <a name="linconf">
-###Configuration & Lancement de LinShare
+
+### Configuration & Lancement de LinShare
+
 </a>
+
 Configurez l’__emplacement de stockage des fichiers__ :
 
 ```
@@ -421,8 +462,11 @@ Puis redémarrez le service Apache 2 :
  Vous disposez d'exemples de vhosts dans le repertoire : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
 <a name="firstAccess">
-###Premier accès
+
+### Premier accès
+
 </a>
+
 Le __service LinShare__ est désormais accessible aux adresses suivantes.
 
 Pour l’interface utilisateur :
@@ -438,7 +482,7 @@ Pour l’interface d’administration :
 
   * __http://linshare-admin.local/__
 
-####Paramétrage de LinShare
+#### Paramétrage de LinShare
 
 Connectez vous à __LinShare__ en tant qu’__administrateur système__ de __LinShare__ :
 
