@@ -18,7 +18,7 @@
 ### LINSHARE INSTALLATION
 
 > Note:<br/>
-This installation guide is for the 2.x LinShare versions.
+This installation guide is for the 2.x LinShare versions on Centos 7 (we do not support other Centos's distribution).
 Installation of previous version of LinShare are available at
 github branches in this case : [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-centos-7.md)
 

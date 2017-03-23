@@ -17,7 +17,7 @@
 ### INSTALLATION LINSHARE
 
 > Note:<br/>
-Ce guide d'installation est pour les versions 2.x LinShare.
+Ce guide d'installation est pour les versions 2.x LinShare sur Debian 8 Jessie (Les autres distributions de Debian ne sont pas supportées).
 L'installation des versions précédentes de LinShare est disponible dans les
 branches github par exemple: [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/FR/installation/linshare-install.md)
 
@@ -204,10 +204,36 @@ linshare.db.url=jdbc:postgresql://localhost:5432/linshare
 linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
 
-Pour l'installation de LinShare, vous aurez aussi besoin d'installer une base de données mongoDB. Vous pouvez le faire en suivant les commandes suivantes :
+Pour l'installation de LinShare, vous aurez aussi besoin d'installer une base de données mongoDB spécifique (version 3.2), vous pouvez le faire en suivant les commandes suivantes :
+
+Importez d'abord la clé publique utilisée par le système de gestion des paquets:
 
 ```
-[root@localhost ~]$ aptitude install mongodb
+[root@localhost ~]$ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+```
+Vous devez créer un fichier de liste:
+
+```
+[root@localhost ~]$ echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+```
+
+Après cela, vous devez recharger les paquets locaux de la base de données:
+
+```
+[root@localhost ~]$ apt-get update
+```
+Installez la dernière version stable de MongoDB:
+
+```
+[root@localhost ~]$ apt-get install -y mongodb-org
+```
+
+Avant de lancer MongoDB, assurez-vous que le fichier /etc/mongod.conf a l'adresse IP de bind: 127.0.0.1
+
+Pour finir, lancez la commande suivante pour démarrer mongod.
+
+```
+[root@localhost ~]$ service mongod start
 ```
 
 <a name="tomcat">
