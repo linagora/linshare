@@ -11,9 +11,6 @@
     <linshare-core>2.0.0-beta3</linshare-core>
     <linshare-ui-user>2.0.0-beta3</linshare-ui-user>
     <linshare-ui-admin>3.0.0-beta3</linshare-ui-admin>
-    <linshare-ui-upload-request>1.1.1</linshare-ui-upload-request>
-    <linshare-ui-upload-proposition>1.0.2</linshare-ui-upload-proposition>
-    <linshare-upload-proposition>1.0.0</linshare-upload-proposition>
   </properties>
   <dependencies>
     <dependency>
@@ -40,31 +37,6 @@
       <version>${linshare-core}</version>
       <classifier>sql</classifier>
       <type>tar.bz2</type>
-    </dependency>
-    <dependency>
-      <groupId>org.linagora.linshare</groupId>
-      <artifactId>linshare-ui-upload-request</artifactId>
-      <version>${linshare-ui-upload-request}</version>
-      <type>tar.bz2</type>
-    </dependency>
-    <dependency>
-      <groupId>org.linagora.linshare</groupId>
-      <artifactId>linshare-ui-upload-proposition</artifactId>
-      <version>${linshare-ui-upload-proposition}</version>
-      <type>tar.bz2</type>
-    </dependency>
-    <dependency>
-      <groupId>org.linagora.linshare</groupId>
-      <artifactId>linshare-upload-proposition</artifactId>
-      <version>${linshare-upload-proposition}</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>org.linagora.linshare</groupId>
-      <artifactId>linshare-upload-proposition</artifactId>
-      <version>${linshare-upload-proposition}</version>
-      <classifier>config</classifier>
-      <type>yml</type>
     </dependency>
   </dependencies>
   <repositories>
