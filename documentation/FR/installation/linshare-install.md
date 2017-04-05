@@ -1,6 +1,6 @@
-##Sommaire
+## Sommaire
 
-###INSTALLATION LINSHARE
+### INSTALLATION LINSHARE
 
 #### 1. [Installation minimale de Linshare](#install-min)
    * [Téléchargement de LinShare](#dlLinshare)
@@ -33,18 +33,19 @@
    * [Configuration Apache via directory](#apacheUP1)
    * [Premier accès](#firstAccessUP1)
 
-###INSTALLATION LINSHARE
+### INSTALLATION LINSHARE
 
 > Note:<br/>
     Dans ce guide d'installation, nous avons choisi les composants que nous recommandons à savoir PostgresSql/Tomcat/Apache/JAVA. 
    Vous pouvez néanmoins adapter en fonction des composants compatibles que vous aurez retenus.
 
 
-####Installation minimale de __LinShare__
+#### Installation minimale de __LinShare__
+
 <a name="install-min"></a>
 
+#### Téléchargement de __LinShare__
 
-####Téléchargement de __LinShare__
 <a name="dlLinshare"></a>
 
 __LinShare__ est en libre téléchargement à l’adresse suivante :
@@ -58,8 +59,11 @@ Pour cette installation, téléchargez les fichiers suivants :
   * __linshare-ui-admin-{VERSION}.tar.bz2__
 
 <a name="instalFile">
-####Déploiement de l'archive et des fichiers de configurations
+
+#### Déploiement de l'archive et des fichiers de configurations
+
 </a>
+
 Afin de manipuler les archives, il est nécessaire d’utiliser les outils Unzip et Bzip :
 
 `[root@localhost ~]$ aptitude install unzip bzip2 vim`
@@ -72,13 +76,16 @@ Créez le répertoire de configuration de __LinShare__ et copiez les fichiers de
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
-###Environnement d’exécution Java (JVM)
+### Environnement d’exécution Java (JVM)
 
 __LinShare__ fonctionne avec OpenJDK et Sun/Oracle Java version 7. Ce guide porte sur OpenJDK Java 7.
 
 <a name="instalOpenJdk">
-####Installation de OpenJDK Java JRE
+
+#### Installation de OpenJDK Java JRE
+
 </a>
+
 Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
 
 ```
@@ -90,10 +97,14 @@ Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
     * les éventuelles erreurs relatives au plugin Java peuvent être ignorées.
 
 <a name="bdd">
-###Base de données
+
+### Base de données
+
 </a>
-__LinShare__ requière l’utilisation d’une base de données (PostgreSQL) 
-pour ses fichiers et sa configuration. Ce guide présente une installation avec PostgreSQL.
+
+__LinShare__ requière l’utilisation d’une base de données (PostgreSQL) pour ses fichiers et sa configuration. 
+
+Ce guide présente une installation avec PostgreSQL.
 
 Installation de PostgreSQL depuis les dépôts :
 
@@ -103,7 +114,7 @@ Démarrez le service PostgreSQL :
 
 `[root@localhost ~]$ service postgresql start`
 
-####Création des accès sécurisés
+#### Création des accès sécurisés
 
 Adaptez le fichier de gestion des accès de PostgreSQL :
 
@@ -119,11 +130,11 @@ Adaptez le fichier de gestion des accès de PostgreSQL :
    * Ces lignes se trouvent généralement à la fin du fichier de configuration.<br/>
    * Pour des raisons de sécurité, le service PostgreSQL n’écoute qu’en local.<br/>
    * Pensez à redémarrer/recharger le serveur PostgreSQL après vos modifications pour qu'elles soient prises en compte:<br/>
-   `[root@localhost ~]$ service postgresql restart/reload`
+   `[root@localhost ~]$ service postgresql restart/reload`<br/>
 
 Il convient également d'ajouter ces règles dans les premières. En effet, PostgreSQL utilise la premère règle valide qui correspond à la demande d'authentification.
 
-Créez l’utilisateur « linshare » (mot de passe {PASSWORD}) :
+Créez l’utilisateur « linshare » (mot de passe {PASSWORD}):
 
 ```
 [root@localhost ~]$ su - postgres
@@ -135,6 +146,7 @@ CREATE ROLE linshare
 
 \q
 ```
+
 Commandes : pour quitter, tapez « \q » ; pour obtenir de l’aide sous PSQL, tapez « \? ».
 
 Créez et importez les schémas de base de données :
@@ -193,26 +205,29 @@ linshare.db.url=jdbc:postgresql://localhost:5432/linshare
 linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 linshare.db.persistence_manager=org.apache.jackrabbit.core.persistence.bundle.PostgreSQLPersistenceManager
 ```
+
 <a name="tomcat">
-###Conteneur de servlets
+
+### Conteneur de servlets
+
 </a>
+
 __LinShare__ étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un __conteneur de servlets Java__ (Tomcat ou Jetty) pour fonctionner.
 
 Le fichier de l’application **linshare.war** contient le cœur (core) de l’application __LinShare__ ainsi que l’interface utilisateur. L’interface d’administration de la solution est externe à l’application.
 
-> Note :
-
+> Note :<br/>
    * L’interface d’administration a été externalisée à partir de la version LinShare Core 1.6.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
-###Installation de Tomcat 7
+### Installation de Tomcat 7
 
 Installez Tomcat depuis les dépôts :
 
 `[root@localhost ~]$ aptitude install tomcat7
 
-####Configuration de Tomcat 7
+#### Configuration de Tomcat 7
 
 Pour spécifier l’emplacement de la __configuration__ de LinShare (fichier __linshare.properties__) ainsi que les 
 options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans 
@@ -223,7 +238,7 @@ L’ensemble des options de démarrage par défaut nécessaires à __LinShare__ 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
 
-####Déploiement de l'archive
+#### Déploiement de l'archive
 
 Déployez l’archive de l’application __LinShare__ dans le serveur Tomcat :
 
@@ -232,23 +247,31 @@ Déployez l’archive de l’application __LinShare__ dans le serveur Tomcat :
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 [root@localhost ~]$ chown -R tomcat7:tomcat7 /var/lib/linshare
 ```
+
 <a name="apache">
-###Serveur web
+
+### Serveur web
+
 </a>
+
 L’interface d’administration de __LinShare__ est une application s’appuyant sur les langages web HTML/CSS et JavaScript. Elle nécessite un simple serveur web de type Apache ou nginx.
 
 Ce guide présente l’installation de Apache HTTP Server.
 
-####Installation de Apache 2
+#### Installation de Apache 2
 
 Installez Apache 2 depuis les dépôts :
 
 `[root@localhost ~]$ aptitude install apache2
 
-####Configuration du vhost
+#### Configuration du vhost
+
 <a name="ui-user">
-####ui-user
+
+#### ui-user
+
 </a>
+
 Pour déployer l’application LinShare, il est nécessaire d’activer le module __mod_proxy__ sur Apache 2. De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
 
 ```
@@ -284,17 +307,21 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 ...
 </Virtualhost>
 ```
-> Note:
+
+> Note:<br/>
    * Après toute modification d'un vhost, il faut recharger le server Apache 2 :<br/>
    `[root@localhost ~]$ service apache2 reload` <br/>
    * Dans les versions récentes de Apache, le fichier default peut se nommer default.conf.<br/>
    * Dans le cas où créez un document root, vous pourrez y créer un sous repertoire custom, 
    dans lequel vous pourrez déployer votre logo :<br/>
-   `[root@localhost ~]$ mkdir -p linshare/custom`
+   `[root@localhost ~]$ mkdir -p linshare/custom` <br/>
 
 <a name="ui-admin">
-####ui-admin
+
+#### ui-admin
+
 </a>
+
 Déployez l’archive de l’application __LinShare UI Admin__ dans le répertoire du serveur Apache 2 :
 
 ```
@@ -302,6 +329,7 @@ Déployez l’archive de l’application __LinShare UI Admin__ dans le répertoi
 [root@localhost ~]$ tar xjf linshare-ui-admin-{VERSION}.tar.bz2
 [root@localhost ~]$ mv linshare-ui-admin-{VERSION} /var/www/linshare-ui-admin
 ```
+
 Pour déployer l’interface d’administration de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur 
 Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
 
@@ -336,14 +364,18 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ...
 </Virtualhost>
 ```
-> Note:
+
+> Note:<br/>
    * Après toute modification d'un vhost. il faut recharger le server Apache 2 :<br/>
     `[root@localhost ~]$ service apache2 reload`<br/>
-   * Dans les version récentes de Apache, le fichier default peut se nommer default.conf.
+   * Dans les version récentes de Apache, le fichier default peut se nommer default.conf.<br/>
 
 <a name="linconf">
-###Configuration & Lancement de LinShare
+
+### Configuration & Lancement de LinShare
+
 </a>
+
 Configurez l’__emplacement de stockage des fichiers__ :
 
 ```
@@ -352,6 +384,7 @@ linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
 linshare.signature.tmp.dir=/var/lib/linshare/tmp/linSignDocuments
 linshare.files.directory=/var/lib/linshare/repository
 ```
+
 Configurez l’__accès à un service SMTP__, pour l’envoi des messages de notification :
 
 ```
@@ -362,6 +395,7 @@ mail.smtp.password=<SMTP-PASSWORD>
 mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
+
 Pour __démarrer LinShare__, démarrez le service Tomcat :
 
 `[root@localhost ~]$ service tomcat7 restart`
@@ -379,26 +413,28 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+
 Puis redémarrez le service Apache 2 :
 
 `[root@localhost ~]$ service apache2 restart`
 
-Note :
-
-> Vous disposez d'exemples de vhosts dans le repertoire : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
+> Note :<br/>
+   Vous disposez d'exemples de vhosts dans le repertoire : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
 <a name="firstAccess">
-###Premier accès
+
+### Premier accès
+
 </a>
+
 Le __service LinShare__ est désormais accessible aux adresses suivantes.
 
 Pour l’interface utilisateur :
 
   * __http://linshare-user.local/linshare__
 
-Note :
-
-  > Vous devez renseignez cette url dans les paramètres de votre domaine.<br/>
+> Note : <br/>
+   Vous devez renseignez cette url dans les paramètres de votre domaine.<br/>
   Pour ce faire, choisissez la fonctionalité __Domaine__ dans la liste de vos fonctionalités<br/>
   et renseignez la champs __Url de base pour les notifications__ dans la sous fonctionalité __URL de base pour les notifications par courriel__.
 
@@ -406,7 +442,7 @@ Pour l’interface d’administration :
 
   * __http://linshare-admin.local/__
 
-####Paramétrage de LinShare
+#### Paramétrage de LinShare
 
 Connectez vous à __LinShare__ en tant qu’__administrateur système__ de __LinShare__ :
 
@@ -418,21 +454,26 @@ Ensuite, afin d’interconnecter __LinShare__ avec votre référentiel utilisate
 Pour plus d’informations, veuillez vous référer au __Guide de configuration et d’administration__ de __LinShare__ [__LINSHARE:CONF__].
 
 <a name="instalUR">
-##Installation du composant Upload-Request (optionnel)
+
+## Installation du composant Upload-Request (optionnel)
+
 </a>
 
 <a name="ur10">
-###Installation du composant Upload-Request 1.X (vhost dedié)
+
+### Installation du composant Upload-Request 1.X (vhost dedié)
+
 </a>
 
 Ce module permet à un compte externe à l'application d'accéder à une interface de dépôt de fichier dont les options sont configurables dans l'interface d'administration.
 
-Note :
-
- > Si vous activez la fonctionnalité de dépôt, depuis l'interface d'administration,  vous devrez déployer ce composant.
+> Note :<br/>
+ Si vous activez la fonctionnalité de dépôt, depuis l'interface d'administration,  vous devrez déployer ce composant.
 
 <a name="dlmoduleUR"> 
-####Téléchargement du module
+
+#### Téléchargement du module
+
 </a>
 
 Ce module est en libre téléchargement à l'adresse suivante :
@@ -444,8 +485,11 @@ Pour cette installation, téléchargez le fichier suivant selon la version dési
   * linshare-ui-upload-request-{VERSION}.tar.bz2
 
 <a name="deployUR">
-####Déploiement de l'archive
+
+#### Déploiement de l'archive
+
 </a>
+
 Déployez l’archive de l’application __LinShare UI Upload Request__ dans le répertoire du serveur Apache :
 
 ```
@@ -453,9 +497,13 @@ Déployez l’archive de l’application __LinShare UI Upload Request__ dans le 
 [root@localhost ~]$ tar xjf linshare-ui-upload-request-{VERSION}.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-request-{VERSION} /var/www/linshare-ui-upload-request
 ```
+
 <a name="apacheUR">
-####Configuration Apache via un Vhost dédié
+
+#### Configuration Apache via un Vhost dédié
+
 </a>
+
 Pour déployer l’interface Upload-Request de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
 
 ```
@@ -466,7 +514,8 @@ Pour déployer l’interface Upload-Request de __LinShare__, il est nécessaire 
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-ui-upload-request.conf
 ```
-#####Version 1.0.X:
+
+##### Version 1.0.X:
 
 ```
 <VirtualHost *:80>
@@ -490,7 +539,8 @@ DocumentRoot /var/www/linshare-ui-upload-request
 ...
 </Virtualhost>
 ```
-#####Version 1.1.X:
+
+##### Version 1.1.X:
 
 ```
 <VirtualHost *:80>
@@ -514,35 +564,43 @@ DocumentRoot /var/www/linshare-ui-upload-request
 ...
 </Virtualhost>
 ```
+
 Pour __accéder à LinShare Upload Request__, démarrez __LinShare Core__ avant, puis redémarrez le service Apache2 :
 
 `[root@localhost ~]$ service apache2 restart`
 
 <a name="firstAccessUR">
-###Premier accès
+
+### Premier accès
+
 </a>
+
 Le __service LinShare__ est désormais accessible à l'adresse suivante.
 
 Pour l’interface de dépôt de fichiers (module Upload-Request) : 
 
   * Installation avec un vhost dedié : __http://linshare-upload-request.local/{uuid}__
 
-Note:
-
- > Vous avez besoin d'un ticket valable issue d'un courriel de __Linshare__ pour pouvoir utiliser ce portail.
+> Note:<br/>
+  * Vous avez besoin d'un ticket valable issue d'un courriel de __Linshare__ pour pouvoir utiliser ce portail.
    Si ce n'est le cas, vous serez dirigé vers une page 404, Les urls complètes vers ce portail seront envoyées 
-   aux destinataires des invitations de dépôt.
+   aux destinataires des invitations de dépôt.<br/>
 
- > Vous devez aussi renseiger cette url dans les paramètres de la fonctionalité __Invitation de dépôt__ dans votre interface d'administration.<br/>
-   Pour ce faire, alle dans votre interface d'administration, choisissez la fonctionalité __Invitation de dépôt__ parmi les fonctionalités, et renseignez l'__Url de l'application invitation de dépôt __
+   * Vous devez aussi renseiger cette url dans les paramètres de la fonctionalité __Invitation de dépôt__ dans votre interface d'administration.<br/>
+   Pour ce faire, alle dans votre interface d'administration, choisissez la fonctionalité __Invitation de dépôt__ parmi les fonctionalités, et renseignez l'__Url de l'application invitation de dépôt__ <br/>
 
 <a name="ur11">
-###Installation du composant Upload-Request 1.1.X et supérieur (dans un directory)
+
+### Installation du composant Upload-Request 1.1.X et supérieur (dans un directory)
+
 </a>
 
 <a name="dlmoduleUR1">
-####Téléchargement du module
+
+#### Téléchargement du module
+
 </a>
+
 Ce module est en libre téléchargement à l'adresse suivante :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
@@ -552,8 +610,11 @@ Pour cette installation, téléchargez le fichier suivant selon la version dési
   * linshare-ui-upload-request-{VERSION}.tar.bz2
 
 <a name="deployUR1">
-####Déploiement de l'archive
+
+#### Déploiement de l'archive
+
 </a>
+
 Déployez l’archive de l’application __LinShare UI Upload Request__ dans le répertoire du serveur Apache :
 
 ```
@@ -561,15 +622,20 @@ Déployez l’archive de l’application __LinShare UI Upload Request__ dans le 
 [root@localhost ~]$ tar xjf linshare-ui-upload-request-{VERSION}.tar.bz2
 [root@localhost ~]$ ln -s linshare-ui-upload-request-{VERSION} upload-request
 ```
+
 <a name="apacheUR1">
-####Configuration Apache via un directory
+
+#### Configuration Apache via un directory
+
 </a>
+
 Pour déployer l’interface Upload-Request de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur Apache2. De plus, il faut ouvrir le fichier virtualhost linshare-user.conf :
 
 ```
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ vim linshare-user.conf
 ```
+
 et ajouter les lignes suivantes à votre section virtualhost:
 
 ```
@@ -580,30 +646,37 @@ et ajouter les lignes suivantes à votre section virtualhost:
 	   Allow from all
 </Directory>
 ```
+
 Pour __accéder à LinShare Upload Request__, démarrez __LinShare Core__ avant, puis redémarrez le service Apache2 :
 
 `[root@localhost ~]$ service apache2 restart`
 
 <a name="firstAccessUR1">
-###Premier accès
+
+### Premier accès
+
 </a>
+
 Le __service LinShare__ est désormais accessible à l'adresse suivante.
 
 Pour l’interface de dépôt de fichiers (module Upload-Request) :
 
   * Installation dans un repertoire : __http://linshare-user.local/upload-request/{uuid}__
 
-Note :
-   > Vous devez aussi renseiger cette url dans les paramètres de la fonctionalité __Invitation de dépôt__ dans votre interface d'administration.<br/>
-   Pour ce faire, allez dans votre interface d'administration, choisissez la fonctionalité __Invitation de dépôt__ parmi les fonctionalités, et renseignez l'__Url de l'application inviation de dépôt __
+> Note :<br/>
+    Vous devez aussi renseiger cette url dans les paramètres de la fonctionalité __Invitation de dépôt__ dans votre interface d'administration.<br/>
+   Pour ce faire, allez dans votre interface d'administration, choisissez la fonctionalité __Invitation de dépôt__ parmi les fonctionalités, et renseignez l'__Url de l'application inviation de dépôt__
 
-##Installation du composant Upload Proposition (optionnel)
+## Installation du composant Upload Proposition (optionnel)
 
 Ce module permet à un utilisateur externe de pouvoir demander à un utilisateur interne de lui envoyer une invitation de dépôt (Upload Request).
 
 <a name="dlmoduleUP">
-####Téléchargement du module
+
+#### Téléchargement du module
+
 </a>
+
 Ce module est en libre téléchargement à l'adresse suivante :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
@@ -627,11 +700,14 @@ Effectuez les commandes suivantes :
 [root@localhost ~]$ update-rc.d linshare-upload-proposition.sh defaults
 [root@localhost ~]$ chmod +x /etc/init.d/linshare-upload-proposition.sh
 ```
+
 Vous disposez désormais d'un script « linshare-upload-proposition.sh » vouz permettant d'intérroger pour avoir des 
 renseignements sur le statut de votre process, mais aussi de pouvoir l'arrêter et le redémarrer.
 
 <a name="apacheUP">
-####Configuration Apache via un vhost dedié
+
+#### Configuration Apache via un vhost dedié
+
 </a>
 
 Déployez l’archive 
@@ -642,6 +718,7 @@ de l’application LinShare UI Upload-Proposition dans le répertoire du serveur
 [root@localhost ~]$ tar xjf linshare-ui-upload-proposition-{VERSION}.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-proposition-{VERSION} /var/www/linshare-ui-upload-proposition
 ```
+
 Pour déployer l’interface Upload-Proposition de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur 
 Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
 
@@ -671,19 +748,25 @@ DocumentRoot /var/www/linshare-ui-upload-proposition
 ...
 </Virtualhost>
 ```
+
 Pour __accéder à LinShare Upload-Proposition__, démarrez LinShare Core avant, puis redémarrez le service Apache2 :
 
 `[root@localhost ~]$ service apache2 restart`
 
 <a name="firstAccessUP">
-###Premier accès
+
+### Premier accès
+
 </a>
+
 L’interface de demande de dépôt de fichiers (module Upload-Proposition) est désormais disponible à l'adresse suivante : 
 
   * __http://linshare-upload-proposition.local/__
 
 <a name="apacheUP1">
-###Configuration apache via a directory
+
+### Configuration apache via a directory
+
 </a>
 
 Déployez l'interface __LinShare Upload-Proposition__ dans le repertoire linshare que vous avez créez dans la section user :
@@ -693,12 +776,14 @@ Déployez l'interface __LinShare Upload-Proposition__ dans le repertoire linshar
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
 [root@localhost ~]$ ln -s linshare-ui-upload-proposition-{VERSION} upload-proposition
 ```
+
 Pour déployer l'interface __Linshare Upload-Proposition__, ouvrez le fichier de configuration de virtualhost linshare-user.conf :
 
 ```
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ vim linshare-user.conf
 ```
+
 et ajoutez y les lignes suivantes :
 
 ```
@@ -709,12 +794,15 @@ et ajoutez y les lignes suivantes :
 	   Allow from all
 </Directory>
 ```
+
 Pour __accéder à LinShare Upload-Proposition__, démarrez LinShare Core avant, puis redémarrez le service Apache2 :
 
 `[root@localhost ~]$ service apache2 restart`
 
 <a name="firstAccessUP1">
-###Premier accès
+
+### Premier accès
+
 </a>
 
 L’interface de demande de dépôt de fichiers (module Upload-Proposition) est désormais disponible à l'adresse suivante :

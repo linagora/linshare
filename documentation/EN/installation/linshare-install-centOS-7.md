@@ -1,6 +1,6 @@
-##Summary
+## Summary
 
-###LINSHARE INSTALLATION
+### LINSHARE INSTALLATION
 
 #### 1. [LinShare minimum installation](#installmin)
    * [Download of LinShare](#dlLinshare)
@@ -26,7 +26,7 @@
    * [Apache configuration](#apacheUP)
    * [First access](#firstAccessUP)
 
-###LINSHARE INSTALLATION
+### LINSHARE INSTALLATION
 
 > Note:<br/>
     In this manual, we choosed the components that we recommend, which are PostgreSQL/Tomcat/Apache/JAVA.
@@ -34,11 +34,15 @@
 
 
 <a name="installmin">
-###__Linshare__ minimum Installation
+
+### __Linshare__ minimum Installation
+
 </a>
 
 <a name="dlLinshare">
-###Download of __LinShare__
+
+### Download of __LinShare__
+
 </a>
 
 __Linshare__ is open, free and available at this address :
@@ -52,8 +56,11 @@ For this installation, download the following files :
   * __linshare-ui-admin-{VERSION}.tar.bz2__
 
 <a name="instalFile">
-###Deployment of the archive and the configuration files
+
+### Deployment of the archive and the configuration files
+
 </a>
+
 To manipulate the archives, it is necessary to use Unzip and Bzip tools :
 
 `[root@localhost ~]$ yum install unzip bzip2`
@@ -66,13 +73,16 @@ Create the configuration directory of __LinShare__ and past the configuration fi
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
-###Executive environment JAVA (JVM)
+### Executive environment JAVA (JVM)
 
 __LinShare__ works with OpenJDK and Sun/Oracle Java 7. This section is on OpenJDK Java 7.
 
 <a name="instalOpenJdk">
-####Installation of OpenDK
+
+#### Installation of OpenDK
+
 </a>
+
 Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 ```
@@ -84,7 +94,9 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
     * You can ignore the possible errors from the Java plugin.
 
 <a name="bdd">
-###Databases
+
+### Databases
+
 </a>
 
 LinShare needs the use of a database (PostgreSQL) for its files and its configuration. 
@@ -104,7 +116,7 @@ Start the PostgreSQL service :
 [root@localhost ~]$ service postgresql start
 ```
 
-####Secure accesses creation
+#### Secure accesses creation
 
 Modify the PostgreSQL's access gestion file :
 
@@ -121,7 +133,7 @@ Modify the PostgreSQL's access gestion file :
     * Those lines are usually at the end of the file.<br/>
     * For security reasons, the postgreSQL service only listen in local.<br/>
     * Restart/reload the postgreSQL server after your modifications for they can be take in consideration:<br/>
-    `[root@localhost ~]$ service postgresql restart/reload`
+    `[root@localhost ~]$ service postgresql restart/reload` <br/>
 
 You should also add those rules among the first. Indeed, PostgreSQL uses the first valid rule which match the authentication request.
 
@@ -137,6 +149,7 @@ CREATE ROLE linshare
 
 \q
 ```
+
 Commands: to quit, tape "\q" ; to have help on PSQL, tape "\?".
 
 Create and import the schema of the databases :
@@ -181,6 +194,7 @@ Password for user linshare: {PASSWORD}
 [root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/import-postgresql.sql | psql -U linshare -W -d linshare
 Password for user linshare: {PASSWORD}
 ```
+
 Edit LinShare's configuration file :
 
 ```
@@ -194,9 +208,13 @@ linshare.db.url=jdbc:postgresql://localhost:5432/linshare
 linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 linshare.db.persistence_manager=org.apache.jackrabbit.core.persistence.bundle.PostgreSQLPersistenceManager
 ```
+
 <a name="tomcat">
-####Servlet container
+
+#### Servlet container
+
 </a>
+
 LinShare is an Java application compiled and embedded under the WAR (#W#eb #A#pplication a#R#chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
 The application file **linshare.war** contains the heart (core) of the application __LinShare__ as well as the user interface. The administration interface of the solution is external to the application.
@@ -206,13 +224,13 @@ The application file **linshare.war** contains the heart (core) of the applicati
 
 This section presents the installation of the Tomcat server.
 
-####Tomcat 7 installation
+#### Tomcat 7 installation
 
 Install tomcat from the repositories :
 
 `[root@localhost ~]$ yum install tomcat
 
-####Tomcat 7 configuration
+#### Tomcat 7 configuration
 
 To specify the location of the LinShare __configuration__ (_linshare.properties_ file) and also the default start 
 options, get the commented options in the first lines of the __linshare.properties__ file and coy-paste them in the tomcat file (/etc/sysconfig/tomcat).
@@ -222,7 +240,7 @@ All starting needful options by default to Linshare are indicated in the header 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
 
-####Deployment of the archive
+#### Deployment of the archive
 
 Deploy the archive of Linshare application in the tomcat server :
 
@@ -231,8 +249,11 @@ Deploy the archive of Linshare application in the tomcat server :
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 [root@localhost ~]$ chown -R tomcat:tomcat /var/lib/linshare
 ```
+
 <a name="apache>
-####Web server
+
+#### Web server
+
 </a>
 
 The administration interface of __LinShare_ is an application based on web languages HTML/CSS and JavaScript. 
@@ -240,15 +261,18 @@ It just needs a simple web server like Apache or nginx.
 
 This section presents the installation of Apache HTTP server.
 
-####Apache 2 installation
+#### Apache 2 installation
 
 Install Apache 2 from the repositories :
 
 `[root@localhost ~]$ yum install httpd
 
-#####Vhost configuration
+##### Vhost configuration
+
 <a name="ui-user">
-####ui-user
+
+#### ui-user
+
 </a>
 
 You need to create your directories in the /var/www/ directory, note that your directory name will be your application domain name. You need to give your user the rights to access to the directories too. 
@@ -259,6 +283,7 @@ You need to create your directories in the /var/www/ directory, note that your d
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ mkdir -p linshare-ui-user/
 ```
+
 Open httpd conf file and the following line (IncludeOptional sites-enabled/*.conf) :
 
 ```
@@ -271,6 +296,7 @@ To deploy the LinShare application, it is necessary to create the virtualhost co
 [root@localhost ~]$ cd /etc/httpd/sites-available
 [root@localhost ~]$ vim linshare-user.conf
 ```
+
 And add the virtualhost configuration below : 
 
 ```
@@ -292,6 +318,7 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 </Virtualhost>
 
 ```
+
 To activate the linshare-user configuration file you have to create a link of this one in the /etc/httpd/sites-enabled directory :
 
 ```
@@ -306,6 +333,7 @@ To deploy the LinShare application, it is necessary to activate the __mod_proxy_
    `[root@localhost ~]$ apachectl restart` <br/>
    * In the recent versions of Apache, the default file can be named as default.conf.<br/>
    * If you create a document root, you can create a custom subdirectory, in which you can add your logo :<br/>
+
    ```
    [root@localhost ~]$ cd /var/www/
    [root@localhost ~]$ mkdir linshare-ui-user
@@ -313,8 +341,11 @@ To deploy the LinShare application, it is necessary to activate the __mod_proxy_
    ```
 
 <a name="ui-admin">
-####ui-admin
+
+#### ui-admin
+
 </a>
+
 Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 directory :
 
 ```
@@ -345,19 +376,23 @@ CustomLog /var/log/httpd/linshare-admin-access.log combined
 ...
 </Virtualhost>
 ```
+
 To activate the linshare-admin configuration file you have to create a link of this one in the /etc/httpd/sites-enabled directory :
 
 ```
 [root@localhost ~]$ cd /etc/httpd/sites-enabled
 [root@localhost ~]$ sudo ln -s /etc/httpd/sites-available/linshare-admin.conf /etc/httpd/sites-enabled/linshare-admin.conf
 ```
-> Note:
+
+> Note:<br/>
    * After any modification of a vhost, you nust reload the Apache 2 server :
    `[root@localhost ~]$ apachectl restart` <br/>
    * In the recent versions of Apache, the default file can be named as default.conf.<br/>
 
 <a name="linconf">
-###LinShare configuration and launching
+
+### LinShare configuration and launching
+
 </a>
 
 Configure the __storage location of the files__ :
@@ -368,6 +403,7 @@ linshare.encipherment.tmp.dir=/var/lib/linshare/tmp
 linshare.signature.tmp.dir=/var/lib/linshare/tmp/linSignDocuments
 linshare.files.directory=/var/lib/linshare/repository
 ```
+
 Configure the __access of a SMTP server__, for the notification sending :
 
 ```
@@ -378,6 +414,7 @@ mail.smtp.password=<SMTP-PASSWORD>
 mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
+
 To __start LinShare__, start the tomcat service :
 
 `[root@localhost ~]$ systemctl restart tomcat`
@@ -395,15 +432,18 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+
 Then restart the Apache 2 service :
 
 `[root@localhost ~]$ apachectl restart`
 
-Note :
-   > You have some vhost's examples in the following directory : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
+>Note :<br/>
+    You have some vhost's examples in the following directory : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
 <a name="firstAccess">
-###First access
+
+### First access
+
 </a>
 
 The __LinShare service__ is now reachable at the following adresses :
@@ -416,7 +456,7 @@ For the administration interface :
 
   * __http://linshare-admin.local/__
 
-####LinShare setting
+#### LinShare setting
 
 Connect to LinShare as a Linshare _system administrator_ :
 
@@ -427,18 +467,23 @@ Connect to LinShare as a Linshare _system administrator_ :
 Then, to interconnect __Linshare__ with your LDAP user directory, create a new domain from the section "DOMAINS". For further informations, please refer to the __Configuration and administration manual__ of __LinShare__ [__LINSHARE:CONF__].
 
 <a name="instalUR">
-##Installation of the Upload Request component (optional)
+
+## Installation of the Upload Request component (optional)
+
 </a>
+
 This module allows to an external account to access a file upload interface, which you can configure in the 
 administration interface.
 
-Note :
-
-     - If you activate the "Upload Request" functionnality, you will have to deploy this component.
+>Note :<br/>
+     If you activate the "Upload Request" functionnality, you will have to deploy this component.
 
 <a name="dlmoduleUR"> 
-####Download of the module
+
+#### Download of the module
+
 </a>
+
 This module in on free download at the following address :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
@@ -448,8 +493,11 @@ For this Installation, download the following file according to the version you 
   * linshare-ui-upload-request-{VERSION}.tar.bz2
 
 <a name="deployUR">
-####deployment of the archive
+
+#### deployment of the archive
+
 </a>
+
 Deploy the __LinShare__ UI UploadRequest archive in the Apache server directory :
 
 ```
@@ -458,7 +506,9 @@ Deploy the __LinShare__ UI UploadRequest archive in the Apache server directory 
 [root@localhost ~]$ mv linshare-ui-upload-request-{VERSION} /var/www/linshare-ui-upload-request
 ```
 <a name="apacheUR">
-####Apache Configuration
+
+#### Apache Configuration
+
 </a>
 
 To deploy the __LinShare__ upload request interface, it is necessary to activate the __mod_proxy__ module on Apache2. Plus, you must add the configuration bellow to the default apache file :
@@ -479,6 +529,7 @@ DocumentRoot /var/www/linshare-ui-upload-request
 ...
 </Virtualhost>
 ```
+
 To activate the linshare-uploadrequest configuration file you have to create a link of this one in the /etc/httpd/sites-enabled directory :
 
 ```
@@ -491,25 +542,30 @@ To access at __LinShare Upload Request__, first start the Core, then restart the
 `[root@localhost ~]$ service apache2 restart`
 
 <a name="firstAccessUR">
-###First access
+
+### First access
+
 </a>
 
 The __Upload Request service__ is now reachable at the address below :
 
   * __http://linshare-upload-request.local/{uuid}__
 
-Note:
-   > You need an avaible request form a mail sent by __LinShare__ to use this portal.<br/>
+> Note:<br/>
+   You need an avaible request form a mail sent by __LinShare__ to use this portal.<br/>
    If you don't have one, you will redirect to a 404 page. The complete url to this portal will be send by mail
    to the recipients of the upload request.
 
-##Install of the __Upload Proposition__ component (component)
+## Install of the __Upload Proposition__ component (component)
 
 This module allows to an external user, to ask an internal user, to send him an upload request.
 
 <a name="dlmoduleUP">
-####Download of the module
+
+#### Download of the module
+
 </a>
+
 This module in on free download at the following address :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
@@ -533,6 +589,7 @@ Enter the following Commands :
 [root@localhost ~]$ cp linshare-upload-proposition.sh /ect/init.d/
 [root@localhost ~]$ chmod +x /etc/init.d/linshare-upload-proposition.sh
 ```
+
 You now have a script "linshare-upload-proposition.sh" allowing you to have the information on your process status, 
 and also to stop pr restart it. 
 
@@ -543,9 +600,13 @@ Deploy the LinShare UI Upload-Proposition in the Apache2 server directory :
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
 [root@localhost ~]$ mv linshare-ui-upload-proposition-<VERSION> /var/www/linshare-ui-upload-proposition
 ```
+
 <a name="apacheUP">
-###Apache configuration
+
+### Apache configuration
+
 </a>
+
 To deploy the __LinShare__ Upload-Proposition interface, it is necessary to activate the __mod_proxy__ module on Apache2. Plus, you must add the the configuration below to the default file provided by debian :
 
 ```
@@ -568,12 +629,17 @@ DocumentRoot /var/www/linshare-ui-upload-proposition
 ...
 </Virtualhost>
 ```
+
 To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
 
 `[root@localhost ~]$ service apache2 restart`
+
 <a name="firstAccessUP">
-###First access
+
+### First access
+
 </a>
+
 The __Upload Proposition service__ is now reachable at the addresses below.
 
   * __http://linshare-upload-proposition.local/__
