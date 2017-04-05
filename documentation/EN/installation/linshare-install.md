@@ -31,7 +31,6 @@
    * [Deployment of the archive](#deployUP)
    * [Apache configuration via dedicated vhost](#apacheUP)
    * [First access](#firstAccessUP)
-   * [Apache Configuration via directory](#apacheUP1)
    * [First access](#firstAccessUP1)
 
 ###LINSHARE INSTALLATION
@@ -651,8 +650,8 @@ To deploy the __LinShare__ Upload-Proposition interface, it is necessary to acti
 ServerName linshare-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
-    ProxyPass http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
-    ProxyPassReverse http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
+    ProxyPass http://127.0.0.1:9080/uploadpropositions
+    ProxyPassReverse http://127.0.0.1:9080/uploadpropositions
     #This header is added to avoid the JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
@@ -676,41 +675,3 @@ To __access to LinShare Upload-Proposition__, first start LinShare Core, then re
 The __Upload Proposition service__ is now reachable at the addresses below.
 
   * __http://linshare-upload-proposition.local/__
-
-<a name="apacheUP1">
-###Apache configuration via a directory
-</a>
-
-Deploy the LinShare UI Upload-Proposition in the linshare repository you created in the user section :
-
-```
-[root@localhost ~]$ cd /var/www/linshare
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
-[root@localhost ~]$ ln -s linshare-ui-upload-proposition-{VERSION} upload-proposition
-```
-To deploy the __LinShare__ Upload-Proposition interface, open the linshare-user.conf virtualhost configuration file :
-
-```
-[root@localhost ~]$ cd /etc/apache2/sites-available
-[root@localhost ~]$ vim linshare-user.conf
-```
-and add those lines to the virtualhost section :
-
-```
-<Directory "upload-proposition">
-	   Options -Indexes
-	   AllowOverride None
-	   Order Allow,Deny
-	   Allow from all
-</Directory>
-```
-To __access to LinShare Upload-Proposition__, first start LinShare Core, then restart the Apache2 service :
-
-`[root@localhost ~]$ service apache2 restart`
-
-<a name="firstAccessUP1">
-###First access
-</a>
-The __Upload Proposition service__ is now reachable at the addresses below.
-
-  * __http://linshare-user.local/upload-proposition/__
