@@ -657,8 +657,8 @@ Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni p
 ServerName linshare-ui-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
-    ProxyPass http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
-    ProxyPassReverse http://127.0.0.1:9080/linshare/webservice/rest/uploadproposition
+    ProxyPass http://127.0.0.1:9080/uploadpropositions
+    ProxyPassReverse http://127.0.0.1:9080/uploadpropositions
     #Cette est rajoutée pour éviter à IE de faire du cache sur le JSON
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>

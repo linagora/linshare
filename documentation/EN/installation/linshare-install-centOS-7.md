@@ -560,8 +560,8 @@ To deploy the __LinShare__ Upload-Proposition interface, it is necessary to acti
 ServerName linshare-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
-    ProxyPass http://127.0.0.1:9080/upload-propositions
-    ProxyPassReverse http://127.0.0.1:9080/upload-propositions
+    ProxyPass http://127.0.0.1:9080/uploadpropositions
+    ProxyPassReverse http://127.0.0.1:9080/uploadpropositions
     #This header is added to avoid the JSON cache issue on IE.
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
