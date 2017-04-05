@@ -30,8 +30,6 @@
    * [Déploiement de l'archive](#deployUP)
    * [Configuration Apache via vhost dédié](#apacheUP)
    * [Premier accès](#firstAccessUP)
-   * [Configuration Apache via directory](#apacheUP1)
-   * [Premier accès](#firstAccessUP1)
 
 ### INSTALLATION LINSHARE
 
@@ -763,48 +761,3 @@ L’interface de demande de dépôt de fichiers (module Upload-Proposition) est 
 
   * __http://linshare-upload-proposition.local/__
 
-<a name="apacheUP1">
-
-### Configuration apache via a directory
-
-</a>
-
-Déployez l'interface __LinShare Upload-Proposition__ dans le repertoire linshare que vous avez créez dans la section user :
-
-```
-[root@localhost ~]$ cd /var/www/linshare
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-upload-proposition-<VERSION>.tar.bz2
-[root@localhost ~]$ ln -s linshare-ui-upload-proposition-{VERSION} upload-proposition
-```
-
-Pour déployer l'interface __Linshare Upload-Proposition__, ouvrez le fichier de configuration de virtualhost linshare-user.conf :
-
-```
-[root@localhost ~]$ cd /etc/apache2/sites-available
-[root@localhost ~]$ vim linshare-user.conf
-```
-
-et ajoutez y les lignes suivantes :
-
-```
-<Directory "upload-proposition">
-	   Options -Indexes
-	   AllowOverride None
-	   Order Allow,Deny
-	   Allow from all
-</Directory>
-```
-
-Pour __accéder à LinShare Upload-Proposition__, démarrez LinShare Core avant, puis redémarrez le service Apache2 :
-
-`[root@localhost ~]$ service apache2 restart`
-
-<a name="firstAccessUP1">
-
-### Premier accès
-
-</a>
-
-L’interface de demande de dépôt de fichiers (module Upload-Proposition) est désormais disponible à l'adresse suivante :
-
-  * __http://linshare-user.local/upload-proposition/__

@@ -31,7 +31,6 @@
    * [Deployment of the archive](#deployUP)
    * [Apache configuration via dedicated vhost](#apacheUP)
    * [First access](#firstAccessUP)
-   * [First access](#firstAccessUP1)
 
 ### LINSHARE INSTALLATION
 
