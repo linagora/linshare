@@ -61,6 +61,21 @@ technologies. Try it !
 This is the first beta of LinShare 2.0, it is a new design, fresh look and new
 technologies. Try it !
 
+<a name="1.12.5"></a>
+# [1.12.5](https://github.com/linagora/linshare/compare/1.12.4...1.12.5) (2016-04-05) [Download link](http://download.linshare.org/versions/1.12.5/)
+
+## Upgraded components
+
+* **core** : 1.12.6
+* **ui-upload-request** : 1.1.2
+
+### Bug Fixes
+
+* **user** Fix quota when copying a shared file.
+* **user** Fix bug #1183 Max file size cannot be disabled in Upload request
+* **user** Workaround for virus scanner lib overhead.
+* **upload-request** Fix route for 404 page.
+
 
 <a name="1.12.4"></a>
 # [1.12.4](https://github.com/linagora/linshare/compare/1.12.3...1.12.4) (2016-12-22) [Download link](http://download.linshare.org/versions/1.12.4/)
