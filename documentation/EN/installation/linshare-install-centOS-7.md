@@ -241,6 +241,7 @@ All starting needful options by default to Linshare are indicated in the header 
   * __/etc/linshare/log4j.properties__
 
 For CentOS, you will do a bit more, because Tomcat doesn't really like the syntax that is used. Replace this statment:
+
 ```
 JAVA_OPTS="${JAVA_OPTS} -XX:MaxPermSize=256m -Djava.awt.headless=true -Xms512m -Xmx1538m -XX:-UseSplitVerifier"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
@@ -248,6 +249,7 @@ JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.propertie
 ```
 
 By that one:
+
 ```
 JAVA_OPTS="-XX:MaxPermSize=256m -Djava.awt.headless=true -Xms512m -Xmx1538m -XX:-UseSplitVerifier -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
 ```
