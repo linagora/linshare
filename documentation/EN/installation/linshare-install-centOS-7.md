@@ -79,7 +79,7 @@ __LinShare__ works with OpenJDK and Sun/Oracle Java 7. This section is on OpenJD
 
 <a name="instalOpenJdk">
 
-#### Installation of OpenDK
+#### Installation of OpenJDK
 
 </a>
 
@@ -240,12 +240,25 @@ All starting needful options by default to Linshare are indicated in the header 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
 
+For CentOS, you will do a bit more, because Tomcat doesn't really like the syntax that is used. Replace this statment:
+```
+JAVA_OPTS="${JAVA_OPTS} -XX:MaxPermSize=256m -Djava.awt.headless=true -Xms512m -Xmx1538m -XX:-UseSplitVerifier"
+JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+```
+
+By that one:
+```
+JAVA_OPTS="-XX:MaxPermSize=256m -Djava.awt.headless=true -Xms512m -Xmx1538m -XX:-UseSplitVerifier -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+```
+
 #### Deployment of the archive
 
 Deploy the archive of Linshare application in the tomcat server :
 
 ```
 [root@localhost ~]$ cp linshare.war /usr/share/tomcat/webapps/
+[root@localhost ~]$ chown tomcat:tomcat /usr/share/tomcat/webapps/linshare.war
 [root@localhost ~]$ mkdir -p /var/lib/linshare
 [root@localhost ~]$ chown -R tomcat:tomcat /var/lib/linshare
 ```
