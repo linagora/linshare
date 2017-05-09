@@ -1,3 +1,49 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/linagora/linshare/compare/2.0.0-beta3...2.0.0) (2017-05-09) [Download link](http://download.linshare.org/versions/2.0.0/)
+
+**The first release of LinShare 2.0 is out**
+
+![Home page](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/01.MyFiles.fullscreen.png)
+
+## LinShare components
+
+* **core** : 2.0.0
+* **ui-admin** : 3.0.0
+* **ui-user** : 2.0.0
+
+**NB:**
+
+You must reinstall LinShare to use this version. There is no upgrade support
+for older beta versions. Upgrade process for LinShare version 1.12 will come soon.
+
+First of all, you must drop all mongodb collections and postgres
+databases, then you have to follow the [initialization procedure of the
+installation guide](documentation/EN/installation/linshare-install.md).
+
+### Main features
+
+* [Personal file sharing](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/03.MyFiles.details.png)
+Upload and share big files in your own personal space.
+
+* [Guests](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/08.Guests.png)
+Create guests accounts to provide a LinShare account for your external contacts.
+
+* [Contacts Lists](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/09.MyLists.png)
+Create contact lists to share easily your files with your usual coworkers.
+
+* [Upload queue](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/00.UploadQueue.png)
+Manage your big file uploads within the upload queue, and share them asynchronously.
+
+* [Shared Space](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/07.ShareSpace.png)
+A collaborative place to share files between all members of your organisation.
+
+* [Activity logs](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/10.Activity.logs.png)
+A fully detailed view of all your activity.
+
+
+All screenshots are available [here](http://download.linshare.org/screenshots/linshare-ui-user/2.0.0/)
+
+
 <a name="2.0.0-beta3"></a>
 # [2.0.0-beta3](https://github.com/linagora/linshare/compare/2.0.0-beta2...2.0.0-beta3) (2016-12-22) [Download link](http://download.linshare.org/versions/2.0.0-beta3/)
 
