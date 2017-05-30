@@ -106,14 +106,16 @@ This section present an installation with PostgreSQL.
 
 Install PostgreSQL from the repositories :
 
-`[root@localhost ~]$ yum install postgresql`
+`[root@localhost ~]$ yum install -y postgresql postgresql-server`
 
 
 Start the PostgreSQL service :
 
-`[root@localhost ~]$ service postgresql initdb`
+`[root@localhost ~]$ postgresql-setup initdb`
 
-`[root@localhost ~]$ service postgresql start`
+`[root@localhost ~]$ systemctl enable postgresql`
+
+`[root@localhost ~]$ systemctl start postgresql`
 
 #### Secure accesses creation
 
@@ -235,9 +237,10 @@ We can install the mongodb-org package from the repository using the yum utility
 
 Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
-Next, start the MongoDB service with the systemctl utility:
+Next, activate at startup and start the MongoDB service with the chkconfig and systemctl utilities:
 
 ```
+[root@localhost ~]$ chkconfig mongod on
 [root@localhost ~]$ systemctl start mongod
 ```
 
@@ -254,9 +257,13 @@ This section presents the installation of the Tomcat server.
 #### Tomcat 7 installation
 
 
-Install Tomcat from the repositories :
+Install Tomcat from the repositories:
 
-`[root@localhost ~]$ yum install tomcat`
+`[root@localhost ~]$ yum install -y tomcat`
+
+Activate the service at startup:
+
+`[root@localhost ~]$ systemctl enable tomcat`
 
 
 
@@ -275,6 +282,12 @@ All starting needful options by default to Linshare are indicated in the header 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
 
+
+Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in Tomcat configuration, copy as following in * __/etc/sysconfig/tomcat__ * :
+
+`JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
+
+
 #### Deployment of the archive
 
 Deploy the archive of Linshare application in the Tomcat server :
@@ -291,7 +304,7 @@ Deploy the archive of Linshare application in the Tomcat server :
 
 </a>
 
-The administration interface of __LinShare_ is an application based on HTML/CSS and JavaScript.
+The administration interface of __LinShare__ is an application based on HTML/CSS and JavaScript.
 It just needs a simple web server like Apache or Nginx.
 
 This section presents the installation of Apache HTTP server.
@@ -301,7 +314,9 @@ This section presents the installation of Apache HTTP server.
 Install Apache 2 from the repositories :
 
 ```
-[root@localhost ~]$ yum install httpd
+[root@localhost ~]$ yum install -y httpd
+[root@localhost ~]$ systemctl enable httpd
+[root@localhost ~]$ systemctl start httpd
 ```
 
 It will bring Apache/2.4.6 (CentOS)
@@ -370,6 +385,7 @@ Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repo
 ```
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+[root@localhost ~]$ chown -R apache: /var/www/linshare-ui-admin
 ```
 
 To deploy the __LinShare__ administration interface, it is necessary to activate the __mod_proxy__ module on Apache 2.

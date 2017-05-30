@@ -107,14 +107,16 @@ Ce guide présente une installation avec PostgreSQL.
 
 Installation de PostgreSQL depuis les dépôts:
 
-`[root@localhost ~]$ yum install postgresql`
+`[root@localhost ~]$ yum install -y postgresql postgresql-server`
 
 
 Démarrez le service PostgreSQL:
 
-`[root@localhost ~]$ service postgresql initdb`
+`[root@localhost ~]$ postgresql-setup initdb`
 
-`[root@localhost ~]$ service postgresql start`
+`[root@localhost ~]$ systemctl enable postgresql`
+
+`[root@localhost ~]$ systemctl start postgresql`
 
 #### Création des accès sécurisés
 
@@ -239,9 +241,10 @@ Nous pouvons installer le paquet mongodb-org à partir du référentiel en utili
 
 Avant de démarer le MongoDB, assurez-vous que le fichier que /etc/mongod.conf a l'adresse ip du bind: 127.0.0.1
 
-Ensuite, lancez le service MongoDB avec l'utilitaire systemctl:
+Ensuite, activez au démarrage (avec chkconfig, `mongod` n'est pas un service natif) et lancez le service MongoDB avec l'utilitaire systemctl:
 
 ```
+[root@localhost ~]$ chkconfig mongod on
 [root@localhost ~]$ systemctl start mongod
 ```
 
@@ -260,8 +263,11 @@ Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
 Installez Tomcat depuis les dépôts:
 
-`[root@localhost ~]$ yum install tomcat`
+`[root@localhost ~]$ yum install -y tomcat`
 
+Activez le service :
+
+`[root@localhost tmp]# systemctl enable tomcat`
 
 
 > Note:<br/>
@@ -277,6 +283,10 @@ L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ 
 
   * __/etc/linshare/linshare.properties__
   * __/etc/linshare/log4j.properties__
+
+Cependant, pour la déclaration de la variable `JAVA_OPT`, il faut concaténer les options, et donc ajouter la ligne suivante dans __/etc/sysconfig/tomcat__ :
+
+` JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
 
 #### Déploiement de l'archive
 
@@ -303,7 +313,9 @@ Ce guide présente l’installation de Apache HTTP Server.
 Installez Apache 2 depuis les dépôts :
 
 ```
-[root@localhost ~]$ yum install httpd
+[root@localhost ~]$ yum install -y httpd
+[root@localhost ~]$ systemctl enable httpd
+[root@localhost ~]$ systemctl start httpd
 ```
 
 Pour obtenir Apache/2.4.6 (CentOS)
@@ -324,6 +336,7 @@ Vous devez donner à votre utilisateur les droits d'accéder aux répertoires au
 ```
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
+[root@localhost ~]$ chown -R apache: linshare-ui-user
 ```
 
 Pour déployer l'application __LinShare__, il est nécessaire de créer le fichier de configuration du vhost:
@@ -373,6 +386,7 @@ Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repo
 ```
 [root@localhost ~]$ cd /var/www/
 [root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+[root@localhost ~]$ chown -R apache: linshare-ui-admin
 ```
 
 Pour déployer l’interface d’administration de __LinShare__ administration interface, il est nécessaire d’activer le module  __mod_proxy__ sur Apache2.
