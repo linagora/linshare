@@ -57,7 +57,7 @@ __LinShare__ is open, free and available at this address :
 
 For this installation, download the following files :
 
-  * __linshare-core-{VERSION}-without-SSO.war__
+  * __linshare-core-{VERSION}.war__
 
   * __linshare-ui-admin-{VERSION}.tar.bz2__
 
@@ -74,9 +74,12 @@ To manipulate the archives, it is necessary to use Unzip and Bzip tools :
 Create the configuration repository of __LinShare__ and past the configuration files :
 
 ```
-[root@localhost ~]$ mv linshare-core-{VERSION}-without-SSO.war linshare.war
+[root@localhost ~]$ mv linshare-core-{VERSION}.war linshare.war
 [root@localhost ~]$ mkdir -p /etc/linshare
-[root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
+[root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare.properties.sample,log4j.properties}
+[root@localhost ~]$ mv linshare.properties.sample linshare.properties
+[root@localhost ~]$ vim linshare.properties to change the file content with your config
+
 ```
 
 ### Executive environment JAVA (JVM)
@@ -376,6 +379,9 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ### LinShare configuration and launching
 
 </a>
+
+To change the linshare configuration, open and edit configuration file of linshare found 
+at /etc/linshare/linshare.properties
 
 Configure the __storage location of the files__ :
 
