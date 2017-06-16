@@ -149,6 +149,26 @@ Update Java certificates keystore using keytool :
 
        ~$ sudo keytool -import -alias gandica -file /usr/share/ca-certificates/gandi/GandiStandardSSLCA2.pem -keystore /usr/lib/jvm/java-7-openjdk/jre/lib/security/cacerts
 
+## Maven mirros
+
+You may need to add our nexus to your maven mirrors configuration if you have some
+missing jars.
+
+    ~$ mkdir ~/.m2/
+    ~$ cd ~/.m2/
+    ~$ cp /etc/maven/settings.xml .
+
+Edit this new file, and add the following lines in the section <mirrors></mirrors> :
+
+<mirror>
+    <id>internal-repository</id>
+    <url>https://nexus.linagora.com/content/groups/linshare/</url>
+    <mirrorOf>*</mirrorOf>
+</mirror>
+
+
+
+
 ## Maven and jetty client configuration:
 
 Go to your Eclipse and click on the "run" tab then choose "run configuration"
