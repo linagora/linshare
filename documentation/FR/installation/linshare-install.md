@@ -120,9 +120,9 @@ Adaptez le fichier de gestion des accès de PostgreSQL :
 ```
 [root@localhost ~]$ vim /etc/postgresql/<VERSION>/main/pg_hba.conf
  # TYPE  DATABASE                  USER          CIDR-ADDRESS         METHOD
- local   linshare,linshare_data    linshare                           md5
- host    linshare,linshare_data    linshare      127.0.0.1/32         md5
- host    linshare,linshare_data    linshare      ::1/128              md5
+ local   linshare                  linshare                           md5
+ host    linshare                  linshare      127.0.0.1/32         md5
+ host    linshare                  linshare      ::1/128              md5
 ```
 
 > Note:<br/>
@@ -162,16 +162,8 @@ CREATE DATABASE linshare
        LC_CTYPE = 'en_US.UTF-8'
        CONNECTION LIMIT = -1;
 
-CREATE DATABASE linshare_data
-  WITH OWNER = linshare
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       LC_COLLATE = 'en_US.UTF-8'
-       LC_CTYPE = 'en_US.UTF-8'
-       CONNECTION LIMIT = -1;
 
 GRANT ALL ON DATABASE linshare TO linshare;
-GRANT ALL ON DATABASE linshare_data TO linshare;
 
 \q
 ```
@@ -289,6 +281,7 @@ Installez Apache 2 depuis les dépôts :
 
 `[root@localhost ~]$ aptitude install apache2
 
+
 #### Configuration du vhost
 
 <a name="ui-user">
@@ -311,6 +304,8 @@ Pour déployer l’application LinShare, il est nécessaire d’activer le modul
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-user.conf
 [root@localhost ~]$ a2dissite default
+[root@localhost ~]$ a2enmod ssl
+[root@localhost ~]$ a2enmod headers
 [root@localhost ~]$ a2ensite linshare-user.conf
 [root@localhost ~]$ a2enmod proxy proxy_http
 [root@localhost ~]$ vim linshare-user.conf
@@ -368,6 +363,8 @@ Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni p
 [root@localhost ~]$ cd /etc/apache2/sites-available
 [root@localhost ~]$ cp default linshare-admin.conf
 [root@localhost ~]$ a2dissite default
+[root@localhost ~]$ a2enmod ssl
+[root@localhost ~]$ a2enmod headers
 [root@localhost ~]$ a2ensite linshare-admin.conf
 [root@localhost ~]$ a2enmod proxy proxy_http headers
 [root@localhost ~]$ vim linshare-admin.conf
@@ -388,13 +385,6 @@ DocumentRoot /var/www/linshare-ui-admin
     #Cette entête est rajoutée pour éviter à IE de faire du cache sur le JSON
     Header set Cache-Control "max-age=0,no-cache,no-store"
 </Location>
-
-<Directory /var/www/linshare-ui-admin>
-	   Options -Indexes
-	   AllowOverride None
-	   Order Allow,Deny
-	   Allow from all
-</Directory>
 
 ErrorLog /var/log/apache2/linshare-admin-error.log
 CustomLog /var/log/apache2/linshare-admin-access.log combined

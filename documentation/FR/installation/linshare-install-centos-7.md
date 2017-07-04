@@ -126,9 +126,9 @@ Adaptez le fichier de gestion des accès de PostgreSQL :
 [root@localhost ~]$ vim /var/lib/pgsql/data/pg_hba.conf
  # TYPE  DATABASE                  USER          CIDR-ADDRESS         METHOD
  local   all               postgres               peer
- local   linshare,linshare_data    linshare                           md5
- host    linshare,linshare_data    linshare      127.0.0.1/32         md5
- host    linshare,linshare_data    linshare      ::1/128              md5
+ local   linshare                  linshare                           md5
+ host    linshare                  linshare      127.0.0.1/32         md5
+ host    linshare                  linshare      ::1/128              md5
 ```
 
 > Note:<br/>
@@ -168,16 +168,7 @@ CREATE DATABASE linshare
        LC_CTYPE = 'en_US.UTF-8'
        CONNECTION LIMIT = -1;
 
-CREATE DATABASE linshare_data
-  WITH OWNER = linshare
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       LC_COLLATE = 'en_US.UTF-8'
-       LC_CTYPE = 'en_US.UTF-8'
-       CONNECTION LIMIT = -1;
-
 GRANT ALL ON DATABASE linshare TO linshare;
-GRANT ALL ON DATABASE linshare_data TO linshare;
 
 \q
 ```
