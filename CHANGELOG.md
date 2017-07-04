@@ -1,3 +1,32 @@
+<a name="2.0.1"></a>
+# [2.0.1](https://github.com/linagora/linshare/compare/2.0.0...2.0.1) (2017-07-04) [Download link](http://download.linshare.org/versions/2.0.1/)
+
+**New release of LinShare : 2.0.1 is available**
+
+## LinShare components
+
+* **core** : 2.0.1-1
+* **ui-admin** : 3.0.1
+* **ui-user** : 2.0.1
+
+
+## Changeg log:
+
+* Audit improved
+* Workgroups used space are now displayed
+* UploadQueue improved
+* Drag and Drop of folders added in SharedSpace
+* Error pages and maintenance page were added
+* Files download method was improved, especially in anonymousUrls
+* Browsers compatibility improved
+* Performance improvement of the whole application
+* Workgroups feature : files copy, folder or files move
+* Login error management improved
+* External portal for anonymousUrls revamped
+* And a lot of bugs fixes :)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/linagora/linshare/compare/2.0.0-beta3...2.0.0) (2017-05-09) [Download link](http://download.linshare.org/versions/2.0.0/)
 
