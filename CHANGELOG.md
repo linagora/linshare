@@ -25,6 +25,9 @@
 * External portal for anonymousUrls revamped
 * And a lot of bugs fixes :)
 
+## Database updates :
+
+You can load the following SQL script to fix spelling mistakes in all [email templates](https://github.com/linagora/linshare-core/blob/2.0.1-1/src/main/resources/sql/postgresql/reset-default-emails-config.sql)
 
 
 <a name="2.0.0"></a>
