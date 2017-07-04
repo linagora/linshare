@@ -8,9 +8,9 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>2.0.0</linshare-core>
-    <linshare-ui-user>2.0.0</linshare-ui-user>
-    <linshare-ui-admin>3.0.0</linshare-ui-admin>
+    <linshare-core>2.0.1-1</linshare-core>
+    <linshare-ui-user>2.0.1</linshare-ui-user>
+    <linshare-ui-admin>3.0.1</linshare-ui-admin>
   </properties>
   <dependencies>
     <dependency>
