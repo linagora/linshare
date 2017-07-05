@@ -2,7 +2,7 @@
 
 > Note :
 
- - Dans ce document, nous présentons comment effectuer une mise à jour de votre version de Linshare. </br>
+ - Dans ce document, nous présentons comment effectuer une mise à jour de votre version de LinShare. </br>
  - Veuillez noter que tous les composants présents dans une version de LinShare
 (http://download.linshare.org/version/ <VERSION>) doivent être mise à jour conjointement. </br>
 En effet chaque répertoire contient un assemblage cohérent pour former le produit LinShare. </br>
@@ -34,6 +34,8 @@ Vous pourrez alors vous assurer facilement de la réussite de votre migration.
 NB: Le composant logiciel de stockage JackRabbit possède ses propres paramètres
 pour se connecter à la base de données dans le fichier : /var/lib/linshare/repository/workspaces/default/workspace.xml.
 
+L'ensemble du paramétrage des fonctionnalités ainsi que les modèles de courriel seront réinitialisés par le script
+de migration SQL. Vous devrez donc reconfigurer votre instance lors du redémarrage.
 
 ## Architecture
 
@@ -44,7 +46,7 @@ stockage de fichiers.
 En version 1.x les fichiers étaient stockés sur le système de fichiers de votre
 OS via l'utilisation de Apache JackRabbit. En version 2, le stockage est
 désormais assuré par Apache JCloud permettant un stockage sur le système de
-fichiers pour de faible volumétrie et un stockage Cloud via les API S3.
+fichiers pour de faible volumétrie et un stockage Cloud via les API S3 pour une forte volumétrie.
 Il est donc nécessaire de choisir votre nouveau backend de stockage de fichiers.
 
 Outre l'installation du nouveau composant MongoDB, LinShare requière également
@@ -61,10 +63,10 @@ Vous pourrez alors restaurer la base de données et l'espace de stockage sur la 
 machine pour enfin réaliser la migration.
 
 Toutefois, la première stratégie n'étant pas valable pour Centos 6. Nous allons détailler
-ici la seconde stratégie en se basant sur notre OS favori Debian pour les examples.
+ici la seconde stratégie en se basant sur notre OS favori Debian pour les exemples.
 
 
-NB: Assurer-vous que votre OS est suffisament à jour pour supporter l'installation requise
+NB: Assurez-vous que votre OS est suffisament à jour pour supporter l'installation requise
 de LinShare à savoir Java 8, Tomcat7 ou superieur et MongoDB 3.2.
 
 
@@ -133,6 +135,7 @@ Répétez ces opérations sur les deux machines LinShare v1 et v2.
     DirectoryIndex maintenance.html
     Header set Cache-Control "max-age=0,no-cache,no-store"
     RedirectMatch 302 ^/linshare.+ /
+    RedirectMatch 302 ^/linshare$ /
     ...
 </Virtualhost>
 ```
@@ -202,6 +205,7 @@ un simple snapshot du disque suffira à sauvegarder les données.
 Une fois les sauvegardes réalisées, transférez les dumps SQL 
 et l'espace de fichiers `/var/lib/linshare` (via rsync par example) sur la nouvelle machine.
 
+
 Attention, vous devez prévoir suffisament d'espace disque dans la nouvelle machine
 pour y copier les anciennes données. Il sera nécessaire de prévoir au moins le double
 de l'espace si vous avez choisi comme backend de stockage le nouveau système de fichiers.
@@ -238,6 +242,8 @@ Vous pouvez consulter la version de la base de données via la requête suivante
 
 Une fois l'ancienne base de données chargée et migrée en version 2, assurez vous que le transfert des fichiers `/var/lib/linshare` est bien terminé.
 Ensuite, vous devrez basculer dans un mode de transition ou les deux espaces de stockage de fichiers seront actifs en même temps.
+
+N'oubliez pas de mettre: `chown -R tomcat8:tomcat8 my_folder`
 
 Pour ce faire, éditer le fichier linshare.properties:
 
@@ -299,6 +305,10 @@ Une fois les tâches obligatoires exécutées, vous pouvez passez à l'étape su
 rétablir le service LinShare le plus rapidement possible.
 En effet les tâches requises peuvent être très longues en fonction de votre volumétrie.
 
+Attention : L'ensemble du paramétrage des fonctionnalités ainsi que les modèles de courriel ont été 
+réinitialisé par le script de migration SQL. Vous devez donc reconfigurer vos paramètres avant de 
+lancer les taches de migration, tel que les durées d'expiration, l'URL et l'adresse de courriel 
+utilisées lors de l'envoi de notifications.
 
 # Réouverture du service en mode dégradé
 
@@ -317,6 +327,15 @@ anciens couriels vers les nouvelles URLs.
 <VirtualHost *:80>
     ...
 
+    RewriteEngine  on
+    # Rewrite for workgroup url
+    RewriteCond %{REQUEST_URI}  ^/linshare/.*/thread/content/(.*)$
+    RewriteRule ^/(.*) http://%{SERVER_NAME}/#/sharedspace/workgroups/%1/ [NE,R=302,L]
+
+    # Rewrite for workgroup url
+    RewriteCond %{REQUEST_URI}  ^/linshare/thread/content/(.*)$
+    RewriteRule ^/(.*) http://%{SERVER_NAME}/#/sharedspace/workgroups/%1/ [NE,R=302,L]
+
     # Rewrite for received share URL
     RewriteCond %{REQUEST_URI}  ^/linshare/index.listshareddocument.download/(.*)$
     RewriteRule ^/(.*) http://%{SERVER_NAME}/#/files/received?fileUuid=%1 [NE,R=302,L]
@@ -332,6 +351,8 @@ anciens couriels vers les nouvelles URLs.
     ...
 </Virtualhost>
 ```
+> Note: </br>
+Ces instructions doivent être ajoutées avant les instructions RedirectMatch pour être prise en compte.
 
 Si vous déployez LinShare v2 sur une nouvelle URL, par exemple http://linshare-user-v2.local, vous pouvez
 utiliser la procédure de bascule ci-dessous.
@@ -347,8 +368,16 @@ utiliser la procédure de bascule ci-dessous.
     DocumentRoot /var/www/linshare-maintenance
     DirectoryIndex migration.html
     Header set Cache-Control "max-age=0,no-cache,no-store"
-    RedirectMatch 302 ^/linshare.+ /
 
+
+    RewriteEngine  on
+    # Rewrite for workgroup url
+    RewriteCond %{REQUEST_URI}  ^/linshare/.*/thread/content/(.*)$
+    RewriteRule ^/(.*) http://new.server.com/#/sharedspace/workgroups/%1/ [NE,R=302,L]
+
+    # Rewrite for workgroup url
+    RewriteCond %{REQUEST_URI}  ^/linshare/thread/content/(.*)$
+    RewriteRule ^/(.*) http://new.server.com/#/sharedspace/workgroups/%1/ [NE,R=302,L]
 
     # Rewrite for received share URL
     RewriteCond %{REQUEST_URI}  ^/linshare/index.listshareddocument.download/(.*)$
@@ -361,7 +390,8 @@ utiliser la procédure de bascule ci-dessous.
     # Rewrite for anonymous URL
     RewriteCond %{REQUEST_URI}  ^/linshare/download/(.*)$
     RewriteRule ^/(.*) http://new.server.com/#/external/anonymous/%1 [NE,R=302,L]
-
+    RedirectMatch 302 ^/linshare.+ / 
+    RedirectMatch 302 ^/linshare$ /
     ...
 </Virtualhost>
 ```
@@ -378,7 +408,7 @@ $ a2dissite linshare-maintenance
 $ systemctl reload apache2
 ```
 
-Une nouvelle page invitera les utilisateurs à ce rendre vers votre nouvelle URL.
+Une nouvelle page invitera les utilisateurs à se rendre vers votre nouvelle URL.
 
 
 # Exécution de tâches de migration complémentaires dans l'interface d'administration - partie 2
