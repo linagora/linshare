@@ -12,13 +12,9 @@
    * [Download of LinShare Admin](#dlLinshareadmin)
    * [Deployment of the archive](#deployadmin)
 
-#### 3. [LinShare Upload-Request upgrade version](#upgradecore)
-   * [Download of LinShare Upload Request](#dlLinshareur)
-   * [Deployment of the archive](#deployur)
-
-#### 4. [LinShare Upload-Proposition upgrade version](#upgradeadmin)
-   * [Download of LinShare Proposition](#dlLinshareup)
-   * [Deployment of the archive](#deployup)
+#### 3. [LinShare UI-User upgrade version](#upgradeuser)
+   * [Download of LinShare User](#dlLinshareuser)
+   * [Deployment of the archive](#deployuser)
 
 
 ###LINSHARE UPGRADE
@@ -126,33 +122,33 @@ Now reload your apache2 server :
 
 Your LinShare core and admin are now both upgraded and available at them addresses.
 
-<a name="dlLinshareur">
-###Download of LinShare Upload Request
+<a name="dlLinshareuser">
+###Download of LinShare Ui User
 </a>
 
-To upgrade your LinShare Upload-Request version you have to download it at the following address :
+To upgrade your LinShare Ui-User version you have to download it at the following address :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
-<a name="deployur">
+<a name="deployuser">
 ###Deployment of the archive
 </a>
 
-Deploy the archive of the application __LinShare Upload-Request__ in the Apache 2 repository :
+Deploy the archive of the application __LinShare Ui-User__ in the Apache 2 repository :
 
 ```
 [root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-uploadrequest-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-upload-request-{VERSION}
+[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-{VERSION}.tar.bz2
+[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-user-{VERSION}
 ```
 Change the DocumentRoot in your vhost file :
 
 ```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-upload-request.conf
+[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-user.conf
 
 <VirtualHost *:80>
 ...
-DocumentRoot /var/www/linshare-ui-upload-request-{VERSION}
+DocumentRoot /var/www/linshare-ui-user-{VERSION}
 ...
 </Virtualhost>
 ```
@@ -161,39 +157,4 @@ Now reload your apache2 server :
 
 `[root@localhost ~]$ sudo service apache2 reload`
 
-Your LinShare Upload-Request is now upgraded and available at its address.
-
-<a name="dlLinshareup">
-###Download of LinShare Upload Propostion
-</a>
-
-To upgrade your LinShare Upload-Proposition version you have to download it at the following address :
-
-  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
-
-<a name="deployup">
-###Deployment of the archive
-</a>
-
-```
-[root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-uploadproposition-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-upload-proposition-{VERSION}
-```
-Change the DocumentRoot in your vhost file :
-
-```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-upload-proposition.conf
-
-<VirtualHost *:80>
-...
-DocumentRoot /var/www/linshare-ui-upload-proposition-{VERSION}
-...
-</Virtualhost>
-```
-
-Now reload your apache2 server :
-
-`[root@localhost ~]$ sudo service apache2 reload`
-
-Your LinShare Upload-Request is now upgraded and available at its address.
+Your LinShare Ui-User is now upgraded and available at its address.
