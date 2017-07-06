@@ -12,13 +12,9 @@
    * [Téléchargement de LinShare Admin](#dlLinhsareadmin)
    * [Déploiement de l'archive](#deployadmin)
 
-#### 3. [Mise à jour de l'invitation de dépôt de LinShare (LinShare Upload-Request)](#upgradeur)
-   * [Téléchargement de LinShare Upload Request](#dlLinshareur)
+#### 3. [Mise à jour de l'interface utilisateur de LinShare (LinShare ui-user)](#upgradeuser)
+   * [Téléchargement de LinShare User](#dlLinshareuser)
    * [Déploiement de l'archive](#deployur)
-
-#### 4. [Mise à jour de la demande d'invitationd de dépôt de LinShare (LinShare Upload-Proposition)](#upgradeup)
-   * [Téléchargement de LinShare Upload Proposition](#dlLinshareup)
-   * [Déploiement de l'archive](#deployup)
 
 
 ###MISE A JOUR DE LINSHARE
@@ -125,35 +121,34 @@ Puis rechargez votre serveur apache :
 
 `[root@localhost ~]$ sudo service apache2 reload`
 
-Vos interfaces utilisateur et d'administration sont désormais disponibles sous de nouvelles versions à leurs adresses respectives.
 
-<a name="dlLinshareur">
-###Téléchargement de LinShare Upload Request
+<a name="dlLinshareuser">
+###Téléchargement de LinShare UI User
 </a>
 
-Pour mettre à jour votre composant __LinShare Upload-Request__, vous devez télécharger la version désirée à l'adresse suivante :
+Pour mettre à jour votre composant __LinShare UI-User__, vous devez télécharger la version désirée à l'adresse suivante :
 
   * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
-<a name="deployur">
+<a name="deployuser">
 ###Déploiement de l'archive
 </a>
 
-Déployez l'archive dans l'application __LinShare Upload-Request__ dans votre répertoire Apache 2 :
+Déployez l'archive dans l'application __LinShare UI-User__ dans votre répertoire Apache 2 :
 
 ```
 [root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-uploadrequest-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-upload-request-{VERSION}
+[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-{VERSION}.tar.bz2
+[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-user-{VERSION}
 ```
 Modifiez le document root dans votre fichier vhost :
 
 ```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-upload-request.conf
+[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-user.conf
 
 <VirtualHost *:80>
 ...
-DocumentRoot /var/www/linshare-ui-upload-request-{VERSION}
+DocumentRoot /var/www/linshare-ui-user-{VERSION}
 ...
 </Virtualhost>
 ```
@@ -161,38 +156,6 @@ Puis rechargez votre serveur apache :
 
 `[root@localhost ~]$ sudo service apache2 reload`
 
-Votre application d'invitation de dépôt est désormais disponible à son adresse.
-
-<a name="dlLinshareup">
-###Download of LinShare Upload Proposition
-</a>
-
-Pour mettre à jour votre composant __LinShare Upload-Proposition__, vous devez télécharger la version désirée à l'adresse suivante :
-
-  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
-
-<a name="deployup">
-###Deployment of the archive
-</a>
-
-```
-[root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-uploadproposition-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-upload-proposition /var/www/linshare-ui-upload-proposition-{VERSION}
-```
-Modifiez le document root dans votre fichier vhost :
-
-```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-upload-proposition.conf
-
-<VirtualHost *:80>
-...
-DocumentRoot /var/www/linshare-ui-upload-request-{VERSION}
-...
-</Virtualhost>
-```
-Puis rechargez votre serveur apache :
-
-`[root@localhost ~]$ sudo service apache2 reload`
+Votre application utilisateur est désormais disponible à son adresse.
 
 Votre application LinShare est désormais mise à jour.
