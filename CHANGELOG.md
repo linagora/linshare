@@ -139,6 +139,28 @@ technologies. Try it !
 This is the first beta of LinShare 2.0, it is a new design, fresh look and new
 technologies. Try it !
 
+
+<a name="1.12.6"></a>
+# [1.12.6](https://github.com/linagora/linshare/compare/1.12.5...1.12.6) (2017-07-18) [Download link](http://download.linshare.org/versions/1.12.6/)
+
+## Upgraded components
+
+* **core** : 1.12.8
+
+### Bug Fixes
+
+* **user** Avoid rollback when we delete data related to a invalid email address (shared files)
+* **user** Avoid rollback when we delete data related to a invalid email address (upload request)
+* **user** Display document's expiration date in user-ui when possible.
+* **core** Fix missing activation notification in grouped mode for the second recipient (upload request)
+* **core** Fix MySQL upgrade scripts
+* **core** New cleaner job: ComputeDocumentExpirationBatch.
+* **core** Better logging for FineUploader: filename is included in error messages.
+* **core** Better logging when user upload fails because of TSA.
+* **core** Bugfix: 2 cron jobs where accidentally disabled.
+* **core** Bugfix: fix possible NPE in cleaning batches.  The NPE could occurs when document already vanished.
+
+
 <a name="1.12.5"></a>
 # [1.12.5](https://github.com/linagora/linshare/compare/1.12.4...1.12.5) (2016-04-05) [Download link](http://download.linshare.org/versions/1.12.5/)
 
