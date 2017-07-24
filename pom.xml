@@ -37,6 +37,13 @@
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
+      <artifactId>linshare-core</artifactId>
+      <version>${linshare-core}</version>
+      <classifier>sql</classifier>
+      <type>tar.bz2</type>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
       <artifactId>linshare-ui-upload-request</artifactId>
       <version>${linshare-ui-upload-request}</version>
       <type>tar.bz2</type>
