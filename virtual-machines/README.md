@@ -9,6 +9,7 @@ It is a pre-installed version of LinShare packaged as a box [(cf Vagrant)](https
 
 * [LinShare 2.0.0-beta1](http://download.linshare.org/virtual-machines/linshare_v2_beta1.box)
 * [LinShare 2.0.0-beta3](http://download.linshare.org/virtual-machines/linshare_v2_beta3.box)
+* [LinShare 2.0.1](http://download.linshare.org/virtual-machines/linshare_v2.0.1.box)
 
 
 ## Documentation
