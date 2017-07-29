@@ -1,3 +1,31 @@
+<a name="2.0.2"></a>
+# [2.0.2](https://github.com/linagora/linshare/compare/2.0.1...2.0.2) (2017-07-29) [Download link](http://download.linshare.org/versions/2.0.2/)
+
+**The new release of LinShare 2.0.2 is available**
+
+Users:
+
+    * Multiple downloads feature added.
+    * Cancel share action added
+    * Contextual integration of audit in contactsList and received shares was added
+    * Versions of LinShare in left sidebar fixed
+    * Suppport of login with something other than an email.
+    * And a lot of bug fixes, see component's changelog for more details.
+
+Administration:
+
+    * New Audit V2 added
+    * Details quota view improved
+    * Quota graph quota for users account added.
+    * And a lot of bug fixes, see component's changelog for more details.
+
+## LinShare components
+
+* **core** : 2.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/2.0.1...2.0.2)
+* **ui-admin** : 3.0.2 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.0.1...v3.0.2)
+* **ui-user** : 2.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.0.1...v2.0.2)
+
+
 <a name="2.0.1"></a>
 # [2.0.1](https://github.com/linagora/linshare/compare/2.0.0...2.0.1) (2017-07-04) [Download link](http://download.linshare.org/versions/2.0.1/)
 
