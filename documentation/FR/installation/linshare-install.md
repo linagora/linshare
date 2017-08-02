@@ -525,7 +525,7 @@ Pour déployer l’interface Upload-Request de __LinShare__, il est nécessaire 
 ```
 <VirtualHost *:80>
 ...
-ServerName linshare-ui-upload-request.local
+ServerName linshare-upload-request.local
 DocumentRoot /var/www/linshare-ui-upload-request
 <Location /linshare>
     ProxyPass http://127.0.0.1:8080/linshare/webservice/rest/uploadrequest
@@ -550,7 +550,7 @@ DocumentRoot /var/www/linshare-ui-upload-request
 ```
 <VirtualHost *:80>
 ...
-ServerName linshare-ui-upload-request.local
+ServerName linshare-upload-request.local
 DocumentRoot /var/www/linshare-ui-upload-request
 <Location /linshare>
     ProxyPass http://127.0.0.1:8080/linshare
@@ -736,7 +736,7 @@ Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni p
 [root@localhost ~]$ vim linshare-ui-upload-proposition.conf
 <VirtualHost *:80>
 ...
-ServerName linshare-ui-upload-proposition.local
+ServerName linshare-upload-proposition.local
 DocumentRoot /var/www/linshare-ui-upload-proposition
 <Location /linshare>
     ProxyPass http://127.0.0.1:9080/uploadpropositions
