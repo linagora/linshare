@@ -156,6 +156,6 @@ Les comptes invités sont les comptes des utilisateurs externes que vous pourrez
 
 ##### Historiques des activités
 
-Dans toutes les sections contenant des fichiers ([Mes fichiers](#my-files), [Mes partages reçus](#received-shares) et [Esapce commun](#shared-spaces)), l'historique des activités est disponible dans le panneau latéral de droite (en cliquant sur le logo ![User logo](../../img/adduser.png)).
+Dans toutes les sections contenant des fichiers ([Mes fichiers](#my-files), [Mes partages reçus](#received-shares) et [Espace commun](#shared-spaces)), l'historique des activités est disponible dans le panneau latéral de droite (en cliquant sur le logo ![User logo](../../img/adduser.png)).
 
 Cet historique présente toutes les actions effectuées sur les fichiers.
