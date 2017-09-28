@@ -453,7 +453,11 @@ The default profile is jcloud with filesystem for tests purpose.
 > Note:<br/>
     - We only use JackRabbit for the transition, it is deprecated.
 
-To __start LinShare__, start the tomcat service :
+To __start LinShare__, add this line into the file /var/lib/tomcat8/conf/catalina.properties:
+
+`jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` before the line `xom-*.jar`
+
+Then start the tomcat service :
 
 `[root@localhost ~]$ service tomcat8 restart`
 

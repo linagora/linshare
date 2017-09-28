@@ -453,7 +453,11 @@ Le profil recommandé est jcloud avec swift.
     - Nous utilisons uniquement JackRabbit pour la transition, car il est obsolète.
 
 
-Pour __démarrer LinShare__, démarrez le service Tomcat :
+Pour __démarrer LinShare__, ajoutez cette ligne dans le fichier /var/lib/tomcat8/conf/catalina.properties:
+
+`jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` Avant la ligne `xom-*.jar`
+
+puis démarrez le service Tomcat :
 
 `[root@localhost ~]$ service tomcat8 restart`
 
