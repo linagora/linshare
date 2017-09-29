@@ -284,7 +284,7 @@ You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip"
 
 ```
 jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
-__jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\__
+jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\
 xom-*.jar
 ```
 #### Deployment of the archive
