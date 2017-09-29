@@ -249,6 +249,15 @@ Install tomcat from the repositories :
 
 `[root@localhost ~]$ aptitude install tomcat8`
 
+#### Additional parameters
+
+You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /var/lib/tomcat8/conf/catalina.properties, add the middle line into it:
+
+```
+jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
+jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\
+xom-*.jar
+```
 #### Tomcat 8 configuration
 
 To specify the location of the LinShare __configuration__ (__linshare.properties__ file) and also the default start 
@@ -453,11 +462,7 @@ The default profile is jcloud with filesystem for tests purpose.
 > Note:<br/>
     - We only use JackRabbit for the transition, it is deprecated.
 
-To __start LinShare__, add this line into the file /var/lib/tomcat8/conf/catalina.properties:
-
-`jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` before the line `xom-*.jar`
-
-Then start the tomcat service :
+To __start LinShare__, first start the tomcat service :
 
 `[root@localhost ~]$ service tomcat8 restart`
 

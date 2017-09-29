@@ -279,6 +279,16 @@ Cependant, pour la déclaration de la variable `JAVA_OPT`, il faut concaténer l
 
 ` JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
 
+#### Paramètres supplémentaires
+
+Dans le fichier /usr/share/tomcat/conf/catalina.properties de votre tomcat, vous avez une clé de configuration nommée tomcat.util.scan.StandardJarScanFilter.jarsToSkip, vous devez ajouter la ligne du milieu ci-dessous :
+
+```
+jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
+jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\
+xom-*.jar
+```
+
 #### Déploiement de l'archive
 
 Déployez l’archive de l’application __LinShare__ dans le serveur Tomcat :
@@ -468,11 +478,7 @@ Le profil recommandé est jcloud avec swift.
 > Note:<br/>
    - Nous utilisons uniquement JackRabbit pour la transition, car il est déprécié.
 
-Pour __démarrer LinShare__, ajoutez cette ligne dans le fichier /usr/share/tomcat8/conf/catalina.properties:
-
-`jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` Avant la ligne `xom-*.jar`
-
-puis démarrez le service Tomcat :
+Pour __démarrer LinShare__, démarrez le service Tomcat :
 
 `[root@localhost ~]$ systemctl restart tomcat`
 

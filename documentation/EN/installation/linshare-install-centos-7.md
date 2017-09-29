@@ -278,7 +278,15 @@ Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in
 
 `JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
 
+#### Additional parameters
 
+You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat8/conf/catalina.properties, add the middle line into it: 
+
+```
+jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
+__jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\__
+xom-*.jar
+```
 #### Deployment of the archive
 
 Deploy the archive of Linshare application in the Tomcat server :
@@ -467,11 +475,7 @@ The default profile is jcloud with filesystem for tests purpose.
 > Note:<br/>
    * We only use JackRabbit for the transition, it is deprecated.<br/>
 
-To __start LinShare__, add this line into the file /usr/share/tomcat8/conf/catalina.properties:
-
-`jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` before the line `xom-*.jar` 
-
-Then start the Tomcat service :
+To __start LinShare__, first start the Tomcat service :
 
 `[root@localhost ~]$ systemctl restart Tomcat`
 
