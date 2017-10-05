@@ -1,3 +1,37 @@
+<a name="2.0.3"></a>
+# [2.0.3](https://github.com/linagora/linshare/compare/2.0.2...2.0.3) (2017-10-05) [Download link](http://download.linshare.org/versions/2.0.3/)
+
+**The new release of LinShare 2.0.3 is available**
+
+Users:
+
+    * Feature : copy between all LinShare storage area
+     * copy from received shares to personal space
+     * copy from received shares to workgroups
+     * copy from personal space to workgroups
+     * copy from workgroups to workgroups
+     * copy from workgroups to personal space
+    * Fixed thumbnails generation.
+    * Fixed wrong calculus in quotas (*critical*), cf SQL script Patch_2.0.3.sql
+    * And a lot of bug fixes, see component's changelog for more details.
+[Video of the new copy feature] (http://download.linshare.org/videos/product/LinShare-2.0.3-demo-new-copy-feature.mpeg)
+
+Administration:
+
+    * Quota graphs and business rules check improved
+    * See component's changelog for more details.
+
+## LinShare components
+
+* **core** : 2.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/2.0.2...2.0.3)
+* **ui-admin** : 3.0.3 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.0.2...v3.0.3)
+* **ui-user** : 2.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.0.2...v2.0.3)
+
+## Database updates :
+
+You can load the following SQL script to fix [quotas](https://github.com/linagora/linshare-core/blob/2.0.3/src/main/resources/sql/postgresql/Patch_2.0.3.sql)
+
+
 <a name="2.0.2"></a>
 # [2.0.2](https://github.com/linagora/linshare/compare/2.0.1...2.0.2) (2017-07-29) [Download link](http://download.linshare.org/versions/2.0.2/)
 
