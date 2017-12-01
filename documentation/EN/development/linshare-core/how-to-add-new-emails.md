@@ -1,4 +1,4 @@
-## How to add new mails on the backend :
+## How to add new emails on the backend :
 
 To add emails in the backend LinShare you must follow the following steps :
 
@@ -113,7 +113,7 @@ You can now create the  `YourNewMailContext`EmailContext   and   `YourNewMailBu
 On the ui-admin you need to write the template content, go on left menu, Mails / Mail content, you should find all your new mails Enum, select one and now you can write your template message content by introducing the Subject, Body and your mails in english and french.
 
 Note :
-To make default templates, activate these :
+For default templates, activate these :
 
 Open your linshare.properties file (located on your `configurations/my_conf1` folder) and set to `True` the following variables :
 
