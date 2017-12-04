@@ -484,7 +484,7 @@ Pour __démarrer LinShare__, démarrez le service Tomcat :
 
 Afin de vérifier le fonctionnement de __LinShare__ consultez les fichiers des __journaux (logs)__ :
 
-`[root@localhost ~]$ tail -f /opt/tomcat/logs/catalina.out`
+`[root@localhost ~]$ tail -f /var/tomcat/logs/catalina.out`
 
 En fin d’un démarrage correct du service, vous devriez avoir les messages suivants :
 
