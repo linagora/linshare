@@ -7,6 +7,7 @@
    * [Déploiement de l'archive et des fichiers de configuration](#instalFile)
    * [Installation de OpenJDK Java JRE](#instalOpenJdk)
    * [Base de données (Installation de PostgreSQL et mongoDB)](#bdd)
+   * [Activation du moteur de génération d'aperçu](#thumbnail)
    * [Conteneur de servlet (Installation de Tomcat 7)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Configuration vhost ui-user](#ui-user)
@@ -101,7 +102,7 @@ Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts:
 
 __Linshare__ requière l’utilisation d’une base de données (PostgreSQL) pour ses fichiers et sa configuration.
 
-La base de données Mysql n'est toujours pas prise en charge dans LinShare v2 
+La base de données Mysql n'est toujours pas prise en charge dans LinShare v2
 
 Ce guide présente une installation avec PostgreSQL.
 
@@ -238,6 +239,40 @@ Ensuite, activez au démarrage (avec chkconfig, `mongod` n'est pas un service na
 [root@localhost ~]$ chkconfig mongod on
 [root@localhost ~]$ systemctl start mongod
 ```
+<a name="thumbnail">
+
+#### Activation du moteur de génération d'aperçu
+
+</a>
+LinShare dispose d'un moteur de génération d'aperçu pour un large éventail de fichiers,
+le format des aperçus sont soit des fichiers `.PNG` ou bien des fichiers `.PDF`.
+
+> Note:<br/>
+    * Avant d'activer le module vous devriez avoir installé libreOffice ou   openOffice,
+    la version minimale requise pour libreOffice est : 4.2.8
+
+Par défault le moteur de génération de thumbnail et mis à FALSE, pour l'activer vous devez modifier le fichier de configuration de LinShare comme ceci :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=false
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+cela va permettre de générer des aperçus après chaque dépôt de fichiers.
+
+Vous avez également la possibilité d'utiliser le moteur de thumbnail a distance, pour cela il faut activer le remote.mode :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=true
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+Pour utiliser ce mode vous devez d'abord démarrer le Web service `thumbnail-server`.
+
 
 <a name="tomcat">
 
@@ -263,7 +298,7 @@ Activez le service :
 
 > Note:<br/>
      * Vérifiez l'état du Tomcat pour vous assurer que le service est actif avec systemctl status tomcat
-  
+
 #### Configuration de Tomcat 7
 
 
@@ -532,6 +567,3 @@ Connectez vous à __LinShare__ en tant qu’ __administrateur système__ :
   * Mot de passe : __adminlinshare__
 
 Ensuite, afin d’interconnecter __Linshare__ avec votre référentiel utilisateurs de type LDAP, créez un nouveau domaine depuis la rubrique « DOMAINES ». Pour plus d’informations, veuillez vous référer au __Guide de configuration et d’administration__ de __LinShare__ [__LINSHARE:CONF__].
-
-
-

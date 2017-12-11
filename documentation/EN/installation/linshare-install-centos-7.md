@@ -7,6 +7,7 @@
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJdk)
    * [Databases (PostgreSQL & mongoDB installation)](#bdd)
+   * [Enabling the preview generation engine](#thumbnail)
    * [Servlet container (Tomcat 8 installation)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Ui-user vhost configuration](#ui-user)
@@ -100,7 +101,7 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 LinShare needs the use of a database (PostgreSQL) for its files and its configuration.
 
-Mysql is not supported yet in LinShare v2 
+Mysql is not supported yet in LinShare v2
 
 This section present an installation with PostgreSQL.
 
@@ -201,7 +202,7 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the LinShare V2 installation, mongoDB is also required. You can install it by following these steps :
 
-The mongodb-org package does not exist within the default repositories for CentOS. 
+The mongodb-org package does not exist within the default repositories for CentOS.
 However, MongoDB maintains a dedicated repository. Let's add it to our server.
 With the vi editor, create a .repo file for yum, the package management utility for CentOS:
 
@@ -235,6 +236,38 @@ Next, activate at startup and start the MongoDB service with the chkconfig and s
 [root@localhost ~]$ systemctl start mongod
 ```
 
+<a name="thumbnail">
+#### Enabling the preview generation engine
+</a>
+
+LinShare has a preview generation engine for a wide range of files, the format of the previews are either `.PNG` files or `.PDF` files.
+
+> Note:<br/>
+    * Before using this engine you should have LibreOffice or OpenOffice installed on your machine, the minimum version of libreOffice is : 4.2.8  .
+
+By default thumbnail generation engine is set to false, to enable it, you must edit LinShare's configuration file :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=false
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+This will allow to generate previews after each file upload.
+
+You also have the option to use this engine remotely, for this you need to enable the remote mode :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=true
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+To use this mode you need first to start the Web service on `thumbnail-server`.
+
+
 <a name="tomcat">
 
 #### Servlet container
@@ -260,8 +293,8 @@ Activate the service at startup:
 
 > Note :<br/>
      * Check the Tomcat status to make sure the service is active with systemctl status tomcat
-  
-#### Tomcat 7 Configuration 
+
+#### Tomcat 7 Configuration
 
 
 To specify the location of the LinShare __configuration__ (_linshare.properties_ file) and also the default start
@@ -280,7 +313,7 @@ Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in
 
 #### Additional parameters
 
-You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat8/conf/catalina.properties, add the middle line into it: 
+You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat8/conf/catalina.properties, add the middle line into it:
 
 ```
 jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
@@ -328,9 +361,9 @@ It will bring Apache/2.4.6 (CentOS)
 
 </a>
 
-To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. 
+To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2.
 You need to create your directories in the /var/www/ directory, note that your directory name will be your application domain name.
-You need to give your user rights to access to the directories too. 
+You need to give your user rights to access to the directories too.
 
 ```
 [root@localhost ~]$ cd /var/www/
