@@ -523,11 +523,11 @@ Puis redémarrez le service Apache 2:
 
 </a>
 
-Le __service LinShare__ est désormais accessible aux adresses suivantes:
+Le __service LinShare__ est désormais accessible aux adresses suivantes :
 
 Pour l’interface utilisateur:
 
-  * http://linshare-user.local/linshare
+  * http://linshare-user.local/
 
 > Note:<br/>
   Vous devez renseignez cette url dans les paramètres de votre domaine. Pour ce faire, choisissez la fonctionalité __domain__ dans la liste de vos fonctionalités
