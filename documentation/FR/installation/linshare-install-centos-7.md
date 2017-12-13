@@ -329,20 +329,21 @@ Pour obtenir Apache/2.4.6 (CentOS)
 
 </a>
 
-Pour déployer l’application LinShare, il est nécessaire d’avoir le module __mod_proxy__ d'activé sur Apache 2. Cependant par défaut CentOS 7 l'a activé, il faut vérifier si c'est le cas présent :
+##### mod_proxy
+
+Pour déployer l’application LinShare, il est nécessaire d’avoir le module __mod_proxy__ d'activé sur Apache 2. Cependant par défaut CentOS 7 l'a activé. Pour vérifier si c'est effectif, il faut s'assurer que les modules ci-dessous apparaissent tous les quatre : __proxy_module ; lbmethod_byrequests_module ; proxy_balancer_module ; proxy_module__.
+
+`[root@localhost ~]# httpd -M` permet de lister les modules actifs, en ajoutant un filtre, vous récupérez uniquement les noms voulus :
 
 ```
-[root@localhost ~]$ httpd -M | grep 'proxy_m\|lbmethod_byre\|proxy_bal\|proxy_http'
+[root@localhost ~]# httpd -M | grep 'proxy_m\|lbmethod_byre\|proxy_bal\|proxy_http'
  proxy_module (shared)
  lbmethod_byrequests_module (shared)
  proxy_balancer_module (shared)
  proxy_http_module (shared)
 ```
-httpd -M permet de lister les modules actifs, il faut s'assurer que les modules ci-dessous apparaissent tous les quatre :
- proxy_module (shared)
- lbmethod_byrequests_module (shared)
- proxy_balancer_module (shared)
- proxy_http_module (shared)
+
+S'ils ne sont pas tous les quatres présents, ils peuvent être activés dans le fichier suivant `/etc/httpd/conf.modules.d/00-proxy.conf` en supprimant les `#` devant les modules concernés.
 
 Vous devez créer vos répertoires dans le répertoire /var /www/, notez que votre nom de répertoire sera le nom de domaine de l'application.
 Vous devez donner à votre utilisateur les droits d'accéder aux répertoires aussi.
