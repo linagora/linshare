@@ -333,7 +333,7 @@ Pour obtenir Apache/2.4.6 (CentOS)
 
 Pour déployer l’application LinShare, il est nécessaire d’avoir le module __mod_proxy__ d'activé sur Apache 2. Cependant par défaut CentOS 7 l'a activé. Pour vérifier si c'est effectif, il faut s'assurer que les modules ci-dessous apparaissent tous les quatre : __proxy_module ; lbmethod_byrequests_module ; proxy_balancer_module ; proxy_module__.
 
-`[root@localhost ~]# httpd -M` permet de lister les modules actifs, en ajoutant un filtre, vous récupérez uniquement les noms voulus :
+`# httpd -M` permet de lister les modules actifs, en ajoutant un filtre, vous récupérez uniquement les noms voulus :
 
 ```
 [root@localhost ~]# httpd -M | grep 'proxy_m\|lbmethod_byre\|proxy_bal\|proxy_http'
