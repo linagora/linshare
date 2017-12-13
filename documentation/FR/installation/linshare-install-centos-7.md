@@ -329,7 +329,21 @@ Pour obtenir Apache/2.4.6 (CentOS)
 
 </a>
 
-Pour déployer l’application LinShare, il est nécessaire d’activer le module __mod_proxy__ sur Apache 2.
+##### mod_proxy
+
+Pour déployer l’application LinShare, il est nécessaire d’avoir le module __mod_proxy__ d'activé sur Apache 2. Cependant par défaut CentOS 7 l'a activé. Pour vérifier si c'est effectif, il faut s'assurer que les modules ci-dessous apparaissent tous les quatre : __proxy_module ; lbmethod_byrequests_module ; proxy_balancer_module ; proxy_module__.
+
+`# httpd -M` permet de lister les modules actifs, en ajoutant un filtre, vous récupérez uniquement les noms voulus :
+
+```
+[root@localhost ~]# httpd -M | grep 'proxy_m\|lbmethod_byre\|proxy_bal\|proxy_http'
+ proxy_module (shared)
+ lbmethod_byrequests_module (shared)
+ proxy_balancer_module (shared)
+ proxy_http_module (shared)
+```
+
+S'ils ne sont pas tous les quatres présents, ils peuvent être activés dans le fichier suivant `/etc/httpd/conf.modules.d/00-proxy.conf` en supprimant les `#` devant les modules concernés.
 
 Vous devez créer vos répertoires dans le répertoire /var /www/, notez que votre nom de répertoire sera le nom de domaine de l'application.
 Vous devez donner à votre utilisateur les droits d'accéder aux répertoires aussi.
@@ -509,11 +523,11 @@ Puis redémarrez le service Apache 2:
 
 </a>
 
-Le __service LinShare__ est désormais accessible aux adresses suivantes:
+Le __service LinShare__ est désormais accessible aux adresses suivantes :
 
 Pour l’interface utilisateur:
 
-  * http://linshare-user.local/linshare
+  * http://linshare-user.local/
 
 > Note:<br/>
   Vous devez renseignez cette url dans les paramètres de votre domaine. Pour ce faire, choisissez la fonctionalité __domain__ dans la liste de vos fonctionalités
