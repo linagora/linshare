@@ -329,7 +329,20 @@ Pour obtenir Apache/2.4.6 (CentOS)
 
 </a>
 
-Pour déployer l’application LinShare, il est nécessaire d’activer le module __mod_proxy__ sur Apache 2.
+Pour déployer l’application LinShare, il est nécessaire d’avoir le module __mod_proxy__ d'activé sur Apache 2. Cependant par défaut CentOS 7 l'a activé, il faut vérifier si c'est le cas présent :
+
+```
+[root@localhost ~]$ httpd -M | grep 'proxy_m\|lbmethod_byre\|proxy_bal\|proxy_http'
+ proxy_module (shared)
+ lbmethod_byrequests_module (shared)
+ proxy_balancer_module (shared)
+ proxy_http_module (shared)
+```
+httpd -M permet de lister les modules actifs, il faut s'assurer que les modules ci-dessous apparaissent tous les quatre :
+ proxy_module (shared)
+ lbmethod_byrequests_module (shared)
+ proxy_balancer_module (shared)
+ proxy_http_module (shared)
 
 Vous devez créer vos répertoires dans le répertoire /var /www/, notez que votre nom de répertoire sera le nom de domaine de l'application.
 Vous devez donner à votre utilisateur les droits d'accéder aux répertoires aussi.
