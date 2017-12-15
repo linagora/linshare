@@ -5,8 +5,9 @@
 #### 1. [Installation minimale de Linshare](#install-min)
    * [Téléchargement de LinShare](#dlLinshare)
    * [Déploiement de l'archive et des fichiers de configuration](#instalFile)
-   * [Installation de OpenJDK Java JRE](#instalOpenJdk) 
+   * [Installation de OpenJDK Java JRE](#instalOpenJdk)
    * [Base de données (Installation de PostgreSQL)](#bdd)
+   * [Activation du moteur d'aperçu (optionnel)](#thumbnail)
    * [Conteneur de servlet (Installation de Tomcat 8)](#tomcat)
      1. [Configuration vhost ui-user](#ui-user)
      2. [Configuration vhost ui-admin](#ui-admin)
@@ -102,7 +103,7 @@ Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts :
 
 </a>
 
-__LinShare__ requière l’utilisation d’une base de données (PostgreSQL) 
+__LinShare__ requière l’utilisation d’une base de données (PostgreSQL)
 pour ses fichiers et sa configuration. Ce guide présente une installation avec PostgreSQL.
 
 Installation de PostgreSQL depuis les dépôts :
@@ -171,7 +172,7 @@ GRANT ALL ON DATABASE linshare TO linshare;
 __Important : si votre base de données est installée en langue française, remplacez toutes les occurrences de chaîne « en_US » par « fr_FR ».__
 
 > Note:<br/>
-    * Au besoin, vous disposez d'un script nommé createDatabase.sh sous `/WEB-INF/classes/sql/postgresql/` qui vous 
+    * Au besoin, vous disposez d'un script nommé createDatabase.sh sous `/WEB-INF/classes/sql/postgresql/` qui vous
    fournit les commandes pour créer vos bases de données.
 
 Importez les fichiers SQL « createSchema.sql » et « import-postgresql.sql » :
@@ -228,6 +229,50 @@ Pour finir, lancez la commande suivante pour démarrer mongod.
 [root@localhost ~]$ service mongod start
 ```
 
+<a name="thumbnail">
+#### Activation du moteur d'aperçu (Optionnel)
+</a>
+
+LinShare dispose d'un moteur de génération d'aperçu pour un large éventail de fichiers :
+
+- Foramts OpenDocument (ODT, ODP, ODS, ODG)
+- formats de documents Microsoft (DOCX, DOC, PPTX, PPT, XLSX, XLS )
+- PDF documents
+- Fichiers images (PNG, JPEG, JPG, GIF)
+- Fichiers text (TXT, XML, LOG, HTML ...)
+
+> Note:<br/>
+    * Avant d'activer le module vous devez avoir installé libreOffice ou openOffice,
+    la version minimale requise pour libreOffice est : 4.2.8
+
+Tapez les commandes suivantes pour installer libreOffice :
+
+    aptitude update
+    aptitude install libreoffice
+
+Par défault le moteur de génération de thumbnail et mis à FALSE. Pour l'activer vous devez modifier le fichier de configuration de LinShare comme ceci :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=false
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
+
+Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance, pour cela il faut activer le remote.mode :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=true
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+Pour utiliser ce mode vous devez d'abord installer et démarrer le Web service `thumbnail-server`.
+
+
 <a name="tomcat">
 
 ### Conteneur de servlets
@@ -256,8 +301,8 @@ xom-*.jar
 
 #### Configuration de Tomcat 8
 
-Pour spécifier l’emplacement de la __configuration__ de LinShare (fichier __linshare.properties__) ainsi que les 
-options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans 
+Pour spécifier l’emplacement de la __configuration__ de LinShare (fichier __linshare.properties__) ainsi que les
+options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans
 le fichier __linshare.properties__ et copier-coller les dans le fichier tomcat ( __/etc/default/tomcat8__ ).
 
 L’ensemble des options de démarrage par défaut nécessaires à __LinShare__ sont indiquées dans les en-têtes des fichiers de configuration suivants :
@@ -348,7 +393,7 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
    * Après toute modification d'un vhost, il faut recharger le server Apache 2 :<br/>
    `[root@localhost ~]$ service apache2 reload` <br/>
    * Dans les versions récentes de Apache, le fichier default peut se nommer default.conf.<br/>
-   * Dans le cas où créez un document root, vous pourrez y créer un sous repertoire custom,<br/> 
+   * Dans le cas où créez un document root, vous pourrez y créer un sous repertoire custom,<br/>
    dans lequel vous pourrez déployer votre logo :<br/>
    `[root@localhost ~]$ mkdir -p linshare/custom` <br/>
 
@@ -366,7 +411,7 @@ Déployez l’archive de l’application __LinShare UI Admin__ dans le répertoi
 [root@localhost ~]$ mv linshare-ui-admin-{VERSION} /var/www/linshare-ui-admin
 ```
 
-Pour déployer l’interface d’administration de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur 
+Pour déployer l’interface d’administration de __LinShare__, il est nécessaire d’activer le module __mod_proxy__ sur
 Apache2. De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
 
 ```
@@ -516,7 +561,5 @@ Connectez vous à __LinShare__ en tant qu’__administrateur système__ de __Lin
 
   * Mot de passe : __adminlinshare__
 
-Ensuite, afin d’interconnecter __LinShare__ avec votre référentiel utilisateurs de type LDAP, créez un nouveau domaine depuis la rubrique « DOMAINES ». 
+Ensuite, afin d’interconnecter __LinShare__ avec votre référentiel utilisateurs de type LDAP, créez un nouveau domaine depuis la rubrique « DOMAINES ».
 Pour plus d’informations, veuillez vous référer au __Guide de configuration et d’administration__ de __LinShare__ [__LINSHARE:CONF__].
-
-

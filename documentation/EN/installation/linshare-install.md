@@ -7,6 +7,7 @@
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJdk)
    * [Databases (PostgreSQL & mongoDB installation)](#bdd)
+   * [Enable new thumbnail engine (optional)](#thumbnail)
    * [Servlet container (Tomcat 8 installation)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Ui-user vhost configuration](#ui-user)
@@ -108,7 +109,7 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 LinShare needs the use of a database (PostgreSQL) for its files and its configuration.
 
 Mysql is not supported anymore in LinShare v2.
- 
+
 This section present an installation with PostgreSQL.
 
 Install PostgreSQL from the repositories :
@@ -177,7 +178,7 @@ GRANT ALL ON DATABASE linshare TO linshare;
 __Caution : if your database is installed in french, replace all the occurrences of "en_US" by "fr_FR".__
 
 > Note:<br/>
-     * If you need, there is a script named createDatabase.sql under src/main/resources/sql/postgresql/ who gives 
+     * If you need, there is a script named createDatabase.sql under src/main/resources/sql/postgresql/ who gives
      you the command to enter for creating your databases.
 
 Import the SQL files "createSchema.sql" and "import-postgresql.sql" :
@@ -233,6 +234,50 @@ Issue the following command to start mongod:
 ```
 [root@localhost ~]$ service mongod start
 ```
+
+<a name="thumbnail">
+#### Enable new thumbnail engine (optional)
+</a>
+
+LinShare has a preview generation engine for a wide range of files :
+
+ - OpenDocument format (ODT, ODP, ODS, ODG)
+ - Microsoft documents format (DOCX, DOC, PPTX, PPT, XLSX, XLS )
+ - PDF documents
+ - Images files (PNG, JPEG, JPG, GIF)
+ - Text files (TXT, XML, LOG, HTML ...)
+
+> Note:<br/>
+    *  Before using this engine you should have LibreOffice or OpenOffice installed on your machine, the minimum version of libreOffice is : 4.2.8.
+
+To install libreOffice :
+
+    aptitude update
+    aptitude install libreoffice
+
+By default thumbnail generation engine is set to FALSE. To enable it, you must edit LinShare's configuration file :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=false
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+This will allow to generate previews after each file upload.
+
+You also have the option to use this engine remotely, for this you need to enable the remote mode :
+
+    #******** LinThumbnail configuration
+    linshare.linthumbnail.remote.mode=true
+    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+    # key to disable thumbnail generation
+    linshare.documents.thumbnail.pdf.enable=true
+    linshare.documents.thumbnail.enable=true
+
+To use this mode you need first to install and start the Web service on `thumbnail-server`.
+
+
 <a name="tomcat">
 
 #### Servlet container
@@ -260,7 +305,7 @@ xom-*.jar
 ```
 #### Tomcat 8 configuration
 
-To specify the location of the LinShare __configuration__ (__linshare.properties__ file) and also the default start 
+To specify the location of the LinShare __configuration__ (__linshare.properties__ file) and also the default start
 options, get the commented options in the first lines of the __linshare.properties__ file and coy-paste them in the tomcat file (/etc/default/tomcat8).
 
 All starting needful options by default to Linshare are indicated in the header of the following configuration files :
@@ -284,7 +329,7 @@ Deploy the archive of Linshare application in the tomcat server :
 
 </a>
 
-The administration interface of __LinShare__ is an application based on web languages HTML/CSS and JavaScript. 
+The administration interface of __LinShare__ is an application based on web languages HTML/CSS and JavaScript.
 It just needs a simple web server like Apache or nginx.
 
 This section presents the installation of Apache HTTP server.
@@ -305,7 +350,7 @@ Install Apache 2 from the repositories :
 
 </a>
 
-To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you 
+To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. Plus, you
 must add the configuration below to the default file provided by debian :
 
 ```
@@ -516,5 +561,3 @@ Connect to LinShare as a Linshare _system administrator_ :
   * Password : __adminlinshare__
 
 Then, to interconnect __Linshare__ with your LDAP user directory, create a new domain from the section "DOMAINS". For further informations, please refer to the __Configuration and administration manual__ of __LinShare__ [__LINSHARE:CONF__].
-
-

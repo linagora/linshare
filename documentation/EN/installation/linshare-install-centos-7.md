@@ -7,8 +7,8 @@
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJdk)
    * [Databases (PostgreSQL & mongoDB installation)](#bdd)
-   * [Enabling the preview generation engine](#thumbnail)
-   * [Servlet container (Tomcat 8 installation)](#tomcat)
+   * [Enable new thumbnail engine (optional)](#thumbnail)
+   * [Servlet container (Tomcat 7 installation)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Ui-user vhost configuration](#ui-user)
      2. [Ui-admin vhost configuration](#ui-admin)
@@ -237,15 +237,26 @@ Next, activate at startup and start the MongoDB service with the chkconfig and s
 ```
 
 <a name="thumbnail">
-#### Enabling the preview generation engine
+#### Enable new thumbnail engine (optional)
 </a>
 
-LinShare has a preview generation engine for a wide range of files, the format of the previews are either `.PNG` files or `.PDF` files.
+LinShare has a preview generation engine for a wide range of files :
+
+ - OpenDocument format (ODT, ODP, ODS, ODG)
+ - Microsoft documents format (DOCX, DOC, PPTX, PPT, XLSX, XLS )
+ - PDF documents
+ - Images files (PNG, JPEG, JPG, GIF)
+ - Text files (TXT, XML, LOG, HTML ...)
 
 > Note:<br/>
-    * Before using this engine you should have LibreOffice or OpenOffice installed on your machine, the minimum version of libreOffice is : 4.2.8  .
+    *  Before using this engine you should have LibreOffice or OpenOffice installed on your machine, the minimum version of libreOffice is : 4.2.8.
 
-By default thumbnail generation engine is set to false, to enable it, you must edit LinShare's configuration file :
+To install libreOffice :
+
+     yum -y install libreOffice
+
+
+By default thumbnail generation engine is set to FALSE. To enable it, you must edit LinShare's configuration file :
 
     #******** LinThumbnail configuration
     linshare.linthumbnail.remote.mode=false
@@ -265,7 +276,7 @@ You also have the option to use this engine remotely, for this you need to enabl
     linshare.documents.thumbnail.pdf.enable=true
     linshare.documents.thumbnail.enable=true
 
-To use this mode you need first to start the Web service on `thumbnail-server`.
+To use this mode you need first to install and start the Web service on `thumbnail-server`.
 
 
 <a name="tomcat">
@@ -313,7 +324,7 @@ Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in
 
 #### Additional parameters
 
-You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat8/conf/catalina.properties, add the middle line into it:
+You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat/conf/catalina.properties, add the middle line into it:
 
 ```
 jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
