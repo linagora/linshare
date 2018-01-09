@@ -17,7 +17,7 @@ To add an upgrade task in the LinShare backend you must do the following steps :
 
 #### 2 Create your upgradeTask class
 
- * You need to create a new class extends `GeniricUpgradeTaskImpl` for your new upgradeTask.
+ * You need to create a new class and extends `GeniricUpgradeTaskImpl` for your new upgradeTask.
 
  * You have to return your new upgradeTaskType on this methode `getUpgradeTaskType()`.
 
@@ -25,7 +25,7 @@ To add an upgrade task in the LinShare backend you must do the following steps :
 
 #### 3 Add your upgradeTask insert query to import_**\_sample.sql :
 
-To test your upgrade task you need to create a SQL script `import-upgrade-task-[version]-sample.sql`, and add on it the SQL queries to insert in the table `upgrade_task` for all your new UpgradeTaskType
+To test your upgrade task you need to create a SQL script `import-upgrade-task-[version]-sample.sql`, and add inside it the SQL queries to insert in the table `upgrade_task` for all your new UpgradeTaskType
 
 Example :
 
@@ -34,7 +34,7 @@ Example :
      VALUES
        (15,  'UNDEFINED',  'UPGRADE_2_1_REMOVE_ALL_THREAD_ENTRIES',  'UPGRADE_2_1',  null,  null,  15,  'NEW',  'MANDATORY',  now(),  now(),  null);
 
-Fileds :
+Fields :
 
 * identifier : your new UpgradeTaskType
 * task_group : your new UpgradeTaskGroup
@@ -47,9 +47,9 @@ Fileds :
   tasks are not done, the system will work in a downgraded mode.
   Some functionalities or data might not be accessible. Those tasks might be executed while the system is being used.
 
-Now you can execute your sql script.
+Now you can execute your SQL script.
 
 
 #### 4 Run your upgradeTask on ui-admin :
 
-To run your upgrade task, go on linshare ui-admin, on the left menu select Domains, Upgrades Tasks and run your task by click on the pencil icon.
+To run your upgrade task, go on LinShare ui-admin, on the left menu select Domains, Upgrades Tasks and run your task by click on the pencil icon.
