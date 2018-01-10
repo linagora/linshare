@@ -1,3 +1,35 @@
+<a name="2.0.4"></a>
+# [2.0.4](https://github.com/linagora/linshare/compare/2.0.3...2.0.4) (2017-12-07) [Download link](http://download.linshare.org/versions/2.0.4/)
+
+**The new release of LinShare 2.0.4 is available**
+
+Users:
+
+    Fixes #239: disable rename/remove for nonAdmin in sharedSpace and in nodeWorkgroup
+    Fix! Hide menu administrations if all of its sublink are disable
+    Bugfix hide guest menu if disable
+    Fix! Remove Setting menu in production mode
+    Fix! Hide properly guest depending on Functionalities
+    Fix! Remove href on logout button
+
+Core:
+
+    Fix notification URL for external sharing.
+    support of openstack-swift for jcloud in LinShare added.
+    Add new property key to disable trusted ip list for sso.
+
+
+## LinShare components
+
+* **core** : 2.0.4 - [changelog](https://github.com/linagora/linshare-core/compare/2.0.3...2.0.4)
+* **ui-admin** : 3.0.4 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.0.3...v3.0.4)
+* **ui-user** : 2.0.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.0.3...v2.0.4)
+
+## Database updates :
+
+You can load the following SQL script to fix [quotas](https://github.com/linagora/linshare-core/blob/2.0.3/src/main/resources/sql/postgresql/Patch_2.0.3.sql)
+
+
 <a name="2.0.3"></a>
 # [2.0.3](https://github.com/linagora/linshare/compare/2.0.2...2.0.3) (2017-10-05) [Download link](http://download.linshare.org/versions/2.0.3/)
 
