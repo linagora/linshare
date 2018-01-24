@@ -5,7 +5,7 @@
 #### 1. [Installation minimale de Linshare](#install-min)
    * [Téléchargement de LinShare](#dlLinshare)
    * [Déploiement de l'archive et des fichiers de configuration](#instalFile)
-   * [Installation de OpenJDK Java JRE](#instalOpenJdk)
+   * [Installation de OpenJDK Java JRE](#instalOpenJDK)
    * [Base de données (Installation de PostgreSQL)](#bdd)
    * [Activation du moteur d'aperçu (optionnel)](#thumbnail)
    * [Conteneur de servlet (Installation de Tomcat 8)](#tomcat)
@@ -76,7 +76,7 @@ Créez le répertoire de configuration de __LinShare__ et copiez les fichiers de
 
 __LinShare__ fonctionne avec OpenJDK et Sun/Oracle Java version 8. Ce guide porte sur OpenJDK Java 8.
 
-<a name="instalOpenJdk">
+<a name="instalOpenJDK">
 
 #### Installation de OpenJDK Java JRE
 
@@ -172,7 +172,7 @@ GRANT ALL ON DATABASE linshare TO linshare;
 __Important : si votre base de données est installée en langue française, remplacez toutes les occurrences de chaîne « en_US » par « fr_FR ».__
 
 > Note:<br/>
-    * Au besoin, vous disposez d'un script nommé createDatabase.sh sous `/WEB-INF/classes/sql/postgresql/` qui vous
+    * Si besoin, vous disposez d'un script nommé `createDatabase.sh` sous `/WEB-INF/classes/sql/postgresql/` qui vous
    fournit les commandes pour créer vos bases de données.
 
 Importez les fichiers SQL « createSchema.sql » et « import-postgresql.sql » :
@@ -230,48 +230,93 @@ Pour finir, lancez la commande suivante pour démarrer mongod.
 ```
 
 <a name="thumbnail">
+
 #### Activation du moteur d'aperçu (Optionnel)
+
 </a>
+LinShare dispose d'un moteur de génération d'aperçu pour plusieurs types de fichiers :
 
-LinShare dispose d'un moteur de génération d'aperçu pour un large éventail de fichiers :
-
-- Foramts OpenDocument (ODT, ODP, ODS, ODG)
-- formats de documents Microsoft (DOCX, DOC, PPTX, PPT, XLSX, XLS )
+- Formats OpenDocument (ODT, ODP, ODS, ODG)
+- Formats de documents Microsoft (DOCX, DOC, PPTX, PPT, XLSX, XLS)
 - PDF documents
 - Fichiers images (PNG, JPEG, JPG, GIF)
-- Fichiers text (TXT, XML, LOG, HTML ...)
+- Fichiers text (TXT, XML, LOG, HTML, ...)
 
 > Note:<br/>
-    * Avant d'activer le module vous devez avoir installé libreOffice ou openOffice,
-    la version minimale requise pour libreOffice est : 4.2.8
+    * Avant d'activer le module vous devez avoir installé LibreOffice ou OpenOffice,
+    la version minimale requise pour LibreOffice est : 4.2.8.
 
-Tapez les commandes suivantes pour installer libreOffice :
+Pour installer LibreOffice, exécutez la commande suivante dans votre terminal :
 
-    aptitude update
-    aptitude install libreoffice
+     aptitude update
+     aptitude install libreoffice
 
-Par défault le moteur de génération de thumbnail et mis à FALSE. Pour l'activer vous devez modifier le fichier de configuration de LinShare comme ceci :
-
-    #******** LinThumbnail configuration
-    linshare.linthumbnail.remote.mode=false
-    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-    # key to disable thumbnail generation
-    linshare.documents.thumbnail.pdf.enable=true
-    linshare.documents.thumbnail.enable=true
-
+Par défault le moteur de génération de thumbnail est mis à FALSE. Pour l'activer vous devez modifier le fichier de configuration de LinShare comme ceci :
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=false
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
 Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
 
-Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance, pour cela il faut activer le remote.mode :
+Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance. Pour cela il faut d'abord activer le remote.mode :
 
-    #******** LinThumbnail configuration
-    linshare.linthumbnail.remote.mode=true
-    linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-    # key to disable thumbnail generation
-    linshare.documents.thumbnail.pdf.enable=true
-    linshare.documents.thumbnail.enable=true
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=true
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
 
-Pour utiliser ce mode vous devez d'abord installer et démarrer le Web service `thumbnail-server`.
+Vous pouvez maintenant, allez à cette adresse `http://download.linshare.org/versions/` et téléchargez les fichiers suivants :
 
+* linshare-thumbnail-server-{VERSION}.jar
+* linshare-thumbnail-server-{VERSION}.yml
+
+> Note <br>
+Par défaut, le serveur est configuré pour écouter sur le port 80, vous pouvez le changer, si nécessaire.
+
+Copiez le fichier `linshare-thumbnail-server-{VERSION}.yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et copiez aussi l'archive java `linshare-thumbnail-server-{VERSION}.jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar`, vous pouvez utilisez les commandes suivantes pour ça :
+
+```java
+cp linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+```
+```java
+cp linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+```
+
+* Vous pouvez automatiser le lancement du serveur thumbnail, en créant un service `systemd` sur le répertoire `/etc/systemd/system`, nommez-le comme suit `linshare-thumbnail-server.service`.
+
+Éditez le fichier `linshare-thumbnail-server.service` et copiez le code ci-dessous :
+
+```java
+[Unit]
+Description=LinShare thumbnail server
+After=network.target
+
+[Service]
+Type=idle
+KillMode=process
+ExecStart=/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
+
+[Install]
+WantedBy=multi-user.target
+Alias=linshare-thumbnail-server.service
+```
+Vous pouvez maintenant activer le service, il sera lancé automatiquement après un redémarrage:
+
+`systemctl enable linshare-thumbnail-server.service`
+
+Exécutez la commande suivante pour démarrer le service :
+
+`systemctl start linshare-thumbnail-server.service`
 
 <a name="tomcat">
 
