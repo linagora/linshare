@@ -5,8 +5,9 @@
 #### 1. [Installation minimale de Linshare](#installmin)
    * [Téléchargement de LinShare](#dlLinshare)
    * [Déploiement de l'archive et des fichiers de configuration](#instalFile)
-   * [Installation de OpenJDK Java JRE](#instalOpenJdk)
+   * [Installation de OpenJDK Java JRE](#instalOpenJDK)
    * [Base de données (Installation de PostgreSQL et mongoDB)](#bdd)
+   * [Activation du moteur d'aperçu (optionnel)](#thumbnail)
    * [Conteneur de servlet (Installation de Tomcat 7)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Configuration vhost ui-user](#ui-user)
@@ -77,7 +78,7 @@ Et renommer linshare.properties.sample en linshare.properties
 
 __LinShare__  fonctionne avec OpenJDK et Sun/Oracle Java version 8. Ce guide porte sur OpenJDK Java 8.
 
-<a name="instalOpenJdk">
+<a name="instalOpenJDK">
 
 #### Installation de OpenJDK Java JRE
 
@@ -101,7 +102,7 @@ Installez Java Runtime Environment (JRE) de OpenJDK depuis les dépôts:
 
 __Linshare__ requière l’utilisation d’une base de données (PostgreSQL) pour ses fichiers et sa configuration.
 
-La base de données Mysql n'est toujours pas prise en charge dans LinShare v2 
+La base de données MySQL n'est toujours pas prise en charge dans LinShare v2
 
 Ce guide présente une installation avec PostgreSQL.
 
@@ -176,7 +177,7 @@ GRANT ALL ON DATABASE linshare TO linshare;
 __Important : si votre base de données est installée en langue française, remplacez toutes les occurrences de chaîne « en_US » par « fr_FR ».__
 
 > Note:<br/>
-     * Au besoin, vous disposez d'un script nommé createDatabase.sh sous src/main/resources/sql/postgresql/ qui vous fournit les commandes pour créer vos bases de données.
+     * Si besoin, vous disposez d'un script nommé `createDatabase.sh` sous src/main/resources/sql/postgresql/ qui vous fournit les commandes pour créer vos bases de données.
 
 Importez les fichiers SQL « createSchema.sql » et « import-postgresql.sql » :
 
@@ -238,6 +239,99 @@ Ensuite, activez au démarrage (avec chkconfig, `mongod` n'est pas un service na
 [root@localhost ~]$ chkconfig mongod on
 [root@localhost ~]$ systemctl start mongod
 ```
+<a name="thumbnail">
+
+#### Activation du moteur d'aperçu (Optionnel)
+
+</a>
+LinShare dispose d'un moteur de génération d'aperçu pour plusieurs types de fichiers :
+
+- Formats OpenDocument (ODT, ODP, ODS, ODG)
+- Formats de documents Microsoft (DOCX, DOC, PPTX, PPT, XLSX, XLS)
+- PDF documents
+- Fichiers images (PNG, JPEG, JPG, GIF)
+- Fichiers text (TXT, XML, LOG, HTML, ...)
+
+> Note:<br/>
+    * Avant d'activer le module vous devez avoir installé LibreOffice ou OpenOffice,
+    la version minimale requise pour LibreOffice est : 4.2.8.
+
+Pour installer LibreOffice, exécutez la commande suivante dans votre terminal :
+
+      yum -y install libreOffice
+
+Par défault le moteur de génération de thumbnail est mis à FALSE. Pour l'activer vous devez modifier le fichier de configuration de LinShare comme ceci :
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=false
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
+Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
+
+Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance. Pour cela il faut activer le remote.mode :
+
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=true
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
+
+###### Téléchargement et installation du service thumbnail :
+
+Pour utiliser ce mode, allez à cette adresse `http://download.linshare.org/versions/` et téléchargez les fichiers suivants :
+
+* linshare-thumbnail-server-{VERSION}.jar
+* linshare-thumbnail-server-{VERSION}.yml
+
+> Note <br>
+Par défaut, le serveur est configuré pour écouter sur le port 80, vous pouvez le changer, si nécessaire.
+
+Copiez le fichier `linshare-thumbnail-server-[VERSION].yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et copiez aussi l'archive java `linshare-thumbnail-server-[VERSION].jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar`, vous pouvez utilisez les commandes suivantes pour ça :
+
+```java
+cp linshare-thumbnail-server-[VERSION].yml /etc/linshare/linshare-thumbnail-server.yml
+```
+```java
+cp linshare-thumbnail-server-[VERSION].jar /usr/local/sbin/linshare-thumbnail-server.jar
+```
+
+* Vous pouvez démarrer le service manuellement en exécutant la commande suivante :
+```sh
+/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
+```
+* Ou bien, vous pouvez automatiser le lancement du serveur thumbnail, en créant un service systemd sur le répertoire `/etc/systemd/system`, nommez-le comme suit `linshare-thumbnail-server.service`.
+
+Éditez le fichier `linshare-thumbnail-server.service` et copiez le code ci-dessous :
+
+```java
+[Unit]
+Description=LinShare thumbnail server
+After=network.target
+
+[Service]
+Type=idle
+KillMode=process
+ExecStart=/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
+
+[Install]
+WantedBy=multi-user.target
+Alias=linshare-thumbnail-server.service
+```
+Vous pouvez maintenant activer le service, il sera lancé automatiquement après un redémarrage:
+
+`systemctl enable linshare-thumbnail-server.service`
+
+Exécutez la commande suivante pour démarrer le service :
+
+`systemctl start linshare-thumbnail-server.service`
 
 <a name="tomcat">
 
@@ -263,7 +357,7 @@ Activez le service :
 
 > Note:<br/>
      * Vérifiez l'état du Tomcat pour vous assurer que le service est actif avec systemctl status tomcat
-  
+
 #### Configuration de Tomcat 7
 
 
@@ -532,6 +626,3 @@ Connectez vous à __LinShare__ en tant qu’ __administrateur système__ :
   * Mot de passe : __adminlinshare__
 
 Ensuite, afin d’interconnecter __Linshare__ avec votre référentiel utilisateurs de type LDAP, créez un nouveau domaine depuis la rubrique « DOMAINES ». Pour plus d’informations, veuillez vous référer au __Guide de configuration et d’administration__ de __LinShare__ [__LINSHARE:CONF__].
-
-
-

@@ -5,9 +5,10 @@
 #### 1. [LinShare minimum installation](#installmin)
    * [Download of LinShare](#dlLinshare)
    * [Deployment of the archive and the configuration files](#instalFile)
-   * [OpenJDK Java JRE installation](#instalOpenJdk)
+   * [OpenJDK Java JRE installation](#instalOpenJDK)
    * [Databases (PostgreSQL & mongoDB installation)](#bdd)
-   * [Servlet container (Tomcat 8 installation)](#tomcat)
+   * [Enable new thumbnail engine (optional)](#thumbnail)
+   * [Servlet container (Tomcat 7 installation)](#tomcat)
    * [Web server (Apache 2 installation)](#apache)
      1. [Ui-user vhost configuration](#ui-user)
      2. [Ui-admin vhost configuration](#ui-admin)
@@ -76,7 +77,7 @@ Create the configuration repository of __LinShare__ and past the configuration f
 
 __LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJDK Java 8.
 
-<a name="instalOpenJdk">
+<a name="instalOpenJDK">
 
 #### Installation of OpenDK
 
@@ -100,7 +101,7 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 LinShare needs the use of a database (PostgreSQL) for its files and its configuration.
 
-Mysql is not supported yet in LinShare v2 
+MySQL is not supported yet in LinShare v2
 
 This section present an installation with PostgreSQL.
 
@@ -201,7 +202,7 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the LinShare V2 installation, mongoDB is also required. You can install it by following these steps :
 
-The mongodb-org package does not exist within the default repositories for CentOS. 
+The mongodb-org package does not exist within the default repositories for CentOS.
 However, MongoDB maintains a dedicated repository. Let's add it to our server.
 With the vi editor, create a .repo file for yum, the package management utility for CentOS:
 
@@ -235,6 +236,93 @@ Next, activate at startup and start the MongoDB service with the chkconfig and s
 [root@localhost ~]$ systemctl start mongod
 ```
 
+<a name="thumbnail">
+#### Enable new thumbnail engine (optional)
+</a>
+
+LinShare has a preview generation engine for a wide range of files :
+
+ - OpenDocument format (ODT, ODP, ODS, ODG)
+ - Microsoft documents format (DOCX, DOC, PPTX, PPT, XLSX, XLS)
+ - PDF documents
+ - Images files (PNG, JPEG, JPG, GIF)
+ - Text files (TXT, XML, LOG, HTML ...)
+
+> Note:<br/>
+    *  Before using this engine you should have LibreOffice or OpenOffice installed on your machine, the minimum version of libreOffice is : 4.2.8.
+
+To install libreOffice :
+
+     yum -y install libreOffice
+
+By default thumbnail generation engine is set to FALSE. To enable it, you must edit LinShare's configuration file :
+
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=false
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
+This will allow to generate previews after each file upload.
+
+You also have the option to use this engine remotely. For that you must first activate the remote mode :
+
+```java
+#******** LinThumbnail configuration
+# key to enable or disable thumbnail generation
+linshare.documents.thumbnail.enable=true
+# key to enable remote thumbnail generation
+linshare.linthumbnail.remote.mode=true
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+linshare.documents.thumbnail.pdf.enable=true
+```
+Now go to `http://download.linshare.org/versions/` and download the following files:
+
+* linshare-thumbnail-server-{VERSION}.jar
+* linshare-thumbnail-server-{VERSION}.yml
+
+> Note <br>
+By defaults the server is configured to listens on port 80, you can change it, if necessary.
+
+Copy the configuration file `linshare-thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and copy the java archive `linshare-thumbnail-server-{VERSION}.jar` into this directory `/usr/local/sbin/linshare-thumbnail-server.jar`,  you can use the following command for that :
+
+```java
+cp linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+```
+```java
+cp linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+```
+
+* You can automate starting of thumbnail server, by creating a `systemd` service in the `/etc/systemd/system` directory, with the following name `linshare-thumbnail-server.service`.
+
+Edit the `linshare-thumbnail-server.service` file and copy the code below :
+
+```java
+[Unit]
+Description=LinShare thumbnail server
+After=network.target
+
+[Service]
+Type=idle
+KillMode=process
+ExecStart=/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
+
+[Install]
+WantedBy=multi-user.target
+Alias=linshare-thumbnail-server.service
+```
+
+Now you should enable the service, it will be automatically started after a reboot :
+
+`systemctl enable linshare-thumbnail-server.service`
+
+Use this command to start the service:
+
+`systemctl start linshare-thumbnail-server.service`
+
 <a name="tomcat">
 
 #### Servlet container
@@ -260,8 +348,8 @@ Activate the service at startup:
 
 > Note :<br/>
      * Check the Tomcat status to make sure the service is active with systemctl status tomcat
-  
-#### Tomcat 7 Configuration 
+
+#### Tomcat 7 Configuration
 
 
 To specify the location of the LinShare __configuration__ (_linshare.properties_ file) and also the default start
@@ -280,7 +368,7 @@ Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in
 
 #### Additional parameters
 
-You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat8/conf/catalina.properties, add the middle line into it: 
+You have a configuration key "tomcat.util.scan.StandardJarScanFilter.jarsToSkip" in the file /usr/share/tomcat/conf/catalina.properties, add the middle line into it:
 
 ```
 jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
@@ -328,9 +416,9 @@ It will bring Apache/2.4.6 (CentOS)
 
 </a>
 
-To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2. 
+To deploy the LinShare application, it is necessary to activate the __mod_proxy__ module on Apache 2.
 You need to create your directories in the /var/www/ directory, note that your directory name will be your application domain name.
-You need to give your user rights to access to the directories too. 
+You need to give your user rights to access to the directories too.
 
 ```
 [root@localhost ~]$ cd /var/www/
