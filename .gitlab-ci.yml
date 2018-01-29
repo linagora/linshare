@@ -1,0 +1,14 @@
+stages:
+  - build
+
+build:
+  stage: build
+  tags:
+    - docker
+  image: maven:3.3-jdk-8
+  script:
+    - mvn validate -Pdownload
+  artifacts:
+    paths:
+      - /root/.m2/
+    expire_in: 1 day
