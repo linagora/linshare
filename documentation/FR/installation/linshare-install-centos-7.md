@@ -294,13 +294,13 @@ Pour utiliser ce mode, allez à cette adresse `http://download.linshare.org/vers
 > Note <br>
 Par défaut, le serveur est configuré pour écouter sur le port 80, vous pouvez le changer, si nécessaire.
 
-Copiez le fichier `linshare-thumbnail-server-[VERSION].yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et copiez aussi l'archive java `linshare-thumbnail-server-[VERSION].jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar`, vous pouvez utilisez les commandes suivantes pour ça :
+Copiez le fichier `linshare-thumbnail-server-{VERSION}.yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et copiez aussi l'archive java `linshare-thumbnail-server-{VERSION}.jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar`, vous pouvez utilisez les commandes suivantes pour ça :
 
 ```java
-cp linshare-thumbnail-server-[VERSION].yml /etc/linshare/linshare-thumbnail-server.yml
+cp linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
 ```
 ```java
-cp linshare-thumbnail-server-[VERSION].jar /usr/local/sbin/linshare-thumbnail-server.jar
+cp linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
 * Vous pouvez automatiser le lancement du serveur thumbnail, en créant un service `systemd` sur le répertoire `/etc/systemd/system`, nommez-le comme suit `linshare-thumbnail-server.service`.
