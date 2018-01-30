@@ -8,9 +8,10 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>2.0.4</linshare-core>
-    <linshare-ui-user>2.0.4</linshare-ui-user>
-    <linshare-ui-admin>3.0.4</linshare-ui-admin>
+    <linshare-core>2.1.0-1</linshare-core>
+    <linshare-ui-user>2.1.0-1</linshare-ui-user>
+    <linshare-ui-admin>3.1.0</linshare-ui-admin>
+    <thumbnail-server>2.0.1</thumbnail-server>
   </properties>
   <dependencies>
     <dependency>
@@ -37,6 +38,26 @@
       <version>${linshare-core}</version>
       <classifier>sql</classifier>
       <type>tar.bz2</type>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>linshare-core</artifactId>
+      <version>${linshare-core}</version>
+      <classifier>documentation-ws-api-userv2</classifier>
+      <type>tar.bz2</type>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>thumbnail-server</artifactId>
+      <version>${thumbnail-server}</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>thumbnail-server</artifactId>
+      <version>${thumbnail-server}</version>
+      <classifier>config</classifier>
+      <type>yml</type>
     </dependency>
   </dependencies>
   <repositories>
@@ -97,6 +118,7 @@
       </plugin>
     </plugins>
   </build>
+  <!-- mvn validate -Pdownload -->
   <profiles>
     <profile>
       <id>download</id>
