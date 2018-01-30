@@ -1,3 +1,32 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/linagora/linshare/compare/2.0.4...2.1.0) (2018-01-31) [Download link](http://download.linshare.org/versions/2.1.0/)
+
+**The 2.1 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.1.0-1
+* **ui-admin** : 3.1.0
+* **ui-user** : 2.1.0-1
+* **thumbnail-server : 2.0.1**
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Main features
+
+* [New preview](http://download.linshare.org/screenshots/linshare-ui-user/2.1.0/)
+Upload and share big files in your own personal space.
+
+* [Improving Performance](https://youtu.be/KH4OpUB5tjI)
+A lot of work was done to improve LinShare performances for Edge, Chrome and
+Firefox.
+
+
+All screenshots are available [here](http://download.linshare.org/screenshots/linshare-ui-user/2.1.0/)
+
+
 <a name="2.0.4"></a>
 # [2.0.4](https://github.com/linagora/linshare/compare/2.0.3...2.0.4) (2017-12-07) [Download link](http://download.linshare.org/versions/2.0.4/)
 
