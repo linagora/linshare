@@ -303,11 +303,7 @@ cp linshare-thumbnail-server-[VERSION].yml /etc/linshare/linshare-thumbnail-serv
 cp linshare-thumbnail-server-[VERSION].jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
-* Vous pouvez démarrer le service manuellement en exécutant la commande suivante :
-```sh
-/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
-```
-* Ou bien, vous pouvez automatiser le lancement du serveur thumbnail, en créant un service systemd sur le répertoire `/etc/systemd/system`, nommez-le comme suit `linshare-thumbnail-server.service`.
+* Vous pouvez automatiser le lancement du serveur thumbnail, en créant un service `systemd` sur le répertoire `/etc/systemd/system`, nommez-le comme suit `linshare-thumbnail-server.service`.
 
 Éditez le fichier `linshare-thumbnail-server.service` et copiez le code ci-dessous :
 
