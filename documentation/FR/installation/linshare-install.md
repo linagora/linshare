@@ -178,9 +178,10 @@ __Important : si votre base de données est installée en langue française, rem
 Importez les fichiers SQL « createSchema.sql » et « import-postgresql.sql » :
 
 ```
-[root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/createSchema.sql | psql -h localhost -U linshare -W -d linshare
+[root@localhost ~]$ tar xjvf linshare-core-*-sql.tar.bz2
+[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/createSchema.sql
 Password for user linshare: {PASSWORD}
-[root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/import-postgresql.sql | psql -h localhost -U linshare -W -d linshare
+[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/import-postgresql.sql
 Password for user linshare: {PASSWORD}
 ```
 

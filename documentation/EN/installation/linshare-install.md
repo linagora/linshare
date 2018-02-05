@@ -184,9 +184,10 @@ __Caution : if your database is installed in french, replace all the occurrences
 Import the SQL files "createSchema.sql" and "import-postgresql.sql" :
 
 ```
-[root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/createSchema.sql | psql -U linshare -W -d linshare
+[root@localhost ~]$ tar xjvf linshare-core-*-sql.tar.bz2
+[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/createSchema.sql
 Password for user linshare: {PASSWORD}
-[root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/import-postgresql.sql | psql -U linshare -W -d linshare
+[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/import-postgresql.sql
 Password for user linshare: {PASSWORD}
 ```
 
