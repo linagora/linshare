@@ -51,7 +51,16 @@ Now you can execute your SQL script.
 
 In most cases, you may want to add your SQL queries to a migration script so that, the upgrade tasks are avalaible and ready to be lauched after the upgrade of your LinShare application.
 
+#### 4 Add your upgradeTask bean in the adminUpgradeTaskRestService bean into scriptContext-upgrade.xml :
 
-#### 4 Run your upgradeTask on ui-admin :
+Example :
+
+    <bean class="org.linagora.linshare.core.upgrade.v2_2.YOUR_NEW_UPGRADE_TASK_CLASS_IMPL.java">
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="upgradeTaskLogMongoRepository" />
+		...
+	</bean>
+
+#### 5 Run your upgradeTask on ui-admin :
 
 To run your upgrade task, go on LinShare ui-admin, on the left menu select Domains, Upgrades Tasks and run your task by click on the pencil icon.
