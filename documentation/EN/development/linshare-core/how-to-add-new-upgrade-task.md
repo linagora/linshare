@@ -49,6 +49,8 @@ Fields :
 
 Now you can execute your SQL script.
 
+In most cases, you may want to add your SQL queries to a migration script so that, the upgrade tasks are avalaible and ready to be lauched after the upgrade of your LinShare application.
+
 
 #### 4 Run your upgradeTask on ui-admin :
 
