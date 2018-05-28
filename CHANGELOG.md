@@ -1,3 +1,82 @@
+<a name="2.1.1"></a>
+# [2.1.1](https://github.com/linagora/linshare/compare/2.1.0...2.1.1) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.1/)
+
+**The 2.1.1 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.1.1
+* **ui-admin** : 3.1.1
+* **ui-user** : 2.1.1
+* **thumbnail-server** : 2.0.2
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Fixes
+
+Users:
+
+ * Bugfix master hide contactslists in autocomplete
+ * Fix copyright on reset password page.
+ * Remove useless images
+ * bugfix hide receivedshare in home
+ * fix typo on anonymous page
+
+Admin:
+
+ * Delete button hidden in Manage domains
+ * Traduction for functionalities
+
+Core:
+
+ * Throw error 403 Forbidden when deleting the default welcome message
+ * Remove useless properties in linshare.properties.sample
+ * Cancel checking role in DelegationGenericFacade
+ * JWT : Backport PEM key support for JWT
+ * find all domains with purgeStep is IN_USE
+ * Updating default path for jwt extra public key
+ * Add uuid as optionnal pathParam, to the welcomeMessages update endpoint
+ * Add logger to trace which public and private keys were loaded.
+ * Fix wrong error code for add member method in workgroups.
+ * Fix tests for guest service (quota)
+ * fix bug about upload files for the guests
+ * Mail notification : fix share url for recipients
+ * Improve JWT tests.
+ * Fix default RSA resolver.
+ * Fix SQL schema version for 2.1
+ * Remove query params in fileName when uploading file from URL
+ * Add support of Private/Public Key for JWT.
+ * SharedKey for JWT was removed.
+ * Fix issue related to autocomplete of contact list in workgroup
+ * Do not call remote thumbnail server is disabled.
+ * Add JWT filter to default security springContext
+ * Add checks on required fields for JWT token (iat, sub, exp)
+ * Allow only Internal users to generate JWT token
+ * Add Issuer for generated JWT token.
+ * Handle domain uuid in JWT token
+ * Add ldap support for JwtAuthenticationProvider
+ * Cleaning JwtAuthenticationProvider
+ * Add support of JWT authentication (wip)
+ * First step to JWT support (token generation only)
+ * rewamping BatchMonthlyTest
+ * Unprotect logout endpoints.
+ * update mail template in the migration script-2_1
+ * FIX #123 thymeleaf template html5 warning
+ * Improve download. (using StreamingOutput)
+ * Feature #117 Upload of document from URL in delegation context
+ * fix global link in multiple fileshares notification
+ * Feature #117 : Asynchronous upload from URL in Shared Space
+ * Feature #121 : Strict mode for Asynchronous upload of LinShare document in shared space
+ * FIX #122 disable warning for hibernate metaadata createLob
+
+Thumbnail:
+
+ * improve quality of large previews
+ * fix tempfiles cleaning
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/linagora/linshare/compare/2.0.4...2.1.0) (2018-01-31) [Download link](http://download.linshare.org/versions/2.1.0/)
 
