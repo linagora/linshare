@@ -47,29 +47,29 @@ For this migration, download the following files from this address: http://downl
   * __linshare-core-2.1.0.war__
 
   * __linshare-core-2.1.0-sql.tar.bz2__
-  
+
   * __linshare-ui-admin-3.1.0.tar.bz2__
-  
+
   * __linshare-ui-user-2.1.0.tar.bz2__
 
 > Note :</br>
  - Download all components  on `/root/downloads` directory</br>
- 
+
 <a name="core">
 
 ## Upgrade LinShare-core
 
 </a>
 
-At first you need to stop Apache service and tomcat service: 
- 
+First you need to stop Apache service and tomcat service:
+
 ```
 $ systemctl apache2 stop
 ```
 ```bash
 $ systemctl stop tomcat8
 ```  
-Once your service tomcat is stopped, you should can extract the content of `linshare-core-2.1.0-sql.tar.bz2` by using this command: 
+Once your service tomcat is stopped, you should extract the content of `linshare-core-2.1.0-sql.tar.bz2` by using this command:
 ```bash
 $ tar xjvf  /root/downloads/linshare-core-2.1.0-sql.tar.bz2
 ```
@@ -79,10 +79,10 @@ Migration scripts are specific for each database management system.
 You have one directory by supported database management system.
 All scripts are named according to the following pattern "Migration_X.A.0_to_X.B.0.sql".
 
-In order to upgrade LinShare from 2.0 to 2.1 you ALWAYS need to run the script : 
+In order to upgrade LinShare from 2.0 to 2.1 you ALWAYS need to run the script :
 ```bash
 $ psql -h localhost -d linshare -U linshare -f Migration_2.0.0_to_2.1.0.sql
-```	
+```
 You can view the database version through the following query `select * from version`.
 
 Once the migration file is done, you should replace the linShare.war with LinShare-core-2.1.0.war
@@ -100,7 +100,7 @@ This profile allows you to enable or disable all planned tasks like cleaning exp
 If you have overridden the default 2.0 value `-Dspring.profiles.active=default,jcloud,mongo` to enable different profiles, please be careful to update your current configuration with the new profile "batches". The default value for 2.1 is now -`Dspring.profiles.active=default,jcloud,mongo,batches`.
 
 Once you changed it you should restart the tomcat service
-Now you can start your tomcat again 
+Now you can start your tomcat again
 
 ```bash
 $ systemctl start tomcat8
@@ -160,12 +160,12 @@ use the system.
 the system will work under reduced functionality mode. Some features or data cannot be reachable.
 These tasks can be executed simultaneously without disrupting the user's activity.
 
-Once the mandatory tasks have been executed, you can switch to the next step if you want to 
+Once the mandatory tasks have been executed, you can switch to the next step if you want to
 re-establish quickly the LinShare service.
 The required tasks can take some time depending on your volumetry.
 
-Be careful: All features setup and email templates were reset by the SQL migration script. 
-Therefore, you must reconfigure your settings before launching migration tasks, 
+Be careful: All features setup and email templates were reset by the SQL migration script.
+Therefore, you must reconfigure your settings before launching migration tasks,
 such as expiration times, URL, and email address used when sending notifications.
 
 If you decided to restart the service in reduced functionality mode, you must complete the required tasks before
@@ -251,6 +251,10 @@ Now you should enable the service, it will be automatically started after a rebo
 ```bash
 $ systemctl enable linshare-thumbnail-server.service
 ```
+To __start Thumbnail__, you need first to restart the Tomcat service :
+
+`[root@localhost ~]$ systemctl restart Tomcat`
+
 Use this command to start the service:
 
 ```bash
