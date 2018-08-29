@@ -1,3 +1,51 @@
+<a name="2.1.2"></a>
+# [2.1.2](https://github.com/linagora/linshare/compare/2.1.1...2.1.2) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.2/)
+
+**The 2.1.2 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.1.2
+* **ui-user** : 2.1.2
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Fixes
+
+Users:
+
+ * Bug fixing:
+   * JS error
+   * Remove NEW_ITEM from dropdown menu, legacy design
+   * Update message on file sharing to use plurality
+   * Higlight button on hover
+   * Confusing Typo:
+   * When adding member: 'search people' to 'add people'
+   * When looking at the list of member: 'add people' to 'search people'
+   * Handle contact list name error => reset name on error
+   * Error message on adding existing member in a workgroup
+
+* Features:
+   * Browse component: Add message when no workgroup exists
+   * Organize dropdown accross the application to be coherent between themselves and also wih the side menu
+   * Display version on two distinctives lines
+   * Hide preview button on deactivation of engine
+   * Click on thumbnail to open preview
+   * Show confirm popup on workgroup member deletion
+   * Icon Initial: when member has no information, use email address to fill
+   * Replace info and delete icon
+   * Duplication of contact list
+
+Core:
+
+ * Amazon AWS-S3 support added.
+ * Fix language on **mailContext
+ * Thumbnail generator is now disabled by default
+ * BugFix NPE when searching users from deleted domains
+
+
 <a name="2.1.1"></a>
 # [2.1.1](https://github.com/linagora/linshare/compare/2.1.0...2.1.1) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.1/)
 
