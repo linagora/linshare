@@ -31,6 +31,12 @@
       <artifactId>linshare-core</artifactId>
       <version>${linshare-core}</version>
       <type>war</type>
+      <exclusions>
+        <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
@@ -38,6 +44,12 @@
       <version>${linshare-core}</version>
       <classifier>sql</classifier>
       <type>tar.bz2</type>
+      <exclusions>
+        <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
@@ -45,6 +57,12 @@
       <version>${linshare-core}</version>
       <classifier>documentation-ws-api-userv2</classifier>
       <type>tar.bz2</type>
+      <exclusions>
+        <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
