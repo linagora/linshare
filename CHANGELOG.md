@@ -1,3 +1,39 @@
+<a name="2.1.3"></a>
+# [2.1.3](https://github.com/linagora/linshare/compare/2.1.2...2.1.3) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.3/)
+
+**The 2.1.3 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.1.3
+* **ui-user** : 2.1.3
+* **ui-admin** : 3.1.3
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Fixes
+
+Users:
+
+ * Bug fixing:
+   * JS error
+
+* Features:
+   * Browse component: Add message when no workgroup exists
+   * Organize dropdown accross the application to be coherent between themselves and also wih the side menu
+   * Duplication of contact list
+
+Core:
+
+ * Fix access to upgrade tasks when simple admin (HTTP 403)
+
+Admin:
+
+ * Fix warning displayed for new upgrade tasks.
+
+
 <a name="2.1.2"></a>
 # [2.1.2](https://github.com/linagora/linshare/compare/2.1.1...2.1.2) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.2/)
 
