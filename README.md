@@ -40,6 +40,10 @@ You can clone the whole project using the following commands :
 
 * git clone https://github.com/linagora/linshare.git
 
+NB: You can download all components using Maven:
+
+$ mvn dependency:copy-dependencies -DoutputDirectory='linshare'
+
 ### LinShare server components:
 
 * git clone https://github.com/linagora/linshare-core.git
