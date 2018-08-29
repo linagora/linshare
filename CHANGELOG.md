@@ -19,11 +19,16 @@ Users:
 
  * Bug fixing:
    * JS error
+   * Change language by route /language/<lang-code>
+   * Menu scroll on small device
+   * Access to External: anonymous & change password
 
 * Features:
-   * Browse component: Add message when no workgroup exists
-   * Organize dropdown accross the application to be coherent between themselves and also wih the side menu
-   * Duplication of contact list
+   * External link in menu: configurable via config.js
+   * Debug mode switcher: allow a user to activate the mode debug in realtime!
+
+* Other:
+   * Moved config.js to a proper folder config
 
 Core:
 
