@@ -25,6 +25,19 @@ If you want to unlink colors to the primary color, you need to define new entrie
 
 You can add after the `@import` instruction, any css overrides
 
+## Logo override
+You can set your compagny logo in the application. Edit the file `app/config/config.js` and change the following values :
+```javascript=
+// The application logo (small 155x29 and big 500x192)
+applicationLogo : {
+  small : 'images/common/linshare-logo-white.png',
+  large : 'images/ls-logo-big.png'
+},
+
+// The background image of the login screen
+loginBackground : 'images/bg-linshare-desktop.png',
+```
+
 ## Debuging
 Debuging the theme is possible in live using docker-images
 ```
