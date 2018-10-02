@@ -576,6 +576,7 @@ Then restart the Apache 2 service :
 
 > Note:<br/>
    You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
+   For extra configuration, see example in the following repository: [configuration](../configuration/)
 
 <a name="firstAccess">
 
