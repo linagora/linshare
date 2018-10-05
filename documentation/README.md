@@ -1,5 +1,11 @@
 # LinShare documentation
 
+## Overview
+
+* [Linshare English documentation](EN/README.md)
+
+* [LinShare French documentation](FR/README.md)
+
 ## Description
 
 The most up-to-date documentation about LinShare installation and configuration
