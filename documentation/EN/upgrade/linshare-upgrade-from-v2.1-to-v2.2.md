@@ -63,7 +63,7 @@ For this migration, download the following files from this address: http://downl
 
 </a>
 
-To avoid any side effect of these critical operations, it is better to store a backup of your database postgres and mongo.
+To avoid any side effect of these critical operations, it is better to store a backup of your databases PostgreSQL and MongoDB.
 
 To do that please execute these commands :
 
@@ -81,7 +81,7 @@ To do that please execute these commands :
 
 </a>
 
-First you need to stop Apache service and tomcat service:
+First you need to stop Apache service and Tomcat service:
 
 ```
 $ systemctl apache2 stop
@@ -89,7 +89,7 @@ $ systemctl apache2 stop
 ```bash
 $ systemctl stop tomcat8
 ```  
-Once your service tomcat is stopped, you should extract the content of `linshare-core-2.2.0-sql.tar.bz2` by using this command:
+Once your service Tomcat is stopped, you should extract the content of `linshare-core-2.2.0-sql.tar.bz2` by using this command:
 ```bash
 $ tar xjvf  /root/downloads/linshare-core-2.2.0-sql.tar.bz2
 ```
@@ -112,7 +112,7 @@ $ rm /var/lib/tomcat8/webapps/linShare.war
 $ rm -fr /var/lib/tomcat8/webapps/linshare
 $ cp  /root/downloads/linshare-core-2.2.0.war /var/lib/tomcat8/webapps/linshare.war
 ```
-Now you can start your tomcat again
+Now you can start your Tomcat again
 
 ```bash
 $ systemctl start tomcat8
