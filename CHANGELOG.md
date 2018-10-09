@@ -1,3 +1,82 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/linagora/linshare/compare/2.1.3...2.2.0) (2018-10-05) [Download link](http://download.linshare.org/versions/2.2.0/)
+
+**The 2.2.0 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.1.3...2.2.0-1)
+* **ui-admin** : 3.2.0 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.1.3...v3.2.0)
+* **ui-user** : 2.2.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.1.3...v2.2.0-1)
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Main features
+
+  * [JWT login support](documentation/EN/configuration/how-to-use-jwt.md) [DOC] : You can now configure a login setup to use JWT as an  authentication method.
+
+  * [LDAP synchronization](documentation/EN/configuration/configure_ldap_synchronization.md) [DOC] : You can create member groups in your LDAP directory and simply synchronize them with LinShare workgroups.
+    - ![Configure domain workgroup provider[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/B03.Workgroups.Admin.Domain.Provider.png)
+
+  * [LinShare theming](documentation/EN/configuration/setting_the_theme_for_linshare.md) [DOC] : It is now possible to change your LinShare theme as you may see on screenshots below.
+    - ![Default LinShare theme[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/A01.Theme.Home.Default.png)
+    - ![Darkgreen color applied to LinShare theme[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/A02.Theme.Home.Green.png)
+    - ![Darkgreen theme user interface[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/A03.Theme.User.Green.png)
+
+  * [New workgroup role access management](documentation/EN/user/linshare-user.md#4-shared-spaces) [DOC] : We add a new _CONTRIBUTOR_ role and update rights of the _WRITER_ role.
+    - ![Workgroup roles list in user interface[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/B01.Workgroups.User.Roles.png)
+    - ![List workgroup roles in admin interface[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/B02.Workgroups.Admin.Roles.png)
+
+  * Deprecated 
+    * Thread APIs : The Thread and ThreadMembers API are deprecated and will be removed in a future release. Please use SharedSpaceNode and SharedSpaceMember APIs.<br/>
+See documentation [linshare-core-documentation-ws-api-userv2.tar.bz2](http://download.linshare.org/components/linshare-core/2.2.0-1/)
+
+All screenshots are available [here](http://download.linshare.org/screenshots/2.2.0/)
+
+### Minor features and fixes
+
+* User:
+  * Added COPY label on mobile
+  * Changed User interface documentation
+  * Fixed contact lists creation from workgroup members
+  * Fixed gui bugs when "Personal Space" functionality is disabled
+  * Fixed Html display in autocomplete tooltip
+  * Fixed logout button not loggint out
+
+* Admin:
+  * Fixed redirection on empty parameter in domain update
+
+* Core:
+  * Changed MongoDB and Spring data queries display in info log traces
+  * Fixed expiry date label display in emails when this functionality is disabled
+  * Upgraded to Apache Commons Collections 3.2.2
+  * Upgraded to Apache CXF 3.2.4
+  * Upgraded to Apache pdfbox 1.8.14
+  * Upgraded to Aspectj 1.9.1
+  * Upgraded to H2 1.4.196
+  * Upgraded to Hibernate 5.0.12
+  * Upgraded to Jackrabbit 2.17.3
+  * Upgraded to Javax WS RS 2.1
+  * Upgraded to JavaMail 1.4.7
+  * Upgraded to Jclouds 2.1.0
+  * Upgraded to Jjwt 0.9.0
+  * Upgraded to JMXTerm 1.0.0
+  * Upgraded to LinShare Thumbnail Engine 2.0.2
+  * Upgraded to Mozilla Rhino 1.7.10
+  * Upgraded to MySQL driver 8.0.11
+  * Upgraded to OpenCMIS 1.1.0 
+  * Upgraded to PostgreSQL Driver 42.2.2
+  * Upgraded to quartz-scheduler 2.3.0
+  * Upgraded to Slf4j 1.7.25
+  * Upgraded to Spring 5.0.7
+  * Upgraded to Spring-data Gosling-SR6
+  * Upgraded to Spring-security 5.0.6
+  * Upgraded to Spring LDAP Core 2.3.2
+  * Upgraded to Swagger JAXRS 1.3.13
+  * Upgraded to Thymeleaf 3.0.9
+
+
 <a name="2.1.3"></a>
 # [2.1.3](https://github.com/linagora/linshare/compare/2.1.2...2.1.3) (2018-05-28) [Download link](http://download.linshare.org/versions/2.1.3/)
 
