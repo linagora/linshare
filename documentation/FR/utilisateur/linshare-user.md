@@ -1,63 +1,40 @@
 # Manuel d'utilisation de LinShare
 
+> Note : Ce manuel est valable pour les versions 2.x de LinShare
+
 ## Sommaire
+* [1. Accueil](#1-accueil)
+* [2. Espace personnel](#2-espace-personnel)
+  * [Mes fichiers](#mes-fichiers)
+  * [Mes partages reçus](#mes-partages-reçus)
+  * [Historique](#historique)
+* [3. Dépôts en cours](#3-dépôts-en-cours)
+* [4. Espace commun](#4-espace-commun)
+* [5. Listes de contacts](#5-listes-de-contacts)
+* [6. Comptes invités](#6-comptes-invités)
+* [7. Historiques des activités](#7-historique-d-activité)
 
-### UTILISATION DE LINSHARE
+## Langue
 
-#### 1. [Présentation des différents menus](#presentation)
+Lorsque vous vous connectez sur l'interface utilisateur de LinShare, une page de connexion s'affiche, c'est à ce moment qu'il vous faut choisir la langue de l'application, en cliquant sur le drapeau en haut à droite de l'écran. Notez qu'il ne vous sera pas possible de la modifier une fois connecté.
 
-    * [Accueil](#home)
-    * [Espace personnel](#my-space)
-        * [Mes fichiers](#my-files)
-        * [Mes partages reçus](#received-shares)
-    * [Dépôts en cours](#current-uploads)
-    * [Espace commun](#shared-space)
-    * [Administration](#administration)
-        * [Listes de contacts](#contact-lists)
-        * [Comptes invités](#guests)
-    * [Historiques des activités](#activity-logs)
+## 1. Accueil
 
-### UTILISATION DE LINSHARE
-
-> Note :<br/>
-Ce guide d'utilisation est pour les versions 2.x de LinShare.
-
-<a name="presentation">
-
-#### Présentation des différents menus
-
-</a>
-
-Lorsque vous vous connectez sur l'interface utilisateur de LinShare, une page de connexion s'affiche, c'est à ce moment qu'il vous faut choisir la langue de l'application, en cliquant sur le drapeau en haut à droite de l'écran.
 Une fois connecté, vous arrivez sur la page d'accueil de votre compte.
 
-<a name="home">
+Cette page d'accueil est une page de bienvenue, avec trois liens en fonction du paramétrage de votre application LinShare :
 
-##### Accueil
+- *STOCKER VOS FICHIERS* : qui redirige vers votre [espace personnel](#2-espace-personnel).
+- *DÉPOSER & PARTAGER* : qui redirige vers les [dépôts en cours](#3-dépôts-en-cours).
+- *GROUPE DE TRAVAIL* qui redirige vers l'[espace commun](#4-espace-commun).
 
-</a>
-
-Cette page d'accueil est une page de bienvenue, avec trois liens :
-
-- *STOCKEZ VOS FICHIERS* : qui redirige vers votre [espace personnel](#my-space).
-- *DÉPOSER & PARTAGER* : qui redirige vers les [dépôts en cours](#current-uploads).
-- *GROUPES DE TRAVAIL* qui redirige vers l'[espace commun](#shared-space).
-
-<a name="my-space">
-
-##### Espace Personnel
-
-</a>
+## 2. Espace Personnel
 
 L'espace personnel est divisé en deux parties : vos fichiers et les fichiers que l'on a partagé avec vous.
 
-<a name=my-files>
+### Mes fichiers
 
-###### Mes fichiers
-
-</a>
-
-Dans votre page **Mes fichiers**, sont listés tous les fichiers que vous avez déposé sur votre Espace Personnel. Chaque fichier en cours de partage (dont la date d'expiration de partage n'a pas été atteinte) est suffixé par le label "*partagé*".
+Sur la page **Mes fichiers**, sont listés tous les fichiers que vous avez déposés sur votre Espace Personnel. Chaque fichier en cours de partage (dont la date d'expiration de partage n'a pas été atteinte) est suffixé par le label "*Partagé*".
 Afin de déposer un nouveau fichier, vous avez deux choix :
 
 - Cliquer sur le bouton **+** en haut à gauche de l'écran.
@@ -66,28 +43,24 @@ Afin de déposer un nouveau fichier, vous avez deux choix :
 Lorsque vous survolez un fichier déposé, 3 logos grisés apparaissent sur le côté droit. De gauche à droite, ces logos correspondent à :
 
 - Afficher les informations sur le fichier.
-- Partager le fichier avec d'autres utilisateurs (internes ou externes, voir <a name="share">Partage</a>).
+- Partager le fichier avec d'autres utilisateurs (internes ou externes).
 - Télécharger le fichier.
 
-<a name="received-shares">
-
-###### Mes partages reçus
-
-</a>
+### Mes partages reçus
 
 Dans cette section, vous retrouverez tous les fichiers qui ont été partagés avec vous.
 
 Vous retrouverez la plupart des fonctionnalités de la section **Mes fichiers**.
 
-<a name="current-uploads">
+### Historique
 
-##### Dépôts en cours
+Dans toutes les sections affichant des fichiers, un historique d'activités est disponible sur le coté droit de l'écran(en cliquant sur l'icône ![User logo](../../img/adduser.png)). Cet historique réunit toutes les actions effectuées sur les fichiers.
 
-</a>
+## 3. Dépôts en cours
 
-Dans cette section, vous retrouverez tous les transferts en cours de votre Espace Personnel et Espace Commun (voir [Espace commun](#shared-space)).
+Dans cette section, vous retrouverez tous les transferts en cours de votre [Espace Personnel](#2-espace-personnel) et [Espace commun](#4-espace-commun).
 
-Afin de visualiser les documents en cours de transfert vers l'espace personnel, vous devez cliquer sur l'onglet "Esapce personnel" en haut à droite, et sur "Espace commun" pour l'espace commun.
+Afin de visualiser les documents en cours de transfert vers l'espace personnel, vous devez cliquer sur l'onglet "Espace personnel" en haut à droite, ou sur "Espace commun" pour l'espace commun.
 
 Il est possible de gérer les dépôts depuis cette section, les différentes actions sont situées en haut à droite, à côté des onglets "Espace personnel" et "Espace commun". Ces dernières sont les suivantes :
 
@@ -96,66 +69,68 @@ Il est possible de gérer les dépôts depuis cette section, les différentes ac
 - Annuler l'upload.
 - Nettoyer l'historique de l'upload terminé.
 
-<a name="shared-spaces">
+## 4. Espace commun
 
-##### Espaces partagés
-
-</a>
-
-> La section **Espaces partagés** réunit les groupes de travail. Ces groupes de travail sont des zones de partage avec des utilisateurs internes ou invités (voir [Comptes invités](#guests)), disposant d'un compte LinShare.
+> La section **Espaces commun** réunit les groupes de travail. Ces groupes de travail sont des zones de partage avec des utilisateurs internes ou invités (voir [Comptes invités](#guests)), disposant d'un compte LinShare.
 Chaque utilisateur du groupe de travail voit l'ensemble des fichiers présents.
 
-_**Membres**_
+  - _**Roles**_
+    
+    La version 2.2 de LinShare introduit un nouveau système de gestion de roles dans les groupes de travail.
 
-Une fois un groupe de travail créé (bouton **+** en haut à gauche), il est nécessaire d'ajouter soi-même les membres du groupe.
-Pour celà, plusieurs options sont possibles :
+    - **Avant LinShare 2.2.x...**
 
-- Entrer dans le groupe (en cliquant dessus) puis cliquer sur le bouton **+** en haut à gauche puis "Membre".
-- Survoler le groupe avec la souris puis cliquer sur le logo ![User logo](../../img/adduser.png).
 
-Une barre latérale apparaîtra sur la droite, à partir de là vous pourrez ajouter des membres, en précisant leurs droits d'utilisation : lecture, écriture ou administration (ayant le droit d'ajouter et de supprimer des membres).
+        | Role    | Ouvrir/Télécharger un fichier  | Importer, Renommer fichiers/dossiers | Supprimer fichiers/dossiers          | Voir les membres et leur role      | Mettre à jour le role d'un membre | Supprimer un membre d'un groupe| Mettre à jour/Supprimer un groupe |
+        | :-------: |:--------------------------------------| :--------------------------|:-----------------------------| :--------------------------|:------------------| :---------------------| :---------------------|
+        | Lecture  | <ul><li> - [x] </li></ul>              | `X`                         |           `X`                 |  <ul><li> - [x] </li></ul>  |      `X`           |        `X`             | `X` |
+        | Ecriture  | <ul><li> - [x] </li></ul>              | <ul><li> - [x] </li></ul>   |           `X`                 |  <ul><li> - [x] </li></ul>  |      `X`           |        `X`             |`X`  |
+        | Admin   | <ul><li> - [x] </li></ul>              | <ul><li> - [x] </li></ul>   |   <ul><li> - [x] </li></ul>   |  <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  |
 
-_**Activité**_
 
-Dans l'onglet "Activités" de cette barre latérale, on peut voir l'ensemble des actions effectuées dans le groupe de travail (ajout de fichier, partage, suppression de fichier, création de dossier, déplacement de fichier, etc).
+    - **Ce qui change à partir de LinShare 2.2.x ?**
 
-_**Dossiers**_
+        Workgroups are managed with 4 different roles:
+      
+        | Role    | Ouvrir/Télécharger un fichier  | Importer, Renommer fichiers/dossiers | Supprimer fichiers/dossiers          | Voir les membres et leur role      | Mettre à jour le role d'un membre | Supprimer un membre d'un groupe| Mettre à jour/Supprimer un groupe |
+        | :-------:    |:--------------------------------------| :--------------------------|:-----------------------------| :--------------------------|:------------------| :---------------------| :---------------------|
+        | Lecture       | <ul><li> - [x] </li></ul>              | `X`                         |           `X`                 |  <ul><li> - [x] </li></ul>  |      `X`           |        `X`             | `X` |
+        | Contribution  | <ul><li> - [x] </li></ul>              | <ul><li> - [x] </li></ul>   |           `X`                 |  <ul><li> - [x] </li></ul>  |      `X`           |        `X`             | `X` |
+        | Ecriture       | <ul><li> - [x] </li></ul>              | <ul><li> - [x] </li></ul>   | <ul><li> - [x] **Nouveau** </li></ul>   |  <ul><li> - [x] </li></ul>  |      `X`           |        `X`             | `X` |
+        | Admin        | <ul><li> - [x] </li></ul>              | <ul><li> - [x] </li></ul>   |   <ul><li> - [x] </li></ul>   |  <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  | <ul><li> - [x] </li></ul>  |
 
-Dans les groupes de travail il est possible de créer une arborescence de dossiers pouvant contenir d'autres dossiers et/ou fichiers.
 
-Pour ajouter un dossier, il faut cliquer sur le bouton **+** en haut à gauche puis "Dossier".
+  - _**Membres**_
 
-<a name=administration>
+    Une fois un groupe de travail créé (bouton **+** en haut à gauche), il est nécessaire d'ajouter soi-même les membres du groupe.
+    Pour celà, plusieurs options sont possibles :
 
-##### Administration
+      - Entrer dans le groupe (en cliquant dessus) puis cliquer sur le bouton **+** en haut à gauche puis "Membre".
+      - Survoler le groupe avec la souris puis cliquer sur le logo ![User logo](../../img/adduser.png).
 
-</a>
+    Une barre latérale apparaîtra sur la droite, à partir de là vous pourrez ajouter des membres, en précisant leurs droits d'utilisation : lecture, écriture ou administration (ayant le droit d'ajouter et de supprimer des membres).
 
-Dans cette section, vous pouvez soit créer des listes de contacts, soit gérer des invités.
+  - _**Historique**_
 
-<a name="contact-lists">
+    Dans l'onglet "Activités" de cette barre latérale, on peut voir l'ensemble des actions effectuées dans le groupe de travail (ajout de fichier, partage, suppression de fichier, création de dossier, déplacement de fichier, etc).
 
-##### Listes de contacts
+  - _**Dossiers**_
 
-</a>
+    Dans les groupes de travail il est possible de créer une arborescence de dossiers pouvant contenir d'autres dossiers et/ou fichiers.
+
+    Pour ajouter un dossier, il faut cliquer sur le bouton **+** en haut à gauche puis "Dossier".
+
+## 5. Listes de contacts
 
 Pour ajouter une liste de contacts, cliquez sur le bouton **+** en haut à gauche de l'écran.
 Cette liste peut être privée ou publique (visible ou pas par les autres utilisateurs du même domaine).
 Pour gérer cette liste de contacts, vous pouvez utiliser les boutons qui apparaissent au survol de la liste.
 
-<a name="guests">
-
-##### Comptes invités
-
-</a>
-
+## 6. Comptes invités
 
 Les comptes invités sont les comptes des utilisateurs externes que vous pourrez, une fois ajoutés, ajouter à une liste de contacts, à un groupe de travail, ou encore permettre de partager des fichiers.
 
-<a name="activity-logs">
+## 7. Historique d' activité
 
-##### Historiques des activités
+Ici vous trouverez l'historique de l'activité de votre compte LinShare. Vous pouvez surveiller les connexions sur LinShare, ou toute autre activité concernant vos partages, vos importations, vos groupes de travail ou encore vos invités.
 
-Dans toutes les sections contenant des fichiers ([Mes fichiers](#my-files), [Mes partages reçus](#received-shares) et [Espace commun](#shared-spaces)), l'historique des activités est disponible dans le panneau latéral de droite (en cliquant sur le logo ![User logo](../../img/adduser.png)).
-
-Cet historique présente toutes les actions effectuées sur les fichiers.
