@@ -12,4 +12,4 @@ This page allows you to easily browse LinShare documentation.
 
 * [Configuration  guides](configuration/README.md)
 
-* [Development guide](development/README.)
+* [Development guide](development/README.md)
