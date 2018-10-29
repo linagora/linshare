@@ -42,9 +42,18 @@ Admin of Linshare can store new public key with unique __ISSUER__.
 
 This is allows an other application to be authenticated to LinShare by using its own JWT.
 
-Refer to LinShare Web service API documentation to use it.
+You can use this cURL to store your public_key on LinShare :
 
-See `linshare-core-2.2.0-documentation-ws-api-userv2.tar.bz2` document here  http://download.linshare.org/components/linshare-core/2.2.0-1/
+```
+curl -H 'Accept: application/json' -H 'Content-Type: application/json'  http://0.0.0.0:30000/linshare/webservice/rest/admin/public_keys -u "root@localhost.localdomain:adminlinshare"  -d '{
+    "domainUuid" : "LinShareRootDomain",
+    "issuer" : "openpaas",
+    "publicKey" : "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5NqIm6/34kSSifBgRdKG\nYGZCYa3yA+/WYcuKoSJEeR33dT/T8W+uNxLa5WC1V2HUJpGpI7k3vXZEv8Ge2luo\nSKzGjpbP9tJsiSMmpe8EkE0ckH17uBltIU8E6rmdJv1BEZwjYitKahXDNc2Hvz52\nlIcFB/Bs4egy0hw/Zr1dXLca5/jY2MQTExnjTI4iuKmQaNRIYo2sQ/41JuyGD/So\ncxZ7kjIQPwgtju4N0h9NovnpzbUkcoKiFFVVv7HVn3tVSgOPBlMfrTFexvT90W/r\nAtqZlVfMm1DLehpJ3+jkhqscppMEl9R4+d24O6v+xlDUid54HXYss78uWi4wElVu\njwIDAQAB\n-----END PUBLIC KEY-----",
+    "format" : "PEM"
+}'
+```
+> important : <br>
+The PEM key format, contain some line breaks, so you need to add `\n` on the end of each line, to make this key authentic.
 
 #### 4) Generate a permanent token
 
@@ -67,15 +76,19 @@ See `linshare-core-2.2.0-documentation-ws-api-userv2.tar.bz2` document here  htt
 You can use the following cURL to generate and show a permanent token with user role :
 
 * Create a new permanent token :
+```
       curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://****/linshare/webservice/rest/user/v2/jwt -u "`email`:`password`"  -d '{"label" : "LinShare permanent token" }'
+```
 
 * Show my own permanent token :
+```
       curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://****/linshare/webservice/rest/user/v2/jwt/ -u "`email`:`password`"
-
+```
 And this is cURL for administrator to generate a token for another user :
 
 * Create a permanent token for a user :
-      curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://****/linshare/webservice/rest/admin/jwt?actorUuid=`actorUuid` -u "`admins email`:`admin password`"
+```
+     curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://****/linshare/webservice/rest/admin/jwt?actorUuid=`actorUuid` -u "`admins email`:`admin password`"
       -d '{
         "domainUuid": "`domainUuid`",
         "actorUuid": "`actorUuid`",
@@ -84,5 +97,8 @@ And this is cURL for administrator to generate a token for another user :
         "description": "description",
         "subject": "actor email"
       }'
+```
 * Show all permanent token on my domain :
-      curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://0.0.0.0:30001/linshare/webservice/rest/admin/jwt?domainUuid=`domainuuid`-u "`admins email`:`admin password`"
+```
+      curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://0.0.0.0:30001/linshare/webservice/rest/admin/jwt?domainUuid=`domainuuid`-u "`admins email`:`admin password`".
+```
