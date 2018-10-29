@@ -18,8 +18,7 @@ A Live demo of LinShare is available at https://demo.linshare.org/.
 This demo reflects the latest developments done on LinShare, it will be
 reseted and updated on regulary basis.
 
-This instance of LinShare is set up with some test users, from user1 to user7.
-For user1@linshare.org, password is password1, and so on for other users:
+This instance of LinShare is set up with some test users, from user1 to user7 :
  * user1@linshare.org : password1
  * user2@linshare.org : password2
  * user3@linshare.org : password3
@@ -28,14 +27,19 @@ For user1@linshare.org, password is password1, and so on for other users:
  * user6@linshare.org : password6
  * user7@linshare.org : password7
 
+If you want to share with some external users, use these two email addresses *external1@linshare.org* and *external2@linshare.org*.
+External users are just an email address without an account. You can also use these two emails to create guests.
+
+NB: You won't able to send or receive emails if your email address is not @linshare.org.
+
 In order to see emails sent by LinShare, we also put at your disposal a webmail
-available at https://demo-webmail.linshare.org. The underlying mail server won't
-accept email if the recipient is different than the test users (@linshare.org).
+available at *https://demo-webmail.linshare.org*.
 
-If you want to share with some fake external users, use these following email addresses :
-
-* external1@linshare.org : password1
-* external2@linshare.org : password2
+Webmail passwords :
+ * user1@linshare.org : password1
+ * ...
+ * external1@linshare.org : password1
+ * external2@linshare.org : password2
 
 
 ## All repositories
