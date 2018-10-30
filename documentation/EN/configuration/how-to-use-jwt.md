@@ -45,9 +45,9 @@ This is allows an other application to be authenticated to LinShare by using its
 You can use this cURL to store your public_key on LinShare :
 
 ```
-curl -H 'Accept: application/json' -H 'Content-Type: application/json'  http://0.0.0.0:30000/linshare/webservice/rest/admin/public_keys -u "root@localhost.localdomain:adminlinshare"  -d '{
+curl -H 'Accept: application/json' -H 'Content-Type: application/json'  http://*****/linshare/webservice/rest/admin/public_keys -u "admin email: admin password"  -d '{
     "domainUuid" : "LinShareRootDomain",
-    "issuer" : "openpaas",
+    "issuer" : "issuer",
     "publicKey" : "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5NqIm6/34kSSifBgRdKG\nYGZCYa3yA+/WYcuKoSJEeR33dT/T8W+uNxLa5WC1V2HUJpGpI7k3vXZEv8Ge2luo\nSKzGjpbP9tJsiSMmpe8EkE0ckH17uBltIU8E6rmdJv1BEZwjYitKahXDNc2Hvz52\nlIcFB/Bs4egy0hw/Zr1dXLca5/jY2MQTExnjTI4iuKmQaNRIYo2sQ/41JuyGD/So\ncxZ7kjIQPwgtju4N0h9NovnpzbUkcoKiFFVVv7HVn3tVSgOPBlMfrTFexvT90W/r\nAtqZlVfMm1DLehpJ3+jkhqscppMEl9R4+d24O6v+xlDUid54HXYss78uWi4wElVu\njwIDAQAB\n-----END PUBLIC KEY-----",
     "format" : "PEM"
 }'
@@ -100,5 +100,5 @@ And this is cURL for administrator to generate a token for another user :
 ```
 * Show all permanent token on my domain :
 ```
-      curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://0.0.0.0:30001/linshare/webservice/rest/admin/jwt?domainUuid=`domainuuid`-u "`admins email`:`admin password`".
+      curl -H 'Accept: application/json' -H 'Content-Type: application/json' http://*****/linshare/webservice/rest/admin/jwt?domainUuid=`domainuuid`-u "`admins email`:`admin password`".
 ```
