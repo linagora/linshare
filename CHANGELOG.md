@@ -1,3 +1,16 @@
+<a name="1.12.7"></a>
+# [1.12.7](https://github.com/linagora/linshare/compare/1.12.6...1.12.7) (2018-10-31) [Download link](http://download.linshare.org/components/linshare-core/1.12.10/)
+
+## Upgraded components
+
+* **core** : 1.12.10 [changelog](https://github.com/linagora/linshare-core/compare/1.12.8...1.12.10)
+* **linshare-plugin-thunderbird** : 1.8.0
+
+### Bug Fixes
+
+* **core** Avoid successfull authentication when LDAP password policies locks an account
+* **thunderbird** Add support of thunderbird 60.
+
 <a name="1.12.6"></a>
 # [1.12.6](https://github.com/linagora/linshare/compare/1.12.5...1.12.6) (2017-07-18) [Download link](http://download.linshare.org/versions/1.12.6/)
 
