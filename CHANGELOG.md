@@ -1,4 +1,41 @@
-<a name="2.2.0"></a>
+<a name="2.2.1"></a>
+# [2.2.1](https://github.com/linagora/linshare/compare/2.2.0...2.2.1) (2018-10-31) [Download link](http://download.linshare.org/versions/2.2.1/)
+
+**The 2.2.1 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.1 [changelog](https://github.com/linagora/linshare-core/compare/2.2.0...2.2.1)
+* **ui-admin** : 3.2.0
+* **ui-user** : 2.2.1
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Fixes
+* Core
+  * Fix extra field in ldap_pattern inserts.
+  * Fix NPE when no readers during LDAP synchro. [#17](https://github.com/linagora/linshare-core/issues/17)
+  * Fix NPE accessing ShareEntryGroup
+  * Fix anonymous sharing. [#16](https://github.com/linagora/linshare-core/issues/16)
+  * Fix anonymous URL authentication. [#16](https://github.com/linagora/linshare-core/issues/16)
+  * Fix Context initialization failing because of ehcache.
+  * Update thumbnail engine to 2.0.3
+  * Fix NPE on StatisticWeeklyThreadBatch.
+  * Replace posixgroup by groupOfNames.
+  * Fix primary key confilct on LDAP pattern.
+
+
+* Thumbnail-Engine
+  * Update pdfbox version to 2.0.12.
+
+
+* Linshare-plugin-thunderbird
+  * Add support of thunderbird 60.
+
+<a name="2.2.1"></a>
 # [2.2.0](https://github.com/linagora/linshare/compare/2.1.3...2.2.0) (2018-10-05) [Download link](http://download.linshare.org/versions/2.2.0/)
 
 **The 2.2.0 release of LinShare is out**
@@ -28,7 +65,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
     - ![Workgroup roles list in user interface[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/B01.Workgroups.User.Roles.png)
     - ![List workgroup roles in admin interface[SCREENSHOT]](http://download.linshare.org/screenshots/2.2.0/B02.Workgroups.Admin.Roles.png)
 
-  * Deprecated 
+  * Deprecated
     * Thread APIs : The Thread and ThreadMembers API are deprecated and will be removed in a future release. Please use SharedSpaceNode and SharedSpaceMember APIs.<br/>
 See documentation [linshare-core-documentation-ws-api-userv2.tar.bz2](http://download.linshare.org/components/linshare-core/2.2.0-1/)
 
@@ -65,7 +102,7 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
   * Upgraded to LinShare Thumbnail Engine 2.0.2
   * Upgraded to Mozilla Rhino 1.7.10
   * Upgraded to MySQL driver 8.0.11
-  * Upgraded to OpenCMIS 1.1.0 
+  * Upgraded to OpenCMIS 1.1.0
   * Upgraded to PostgreSQL Driver 42.2.2
   * Upgraded to quartz-scheduler 2.3.0
   * Upgraded to Slf4j 1.7.25
