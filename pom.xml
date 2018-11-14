@@ -104,7 +104,7 @@
   </distributionManagement>
   <scm>
     <connection>scm:git:git://github.com/linagora/linshare.git</connection>
-    <developerConnection>scm:git:ssh://git@ci-gsafe.linagora.com:8000/linshare/linshare-github.git</developerConnection>
+    <developerConnection>scm:git:ssh://git@ci.linagora.com:7999/linagora/lgs/linshare/products/linshare-github.git</developerConnection>
     <tag>HEAD</tag>
     <url>http://github.com/linagora/linshare/tree/master/</url>
   </scm>
