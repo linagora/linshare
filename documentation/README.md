@@ -6,6 +6,8 @@
 
 * [LinShare French documentation](FR/README.md)
 
+* [LinShare Russian docuementation](RU/README.md)
+
 ## Description
 
 The most up-to-date documentation about LinShare installation and configuration
