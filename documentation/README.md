@@ -6,7 +6,7 @@
 
 * [LinShare French documentation](FR/README.md)
 
-* [LinShare Russian docuementation](RU/README.md)
+* [LinShare Russian documentation](RU/README.md)
 
 ## Description
 
