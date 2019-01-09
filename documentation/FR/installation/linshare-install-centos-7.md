@@ -326,7 +326,7 @@ Exécutez la commande suivante pour démarrer le service :
 ## Installation de Tomcat 7
 </a>
 
-LinShare étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
+LinShare étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 

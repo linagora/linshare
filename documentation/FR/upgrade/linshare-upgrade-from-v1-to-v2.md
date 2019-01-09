@@ -269,7 +269,7 @@ Enfin, vous devez modifier les options de démarrage du Tomcat pour LinShare,
 éditer le fichier suivant `/etc/default/tomcat8`
 
 Remplacez la valeur par défaut `-Dspring.profiles.active=default,jcloud,mongo`
-par `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo` et démarrez Tomcat:
+par `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo,batches` et démarrez Tomcat:
 
 ```
 $ systemctl start tomcat8
@@ -441,7 +441,7 @@ $ systemctl reload apache2
 * Désactivation de l'ancien espace de stockage :
 
 Vous devez éditer le fichier suivant `/etc/default/tomcat8` et restaurer votre valeur initiale :
-`-Dspring.profiles.active=default,jcloud,mongo`
+`-Dspring.profiles.active=default,jcloud,mongo,batches`
 
 * Démarrage du service Tomcat
 
