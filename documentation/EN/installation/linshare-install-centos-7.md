@@ -241,7 +241,7 @@ Next, activate at startup and start the MongoDB service with the chkconfig and s
 
 </a>
 
-LinShare is a Java application compiled and embedded under the WAR (**W**eb **A**pplication a**R**chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
+LinShare is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
 This section presents the installation of the Tomcat server.
 
