@@ -269,7 +269,7 @@ Finally, you have to change the start-up Tomcat options for LinShare, by
 editing the following file `/etc/default/tomcat8`
 
 Replace the value `-Dspring.profiles.active=default,jcloud,mongo`
-by `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo` and restart Tomcat:
+by `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo,batches` and restart Tomcat:
 
 ```
 $ systemctl start tomcat8

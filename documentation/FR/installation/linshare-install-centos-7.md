@@ -326,7 +326,7 @@ Exécutez la commande suivante pour démarrer le service :
 ## Installation de Tomcat 7
 </a>
 
-LinShare étant une application Java compilée et empaquetée au format WAR (**W**eb **A**pplication a**R**chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
+LinShare étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner.
 
 Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
@@ -357,7 +357,7 @@ L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ 
 
 Cependant, pour la déclaration de la variable `JAVA_OPT`, il faut concaténer les options, et donc ajouter la ligne suivante dans __/etc/sysconfig/tomcat__ :
 
-` JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
+` JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches`
 
 #### Paramètres supplémentaires
 

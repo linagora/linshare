@@ -330,7 +330,7 @@ Use this command to start the service:
 
 </a>
 
-LinShare is a Java application compiled and embedded under the WAR (**W**eb **A**pplication a**R**chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
+LinShare is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a __servlet container Java__ (Tomcat or Jetty) to run.
 
 This section presents the installation of the Tomcat server.
 
@@ -365,7 +365,7 @@ All starting needful options by default to Linshare are indicated in the header 
 
 Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in Tomcat configuration, copy as following in * __/etc/sysconfig/tomcat__ * :
 
-`JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo`
+`JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches`
 
 #### Additional parameters
 

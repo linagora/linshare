@@ -16,4 +16,6 @@ documentation related to an older version.
 
 The main branches are :
  * [master](https://github.com/linagora/linshare/tree/master/documentation)
+ * [maintenance-2.1.x](https://github.com/linagora/linshare/tree/maintenance-2.1.x/documentation)
+ * [maintenance-2.0.x](https://github.com/linagora/linshare/tree/maintenance-2.0.x/documentation)
  * [maintenance-1.12.x](https://github.com/linagora/linshare/tree/maintenance-1.12.x/documentation)

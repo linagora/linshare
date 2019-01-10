@@ -269,7 +269,7 @@ Enfin, vous devez modifier les options de démarrage du Tomcat pour LinShare,
 éditer le fichier suivant `/etc/default/tomcat8`
 
 Remplacez la valeur par défaut `-Dspring.profiles.active=default,jcloud,mongo`
-par `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo` et démarrez Tomcat:
+par `-Dspring.profiles.active=default,jackrabbit-to-jcloud,mongo,batches` et démarrez Tomcat:
 
 ```
 $ systemctl start tomcat8
