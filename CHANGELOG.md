@@ -1,3 +1,29 @@
+<a name="2.2.2"></a>
+# [2.2.2](https://github.com/linagora/linshare/compare/2.2.1...2.2.2) (2018-10-31) [Download link](http://download.linshare.org/versions/2.2.2/)
+
+**The 2.2.2 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.2 [changelog](https://github.com/linagora/linshare-core/compare/2.2.1...2.2.2)
+* **ui-admin** : 3.2.0
+* **ui-user** : 2.2.1
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Fix transient bug when uploading document to workgroups
+  * Upgrade spring data to Ingalls-SR16 version
+  * Get All system workgroup patterns
+  * Refactor the method findAll in public Key api
+  * Move all LDAP service and business classes to new package
+  * Add new endpoint to find workgroupNode without workgroupUuid
+  * fix exception statistic serailization
+
 <a name="2.2.1"></a>
 # [2.2.1](https://github.com/linagora/linshare/compare/2.2.0...2.2.1) (2018-10-31) [Download link](http://download.linshare.org/versions/2.2.1/)
 
