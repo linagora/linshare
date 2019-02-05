@@ -1,7 +1,63 @@
-<a name="2.2.2"></a>
-# [2.2.2](https://github.com/linagora/linshare/compare/2.2.1...2.2.2) (2018-10-31) [Download link](http://download.linshare.org/versions/2.2.2/)
+<a name="2.2.3"></a>
+# [2.2.3](https://github.com/linagora/linshare/compare/2.2.2...2.2.3) (2019-02-05) [Download link](http://download.linshare.org/versions/2.2.3/)
 
-**The 2.2.2 release of LinShare is out**
+**The 2.2.3 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.3 [changelog](https://github.com/linagora/linshare-core/compare/2.2.2...2.2.3)
+* **ui-admin** : 3.2.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.0...v3.2.1)
+* **ui-user** : 2.2.2 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.1...v2.2.2)
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Fix importing Roles Writer and Reader on workroups.
+  * Fix purge domain
+  * Remove thumbnail uuid if file does not exist in datastore during upgrade
+  * Fix sql Migration script 2.2
+  * Upgrade jackson to 2.9.8
+  * Add catch clause when underlying file is missing when computing sha256sum
+  * Fix fileDataStore upgrade task
+  * Fix duplicate public key
+  * Fix update permission for workgroup
+  * Add a new check to avoid upgrading LinShare without completing upgrade
+  * Update default quota when default quota override is null
+
+* UI-User
+  * Bugfix:
+      * Date: include formating depending on languages locales
+      * Autocomplete: UI - response template of user with only email has been fixed
+      * Language:
+          * Selector: correct proper loading of language on some case
+          * Loading: change way of loading corresponding language
+          * VN: correct format file language
+  * Feature:
+      * Configuration:
+          * Add availability to customize behavior of menulink, can now be greyed instead of hidden
+          * Add availability to hide the 'Home' menu link
+          * Add availability to change default home page
+          * Add availability to suffix the menu name
+      * File upload: Warn user on application exit if some file are current being uploaded
+      * Language: Add Russian version
+
+* UI-Admin
+  * Bugfix:
+    * Postinstall script
+    * Upgrade task: wqrning button on navbar is now shown properly
+    * Language: add some missing translations
+  * Feature:
+    * Saas compiler: switch from ruby-saas to node-saas
+    * Language: Add Russian version
+
+<a name="2.2.2"></a>
+# [2.2.2](https://github.com/linagora/linshare/compare/2.2.1...2.2.2) (2019-02-04) [Download link](http://download.linshare.org/versions/2.2.2/)
+
+**The 2.2.2 release of LinShare is out***
 
 ## LinShare components
 
