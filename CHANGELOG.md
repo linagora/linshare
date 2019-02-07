@@ -1,3 +1,33 @@
+<a name="2.0.5"></a>
+# [2.0.5](https://github.com/linagora/linshare/compare/2.0.4....2.0.5) (2019-02-07) [Download link](http://download.linshare.org/versions/2.0.5/)
+
+**The 2.0.5 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.0.5 [changelog](https://github.com/linagora/linshare-core/compare/2.0.4...2.0.5)
+* **ui-user** : 2.0.5 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.0.4...v2.0.5)
+* **ui-admin** : 3.0.4
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+
+* Core:
+
+  * Mail notification : fix share url for recipients
+  * Fix Unprotect logout endpoints.
+  * Fix NullPointerException accessing shareEntryGroup
+  * Remove thumbnail uuid if file does not exist in datastore during upgrade
+  * Add catch clause when underlying file is missing when computing sha256sum.
+  * Fix fileDataStore upgrade task.
+  * Update default quota when default quota override is null.
+
+* User:
+  * Fix typo in anonymous page
+
 <a name="2.0.4"></a>
 # [2.0.4](https://github.com/linagora/linshare/compare/2.0.3...2.0.4) (2017-12-07) [Download link](http://download.linshare.org/versions/2.0.4/)
 
