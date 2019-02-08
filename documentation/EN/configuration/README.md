@@ -7,3 +7,5 @@
 * How to [use JWT on LinShare](how-to-use-jwt.md).
 
 * How to [setup session live time](setup-session-time.md).
+
+* How to [use file versioning on LinShare](how-to-use-file-versioning.md)
