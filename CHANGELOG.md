@@ -10,6 +10,8 @@
 * **ui-user** : 2.2.2 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.1...v2.2.2)
 * **thumbnail-server** : 2.0.3
 * **linshare-plugin-thunderbird** : 1.8.0
+* **linshare-org**
+* **demo.linshare.org**: 2.2.3
 
 > **NB :**
 You can find the upgrade documentation [here](documentation/EN/upgrade).
@@ -53,6 +55,10 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
   * Feature:
     * Saas compiler: switch from ruby-saas to node-saas
     * Language: Add Russian version
+ * LinShare-org
+	* Translation to Russian [RU version](http://www.linshare.org/ru/index.html)
+ * demo-LinShare
+    * Update of [demo-LinShare](https://demo.linshare.org/) to last version __2.2.3__
 
 <a name="2.2.2"></a>
 # [2.2.2](https://github.com/linagora/linshare/compare/2.2.1...2.2.2) (2019-02-04) [Download link](http://download.linshare.org/versions/2.2.2/)
