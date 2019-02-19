@@ -101,8 +101,6 @@ Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 LinShare needs the use of a database (PostgreSQL) for its files and its configuration.
 
-MySQL is not supported yet in LinShare v2
-
 This section present an installation with PostgreSQL.
 
 Install PostgreSQL from the repositories :
@@ -182,9 +180,9 @@ Import the SQL files "createSchema.sql" and "import-postgresql.sql" :
 
 ```
 [root@localhost ~]$ tar xjvf linshare-core-*-sql.tar.bz2
-[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/createSchema.sql
+[root@localhost ~]$ psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/createSchema.sql
 Password for user linshare: {PASSWORD}
-[root@localhost ~]$ psql -U linshare -W -d linshare linshare-core-sql/postgresql/import-postgresql.sql
+[root@localhost ~]$ psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/import-postgresql.sql
 Password for user linshare: {PASSWORD}
 ```
 
@@ -282,24 +280,24 @@ linshare.documents.thumbnail.pdf.enable=true
 ```
 Now go to `http://download.linshare.org/versions/` and download the following files:
 
-* linshare-thumbnail-server-{VERSION}.jar
-* linshare-thumbnail-server-{VERSION}.yml
+* thumbnail-server-{VERSION}.jar
+* thumbnail-server-{VERSION}.yml
 
 > Note <br>
 By defaults the server is configured to listens on port 80, you can change it, if necessary.
 
-Copy the configuration file `linshare-thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and copy the java archive `linshare-thumbnail-server-{VERSION}.jar` into this directory `/usr/local/sbin/linshare-thumbnail-server.jar`,  you can use the following command for that :
+Copy the configuration file `thumbnail-server-{VERSION}.yml` into `/etc/linshare/thumbnail-server.yml` and copy the java archive `thumbnail-server-{VERSION}.jar` into this directory `/usr/local/sbin/thumbnail-server.jar`,  you can use the following command for that :
 
 ```java
-cp linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+cp thumbnail-server-*.yml /etc/linshare/thumbnail-server.yml
 ```
 ```java
-cp linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+cp thumbnail-server-*.jar /usr/local/sbin/thumbnail-server.jar
 ```
 
-* You can automate starting of thumbnail server, by creating a `systemd` service in the `/etc/systemd/system` directory, with the following name `linshare-thumbnail-server.service`.
+* You can automate starting of thumbnail server, by creating a `systemd` service in the `/etc/systemd/system` directory, with the following name `thumbnail-server.service`.
 
-Edit the `linshare-thumbnail-server.service` file and copy the code below :
+Edit the `thumbnail-server.service` file and copy the code below :
 
 ```java
 [Unit]
@@ -309,20 +307,20 @@ After=network.target
 [Service]
 Type=idle
 KillMode=process
-ExecStart=/usr/bin/java -jar /usr/local/sbin/linshare-thumbnail-server.jar server /etc/linshare/linshare-thumbnail-server.yml
+ExecStart=/usr/bin/java -jar /usr/local/sbin/thumbnail-server.jar server /etc/linshare/thumbnail-server.yml
 
 [Install]
 WantedBy=multi-user.target
-Alias=linshare-thumbnail-server.service
+Alias=thumbnail-server.service
 ```
 
 Now you should enable the service, it will be automatically started after a reboot :
 
-`systemctl enable linshare-thumbnail-server.service`
+`systemctl enable thumbnail-server.service`
 
 Use this command to start the service:
 
-`systemctl start linshare-thumbnail-server.service`
+`systemctl start thumbnail-server.service`
 
 <a name="tomcat">
 
@@ -365,7 +363,7 @@ All starting needful options by default to Linshare are indicated in the header 
 
 Note that you need to concatene lines for setting up the `JAVA_OPTS` variable in Tomcat configuration, copy as following in * __/etc/sysconfig/tomcat__ * :
 
-`JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches`
+`JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches"`
 
 #### Additional parameters
 
@@ -570,7 +568,7 @@ To __start LinShare__, first start the Tomcat service :
 
 To verify that __LinShare__ works, consult the __logs__ file :
 
-`[root@localhost ~]$ tail -f /var/tomcat/logs/catalina.out`
+`[root@localhost ~]$ tail -f /var/log/tomcat/catalina.out`
 
 If the service start correctly, you should have those following messages:
 
@@ -581,6 +579,12 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+
+> SElinux:
+If you have an exception that linshare can't make a connection with database caused by restriction of SELinux then you can execute this command to allow tomcat to establish the connection with the database.
+     -  setsebool -P tomcat_can_network_connect_db 1
+Also for httpd service:
+     - setsebool -P httpd_can_network_connect 1
 
 Then restart the Apache 2 service :
 
