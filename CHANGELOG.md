@@ -1,7 +1,7 @@
-<a name="2.2.5"></a>
-# [2.2.5](https://github.com/linagora/linshare/compare/2.2.3...2.2.5) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.5/)
+<a name="2.2.4"></a>
+# [2.2.4](https://github.com/linagora/linshare/compare/2.2.3...2.2.4) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.4/)
 
-**The 2.2.5 release of LinShare is out**
+**The 2.2.4 release of LinShare is out**
 
 ## LinShare components
 
