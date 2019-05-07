@@ -347,6 +347,8 @@ Activate the service at startup:
 
 > Note :<br/>
      * Check the Tomcat status to make sure the service is active with systemctl status tomcat
+     * Make sure that tomcat_can_network_connect_db is ON, Otherwise, you can get it by running this command
+     setsebool -P tomcat_can_network_connect_db 1
 
 #### Tomcat 7 Configuration
 
@@ -406,6 +408,10 @@ Install Apache 2 from the repositories :
 ```
 
 It will bring Apache/2.4.6 (CentOS)
+
+> Note :<br/>
+     * Make sure that httpd_can_network_connect is ON, Otherwise, you can get it by running this command
+     setsebool -P httpd_can_network_connect 1
 
 ##### Vhost configuration
 
