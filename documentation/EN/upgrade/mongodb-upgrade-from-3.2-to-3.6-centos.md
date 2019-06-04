@@ -68,3 +68,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 * yum update to download mongod 3.6 packages
 * Finally just restart your mongo services
   *  systemctl restart mongod
+
+#### Helpful documentation :
+
+  https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/
