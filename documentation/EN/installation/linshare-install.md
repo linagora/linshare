@@ -19,7 +19,7 @@
 ### LINSHARE INSTALLATION
 
 > Note:<br/>
-This installation guide is for the 2.x LinShare versions on Debian 8 Jessie (we do not support other Debian's distribution).
+This installation guide is for the 2.x LinShare versions on Debian 8 Jessie and Debian 9 stretch (we do not support other Debian's distribution).
 Installation of previous version of LinShare are available at
 github branches in this case : [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install.md)
 
@@ -206,7 +206,9 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the LinShare V2 installation, you have to install a specific version of mongoDB which is 3.2:
 
-First import the public key used by the package management system:
+#### Debian 8 jessie:
+
+If you are using Debian 8 jessie, to install MongoDB you need first to import the public key used by the package management system:
 
 ```
 [root@localhost ~]$ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -227,6 +229,12 @@ And install the latest stable version of MongoDB:
 ```
 [root@localhost ~]$ apt-get install -y mongodb-org
 ```
+
+#### Debian 9 Stretch:
+
+If you are using Debian 9 stretch you can install MongoDb easily setting the following command:
+
+`[root@localhost ~]$ apt-get install -y mongodb`
 
 Before lunching the MongoDB make sure that que file /etc/mongod.conf has the bind ip address: 127.0.0.1
 
