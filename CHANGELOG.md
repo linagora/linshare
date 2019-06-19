@@ -1,4 +1,126 @@
-<a name="2.2.4"></a>
+# [2.3.0](https://github.com/linagora/linshare/compare/2.2.0...2.3.0) (2019-06-19) [Download link](http://download.linshare.org/versions/2.3.0/)
+
+**The 2.3.0 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.3.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.2.0...2.3.0)
+* **ui-admin** : 3.3.0 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.0...v3.3.0)
+* **ui-user** : 2.3.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.0...v2.3.0)
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Main features
+
+  * [Versioning](documentation/EN/configuration/how-to-use-file-versioning.md) [DOC] : The new versioning feature will give a better collaborative experience for LinShare users, it will save all updates on documents.
+
+  * [Mail attachement] : This feature will allow the LinShare administrators to upload and use their personal logo into all mail notifications.
+
+  * [Full Russian support] : This LinShare release will contain the Russian language for:
+    * Emails notifications
+    * User and Admin interfaces
+    * Welcome message
+
+### Others features
+
+  * [Download folders] : This LinShare release will allow users to download folders in zip format.
+
+You can find all the API documentation:  [linshare-core-documentation-ws-api-userv2.tar.bz2](http://download.linshare.org/components/linshare-core/2.3.0/)
+
+All screenshots are available [here](http://download.linshare.org/screenshots/2.3.0/)
+
+### Fixes
+  * core:
+    * Fix delete sharedSpace member
+    * Fix retrieve audit related resources on workgroupNode
+    * Fix bug of expired shares deletion
+
+### Extra informations:
+
+#### Upgrade libraries
+
+  * core:
+    * Upgrad apache tika to 1.20v
+    * Upgrade jetty to 9.4.8
+    * Upgrade spring and spring security to 5.1.2.RELEASE
+    * Upgrade to Hibernate 5.3.7
+    * Upgrade spring data to Kay-SR11
+    * Upgrade guava to 27.0-jre
+    * Upgrade from jackson 1.9 to 2.9
+    * Upgrade Junit from 4.12 to 5.4.2
+    * Upgrade pypika library to 0.18.4 version
+
+#### Removed dependencies:
+
+* core:
+    * Replace deprecated antisamy library by new library to sanitize html injections
+    * Remove jackrabbit dependencies from LinShare
+    * Remove thumbnail dependency
+    * Remove apache chemistry dependencies
+    * Remove SOAP webservices
+
+#### New API endpoints
+* New endpoint is added to recover additional informations of the requested node like (number of sub-nodes, node's type, nodes'size)
+
+
+ ```
+ /linshare/webservice/rest/user/v2/shared_spaces/{sharedSpaceUuid}/nodes/{sharedSpaceNodeUuid}/metadata
+
+```
+* Breaking endpoint change: we replaced the accountUuid pathParam by a memberUuid in this endpoint.
+
+```
+/linshare/webservice/rest/user/v2/shared_spaces/{uuid}/members/{memberUuid}
+```
+
+### UI-User:
+  * Feature:
+    * SharedSpace:  
+        * Versioning:
+            * Availability to manage version of a file in a workgroup
+            * This options is handled by a Domain functionality and can bactivated/deactivated per workgroup
+        * Member - Set default selected role by configuration
+        * Update shared space endpoint: From `shared_space_nodes` to `shared_spaces`
+        * Download folder
+        * Browser: Change of behavior
+            * From a regular file: Open in current location if rights to CREATE else in workgroup root
+            * From a version: Open in workgroup root
+        * Update API to use withRole query param to avoid another request to get the role of user for single or list of workgroups
+    * General:
+        * Update main secondary background theme color from Main & external to be coherent
+    * BUG:
+        * Sidebar details:
+            * Fix title display when its length exceeds the width for mobile
+            * Fix the button previous in the details sidebar in mobile mode
+        * SharedSpace:
+            * Fix Create contact list from member
+            * Fix! SharedSpace sidebar member - UI dropdown
+        * General:
+            * Fix the bubble position of uploaded files on mobile
+        * Build:
+            * Fix! Custom theme generation: When passing from Ruby-Sass to Node-Sass, the config did not take into account the theme files
+            * Fix! build step ngAnnotate
+    * Cleaning:
+        * Remove service workgroupsRoles
+
+
+### UI-Admin
+  * Fix! Workgroup details - UI - Role selector
+  * Fix! Menu - Css link
+  * Dashboard actions - Update order to be coherent with menu
+  * Update x-unit directive of domain quota to match its unit
+  * Added error handler for ReadableSize filter, was triggering error inconsole on page access init
+  * Fix linter error
+  * Reordor all menu in ui-admin
+  * Display default and max value of the quota in a sub domain
+  * Fix creation/modifcation date format
+  * Fix quota progress bar for one user in manage users
+
+
+
 # [2.2.4](https://github.com/linagora/linshare/compare/2.2.3...2.2.4) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.4/)
 
 **The 2.2.4 release of LinShare is out**
