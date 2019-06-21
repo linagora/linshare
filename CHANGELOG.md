@@ -9,13 +9,19 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
   * [Versioning](documentation/EN/configuration/how-to-use-file-versioning.md) [DOC] : The new versioning feature will give a better collaborative
   experience for LinShare users, it will save all updates on documents (workroups)
+    <img src="http://download.linshare.org/screenshots/2.3.0/A01.Workgroup.document.png" alt="Workgroup document" width="600"/>
 
+    <img src="http://download.linshare.org/screenshots/2.3.0/A02.Workgroup.revision.png" alt="Workgroup Revision" width="600"/>
   * [Mail attachement] : This feature will allow the LinShare administrators to upload and use their personal logo into all mail notifications.
 
   * [Full Russian support] : This LinShare release will contain the Russian language for:
     * Emails notifications
     * User and Admin interfaces
     * Welcome message
+
+    <img src="http://download.linshare.org/screenshots/2.3.0/B01.Russian.Language.png" alt="Workgroup Revision" width="600"/>
+
+All screenshots are available [here](http://download.linshare.org/screenshots/2.3.0/)
 
 ### Others features
 
