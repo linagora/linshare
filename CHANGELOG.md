@@ -2,20 +2,13 @@
 
 **The 2.3.0 release of LinShare is out**
 
-## LinShare components
-
-* **core** : 2.3.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.2.0...2.3.0)
-* **ui-admin** : 3.3.0 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.0...v3.3.0)
-* **ui-user** : 2.3.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.0...v2.3.0)
-* **thumbnail-server** : 2.0.3
-* **linshare-plugin-thunderbird** : 1.8.0
-
 > **NB :**
 You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 ### Main features
 
-  * [Versioning](documentation/EN/configuration/how-to-use-file-versioning.md) [DOC] : The new versioning feature will give a better collaborative experience for LinShare users, it will save all updates on documents.
+  * [Versioning](documentation/EN/configuration/how-to-use-file-versioning.md) [DOC] : The new versioning feature will give a better collaborative
+  experience for LinShare users, it will save all updates on documents (workroups)
 
   * [Mail attachement] : This feature will allow the LinShare administrators to upload and use their personal logo into all mail notifications.
 
@@ -39,6 +32,48 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
     * Fix bug of expired shares deletion
 
 ### Extra informations:
+
+#### LinShare components
+
+* **core** : 2.3.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.2.0...2.3.0)
+* **ui-admin** : 3.3.0 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.0...v3.3.0)
+* **ui-user** : 2.3.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.0...v2.3.0)
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+####  Bug fixes and little improvments
+
+  * UI-User:
+    * SharedSpace:
+        * Member - Set default selected role by configuration
+        * Update shared space endpoint: From `shared_space_nodes` to `shared_spaces`
+        * Browser: Change of behavior
+            * From a regular file: Open in current location if rights to CREATE else in workgroup root
+            * From a version: Open in workgroup root
+        * Update API to use withRole query param to avoid another request to get the role of user for single or list of workgroups
+    * General:
+        * Update main secondary background theme color from Main & external to be coherent
+    * Fixes:
+        * Sidebar details:
+            * Fix title display when its length exceeds the width for mobile
+            * Fix the button previous in the details sidebar in mobile mode
+        * SharedSpace:
+            * Fix Create contact list from member
+            * Fix! SharedSpace sidebar member - UI dropdown
+        * General:
+            * Fix the bubble position of uploaded files on mobile
+        * Build:
+            * Fix! Custom theme generation: When passing from Ruby-Sass to Node-Sass, the config did not take into account the theme files
+            * Fix! build step ngAnnotate
+
+  * UI-Admin:
+
+      * Reordering Menu and dashboard menu - Enhance use experience.
+      * Fix! quota progress bar for one user in manage users
+      * Fix! display default and max value of the quota in a sub domain
+      * Fix! Workgroup details - UI - Role selector
+      * Fix! Menu - Css link
+      * Fix! creation/modification date format
 
 #### Upgrade libraries
 
@@ -70,55 +105,11 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
  /linshare/webservice/rest/user/v2/shared_spaces/{sharedSpaceUuid}/nodes/{sharedSpaceNodeUuid}/metadata
 
 ```
-* Breaking endpoint change: we replaced the accountUuid pathParam by a memberUuid in this endpoint.
+* Breaking change (fix): we replaced the accountUuid pathParam by a memberUuid in this endpoint.
 
 ```
 /linshare/webservice/rest/user/v2/shared_spaces/{uuid}/members/{memberUuid}
 ```
-
-### UI-User:
-  * Feature:
-    * SharedSpace:  
-        * Versioning:
-            * Availability to manage version of a file in a workgroup
-            * This options is handled by a Domain functionality and can bactivated/deactivated per workgroup
-        * Member - Set default selected role by configuration
-        * Update shared space endpoint: From `shared_space_nodes` to `shared_spaces`
-        * Download folder
-        * Browser: Change of behavior
-            * From a regular file: Open in current location if rights to CREATE else in workgroup root
-            * From a version: Open in workgroup root
-        * Update API to use withRole query param to avoid another request to get the role of user for single or list of workgroups
-    * General:
-        * Update main secondary background theme color from Main & external to be coherent
-    * BUG:
-        * Sidebar details:
-            * Fix title display when its length exceeds the width for mobile
-            * Fix the button previous in the details sidebar in mobile mode
-        * SharedSpace:
-            * Fix Create contact list from member
-            * Fix! SharedSpace sidebar member - UI dropdown
-        * General:
-            * Fix the bubble position of uploaded files on mobile
-        * Build:
-            * Fix! Custom theme generation: When passing from Ruby-Sass to Node-Sass, the config did not take into account the theme files
-            * Fix! build step ngAnnotate
-    * Cleaning:
-        * Remove service workgroupsRoles
-
-
-### UI-Admin
-  * Fix! Workgroup details - UI - Role selector
-  * Fix! Menu - Css link
-  * Dashboard actions - Update order to be coherent with menu
-  * Update x-unit directive of domain quota to match its unit
-  * Added error handler for ReadableSize filter, was triggering error inconsole on page access init
-  * Fix linter error
-  * Reordor all menu in ui-admin
-  * Display default and max value of the quota in a sub domain
-  * Fix creation/modifcation date format
-  * Fix quota progress bar for one user in manage users
-
 
 
 # [2.2.4](https://github.com/linagora/linshare/compare/2.2.3...2.2.4) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.4/)
