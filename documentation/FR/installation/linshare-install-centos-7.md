@@ -40,6 +40,7 @@ Pour cette installation, téléchargez les fichiers, nommés ci-dessous, sur le 
   * __linshare-ui-user-{VERSION}.tar.bz2__
 
 <a name="installFile">
+
 ## Déploiement de l'archive et des fichiers de configuration
 </a>
 
@@ -76,6 +77,7 @@ log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 
 
 <a name="installOpenJDK">
+
 #### Installation de OpenJDK Java JRE
 </a>
 
@@ -89,6 +91,7 @@ __LinShare__  supporte l'OpenJDK ou Sun/Oracle Java en version 8. Ici nous feron
 > Les éventuelles erreurs relatives au plugin Java peuvent être ignorées.
 
 <a name="bdd">
+
 ## Installation de PostgreSQL et MongoDB
 </a>
 
@@ -234,6 +237,7 @@ Ensuite, activez au démarrage (avec chkconfig, `mongod` n'est pas un service na
 ```
 
 <a name="thumbnail">
+
 ## Activation du moteur d'aperçu (optionnel)
 </a>
 
@@ -258,24 +262,10 @@ Par défault le moteur de génération de thumbnail est mis à FALSE. Pour l'act
 #******** LinThumbnail configuration
 # key to enable or disable thumbnail generation
 linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=false
 linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
 linshare.documents.thumbnail.pdf.enable=true
 ```
 Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
-
-Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance. Pour cela il faut activer le remote.mode :
-
-```java
-#******** LinThumbnail configuration
-# key to enable or disable thumbnail generation
-linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=true
-linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-linshare.documents.thumbnail.pdf.enable=true
-```
 
 ###### Téléchargement et installation du service thumbnail :
 
@@ -536,16 +526,7 @@ Profil de fichiers de données disponibles:
 
 * gridfs : Using gridfs (mongodb) comme système de stockage de fichier.
 
-* jackrabbit2 : Using jackrabbit comme système de stockage de fichier (NB jackrabbit n'est disponible que pour des raisons de compatibilité avec la v1).
-
-* jackrabbit-to-jcloud : Utilisant Jcloud comme nouveau système de stockage de fichier, jackrabbit comme fallback file data store.
-
-* jackrabbit-to-gridfs : Utilisant GridFS comme nouveau système de stockage de fichier, jackrabbit comme fallback file data store.
-
 Le profil recommandé est jcloud avec swift.
-
-> Note:<br/>
-   - Nous utilisons uniquement JackRabbit pour la transition, car il est déprécié.
 
 Pour __démarrer LinShare__, démarrez le service Tomcat :
 

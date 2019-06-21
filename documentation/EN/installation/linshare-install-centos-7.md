@@ -1,8 +1,8 @@
 ## Summary
 
-### LINSHARE INSTALLATION
+# LINSHARE INSTALLATION
 
-#### 1. [LinShare minimum installation](#installmin)
+#### [LinShare minimum installation](#installmin)
    * [Download of LinShare](#dlLinshare)
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJDK)
@@ -25,7 +25,7 @@ github branches in this case : [LinShare 1.12.x](../../../../maintenance-1.12.x/
 
 <a name="installmin">
 
-### __Linshare__ minimum Installation
+## __Linshare__ minimum Installation
 
 </a>
 
@@ -73,16 +73,13 @@ Create the configuration repository of __LinShare__ and past the configuration f
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
 
-### Executive environment JAVA (JVM)
-
-__LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJDK Java 8.
-
 <a name="instalOpenJDK">
 
 #### Installation of OpenDK
 
 </a>
 
+__LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJDK Java 8.
 Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
 ```
@@ -236,7 +233,8 @@ Next, activate at startup and start the MongoDB service with the chkconfig and s
 ```
 
 <a name="thumbnail">
-#### Enable new thumbnail engine (optional)
+
+#### Enable thumbnail engine (optional)
 </a>
 
 LinShare has a preview generation engine for a wide range of files :
@@ -260,28 +258,15 @@ By default thumbnail generation engine is set to FALSE. To enable it, you must e
 #******** LinThumbnail configuration
 # key to enable or disable thumbnail generation
 linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=false
 linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
 linshare.documents.thumbnail.pdf.enable=true
 ```
 This will allow to generate previews after each file upload.
 
-You also have the option to use this engine remotely. For that you must first activate the remote mode :
-
-```java
-#******** LinThumbnail configuration
-# key to enable or disable thumbnail generation
-linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=true
-linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-linshare.documents.thumbnail.pdf.enable=true
-```
 Now go to `http://download.linshare.org/versions/` and download the following files:
 
-* thumbnail-server-{VERSION}.jar
-* thumbnail-server-{VERSION}.yml
+* `thumbnail-server-{VERSION}.jar`
+* `thumbnail-server-{VERSION}.yml`
 
 > Note <br>
 By defaults the server is configured to listens on port 80, you can change it, if necessary.
@@ -555,18 +540,9 @@ Available file data store profiles :
 
 * gridfs : Using gridfs (mongodb) as file data store.
 
-* jackrabbit2 : Using jackrabbit as file data store.
-
-* jackrabbit-to-jcloud : Using Jcloud as new file data store, jackrabbit as fallback file data store.
-
-* jackrabbit-to-gridfs : Using GridFS as new file data store, jackrabbit as fallback file data store.
-
 Recommended profile for production is jcloud with Swift.
 
 The default profile is jcloud with filesystem for tests purpose.
-
-> Note:<br/>
-   * We only use JackRabbit for the transition, it is deprecated.<br/>
 
 To __start LinShare__, first start the Tomcat service :
 

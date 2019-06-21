@@ -1,8 +1,8 @@
 ## Summary
 
-### LINSHARE INSTALLATION
+#LINSHARE INSTALLATION
 
-#### 1. [LinShare minimum installation](#installmin)
+#### [LinShare minimum installation](#installmin)
    * [Download of LinShare](#dlLinshare)
    * [Deployment of the archive and the configuration files](#instalFile)
    * [OpenJDK Java JRE installation](#instalOpenJDK)
@@ -15,17 +15,14 @@
    * [LinShare configuration and launching](#linconf)
    * [First access](#firstAccess)
 
-
-### LINSHARE INSTALLATION
-
-> Note:<br/>
+> Note:  
 This installation guide is for the 2.x LinShare versions on Debian 8 Jessie and Debian 9 stretch (we do not support other Debian's distribution).
 Installation of previous version of LinShare are available at
 github branches in this case : [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install.md)
 
 <a name="installmin">
 
-### __Linshare__ minimum Installation
+## __Linshare__ minimum Installation
 
 </a>
 
@@ -74,16 +71,15 @@ Create the configuration repository of __LinShare__ and past the configuration f
 [root@localhost ~]$ mkdir -p /etc/linshare
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 ```
+<a name="instalOpenJDK">
 
-### Executive environment JAVA (JVM)
+### Installation of OpenDK
+
+</a>
 
 __LinShare__ works with OpenJDK and Sun/Oracle Java 8. This section is on OpenJDK Java 8.
 
-<a name="instalOpenJDK">
 
-#### Installation of OpenDK
-
-</a>
 
 Install Java Runtime Environment (JRE) of OpenJDK from the repositories :
 
@@ -206,9 +202,9 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the LinShare V2 installation, you have to install a specific version of mongoDB which is 3.2:
 
-#### Debian 8 jessie:
+#### Debian 8 Jessie:
 
-If you are using Debian 8 jessie, to install MongoDB you need first to import the public key used by the package management system:
+If you are using Debian 8 Jessie, to install MongoDB you need first to import the public key used by the package management system:
 
 ```
 [root@localhost ~]$ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -245,7 +241,9 @@ Issue the following command to start mongod:
 ```
 
 <a name="thumbnail">
-#### Enable new thumbnail engine (optional)
+
+#### Enable thumbnail engine (optional)
+
 </a>
 
 LinShare has a preview generation engine for a wide range of files :
@@ -261,39 +259,27 @@ LinShare has a preview generation engine for a wide range of files :
 
 To install libreOffice :
 
-aptitude update
-aptitude install libreoffice
+`aptitude update`  
+`aptitude install libreoffice`
 
-By default thumbnail generation engine is set to FALSE. To enable it, you must edit LinShare's configuration file :
-
-```java
-#******** LinThumbnail configuration
-# key to enable or disable thumbnail generation
-linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=false
-linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-linshare.documents.thumbnail.pdf.enable=true
-```
-This will allow to generate previews after each file upload.
-
-You also have the option to use this engine remotely. For that you must first activate the remote mode :
+By default thumbnail generation engine is set to FALSE.  
+To enable it, you must edit LinShare's configuration file:
 
 ```java
 #******** LinThumbnail configuration
 # key to enable or disable thumbnail generation
 linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=true
-linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
 linshare.documents.thumbnail.pdf.enable=true
+linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
+
 ```
+This will allow to generate previews after each file upload.  
 Now go to `http://download.linshare.org/versions/` and download the following files:
 
-* linshare-thumbnail-server-{VERSION}.jar
-* linshare-thumbnail-server-{VERSION}.yml
+    * ``linshare-thumbnail-server-{VERSION}.jar``
+    * ``linshare-thumbnail-server-{VERSION}.yml``
 
-> Note <br>
+> Note  
 By defaults the server is configured to listens on port 80, you can change it, if necessary.
 
 Copy the configuration file `linshare-thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and copy the java archive `linshare-thumbnail-server-{VERSION}.jar` into this directory `/usr/local/sbin/linshare-thumbnail-server.jar`, you can use the following command for that :
@@ -547,18 +533,9 @@ Available file data store profiles :
 
 * gridfs : Using gridfs (mongodb) as file data store.
 
-* jackrabbit2 : Using jackrabbit as file data store.
-
-* jackrabbit-to-jcloud : Using Jcloud as new file data store, jackrabbit as fallback file data store.
-
-* jackrabbit-to-gridfs : Using GridFS as new file data store, jackrabbit as fallback file data store.
-
 Recommended profile for production is jcloud with Swift.
 
 The default profile is jcloud with filesystem for tests purpose.
-
-> Note:<br/>
-    - We only use JackRabbit for the transition, it is deprecated.
 
 To __start LinShare__, first start the tomcat service :
 

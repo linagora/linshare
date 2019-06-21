@@ -1,6 +1,6 @@
 ## Sommaire
 
-### INSTALLATION LINSHARE
+### INSTALLATION DE LINSHARE
 
 #### 1. [Installation minimale de Linshare](#install-min)
    * [Téléchargement de LinShare](#dlLinshare)
@@ -14,8 +14,6 @@
    * [Configuration et lancement de Linshare](#linconf)
    * [Premier accès](#firstAccess)
 
-
-### INSTALLATION LINSHARE
 
 > Note:<br/>
 Ce guide d'installation est pour les versions 2.x LinShare sur Debian 8 Jessie (Les autres distributions de Debian ne sont pas supportées).
@@ -257,24 +255,10 @@ Par défault le moteur de génération de thumbnail est mis à FALSE. Pour l'act
 #******** LinThumbnail configuration
 # key to enable or disable thumbnail generation
 linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=false
 linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
 linshare.documents.thumbnail.pdf.enable=true
 ```
 Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
-
-Vous avez également la possibilité d'utiliser le moteur de thumbnail à distance. Pour cela il faut d'abord activer le remote.mode :
-
-```java
-#******** LinThumbnail configuration
-# key to enable or disable thumbnail generation
-linshare.documents.thumbnail.enable=true
-# key to enable remote thumbnail generation
-linshare.linthumbnail.remote.mode=true
-linshare.linthumbnail.dropwizard.server=http://0.0.0.0:8090/linthumbnail?mimeType=%1$s
-linshare.documents.thumbnail.pdf.enable=true
-```
 
 Vous pouvez maintenant, allez à cette adresse `http://download.linshare.org/versions/` et téléchargez les fichiers suivants :
 
@@ -542,17 +526,7 @@ Available file data store profiles :
 
 * gridfs : Using gridfs (mongodb) comme système de stockage de fichier.
 
-* jackrabbit2 : Using jackrabbit comme système de stockage de fichier.
-
-* jackrabbit-to-jcloud : Utilisant Jcloud comme nouveau système de stockage de fichier, jackrabbit comme fallback file data store.
-
-* jackrabbit-to-gridfs : Utilisant GridFS comme nouveau système de stockage de fichier, jackrabbit comme fallback file data store.
-
 Le profil recommandé est jcloud avec swift.
-
-> Note:<br/>
-    - Nous utilisons uniquement JackRabbit pour la transition, car il est obsolète.
-
 
 Pour __démarrer LinShare__, démarrez le service Tomcat :
 
