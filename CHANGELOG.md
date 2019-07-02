@@ -1,3 +1,25 @@
+<a name="2.0.6"></a>
+# [2.0.6](https://github.com/linagora/linshare/compare/2.0.5....2.0.6) (2019-07-02) [Download link](http://download.linshare.org/versions/2.0.6/)
+
+**The 2.0.6 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.0.6 [changelog](https://github.com/linagora/linshare-core/compare/2.0.5...2.0.6)
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+
+* Core:
+
+  * Fix bug related to delete expired shares and refactor the batches related to documents cleaning
+  * Replace deprecated antisamy library by new library to sanitize html injections and Fix HTML injection in upload share email notification
+  * Fix Statistic daily batch when user is purged
+
+
 <a name="2.0.5"></a>
 # [2.0.5](https://github.com/linagora/linshare/compare/2.0.4....2.0.5) (2019-02-07) [Download link](http://download.linshare.org/versions/2.0.5/)
 
