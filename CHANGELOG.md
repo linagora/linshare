@@ -1,3 +1,28 @@
+<a name="2.0.7"></a>
+# [2.0.7](https://github.com/linagora/linshare/compare/2.0.6....2.0.7) (2019-09-03) [Download link](http://download.linshare.org/versions/2.0.7/)
+
+**The 2.0.7 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.0.7 [changelog](https://github.com/linagora/linshare-core/compare/2.0.6...2.0.7)
+* **ui-user** : 2.0.6 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.0.5...v2.0.6)
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+
+* Core:
+
+  * Fix out-dated LinShare licence link 
+  * Fix and Improve the documentation related to documents cleaner batches on default properties file
+  
+* UI-User:
+
+  * Fix out-dated LinShare licence link     
+
 <a name="2.0.6"></a>
 # [2.0.6](https://github.com/linagora/linshare/compare/2.0.5....2.0.6) (2019-07-02) [Download link](http://download.linshare.org/versions/2.0.6/)
 
