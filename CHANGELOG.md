@@ -1,3 +1,28 @@
+# [2.3.1](https://github.com/linagora/linshare/compare/2.3.0...2.3.1) (2019-09-03) [Download link](http://download.linshare.org/versions/2.3.1/)
+
+**The 2.3.1 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 2.3.1 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.0...2.3.1)
+* **ui-admin** : 3.3.1 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.0...v3.3.1)
+* **ui-user** : 2.3.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.0...v2.3.1)
+
+####  Bug fixes and little improvments
+
+  * Core:
+    * Fixing the Upgrade task __UPDATE_DOCUMENT_STRUCTURE_FOR_VERSIONING__
+    * Improve documentation about document batches
+    * Fix outdated LinShare license link.
+
+  * UI-User:
+    * Fix outdated LinShare license link.
+
+  * UI-Admin:
+    * Fix outdated LinShare license link.
+
+
 # [2.3.0](https://github.com/linagora/linshare/compare/2.2.0...2.3.0) (2019-06-19) [Download link](http://download.linshare.org/versions/2.3.0/)
 
 **The 2.3.0 release of LinShare is out**
