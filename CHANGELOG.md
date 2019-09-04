@@ -9,7 +9,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 * **ui-admin** : 3.3.1 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.0...v3.3.1)
 * **ui-user** : 2.3.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.0...v2.3.1)
 
-####  Bug fixes and little improvments
+####  Bug fixes and improvments
 
   * Core:
     * Fixing the Upgrade task __UPDATE_DOCUMENT_STRUCTURE_FOR_VERSIONING__
