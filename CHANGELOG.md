@@ -1,3 +1,31 @@
+# [2.2.6](https://github.com/linagora/linshare/compare/2.2.5...2.2.6) (2019-09-03) [Download link](http://download.linshare.org/versions/2.2.6/)
+
+**The 2.2.6 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.6 [changelog](https://github.com/linagora/linshare-core/compare/2.2.5...2.2.6)
+* **ui-admin** : 3.2.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.2...v3.2.3)
+* **ui-user** : 2.2.5 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.3...v2.2.5)
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Improve the documentation of batches for unused files deletion.
+  * Fix and improve the migration of oldAuditLogEntry to a basicStatistics.
+  * Fix outdated LinShare license link
+
+* UI-User
+  * Fix! When switching between Ruby-Sass and Node-Sass, the theme files are not taken on consideration.
+  * Fix outdated LinShare license link
+
+* UI-Admin
+  * Update x-unit directive of domain quota.
+  * Add an error handler for ReadableSize filter.
+  * Fix outdated LinShare license link
+
 <a name="2.2.5"></a>
 # [2.2.5](https://github.com/linagora/linshare/compare/2.2.3...2.2.5) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.5/)
 
