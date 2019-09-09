@@ -141,8 +141,112 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
 ```
 /linshare/webservice/rest/user/v2/shared_spaces/{uuid}/members/{memberUuid}
 ```
+<a name="2.2.6"></a>
+# [2.2.6](https://github.com/linagora/linshare/compare/2.2.5...2.2.6) (2019-09-03) [Download link](http://download.linshare.org/versions/2.2.6/)
 
+**The 2.2.6 release of LinShare is out**
 
+## LinShare components
+
+* **core** : 2.2.6 [changelog](https://github.com/linagora/linshare-core/compare/2.2.5...2.2.6)
+* **ui-admin** : 3.2.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.2...v3.2.3)
+* **ui-user** : 2.2.5 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.3...v2.2.5)
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Improve the documentation of batches for unused files deletion.
+  * Fix and improve the migration of oldAuditLogEntry to a basicStatistics.
+  * Fix outdated LinShare license link
+
+* UI-User
+  * Fix! When switching between Ruby-Sass and Node-Sass, the theme files are not taken on consideration.
+  * Fix outdated LinShare license link
+
+* UI-Admin
+  * Update x-unit directive of domain quota.
+  * Add an error handler for ReadableSize filter.
+  * Fix outdated LinShare license link
+
+<a name="2.2.5"></a>
+# [2.2.5](https://github.com/linagora/linshare/compare/2.2.3...2.2.5) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.5/)
+
+**The 2.2.5 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.5 [changelog](https://github.com/linagora/linshare-core/compare/2.2.3...2.2.5)
+* **ui-admin** : 3.2.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.1...v3.2.2)
+* **ui-user** : 2.2.3 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.2...v2.2.3)
+* **thumbnail-server** : 2.0.3
+* **linshare-plugin-thunderbird** : 1.8.0
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Fix bug related to delete expired shares.
+  * Fix MailAttachement injection: if its identifier is not found in the mail content it won't be injected.
+  * Fix upgrade task UPGRADE_2_2_MIGRATE_THREAD.
+  * Replace Antisamy library by new library to sanitize html injections in upload share email notification.
+  * Private keys are now revealed only in trace mode.
+  * Add full flat mode flag to WorkGroupNodeRestServiceImpl.
+  * Add AOP for transaction for safe facade.
+  * Fix create permission for safe role in workgroup node RAC.
+  * Use safeDocumentFacade for uploading file with Safe role.
+  * Fix upload with RIC (using safe role).
+  * Fix Statistic daily batch when user is purged.
+  * Fix update domainQuota, default-quota can't be over quota in the same domain.
+
+* UI-User
+  * Fix copy rights in workgroups
+  * Fix russian translation of relative time (last time file edition)
+  * Search filter:
+      * New property added authorNameTranslated for audit items
+      * This property is now used to filter the table on search
+      * Use the event translateChangeSuccess to trigger translation
+  * Fix the translation of audit list on change language
+  * Fix audit information : Avoid access to treePath on non-existing property
+  * Use angular translate in filter box
+  * Add browse template Vitnameese translation and some other keys
+  * Enforce email format when setting a contactList contact
+  * Fix bug of deleting selected workgroups
+  * Fix dropdown for the bottom of the list
+  * Prevent copying files to personal space for users with wrong rights
+  * Add file size audit value in details of creation action
+  * Remove ruby-sass and use node-sass
+  * Hide create-contact-list-from-workgroup-members when the functionality is disabled
+  * Fixes of Autocomplete: Redirect to create a guest if functionality is enabled and improve error's management
+  * Fixes : resetPassword:
+      * Fix issue with html which was preventing element to be added in the DOM
+      * Remove complexity in favor of translate directive
+  * Fix the russian translation in the notification pop up
+  * Remove MaterialAdmin controller:
+      * Use device detector instead for mobile mode
+      * Move sidebar toggle logic in UiUserMainController
+      * Remove useless complexity of toggleSidebarDirective
+  * Fix welcome message translation on language change
+  * Add the French translation for the action refresh for the toaster alert
+  * Fix long name display in dropdown list
+  * Add max file size in the detail of a workgroup
+  * Add dependencies between the resolver
+  * Remove css property who shift the calendar and dropdown menu
+  * Fix build Date locales
+
+* UI-Admin
+  * Manage Can create guest for users.
+  * Show file size in audit trace when available.
+  * Russian Translation for email activation keys.
+  * Add the tab for Russian to the tabs managment of Mail layout and Mail footer
+  * Fix translation of language selector.
+  * MailContent preview: Change layout
+  * Russian translation added to welcome message and mail content
+  * Upgrade bower to the latest version.
+
+<a name="2.2.4"></a>
 # [2.2.4](https://github.com/linagora/linshare/compare/2.2.3...2.2.4) (2019-04-29) [Download link](http://download.linshare.org/versions/2.2.4/)
 
 **The 2.2.4 release of LinShare is out**
