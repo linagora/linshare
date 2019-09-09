@@ -519,6 +519,44 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
   * Upgraded to Swagger JAXRS 1.3.13
   * Upgraded to Thymeleaf 3.0.9
 
+# [2.1.6](https://github.com/linagora/linshare/compare/2.1.4...2.1.6) (2019-09-09) [Download link](http://download.linshare.org/versions/2.1.6/)
+
+**The 2.1.6 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.1.6 [changelog](https://github.com/linagora/linshare-core/compare/2.1.4...2.1.6)
+* **ui-user** : 2.1.6 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.1.4...v2.1.6)
+* **ui-admin** : 3.1.5 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.1.4...v3.1.5)
+
+**NB:**
+
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+
+* Core:
+
+  * Fix out-dated LinShare licence link
+  * Fix and Improve the documentation related to documents cleaner batches on default properties file
+  * Fix the PostgrSQL ls_prechecks procedure on LinShare migration scripts 
+  * Fix bug related to delete expired shares
+  * Refactor the batches code source related to documents cleaning
+  * Replace deprecated antisamy library by new library to sanitize html injections 
+  * Improve security against HTML injections in upload share email notification
+  * Make private keys revealable only in trace mode
+
+* UI-User:
+   * Fix out-dated LinShare licence link
+   * Fix user Long name displaying in dropdown list on ui-user in my-space interface  
+   * Fix autocomplete item html template and related css
+
+uI-Admin:
+   * Fix out-dated LinShare licence link
+   * Switch to node-saas library that provides binding for Node.js to LibSass
+   * Hide the domain order menu
+
+
 <a name="2.1.4"></a>
 # [2.1.4](https://github.com/linagora/linshare/compare/2.1.3...2.1.4) (2019-02-06) [Download link](http://download.linshare.org/versions/2.1.4/)
 
