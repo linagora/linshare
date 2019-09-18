@@ -21,7 +21,7 @@
 > Примечание:<br/>
 Это руководство по установке предназначено для 2.x LinShare версий на Centos 7 (мы не поддерживаем другие версии Centos).
 Установка предыдущей версии LinShare доступна на
-ветке github: [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-centos-7.md)
+ветке github: [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-centos.md)
 
 <a name="installmin">
 

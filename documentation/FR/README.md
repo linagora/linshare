@@ -3,7 +3,7 @@
 Cette page vous permet de parcourir facilement la documentation de LinShare.
 
 > Note :<br/>
-    L'ensemble de la documentation n'a pas encore été traduite en français, pour les documents restant,
+    L'ensemble de la documentation n'a pas encore été traduite en français. Pour les documents restants,
     la mention `EN` sera ajoutée dans le titre du lien afin de les différencier.
 
 ## Sommaire
@@ -12,8 +12,8 @@ Cette page vous permet de parcourir facilement la documentation de LinShare.
 
 * [Guide de mise à jour de LinShare](upgrade/README.md)
 
-* [Guide d'utilisation](utilisateur/README.md)
+* [Guide d'utilisation](user/README.md)
 
-* [Guide de configuration](../EN/configuration/README.md) [`EN`]
+* [Guide d'administration](administration/README.md)
 
 * [Guide de dévelopement ](../EN/development/README.md) [`EN`]

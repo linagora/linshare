@@ -21,7 +21,7 @@
 > Примечание:<br/>
 Это инструкция для установки 2.х LinShare версии на 8 Jessie (мы не поддерживаем других дистрибутивов Debian).
 Установка предыдущей версии LinShare доступна в
-ветке github : [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install.md)
+ветке github : [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-debian.md)
 
 <a name="installmin">
 

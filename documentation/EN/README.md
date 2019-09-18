@@ -4,12 +4,12 @@ This page allows you to easily browse LinShare documentation.
 
 ## Overview
 
-* [Installation guides](installation/README.md)
+* [Installation guide](installation/README.md)
 
-* [Upgrade guides](upgrade/README.md)
+* [Upgrade guide](upgrade/README.md)
 
-* [Ui-User guide](user/README.md)
+* [User guide](user/README.md)
 
-* [Configuration  guides](configuration/README.md)
+* [Administration guide](administration/README.md)
 
 * [Development guide](development/README.md)
