@@ -373,6 +373,10 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 </Virtualhost>
 ```
 
+> Note:<br/>
+   * Après toute modification d'un vhost, il faut relancer le serveur Apache:
+   `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
+
 ### <a name="ui-admin">Configuration vhost ui-admin</a>
 
 Deployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur httpd :
@@ -409,6 +413,9 @@ CustomLog /var/log/httpd/linshare-admin-access.log combined
 ...
 </Virtualhost>
 ```
+> Note:<br/>
+   * Après toute modification d'un vhost, il faut relancer le serveur Apache:
+   `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
 
 > Note :<br/>
     Des exemples de vhosts sont disponibles dans le repertoire : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
@@ -495,7 +502,14 @@ org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
 
+Puis redémarrez le service Apache:
+
+`[root@localhost ~]$ sudo systemctl restart httpd.service`
+
 ### <a name="firstAccess">Premier accès</a>
+
+> Note: <br>
+Avant le premier accès à __LinShare__, vous devez ajouter `linshare-user.local` et` linshare-admin.local` à `/etc/hosts`.
 
 Le service __LinShare__ est désormais accessible aux adresses suivantes :
 

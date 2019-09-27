@@ -64,7 +64,7 @@ by the following one :
 ```java
 log4j.rootCategory=INFO, LINSHARE
 ```
-Check the following log file location 
+Check the following log file location
 ```java
 log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 ```
@@ -376,6 +376,10 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 </Virtualhost>
 ```
 
+> Note:<br/>
+   * After any modification of a vhost, you must reload the Apache server :<br/>
+   `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
+
 ### <a name="ui-admin">ui-admin vhost Configuration</a>
 
 Deploy the archive of the application __LinShare__ UI Admin in the httpd repository :
@@ -413,6 +417,10 @@ CustomLog /var/log/httpd/linshare-admin-access.log combined
 ...
 </Virtualhost>
 ```
+
+> Note:<br/>
+  * After any modification of a vhost, you must reload the Apache server :<br/>
+   `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
 
 > Note :<br/>
 You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
@@ -499,7 +507,14 @@ org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
 
+Then restart the Apache service :
+
+`[root@localhost ~]$ sudo systemctl restart httpd.service`
+
 ### <a name="firstAccess">First Access</a>
+
+> Note: <br>
+Before the first access to __LinShare__ you need to add `linshare-user.local` and `linshare-admin.local` to `/etc/hosts`
 
 __LinShare__ service is now reachable at the following adresses:
 

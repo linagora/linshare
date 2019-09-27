@@ -482,6 +482,9 @@ INFO: Server startup in 23151 ms
 
 ### <a name="firstAccess">First Access</a>
 
+> Note: <br>
+Before the first access to __LinShare__ you need to add `linshare-user.local` and `linshare-admin.local` to `/etc/hosts`
+
 __LinShare__ service is now reachable at the following adresses:
 
 For the user interface:
