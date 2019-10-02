@@ -263,7 +263,34 @@ linshare.files.directory=/var/lib/linshare/repository
 
 Make sure you have the correct configuration of the software storage brick JackRabbit
 in the file: /var/lib/linshare/repository/workspaces/default/workspace.xml.
+Especially, the database parameters.
 
+```
+cat  ./workspaces/default/workspace.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace name="default">
+		<!--
+			virtual file system of the workspace:
+			class: FQN of class implementing the FileSystem interface
+		-->
+
+		<FileSystem class="org.apache.jackrabbit.core.fs.local.LocalFileSystem">
+                <param name="path" value="${wsp.home}"/>
+		</FileSystem>
+		<!--
+			persistence manager of the workspace:
+			class: FQN of class implementing the PersistenceManager interface
+		-->
+		<PersistenceManager class="org.apache.jackrabbit.core.persistence.bundle.PostgreSQLPersistenceManager">
+			<param name="url" value="jdbc:postgresql://localhost/linshare_data"/>
+			<param name="user" value="linshare"/>
+			<param name="password" value="linshare"/>
+			<param name="driver" value="org.postgresql.Driver"/>
+			<param name="schemaObjectPrefix" value="${wsp.name}_"/>
+			<param name="externalBLOBs" value="false"/>
+		</PersistenceManager>
+	</Workspace>
+```
 
 Finally, you have to change the start-up Tomcat options for LinShare, by
 editing the following file `/etc/default/tomcat8`
