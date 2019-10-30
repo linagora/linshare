@@ -35,7 +35,7 @@ Pour cette installation, télécharger les fichiers, nommés ci-dessous, sur le 
   * linshare-ui-user-{VERSION}.tar.bz2
 
 > Note :<br/>
-Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/opt/tmp`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
+Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
 
 Afin de manipuler les archives, il sera nécessaire d’utiliser les outils `unzip` et `bzip2` :
 ```bash
@@ -47,7 +47,7 @@ yum install -y unzip bzip2
 Créer le répertoire de configuration de __LinShare__, puis copier les fichiers de configuration par défaut et renommer le fichier d'exemple comme suit :
 ```bash
 mkdir -p /etc/linshare
-mv /opt/tmp/linshare-core-{VERSION}.war /etc/linshare/linshare.war
+mv /tmp/linshare_data/linshare-core-{VERSION}.war /etc/linshare/linshare.war
 unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
@@ -158,9 +158,9 @@ Utiliser éventuellement le script nommé `createDatabase.sh` dans `src/main/res
 
 Importer les fichiers SQL `createSchema.sql` et `import-postgresql.sql` :
 ```bash
-cd /opt/tmp
+cd /tmp/linshare_data
 tar xjvf linshare-core-*-sql.tar.bz2
-psql -U linshare -W -d linshare linshare-core-sql/postgresql/createSchema.sql
+psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/createSchema.sql
 Password for user linshare: PASSWORD
 psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/import-postgresql.sql
 Password for user linshare: PASSWORD
@@ -257,15 +257,15 @@ Pour utiliser ce mode, télécharger les fichiers suivants depuis l'adresse [htt
 * linshare-thumbnail-server-{VERSION}.yml
 
 > Note :<br/>
-Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/opt/tmp`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
+Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
 
 > Note <br>
 Par défaut, le serveur est configuré pour écouter sur le port 80 : il est possible de le changer.
 
 Installer le fichier `linshare-thumbnail-server-{VERSION}.yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et installer l'archive java `linshare-thumbnail-server-{VERSION}.jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar` :
 ```java
-mv /opt/tmp/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
-mv /opt/tmp/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
 Créer un service systemd permet d'automatiser le lancement du serveur thumbnail en arrière plan. Créer le fichier `/etc/systemd/system/linshare-thumbnail-server.service`, et ajouter le contenu suivant :
@@ -340,9 +340,9 @@ Pour déployer l’application __LinShare__, il est nécessaire d’activer le m
 Créer les répertoires dans le répertoire `/var/www/`, noter que le nom de répertoire sera le nom de domaine de l'application. Attribuer à l'utilisateur les droits d'accéder aux répertoires aussi.
 
 ```bash
-mv /opt/tmp/linshare-ui-user-<VERSION>.tar.bz2 /var/www/
+mv /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2 /var/www/
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
+tar xjf linshare-ui-user-<VERSION>.tar.bz2
 chown -R apache: linshare-ui-user
 rm -fr /var/www/linshare-ui-user-<VERSION>.tar.bz2
 ```
@@ -377,9 +377,9 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 
 Deployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur httpd :
 ```bash
-mv /opt/tmp/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
+mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+tar xjf linshare-ui-admin-{VERSION}.tar.bz2
 chown -R apache: linshare-ui-admin
 rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
 ```

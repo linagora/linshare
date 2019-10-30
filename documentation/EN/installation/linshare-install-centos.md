@@ -36,7 +36,7 @@ For this installation, download the following files :
   * linshare-ui-user-{VERSION}.tar.bz2
 
 > Note :<br/>
-In this process, it is considered that the files are downloaded in the `/opt/tmp` temporary directory. Of course, it is possible to use another temporary directory.
+In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
 
 To manipulate the archives, it is necessary to install `unzip` and `bzip2`:
 ```bash
@@ -48,7 +48,7 @@ yum install -y unzip bzip2
 Create the configuration repository of __LinShare__, past the configuration files, and rename the sample file as follow :
 ```bash
 mkdir -p /etc/linshare
-mv /opt/tmp/linshare-core-{VERSION}.war /etc/linshare/linshare.war
+mv /tmp/linshare_data/linshare-core-{VERSION}.war /etc/linshare/linshare.war
 unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
 Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
@@ -156,9 +156,9 @@ Eventually use the script named `createDatabase.sh` from `src/main/resources/sql
 
 Import the SQL files `createSchema.sql` and `import-postgresql.sql`:
 ```bash
-cd /opt/tmp
+cd /tmp/linshare_data
 tar xjvf linshare-core-*-sql.tar.bz2
-psql -U linshare -W -d linshare linshare-core-sql/postgresql/createSchema.sql
+psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/createSchema.sql
 Password for user linshare: PASSWORD
 psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/import-postgresql.sql
 Password for user linshare: PASSWORD
@@ -257,15 +257,15 @@ To use it, download the following files from [http://download.linshare.org/versi
 * linshare-thumbnail-server-{VERSION}.yml
 
 > Note :<br/>
-In this process, it is considered that the files are downloaded in the `/opt/tmp` temporary directory. Of course, it is possible to use another temporary directory.
+In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
 
 > Note <br>
 By default the server is configured to listens on port 80, it is possible to change it.
 
 Install the file `linshare-thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and install the java archive `linshare-thumbnail-server-{VERSION}.jar` into the repository `/usr/local/sbin/linshare-thumbnail-server.jar` :
 ```java
-mv /opt/tmp/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
-mv /opt/tmp/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
 Creating a systemd service can be useful to automcatically start the thumbnail engine in background at system boot. Create the file `/etc/systemd/system/linshare-thumbnail-server.service`, and add the following content :
@@ -342,9 +342,9 @@ To deploy the __LinShare__ application, it is necessary to activate the __mod_pr
 Create the subdirectories in the directory `/var/www/`, note that the repository name will be the application domain name. Assign to the user the access permissions to the subdirectories.
 
 ```bash
-mv /opt/tmp/linshare-ui-user-<VERSION>.tar.bz2 /var/www/
+mv /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2 /var/www/
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
+tar xjf linshare-ui-user-<VERSION>.tar.bz2
 chown -R apache: linshare-ui-user
 rm -fr /var/www/linshare-ui-user-<VERSION>.tar.bz2
 ```
@@ -380,9 +380,9 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 
 Deploy the archive of the application __LinShare__ UI Admin in the httpd repository :
 ```bash
-mv /opt/tmp/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
+mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+tar xjf linshare-ui-admin-{VERSION}.tar.bz2
 chown -R apache: linshare-ui-admin
 rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
 ```
