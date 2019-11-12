@@ -1,4 +1,4 @@
-# [2.3.2](https://github.com/linagora/linshare/compare/2.3.1...2.3.2) (2019-09-03) [Download link](http://download.linshare.org/versions/2.3.2/)
+# [2.3.2](https://github.com/linagora/linshare/compare/2.3.1...2.3.2) (2019-11-13) [Download link](http://download.linshare.org/versions/2.3.2/)
 
 **The 2.3.2 release of LinShare is out**
 
