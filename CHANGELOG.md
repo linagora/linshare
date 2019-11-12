@@ -1,3 +1,34 @@
+# [2.3.2](https://github.com/linagora/linshare/compare/2.3.1...2.3.2) (2019-09-03) [Download link](http://download.linshare.org/versions/2.3.2/)
+
+**The 2.3.2 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 2.3.2 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.1...2.3.2)
+* **ui-user** : 2.3.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.1...v2.3.2)
+
+####  Bug fixes and improvments
+
+  * Core:
+    * Fix domain purge batch
+    * Fix user deletion after domain purge
+    * Improve guest complexity password
+    * Fix conctats menu not diplayed for guest user
+    * Fix the rejection of the '@' on upload document
+    * Fix delete publicKey
+    * Add pem support for public keys
+    * Fix LS sql script upgrade 2.2 to 2.3
+    * Fix download workgroup document
+    * Fix download archive for revisions
+    * Add missing endpoints for delegation v2 api
+    * Fix delete and update for workgroup pattern
+
+  * UI-User:
+    * Upgrade bower to the latest and safe release
+    * Fix anonymous download when download attribute is not available
+
+
 # [2.3.1](https://github.com/linagora/linshare/compare/2.3.0...2.3.1) (2019-09-03) [Download link](http://download.linshare.org/versions/2.3.1/)
 
 **The 2.3.1 release of LinShare is out**
