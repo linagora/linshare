@@ -169,7 +169,13 @@ Edit this new file, and add the following lines in the section <mirrors></mirror
 
 
 
-## Maven and jetty client configuration:
+## Maven and servers configuration:
+
+> Note
+* For LinShare 2.3 and previous versions, the java version used is Java 8, we can use Jetty as a server.
+* For LinShare 2.4 Java 11 is used, we need to configure Tomcat server, Jetty is not functional with this Java version.
+
+### Maven and Jetty configuration:
 
 Go to your Eclipse and click on the "run" tab then choose "run configuration"
 
@@ -196,17 +202,39 @@ In the Environment tab create a new variable, name it LINSHARE_HOME, and set it'
 The embedded jetty plugin inside maven pom allows you to run linshare for maven command line.
 You could use embedded profiles or external configuration like in eclipse.
 
-# for use of java 7 (just in case)
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-# temporary directory for h2 database,jackrabbit files, tests, ...
+# temporary directory for h2 database, tests, ...
 export LINSHARE_HOME=/tmp/linshare/
 # run full embedded linshare
 mvn jetty:run -Ph2,local
 
+### Tomcat server installation and configuration:
 
+###### Download Tomcat 9
+You need to download the Tomcat archive from its official website [official download](https://tomcat.apache.org/download-90.cgi) .
+
+###### Add tomcat Server to Eclipse
+Extract the archive and Go on your Eclipse and click on the __Window__ menu and select __Preferences__. Sereach __Server__ and select __Runtime Environment__
+Click on __Add...__ button and select Tomcat9,  click on __Next__ and browse into the __apache-tomcat-9.0.21__ directory.
+
+On __Window__ menu click on __Show view__ and select __Server__.
+You can create a new server by going on File>New>server. click next and move linshare-core project to the right to configure it on the server.
+
+###### Server configuration
+
+On servers views, double click on your linshare server, and click on __Open launch configuration__.
+- In the Arguments tab you have add those lines:
+
+      -Dlog4j.configuration=file:${workspace_loc}/configurations/my_conf1/log4j.properties
+      -Dlinshare.config.path=file:${workspace_loc}/configurations/my_conf1
+      -Djava.awt.headless=true -Xms512m -Xmx1538m
+
+- And in the Environment tab create a new variable named "LINSHARE_HOME", which have the value of linshare.properties file path :
+
+    ${workspace_loc}/configurations/my_conf1
+
+###### Important:
+Be aware to the Context on the tab "Modules", change the path to __/linshare"__.
 ## Linshare admin panel configuration:
 
 Download the admin archive from the forge: http://download.linshare.org/versions
 Then follow the default intallation guide.
-
-
