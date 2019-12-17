@@ -293,7 +293,7 @@ systemctl start linshare-thumbnail-server.service
 
 ## <a name="tomcat">Installation de Tomcat</a>
 
-__LinShare__ étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de servlets Java (Tomcat ou Jetty) pour fonctionner. Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
+__LinShare__ étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de `servlets` Java (Tomcat ou Jetty) pour fonctionner. Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
 Installer Tomcat depuis les dépôts :
 ```bash
@@ -306,10 +306,35 @@ L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ 
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-Cependant, pour la déclaration de la variable `JAVA_OPT`, il faut concaténer les options, et donc ajouter la ligne suivante dans `/etc/sysconfig/tomcat` :
-```bash
-JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches"
+Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/etc/sysconfig/tomcat`:
+
+```conf
+JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,batches"
 ```
+Au cas ou vous voulez changer l'emplacement des fichiers temporaires ajoutez:
+```config
+JAVA_OPTS="... -Djava.io.tmpdir=/tmp/"
+```
+####profiles
+Pour changer le profile à utilisé dans __LinShare__
+LinShare fournis différent profiles qui permettent de conditionner le lancement de l'application selon le besoin (support de stockage, mode d'authentification ...).
+Pour configurer les profiles vous devez concaténer la ligne ci-dessous à la variable `JAVA_OPTS`, pour le profile par défaut par exemple:
+
+```config
+JAVA_OPTS="... -Dspring.profiles.active=default,jcloud,batches"
+```
+Il est requis d'activer au moins un profile d'authentification parmi ceux existants:
+
+* default: profile d'authentification
+* sso : Autorise l'injection d'entêtes pour le support du SSO (ex: LemonLDAP)
+
+Profiles de stockage de fichiers :
+* jcloud : utiliser  `apache jcloud` mode de stockage de fichiers  : Amazon S3, Swift, Ceph, filesystem.
+* gridfs : utiliser `gridfs` (mongodb) comme mode de stockage de fichiers.
+Les profiles recommandés sont `jcloud` avec `Swift`
+
+Autres profiles :
+* batches : active l’exécution des taches planifiés (ex: expirations des partages).
 
 Dans le fichier `/usr/share/tomcat/conf/catalina.properties` de tomcat, des retours à la ligne matérialisés par le caractère `\` permettent de réduire la largeur des lignes des valeurs pour chaque clé de configuration. Il y a une clé de configuration nommée `tomcat.util.scan.DefaultJarScanner.jarsToSkip`. Ajouter `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` quelque part dans la section associée à cette clé.
 Voici un exemple d'extrait du fichier `/usr/share/tomcat/conf/catalina.properties` avec la ligne ajoutée au milieu :
@@ -379,7 +404,7 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 
 ### <a name="ui-admin">Configuration vhost ui-admin</a>
 
-Deployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur httpd :
+Déployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur httpd :
 ```bash
 mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
@@ -467,7 +492,7 @@ mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
 
-Sur __LinShare__, il existe deux modes d'authentification possibles, le permier est celui par défaut et le second est une authification par SSO. Pour démarrer LinShare il est nécessaire d'activer l'un des modes suivants :
+Sur __LinShare__, il existe deux modes d'authentification possibles, le premier est celui par défaut et le second est une authentification par SSO. Pour démarrer LinShare il est nécessaire d'activer l'un des modes suivants :
 * default : processus d'authentification par défaut.
 * sso : permet l'injection d'entête pour le SSO. Ce profil inclue les "..." du profil par défaut.
 
@@ -478,7 +503,7 @@ Ou bien d'utiliser une variable d'environnement : `SPRING_PROFILES_ACTIVE`.
 
 Activer au moins un des profils de système de sockage de fichiers ci-dessous :
 * jcloud : Utilisant jcloud comme système de stockage de fichier : Amazon S3, Swift, Ceph, filesystem (que pour les tests).
-* gridfs : Using gridfs (mongodb) comme système de stockage de fichier.
+* gridfs : Utilisant gridfs (mongodb) comme système de stockage de fichier.
 
 > Note :<br/>
 Le profil recommandé est jcloud avec swift.

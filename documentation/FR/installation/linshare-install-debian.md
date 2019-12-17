@@ -288,6 +288,38 @@ L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ 
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
+Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/etc/default/tomcat8`:
+
+```conf
+JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true -Xms512m -Xmx2048m"
+JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+```
+
+Au cas ou vous voulez changer l'emplacement des fichiers temporaires ajoutez:
+```config
+JAVA_OPTS="${JAVA_OPTS} -Djava.io.tmpdir=/tmp/"
+```
+####profiles
+LinShare fournis différent profiles qui permettent de conditionner le lancement de l'application selon le besoin (support de stockage, mode d'authentification ...).
+Pour configurer les profiles vous devez ajouter la ligne ci-dessous dans `/etc/default/tomcat8`, pour le profile par défaut par exemple:
+
+```config
+JAVA_OPTS="${JAVA_OPTS} -Dspring.profiles.active=default,jcloud,batches"
+```
+Il est requis d'activer au moins un profile d'authentification parmi ceux existants:
+
+* default: profile d'authentification
+* sso : Autorise l'injection d'entêtes pour le support du SSO (ex: LemonLDAP)
+
+Profiles de stockage de fichiers :
+* jcloud : utiliser  `apache jcloud` mode de stockage de fichiers  : Amazon S3, Swift, Ceph, filesystem.
+* gridfs : utiliser `gridfs` (mongodb) comme mode de stockage de fichiers.
+Les profiles recommandés sont `jcloud` avec `Swift`
+
+Autres profiles :
+* batches : active l'exécution des taches planifiés (ex: expirations des partages)
+
 Dans le fichier `/var/lib/tomcat8/conf/catalina.properties` de tomcat, des retours à la ligne matérialisés par le caractère `\` permettent de réduire la largeur des lignes des valeurs pour chaque clé de configuration. Il y a une clé de configuration nommée `tomcat.util.scan.DefaultJarScanner.jarsToSkip`. Ajouter `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` quelque part dans la section associée à cette clé.
 Voici un exemple d'extrait du fichier `/var/lib/tomcat8/conf/catalina.properties` avec la ligne ajoutée au milieu :
 ```java
@@ -362,7 +394,7 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 
 ### <a name="ui-admin">Configuration vhost ui-admin</a>
 
-Deployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur Apache 2 :
+Déployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur Apache 2 :
 ```bash
 mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
@@ -439,18 +471,18 @@ mail.smtp.auth.needed=false
 mail.smtp.charset=UTF-8
 ```
 
-Sur __LinShare__, il existe deux modes d'authentification possibles, le permier est celui par défaut et le second est une authification par SSO. Pour démarrer LinShare il est nécessaire d'activer l'un des modes suivants :
+Sur __LinShare__, il existe deux modes d'authentification possibles, le premier est celui par défaut et le second est une authentification par SSO. Pour démarrer LinShare il est nécessaire d'activer l'un des modes suivants :
 * default : processus d'authentification par défaut.
 * sso : permet l'injection d'entête pour le SSO. Ce profil inclue les "..." du profil par défaut.
 
-Le profil par défaut est jcloud pour le filesystem pour les tests.
+Le profile par défaut est `jcloud` pour le filesystem pour les tests.
 
 Il est possible de surcharger ces paramètres en utilisant `-Dspring.profiles.active=xxx`
 Ou bien d'utiliser une variable d'environnement : `SPRING_PROFILES_ACTIVE`.
 
 Activer au moins un des profils de système de sockage de fichiers ci-dessous :
-* jcloud : Utilisant jcloud comme système de stockage de fichier : Amazon S3, Swift, Ceph, filesystem (que pour les tests).
-* gridfs : Using gridfs (mongodb) comme système de stockage de fichier.
+* jcloud : Utilisant `jcloud` comme système de stockage de fichier : Amazon S3, Swift, Ceph, filesystem (que pour les tests).
+* gridfs : Utilisant `gridfs` (mongodb) comme système de stockage de fichier.
 
 > Note :<br/>
 Le profil recommandé est jcloud avec swift.
@@ -472,6 +504,9 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+Puis redémarrez le service Apache:
+
+`[root@localhost ~]$ sudo systemctl restart apache2`
 
 ### <a name="firstAccess">Premier accès</a>
 
@@ -488,11 +523,11 @@ Pour l’interface utilisateur :
 Pour l’interface d’administration :
   * http://linshare-admin.local/
 
-Voici les identificants par défaut du compte administrateur système :
+Voici les identifiants par défaut du compte administrateur système :
   * Identifiant : root@localhost.localdomain
   * Mot de passe : adminlinshare
 
-Veuiller changer le mot de passe depuis l'interface d'administration.
+Veuillez changer le mot de passe depuis l'interface d'administration.
 
 > Note :<br/>
   Il n'est pas possible d'ajouter d'autres utilisateurs standards LinShare en local sans LDAP. Voir la section dédiée à la configuration du LDAP dans la [paramétrage applicatif](../administration/linshare-admin.md).

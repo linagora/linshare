@@ -308,10 +308,39 @@ All starting needful options by default to Linshare are indicated in the header 
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-Nevertheless, for the variable declaration of `JAVA_OPT`, it is necessary to concatenate options and add the following line in `/etc/sysconfig/tomcat`:
-```bash
-JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,mongo,batches"
+It is required to add the following lines in: `/etc/sysconfig/tomcat`:
+
+```conf
+JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
 ```
+If you want to change the location of tmp directory concatenate line below to `JAVA_OPTS`:
+```conf
+JAVA_OPTS="... -Djava.io.tmpdir=/tmp/"
+```
+####profiles
+LinShare provides different profiles that can allow you to conditionally constrcut the application (different way of storage, authentication ...), availables profiles are listed above.
+To configure which profile you want to use.
+You can edit used profiles by adding the following key to the JAVA_OPTS parameter.
+Example with the default value:
+
+```config
+JAVA_OPTS=" ... -Dspring.profiles.active=default,jcloud,batches"
+```
+> **NB** You must enable at least one authentication profile among authentication profiles
+
+Available authentication profiles :
+* default : default authentication process.
+* sso : Enable headers injection for SSO.
+
+Available file data store profiles :
+* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
+* gridfs : Using gridfs (mongodb) as file data store.
+Recommended profile for production is jcloud with Swift.
+
+Additional profiles :
+* batches : if this profile is enabled (by default it should be), it will enable all Quartz jobs (cron tasks).
+
+Ex: If you want to use `gridfs`: "-Dspring.profiles.active=default,gridfs,batches"
 
 In the tomcat file `/usr/share/tomcat/conf/catalina.properties`, return carriage are marked with the `\` character, in order to reduce the lines width of the values for each configuration key. There is a key named `tomcat.util.scan.DefaultJarScanner.jarsToSkip`. Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of this key.
 Here is an extract of the file `/usr/share/tomcat/conf/catalina.properties` with the added line in the middle:

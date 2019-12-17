@@ -54,7 +54,6 @@ Archive:  linshare.war
   inflating: /etc/linshare/log4j.properties
 mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
 ```
-
 ## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
 
 __LinShare__  works with OpenJDK or Sun/Oracle Java 8. Install it and activate it from the repositories :
@@ -287,13 +286,50 @@ aptitude install tomcat8
 ```
 
 To specify the location of the __LinShare__ configuration (_linshare.properties_ file) and also the default start
-options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/sysconfig/tomcat`):
+options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/default/tomcat8`):
 
-All starting needful options by default to Linshare are indicated in the header of the following configuration files :
+All starting needful options by default to LinShare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
+It is required to add the following lines in: `/etc/default/tomcat8`:
 
-In the tomcat file `/var/lib/tomcat8/conf/catalina.properties`, return carriage are marked with the `\` character, in order to reduce the lines width of the values for each configuration key. There is a key named `tomcat.util.scan.DefaultJarScanner.jarsToSkip`. Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of this key.
+```conf
+JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true -Xms512m -Xmx2048m"
+JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+```
+If you want to change the location of tmp directory:
+```conf
+JAVA_OPTS="${JAVA_OPTS} -Djava.io.tmpdir=/tmp/"
+```
+####profiles
+LinShare provides different profiles that can allow you to conditionally constrcut the application (different way of storage, authentication ...), availables profiles are listed above.
+To configure which profile you want to use.
+You can edit used profiles by adding the following key to `/etc/default/tomcat8` file.
+Example with the default value:
+
+```config
+JAVA_OPTS="${JAVA_OPTS} -Dspring.profiles.active=default,jcloud,batches"
+```
+> **NB** You must enable at least one authentication profile among authentication profiles
+
+Available authentication profiles :
+* default : default authentication process.
+* sso : Enable headers injection for SSO.
+
+Available file data store profiles :
+* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
+* gridfs : Using gridfs (mongodb) as file data store.
+Recommended profile for production is jcloud with Swift.
+
+Additional profiles :
+* batches : if this profile is enabled, it will enable all Quartz jobs (cron tasks).
+
+Ex: If you want to use `gridfs`: JAVA_OPTS="${JAVA_OPTS} -Dspring.profiles.active=default,gridfs,batches"
+
+In the tomcat file `/var/lib/tomcat8/conf/catalina.properties`, return carriage are marked with the `\` character, in order to reduce the lines width of the values for each configuration key. There is a key named `tomcat.util.scan.DefaultJarScanner.jarsToSkip`.
+
+Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of this key.
 Here is an extract of the file `/var/lib/tomcat8/conf/catalina.properties` with the added line in the middle:
 ```java
 jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
@@ -479,6 +515,10 @@ INFO: Démarrage de Coyote HTTP/1.1 sur http-8080
 org.apache.catalina.startup.Catalina start
 INFO: Server startup in 23151 ms
 ```
+
+Then restart the Apache service :
+
+`[root@localhost ~]$ sudo systemctl restart apache2`
 
 ### <a name="firstAccess">First Access</a>
 
