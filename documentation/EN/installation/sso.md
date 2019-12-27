@@ -115,7 +115,7 @@ explaining how works spring profiles. In our case, we only need to enable "sso"
 profile using spring.profiles.active key in /etc/defaut/tomcat.
 
 We may have something like that:
-`-Dspring.profiles.active=sso,jcloud,mongo,batches`
+`-Dspring.profiles.active=sso,jcloud,batches`
 
 Finally, you must restart the Tomcat : `systemctl restart tomcat8.service`.
 
