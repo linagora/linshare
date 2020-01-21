@@ -172,6 +172,37 @@ All screenshots are available [here](http://download.linshare.org/screenshots/2.
 ```
 /linshare/webservice/rest/user/v2/shared_spaces/{uuid}/members/{memberUuid}
 ```
+
+<a name="2.2.7"></a>
+# [2.2.7](https://github.com/linagora/linshare/compare/2.2.5...2.2.7) (2020-01-21) [Download link](http://download.linshare.org/versions/2.2.7/)
+
+**The 2.2.7 release of LinShare is out**
+
+## LinShare components
+
+* **core** : 2.2.7 [changelog](https://github.com/linagora/linshare-core/compare/2.2.6...2.2.7)
+* **ui-admin** : 3.2.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.2.3...v3.2.4)
+* **ui-user** : 2.2.7 [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.2.5...v2.2.7)
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+### Minor features and fixes
+* Core
+  * Add a new endpoint in admin api to expose guest details.
+  * Fix and improve the deleted sharedSpaces.
+  * Fix domain purge batch and remove all its related data
+  * Fix user deletion after domain purge
+  * Fix contact menu which was not diplayed for a guest
+  * Pem support for public keys is added
+
+* UI-User
+  * Fix anonymous download
+
+* UI-Admin
+  * Fix unasignable domain, prohibit the assign of a user to Root or guest domain
+  * Fix! admin interface was loading the configuration from the guest's domain instead of the owner's domain
+
 <a name="2.2.6"></a>
 # [2.2.6](https://github.com/linagora/linshare/compare/2.2.5...2.2.6) (2019-09-03) [Download link](http://download.linshare.org/versions/2.2.6/)
 
