@@ -1,3 +1,27 @@
+# [2.3.3](https://github.com/linagora/linshare/compare/2.3.2...2.3.3) (2020-01-22) [Download link](http://download.linshare.org/versions/2.3.3/)
+
+**The 2.3.3 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 2.3.3 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.2...2.3.3)
+* **ui-user** : 2.3.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.2...v2.3.3)
+* **ui-admin** : 3.3.2 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.1...v3.3.2)
+####  Bug fixes and improvments
+
+  * Core:
+    * Improve the size control of an archive to download
+    * Improve the field reply-to of an email in case of the root user is the actor of the action
+    * Fix find metadata endpoint of a workGroup node
+    * Add new endpoint in admin api to expose guest details
+    * Fix find the shared space member to update with memberUuid instead of accountUuid
+    * Fix and improve the deleted sharedSpaces
+
+  * UI-Admin:
+      * Fix unasignable domain, prohibit the assign of a user to Root or guest domain
+      * Fix! admin interface was loading the configuration from the guest's domain instead of the owner's domain
+
 # [2.3.2](https://github.com/linagora/linshare/compare/2.3.1...2.3.2) (2019-11-13) [Download link](http://download.linshare.org/versions/2.3.2/)
 
 **The 2.3.2 release of LinShare is out**
