@@ -46,7 +46,8 @@ Here are all parameters from the __properties__ file:
 
 -   linshare.mongo.client.uri : standard URI connection scheme to connect to (`mongodb://linshare:linshare@127.0.0.1:27017/linshare` by default)
 -   linshare.mongo.gridfs.smallfiles.client.uri : standard URI connection scheme to connect to store tiny files such as thumbnails, mail attachments... (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-files` by default).
--   linshare.mongo.gridfs.bigfiles.client.uri: store all files in MongoDB GridFS. Not recommended (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-`bigfiles by default).
+-   linshare.mongo.gridfs.bigfiles.client.uri: store all files in MongoDB GridFS (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-bigfiles` by default). Not recommended for production mode, it is advised to use instead **Jcloud** as a file data store (Amazon S3, Swift, Ceph, filesystem).
+
 -   linshare.mongo.connect.timeout (`30000` by default)
 -   linshare.mongo.socket.timeout (`30000` by default)
 -   linshare.mongo.write.concern:

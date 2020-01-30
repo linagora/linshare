@@ -49,7 +49,8 @@ Voici une liste des clés de paramétrage présentes dans les fichiers __propert
 
 -   linshare.mongo.client.uri : schéma d'URI de connexion standard pour la connexion à la base de données (`mongodb://linshare:linshare@127.0.0.1:27017/linshare` par défaut)
 -   linshare.mongo.gridfs.smallfiles.client.uri : schéma d'URI de connexion standard pour stocker des fichiers légers: miniatures, pièces jointes... (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-files` par défaut).
--   linshare.mongo.gridfs.bigfiles.client.uri: stockage de tous les fichiers en utilisant MongoDB GridFS. Non recommandé (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-`bigfiles par défaut).
+-   linshare.mongo.gridfs.bigfiles.client.uri: stockage de tous les fichiers en utilisant MongoDB GridFS (`mongodb://linshare:linshare@127.0.0.1:27017/linshare-bigfiles` par défaut). Non recommandé pour le mode production, il est conseillé d'utiliser **Jcloud** comme un système de stockage de fichier (Amazon S3, Swift, Ceph, filesystem).
+
 -   linshare.mongo.connect.timeout (`30000` par défaut)
 -   linshare.mongo.socket.timeout (`30000` par défaut)
 -   linshare.mongo.write.concern:

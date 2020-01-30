@@ -222,6 +222,8 @@ systemctl enable mongod
 systemctl start mongod
 ```
 
+Pour plus d'information sur les bases de données Mongo utilisées dans LinShare vous pouvez lire: [documentation](https://github.com/linagora/linshare/blob/master/documentation/FR/administration/configuration-administration.md#mongodb)
+
 ## <a name="thumbnail">Activation du moteur d'aperçu (optionnel)</a>
 
 > Note :<br/>

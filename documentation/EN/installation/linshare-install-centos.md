@@ -221,6 +221,8 @@ systemctl enable mongod
 systemctl start mongod
 ```
 
+For more information about the mongo dataBases used in LinShare you can read this: [documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/administration/configuration-administration.md#mongodb)
+
 ## <a name="thumbnail">Thumbnail Engine (optional)</a>
 
 > Note :<br/>

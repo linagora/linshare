@@ -168,7 +168,7 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ### <a name="mongo">Installation de MongoDB</a>
 
 Pour l'installation de __LinShare__, il est nécessaire d'installer une base de données mongoDB.
-Le paquetage mongodb-org n'existe pas dans les référentiels par défaut de CentOS. Toutefois, MongoDB gère un référentiel dédié : il est donc nécessaire d'ajouter le dépôt.
+Le paquetage mongodb-org n'existe pas dans les référentiels par défaut de Debian. Toutefois, MongoDB gère un référentiel dédié : il est donc nécessaire d'ajouter le dépôt.
 
 Créer un fichier `/etc/apt/sources.list.d/mongodb-org-3.2.list`:
 ```bash
@@ -205,6 +205,7 @@ Configurer et démarrer le service MongoDB:
 ```bash
 service mongod start
 ```
+Pour plus d'information sur les bases de données Mongo utilisées dans LinShare vous pouvez lire: [documentation](https://github.com/linagora/linshare/blob/master/documentation/FR/administration/configuration-administration.md#mongodb)
 
 ## <a name="thumbnail">Activation du moteur d'aperçu (Optionnel)</a>
 
