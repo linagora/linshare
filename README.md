@@ -27,8 +27,11 @@ This instance of LinShare is set up with some test users, from user1 to user7 :
  * user6@linshare.org : password6
  * user7@linshare.org : password7
 
-If you want to share with some external users, use these two email addresses *external1@linshare.org* and *external2@linshare.org*.
-External users are just an email address without an account. You can also use these two emails to create guests.
+If you want to share with some external users, use these five email addresses *external1@linshare.org* to *external5@linshare.org*.
+External users are just an email address without a LinShare account.
+
+We also provide  guest1@linshare.org to guest5@linshare.org emails adresses,
+who are also external accounts but you can use them to create guests.
 
 NB: You won't able to send or receive emails if your email address is not @linshare.org.
 
@@ -39,7 +42,11 @@ Webmail passwords :
  * user1@linshare.org : password1
  * ...
  * external1@linshare.org : password1
- * external2@linshare.org : password2
+ * ...
+ * external5@linshare.org : password5
+ * guest1@linshare.org : password1
+ * ...
+ * guest5@linshare.org : password5
 
 
 ## All repositories
