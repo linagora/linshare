@@ -1,3 +1,31 @@
+# [2.3.4](https://github.com/linagora/linshare/compare/2.3.3...2.3.4) (2020-03-20) [Download link](http://download.linshare.org/versions/2.3.4/)
+
+**The 2.3.4 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 2.3.4 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.3...2.3.4)
+* **ui-user** : 2.3.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.3...v2.3.4)
+* **ui-admin** : 3.3.3 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.2...v3.3.3)
+####  Bug fixes and improvments
+
+  * Core:
+    * Add the multipart uploads support for jcloud on Linshare
+    * Fix and improve the statistic daily batch of Users
+    * The Keystone v3 support is added for Jcloud. Now LinShare supports V2 and V3 versions
+    * Fix document name after copying it to personalSpace from a sharedSpace
+    * Fix management of domain patterns
+    * Fix and improve the edition of a technical accounts
+    * Fix bug of binding first and last name on email generation
+    * Improve mail attachment audit traces
+
+  * UI-User:
+      * Hide download button when archive download functionality is disabled
+
+  * UI-Admin:
+      * Improve the build of email template, by giving the choice to the admin to switch between the existant email configurations
+
 # [2.3.3](https://github.com/linagora/linshare/compare/2.3.2...2.3.3) (2020-01-22) [Download link](http://download.linshare.org/versions/2.3.3/)
 
 **The 2.3.3 release of LinShare is out**
