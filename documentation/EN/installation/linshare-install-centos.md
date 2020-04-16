@@ -178,22 +178,26 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ### <a name="mongo">MongoDB Installation</a>
 
 For the __LinShare__ installation, it is required to install a MongoDB database.
-MongoDB package does not exist within the default repositories for CentOS. However, MongoDB maintains a dedicated repository. Let's add it:
+LinShare 2.3 was using MongoDB 3.2 but since 2.3.5, you can use MongoDB 3.4 or 3.6.
+We Recommend to use the 3.6 because 3.2 and 3.4 are not supported [officially](https://www.mongodb.com/support-policy) anymore.
+
+> We wrote a little [upgrade guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-centos.md) from 3.2 to 3.6 if you need.
 
 Create a file `/etc/yum.repos.d/mongodb-org.repo`, and add the repository informations in the latest stable release  to the file:
 ```bash
-[mongodb-org-3.2]
+[mongodb-org-3.6]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
 Install the mongodb-org package from the new repository, by using the yum utility:
 ```bash
 yum install -y mongodb-org
 ```
+See the [official guide](https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-centos/) if needed.
 
 By default, MongoDB is configured with the following __LinShare__ configuration in the file `/etc/linshare/linshare.properties` :
 

@@ -168,7 +168,7 @@ For the __LinShare__ installation, it is required to install a MongoDB database.
 LinShare 2.3 was using MongoDB 3.2 but since 2.3.5, you can use MongoDB 3.4 or 3.6.
 We Recommend to use the 3.6 because 3.2 and 3.4 are not supported [officially](https://www.mongodb.com/support-policy) anymore.
 
-NB: we write a little [upgrade guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) from 3.2 to 3.6 if you needed it.
+> We wrote a little [upgrade guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) from 3.2 to 3.6 if you need.
 
 Create a file `/etc/apt/sources.list.d/mongodb-org-3.6.list`, and add the repository informations in the latest stable release  to the file:
 ```bash

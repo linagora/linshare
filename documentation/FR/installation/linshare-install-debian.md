@@ -168,13 +168,18 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ### <a name="mongo">Installation de MongoDB</a>
 
 Pour l'installation de __LinShare__, il est nécessaire d'installer une base de données mongoDB.
-Le paquetage mongodb-org n'existe pas dans les référentiels par défaut de Debian. Toutefois, MongoDB gère un référentiel dédié : il est donc nécessaire d'ajouter le dépôt.
+Le guide d'Installation de LinShare 2.3 recommandait l'usage de MongoDB 3.2.
+Désormais, depuis la version 2.3.5, nous vous conseillons d'utiliser MongoDB 3.6.
+En effet les versions 3.2 et 3.4 ne sont plus supportées [officiellement](https://www.mongodb.com/support-policy).
 
-Créer un fichier `/etc/apt/sources.list.d/mongodb-org-3.2.list`:
+> Au besoin, voici un [guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) de mise à jour de 3.2 a 3.6.
+
+Créer un fichier `/etc/apt/sources.list.d/mongodb-org-3.6.list`:
 ```bash
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 ```
+> Si besoin, voici le lien vers le [guide officiel](https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-debian/).
 
 Installer le paquet mongodb-org à partir du référentiel en utilisant l'utilitaire apt :
 ```bash
