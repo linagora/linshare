@@ -1,3 +1,30 @@
+## [2.3.5](https://github.com/linagora/linshare/compare/2.3.4...2.3.5) (2020-04-20) [Download link](http://download.linshare.org/versions/2.3.5/)
+
+\*_The 2.3.5 release of LinShare is out_
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 2.3.5 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.4...2.3.5)
+- **ui-user** : 2.3.5 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.4...v2.3.5)
+#### features
+- support of MongoDB 3.6.
+LinShare 2.3.5 support MongoDB 3.6, so we recommend to use 3.6 version because 3.2 and 3.4 are not supported [officially](https://www.mongodb.com/support-policy) anymore.
+> see [ mongodb-upgrade-from-3.2-to-3.6-debian](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) & [mongodb-upgrade-from-3.2-to-3.6-centos](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-centos.md) to  upgrade your DB version.
+#### Bug fixes and improvments
+
+- Core:
+  - Introduce mongodb driver 3.6.4
+  - Fix guest default language
+  - Apply a sanitizer for all input endpoints on LinShare API to enhance security
+  - Compute expiry date when last sharing is deleted manually.
+  - Fix Document expiration date is set even functionality disabled.
+
+- UI-User:
+  - Fix download icon shown even if downlod archive functionnality disabled
+  - Fix Dislay of document expiry date.
+  - Fix tooltip text and translation related to Documents sharing
+
 # [2.3.4](https://github.com/linagora/linshare/compare/2.3.3...2.3.4) (2020-03-20) [Download link](http://download.linshare.org/versions/2.3.4/)
 
 **The 2.3.4 release of LinShare is out**
