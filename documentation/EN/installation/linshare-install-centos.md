@@ -16,8 +16,11 @@
    * [First Access](#firstAccess)
 
 > Note :<br/>
-This page provides a __LinShare__ version 2.3 installation on CentOS 7 (older CentOS versions are not supported).
-Installation of previous versions of __LinShare__ are available at github branches in this case [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-centos.md)
+Installation of previous supported versions of __LinShare__ are available at github branches:
+- [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-debian.md)
+- [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install.md)
+- [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/EN/installation/linshare-install.md)
+- [LinShare 2.0](https://github.com/linagora/linshare/blob/maintenance-2.0.x/documentation/EN/installation/linshare-install.md)
 
 ## <a name="dlLinshare">LinShare Download</a>
 
@@ -71,10 +74,15 @@ log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 
 ## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
 
-__LinShare__  works with OpenJDK or Sun/Oracle Java 8. Install it and activate it from the repositories :
+__LinShare__  works with OpenJDK or Sun/Oracle Java 11. Install it and activate it from the repositories :
 
 ```bash
-yum -y install java-1.8.0-openjdk.x86_64
+yum install java-11-openjdk-devel
+```
+
+To update Java version you can set:
+
+```
 update-alternatives --config java
 ```
 
@@ -88,7 +96,7 @@ At the beginning, LinShare was developped with PostgreSQL. New functionalities h
 
 ### <a name="postgre">PostgreSQL Installation</a>
 
-__Linshare__ requires the use of PostgreSQL for its files and configuration. This section gives details about the PostgreSQL installation.
+__Linshare__ requires the use of PostgreSQL 9.x and newer versions for its files and configurations. This section gives details about the PostgreSQL installation.
 
 > Note :<br/>
 MySQL database is not compatible anymore since LinShare v2.
@@ -97,7 +105,7 @@ MySQL database is not compatible anymore since LinShare v2.
 yum install -y postgresql postgresql-server
 ```
 
-Configurer and start the PostgreSQL service :
+Configure and start the PostgreSQL service :
 ```bash
 postgresql-setup initdb
 systemctl enable postgresql
@@ -177,27 +185,26 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ### <a name="mongo">MongoDB Installation</a>
 
-For the __LinShare__ installation, it is required to install a MongoDB database.
-LinShare 2.3 was using MongoDB 3.2 but since 2.3.5, you can use MongoDB 3.4 or 3.6.
-We Recommend to use the 3.6 because 3.2 and 3.4 are not supported [officially](https://www.mongodb.com/support-policy) anymore.
-
-> We wrote a little [upgrade guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-centos.md) from 3.2 to 3.6 if you need.
+For the __LinShare__ installation, it is required to install MongoDB 4.2.
+For more details about the different mongoDB databases of __LinShare__ you can refer to this [Documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-centos.md#mongodb-installation)
 
 Create a file `/etc/yum.repos.d/mongodb-org.repo`, and add the repository informations in the latest stable release  to the file:
+
 ```bash
-[mongodb-org-3.6]
+[mongodb-org-4.2]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 ```
 
 Install the mongodb-org package from the new repository, by using the yum utility:
 ```bash
 yum install -y mongodb-org
 ```
-See the [official guide](https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-centos/) if needed.
+
+See the [official guide](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-red-hat/) if needed.
 
 By default, MongoDB is configured with the following __LinShare__ configuration in the file `/etc/linshare/linshare.properties` :
 
@@ -213,8 +220,25 @@ linshare.mongo.socket.timeout=30000
 #                               using the default write concern configured on the server.
 linshare.mongo.write.concern=MAJORITY
 
-# Standard URI connection scheme
-linshare.mongo.client.uri=mongodb://127.0.0.1:27017/linshare
+#### connection for data
+# replicaset: host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+linshare.mongo.data.replicaset=127.0.0.1:27017
+linshare.mongo.data.database=linshare
+# linshare.mongo.data.credentials=[user:password[@database]]
+linshare.mongo.data.credentials=
+
+#### connection for small files
+# Using MongoDb to store very small files (thumbnails, mail attachments, ...)
+linshare.mongo.smallfiles.replicaset=127.0.0.1:27017
+linshare.mongo.smallfiles.database=linshare-files
+linshare.mongo.smallfiles.credentials=
+
+# The connection for bigfiles is used just if the `gridfs` spring profile is enabled.
+#### connection for big files.
+# Store all files in MongoDB GridFS. Not recommended.
+linshare.mongo.bigfiles.replicaset=127.0.0.1:27017
+linshare.mongo.bigfiles.database=linshare-bigfiles
+linshare.mongo.bigfiles.credentials=
 ```
 
 Before starting the MongoDB service, check that the file `/etc/mongod.conf` has the bind ip address: 127.0.0.1.
