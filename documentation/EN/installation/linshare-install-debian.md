@@ -2,7 +2,7 @@
 
    * [LinShare Download](#dlLinshare)
    * [Archive and files configuration Deployment](#installFile)
-   * [OpenJDK Java JRE Installation](#instalOpenJDK)
+   * [JDK Installation](#installOpenJDK)
    * [Databases Installation](#bdd)
      * [PostgreSQL Installation](#postgre)
      * [MongoDB Installation](#mongo)
@@ -14,9 +14,14 @@
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
 
+Welcome to LinShare installation Guide, 
+This page provides a __LinShare__ version 4.0 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
 > Note :<br/>
-This page provides a __LinShare__ version 2.3 installation on Debian 8 Jessie (older Debian versions are not supported).
-Installation of previous versions of __LinShare__ are available at github branches in this case [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-centos.md)
+> Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 2.3](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md)
+> - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install.md)
+> - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/EN/installation/linshare-install.md)
+> - [LinShare 2.0](https://github.com/linagora/linshare/blob/maintenance-2.0.x/documentation/EN/installation/linshare-install.md)
 
 ## <a name="dlLinshare">LinShare Download</a>
 
@@ -28,73 +33,63 @@ __LinShare__  can be downloaded here :
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
 
-For this installation, download the following files :
+> Note :<br/>
+In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
+
+For this installation, download the following files in `/tmp/linshare_data`:
   * linshare-core-{VERSION}.war
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
 
-> Note :<br/>
-In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
-
 To manipulate the archives, it is necessary to install `unzip` and `bzip2`:
 ```bash
-aptitude install unzip bzip2
+apt install unzip bzip2
 ```
 
 ## <a name="installFile">Archive and files configuration Deployment</a>
 
-Create the configuration repository of __LinShare__, past the configuration files, and rename the sample file as follow :
 ```bash
 mkdir -p /etc/linshare
-mv /tmp/linshare_data/linshare-core-{VERSION}.war /etc/linshare/linshare.war
-unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
+unzip -j -d /etc/linshare/ /tmp/linshare_data/linshare-core-{VERSION}.war WEB-INF/classes/{linshare,log4j}.*
 Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
   inflating: /etc/linshare/log4j.properties
 mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
 ```
-## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
+## <a name="installOpenJDK">JDK Installation</a>
 
-__LinShare__  works with OpenJDK or Sun/Oracle Java 8. Install it and activate it from the repositories :
+__LinShare__ requires OpenJDK-11 or Sun/Oracle-JDK 11.
+You can install OpenJDK11 from Debian official packages:
 
 ```bash
-aptitude update
-aptitude install openjdk-8-jre
-update-alternatives --config java
+apt update
+apt install openjdk-11-jdk
 ```
-
-> Note :<br/>
-On Debian jessie, it is necessary to add the jessie backport. Add the line : `deb http://ftp.debian.org/debian jessie-backports mai` into the file `/etc/apt/sources.list`. Then, use the following command to install the package: `aptitude -t jessie-backports install openjdk-8-jre`.
-
-> Note :<br/>
-You can ignore the possible errors from the Java plugin.
-
 ## <a name="bdd">Databases Installation</a>
 
+**LinShare** uses two DBMS, MongoDB & PostgreSQL
 > Note :<br />
 At the beginning, LinShare was developped with PostgreSQL. New functionalities have been developped with MongoDB. Roadmap is to move everything to MongoDB. Task is huge, so LinShare is actually using both databases.
 
-### <a name="postgre">PostgreSQL Installation</a>
+#### <a name="postgre">PostgreSQL Installation</a>
 
 __Linshare__ requires the use of PostgreSQL for its files and configuration. This section gives details about the PostgreSQL installation.
 
-> Note :<br/>
-MySQL database is not compatible anymore since LinShare v2.
-
+- Installed version for is PostgreSQL 11, you can install it with:
 ```bash
-aptitude install postgresql
+apt install postgresql
 ```
+> You can find LinShare supported versions [here](./requirements.md)
 
 Configurer and start the PostgreSQL service :
 ```bash
-service postgresql start
+systemctl start postgresql
 ```
 
-Adapt the PostgreSQL access file in `/var/lib/pgsql/data/pg_hba.conf`:
+Adapt the PostgreSQL access file in `/etc/postgresql/11/main/pg_hba.conf`:
 ```bash
  # TYPE  DATABASE                  USER          CIDR-ADDRESS         METHOD
- local   all               postgres               peer
  local   linshare                  linshare                           md5
  host    linshare                  linshare      127.0.0.1/32         md5
  host    linshare                  linshare      ::1/128              md5
@@ -106,27 +101,20 @@ For security reasons, the postgreSQL service only listens in local.
 
 Restart PostgreSQL service:
 ```bash
-service postgresql restart
+systemctl restart postgresql
 ```
 
 You should also add those rules among the first. Indeed, PostgreSQL uses the first valid rule which match the authentication request.
 
-Create the user linshare (password is PASSWORD") :
+Create the linshare user and database: 
+> sample password is **linshare** used for convenience, it should be changed
 ```bash
 su - postgres
 [postgres@localhost ~]$ psql
 CREATE ROLE linshare
-  ENCRYPTED PASSWORD 'PASSWORD'
+  ENCRYPTED PASSWORD 'linshare'
   NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
-\q
-```
 
-Commands: to quit, type `\q`, to get help, type `\?`.
-
-Create and import the database schemas :
-```bash
-su - postgres
-[postgres@localhost ~]$ psql
 CREATE DATABASE linshare
   WITH OWNER = linshare
        ENCODING = 'UTF8'
@@ -137,75 +125,124 @@ CREATE DATABASE linshare
 GRANT ALL ON DATABASE linshare TO linshare;
 \q
 ```
-
-> Note :<br/>
-Eventually use the script named `createDatabase.sh` from `src/main/resources/sql/postgresql/` which provides the commands to create the database.
-
 Import the SQL files `createSchema.sql` and `import-postgresql.sql`:
+
 ```bash
 cd /tmp/linshare_data
 tar xjvf linshare-core-*-sql.tar.bz2
-psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/createSchema.sql
-Password for user linshare: PASSWORD
-psql -U linshare -W -d linshare -f linshare-core-sql/postgresql/import-postgresql.sql
-Password for user linshare: PASSWORD
+psql -h localhost -U linshare -W -d linshare -f linshare-core-sql/postgresql/createSchema.sql
+psql -h localhost -U linshare -W -d linshare -f linshare-core-sql/postgresql/import-postgresql.sql
 ```
+Password for user linshare: linshare
 
-Edit the __LinShare__ configuration file in `/etc/linshare/linshare.properties`:
+Edit the __LinShare__ configuration file in `/etc/linshare/linshare.properties` according to your need:
 ```java
 #******************** DATABASE
 ### PostgreSQL
 linshare.db.username=linshare
-linshare.db.password=PASSWORD
+linshare.db.password=linshare
 linshare.db.driver.class=org.postgresql.Driver
 linshare.db.url=jdbc:postgresql://localhost:5432/linshare
 linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
-
 ### <a name="mongo">MongoDB Installation</a>
 
 For the __LinShare__ installation, it is required to install a MongoDB database.
-LinShare 2.3 was using MongoDB 3.2 but since 2.3.5, you can use MongoDB 3.4 or 3.6.
-We Recommend to use the 3.6 because 3.2 and 3.4 are not supported [officially](https://www.mongodb.com/support-policy) anymore.
+**LinShare** requires MongoDB 4.2
+> You can find LinShare supported versions [here](./requirements.md)
 
-> We wrote a little [upgrade guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) from 3.2 to 3.6 if you need.
+- Import MongoDB GPG Key
 
-Create a file `/etc/apt/sources.list.d/mongodb-org-3.6.list`, and add the repository informations in the latest stable release  to the file:
 ```bash
-wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
-echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+sudo apt -y install gnupg2
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
 ```
-See the [official guide](https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-debian/) if needed.
-
-Install the mongodb-org package from the new repository, by using the yum utility:
+- Add repository URL to your Debian:
 ```bash
-apt-get update
-apt-get install -y mongodb-org
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
 ```
+- Install mongodb package
 
-By default, MongoDB is configured with the following __LinShare__ configuration in the file `/etc/linshare/linshare.properties` :
+```bash
+sudo apt update
+sudo apt -y install mongodb-org
+```
+See the [official guide](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-debian/) if needed.
+
+- start MongoDB server 
+```bash
+sudo systemctl start mongod
+```
+> In case you have erros launching mongoDB try:
+```bash
+chown -R mongodb:mongodb /var/lib/mongodb
+chown mongodb:mongodb /tmp/mongodb-27017.sock
+```
+Than restart :
+```bash
+ sudo systemctl restart  mongod.service
+```
+Now MongoDB server is available and ready to be used.
+
+- Configure MongoDB Authentication:  
+Execute following commands to enable authentication
+
+```bash
+mongo 
+```
+```bash
+> use admin;
+```
+```bash
+> db.createUser(
+  {
+    user: "linshare",
+    pwd: "linshare",
+    roles: [ 
+      { role: "readWrite", db: "linshare" },
+      { role: "readWrite", db: "linshare-files" } ]
+  }
+)
+```
+> sample password is **linshare** used for convenience, it should be changed
+- LinShare MongoDB related configuration
+
+By default, MongoDB is configured with the following __LinShare__ configuration in the file `/etc/linshare/linshare.properties`, just change it as following :
 
 ```java
 #### Mongo storage options ####
+
 linshare.mongo.connect.timeout=30000
 linshare.mongo.socket.timeout=30000
 
-#### Write concern
+#### Write concern
 # MAJORITY: waits on a majority of servers for the write operation.
 # JOURNALED: Write operations wait for the server to group commit to the journal file on disk.
 # ACKNOWLEDGED: Write operations that use this write concern will wait for acknowledgement,
-#                               using the default write concern configured on the server.
+#	 			using the default write concern configured on the server.
 linshare.mongo.write.concern=MAJORITY
 
-# Standard URI connection scheme
-linshare.mongo.client.uri=mongodb://127.0.0.1:27017/linshare
-```
+#### connection for data
+# replicaset: host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+linshare.mongo.data.replicaset=127.0.0.1:27017
+linshare.mongo.data.database=linshare
+# linshare.mongo.data.credentials=[user:password[@database]]
+linshare.mongo.data.credentials=linshare:linshare@admin
 
-Before starting the MongoDB service, check that the file `/etc/mongod.conf` has the bind ip address: 127.0.0.1.
-Then, start the MongoDB service:
+#### connection for small files
+# Using MongoDb to store very small files (thumbnails, mail attachments, ...)
+linshare.mongo.smallfiles.replicaset=127.0.0.1:27017
+linshare.mongo.smallfiles.database=linshare-files
+linshare.mongo.smallfiles.credentials=linshare:linshare@admin
 
-```bash
-service mongod start
+
+#### The connection for bigfiles is used just if the `gridfs` spring profile is enabled.
+# Store all files in MongoDB GridFS. Not recommended.
+linshare.mongo.bigfiles.replicaset=127.0.0.1:27017
+linshare.mongo.bigfiles.database=linshare-bigfiles
+linshare.mongo.bigfiles.credentials=linshare:linshare@admin
+
+######## Storage options - end ########
 ```
 
 For more information about the mongo dataBases used in LinShare you can read this: [documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/administration/configuration-administration.md#mongodb)
@@ -227,8 +264,8 @@ Before using this engine you should have LibreOffice installed on your machine, 
 
 To install libreOffice:
 ```bash
-aptitude update
-aptitude install libreoffice
+apt update
+apt install libreoffice
 ```
 
 By default thumbnail generation engine is set to `FALSE`. To enable it, edit __LinShare__ configuration file in `/etc/linshare/linshare.properties`:
@@ -288,19 +325,19 @@ __LinShare__ is a Java application compiled and embedded under the WAR (**W** eb
 
 Install Tomcat from the repositories:
 ```bash
-aptitude install tomcat8
+sudo apt install -y tomcat9
 ```
 
 To specify the location of the __LinShare__ configuration (_linshare.properties_ file) and also the default start
-options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/default/tomcat8`):
+options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/default/tomcat9`):
 
 All starting needful options by default to LinShare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
-It is required to add the following lines in: `/etc/default/tomcat8`:
+It is required to add the following lines in: `/etc/default/tomcat9`:
 
 ```conf
-JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true -Xms512m -Xmx2048m"
+JAVA_OPTS="${JAVA_OPTS} -Xms512m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
 JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
 ```
@@ -308,44 +345,34 @@ If you want to change the location of tmp directory:
 ```conf
 JAVA_OPTS="${JAVA_OPTS} -Djava.io.tmpdir=/tmp/"
 ```
-####profiles
-LinShare provides different profiles that can allow you to conditionally constrcut the application (different way of storage, authentication ...), availables profiles are listed above.
-To configure which profile you want to use.
-You can edit used profiles by adding the following key to `/etc/default/tomcat8` file.
-Example with the default value:
-
-```config
-JAVA_OPTS="${JAVA_OPTS} -Dspring.profiles.active=default,jcloud,batches"
-```
-> **NB** You must enable at least one authentication profile among authentication profiles
+#### profiles
+LinShare provides different profiles that can allow you to conditionally setup the application (different way of storage, authentication ...).
+##### Available profiles: 
 
 Available authentication profiles :
-* default : default authentication process.
-* sso : Enable headers injection for SSO.
+* **default** : default authentication process.
+* **sso** : Enable headers injection for SSO.
+
+> **NB** You must enable at least one authentication profile among authentication profiles
 
 Available file data store profiles :
-* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
-* gridfs : Using gridfs (mongodb) as file data store.
+* **jcloud** : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
+* **gridfs** : Using gridfs (mongodb) as file data store.
 Recommended profile for production is jcloud with Swift.
 
+> LinShare default data store profile is `jcould` 
+
 Additional profiles :
-* batches : if this profile is enabled, it will enable all Quartz jobs (cron tasks).
+* **batches** : if this profile is enabled, it will enable all Quartz jobs (cron tasks).
 
-Ex: If you want to use `gridfs`: JAVA_OPTS="${JAVA_OPTS} -Dspring.profiles.active=default,gridfs,batches"
-
-In the tomcat file `/var/lib/tomcat8/conf/catalina.properties`, return carriage are marked with the `\` character, in order to reduce the lines width of the values for each configuration key. There is a key named `tomcat.util.scan.DefaultJarScanner.jarsToSkip`.
+##### Additional configuration:
+In the tomcat file `/var/lib/tomcat9/conf/catalina.properties` There is a key named `tomcat.util.scan.DefaultJarScanner.jarsToSkip`.
 
 Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of this key.
-Here is an extract of the file `/var/lib/tomcat8/conf/catalina.properties` with the added line in the middle:
-```java
-jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,\
-jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\
-xom-*.jar
-```
 
 Deploy the __LinShare__ application archive into the Tomcat server:
 ```bash
-mv /etc/linshare/linshare.war /var/lib/tomcat8/webapps/linshare.war
+mv /tmp/linshare_data/linshare.{VERSION}.war /var/lib/tomcat9/webapps/linshare.war
 ```
 
 ## <a name="apache">Web Server Installation</a>
@@ -354,7 +381,7 @@ __LinShare__ administration interface is exploiting web languages such as HTML/C
 
 Install Apache 2 from the repositories :
 ```bash
-aptitude install apache2
+apt install -y apache2
 ```
 
 ### <a name="ui-user">ui-user vhost Configuration</a>
@@ -364,28 +391,25 @@ To deploy the __LinShare__ application, it is necessary to activate the __mod_pr
 Create the subdirectories in the directory `/var/www/`, note that the repository name will be the application domain name. Assign to the user the access permissions to the subdirectories.
 
 ```bash
-mv /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2 /var/www/
 cd /var/www/
-tar xjf linshare-ui-user-<VERSION>.tar.bz2
-chown -R apache: linshare-ui-user
-rm -fr /var/www/linshare-ui-user-<VERSION>.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-user-<VERSION>.tar.bz2
+chown -R www-data: linshare-ui-user
 ```
 
 Moreover, it is necessary to add the following configuration:
 ```bash
-cp /etc/apache2/sites-available/default /etc/apache2/sites-available/linshare-user.conf
-a2dissite default
-a2enmod ssl
-a2enmod headers
-a2ensite linshare-user.conf
-a2enmod proxy proxy_http
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-user.conf
+sudo a2dissite 000-default.conf
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2ensite linshare-ui-user.conf
+sudo a2enmod proxy proxy_http
 ```
 
 To deploy the __LinShare__ application, it is necessary to create the virtualhost configuration file. Add the file `/etc/apache2/sites-available/linshare-ui-user.conf` with the following content:
 
 ```xml
 <VirtualHost *:80>
-...
 ServerName linshare-user.local
 DocumentRoot /var/www/linshare-ui-user
 <Location /linshare>
@@ -404,7 +428,6 @@ DocumentRoot /var/www/linshare-ui-user
 
 ErrorLog /var/log/apache2/linshare-user-error.log
 CustomLog /var/log/apache2/linshare-user-access.log combined
-...
 </Virtualhost>
 ```
 
@@ -412,28 +435,25 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 
 Deploy the archive of the application __LinShare__ UI Admin in the apache 2 repository :
 ```bash
-mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
-tar xjf linshare-ui-admin-{VERSION}.tar.bz2
-chown -R apache: linshare-ui-admin
-rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+chown -R www-data: linshare-ui-admin
 ```
 
 Moreover, it is necessary to add the following configuration:
 ```bash
-cp /etc/apache2/sites-available/default /etc/apache2/sites-available/linshare-admin.conf
-a2dissite default
-a2enmod ssl
-a2enmod headers
-a2ensite linshare-admin.conf
-a2enmod proxy proxy_http headers
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-admin.conf
+sudo a2dissite default
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2ensite linshare-admin.conf
+sudo a2enmod proxy proxy_http headers
 ```
 
-To deploy the __LinShare__ administration interface, it is necessary to create the virtualhost configuration file. Add the file `/etc/apache2/sites-available/linshare-ui-admin.conf` with the following content:
+To deploy the __LinShare__ administration interface, it is necessary to create the virtualhost configuration file. Change the file `/etc/apache2/sites-available/linshare-ui-admin.conf` with the following content:
 
 ```xml
 <VirtualHost *:80>
-...
 ServerName linshare-admin.local
 DocumentRoot /var/www/linshare-ui-admin
 <Location /linshare>
@@ -452,16 +472,15 @@ DocumentRoot /var/www/linshare-ui-admin
 
 ErrorLog /var/log/apache2/linshare-admin-error.log
 CustomLog /var/log/apache2/linshare-admin-access.log combined
-...
 </Virtualhost>
 ```
 
 > Note :<br/>
-You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
+You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/linshare-admin.conf)
 
 Restart the apache 2 service:
 ```bash
-service apache2 reload
+systemctl restart apache2
 ```
 
 ## <a name="linconf">LinShare Configuration and Launching</a>
@@ -506,12 +525,12 @@ Recommended profile for production is jcloud with Swift.
 
 Start the tomcat service, in order to start the __LinShare__ application:
 ```bash
-service tomcat8 start
+systemctl start tomcat9
 ```
 
 To check that __LinShare__ is working, check the logs:
 ```bash
-tail -f /var/log/tomcat8/catalina.out
+tail -f /var/log/tomcat9/catalina.out
 ```
 
 Once the service has successfully started, the following message may appear:
