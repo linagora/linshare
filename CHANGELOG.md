@@ -1,3 +1,34 @@
+## [4.0.0](https://github.com/linagora/linshare/compare/2.3.4...4.0.0) (2020-04-20) [Download link](http://download.linshare.org/versions/4.0.0/)
+
+**The 4.0.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 4.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.5...4.0.0)
+- **ui-user** : 4.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.5...v4.0.0)
+- **ui-admin** : 4.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.3...v4.0.0)
+### BREAKING CHANGES 
+
+**In order to enhance security level, the password encryption strategy has been updated, and LinShare's administrator password  was reset to the default value.**
+**After upgrading process, you can change your password**
+
+
+**NB:**
+
+Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Bug fixes and improvments
+
+* Core:
+
+
+* UI-User:
+
+* UI-Admin:
+
+* Thunderbird:
+
 ## [2.3.5](https://github.com/linagora/linshare/compare/2.3.4...2.3.5) (2020-04-20) [Download link](http://download.linshare.org/versions/2.3.5/)
 
 **The 2.3.5 release of LinShare is out**
