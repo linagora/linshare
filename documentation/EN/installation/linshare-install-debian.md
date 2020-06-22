@@ -295,7 +295,7 @@ mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thu
 mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
-Creating a systemd service can be useful to automcatically start the thumbnail engine in background at system boot. Create the file `/etc/systemd/system/linshare-thumbnail-server.service`, and add the following content :
+Creating a systemd service can be useful to automcatically start the thumbnail engine in background at system boot. Create the file `/lib/systemd/system/linshare-thumbnail-server.service`, and add the following content :
 
 ```bash
 [Unit]
