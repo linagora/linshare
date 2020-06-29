@@ -15,7 +15,12 @@
    * [Premier accès](#firstAccess)
 
 > Note :<br/>
-Ce guide propose l'installation de la version __LinShare__ 2.3 sur Debian 8 Jessie (les autres distributions de Debian ne sont pas supportées). Pour l'installation d'une version antérieure de __LinShare__, se référer aux branches GitHub, par exemple [LinShare 1.12.x](../../../../maintenance-1.12.x/documentation/EN/installation/linshare-install-debian.md)
+> Ce guide propose l'installation de la version __LinShare__ 4 sur Debian 10. Les
+> guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/FR/installation/linshare-install-centos.md)
+> - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/FR/installation/linshare-install-centos-7.md)
+> - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/FR/installation/linshare-install-centos-7.md)
+> - [LinShare 2.0](https://github.com/linagora/linshare/blob/maintenance-2.0.x/documentation/FR/installation/linshare-install-centos-7.md)
 
 ## <a name="dlLinshare">Téléchargement de LinShare</a>
 

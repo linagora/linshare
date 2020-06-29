@@ -18,7 +18,7 @@ Welcome to LinShare installation Guide,
 This page provides a __LinShare__ version 4.0 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
-> - [LinShare 2.3](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md)
+> - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install.md)
 > - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/EN/installation/linshare-install.md)
 > - [LinShare 2.0](https://github.com/linagora/linshare/blob/maintenance-2.0.x/documentation/EN/installation/linshare-install.md)
