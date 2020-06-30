@@ -13,3 +13,5 @@ This page allows you to easily browse LinShare documentation.
 * [Administration guide](administration/README.md)
 
 * [Development guide](development/README.md)
+
+* [API guide](API/README.md)
