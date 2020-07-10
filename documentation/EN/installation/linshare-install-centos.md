@@ -15,6 +15,8 @@
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
 
+Welcome to LinShare installation Guide, This page provides a LinShare version 4.0 installation on Centos 7(older CentOS versions are not supported).
+
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-centos.md)
