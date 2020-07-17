@@ -1,4 +1,4 @@
-## [4.0.0](https://github.com/linagora/linshare/compare/2.3.4...4.0.0) (2020-04-20) [Download link](http://download.linshare.org/versions/4.0.0/)
+## [4.0.0](https://github.com/linagora/linshare/compare/2.3.5...4.0.0) (2020-07-16) [Download link](http://download.linshare.org/versions/4.0.0/)
 
 **The 4.0.0 release of LinShare is out**
 
@@ -8,26 +8,73 @@
 - **core** : 4.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.5...4.0.0)
 - **ui-user** : 4.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.5...v4.0.0)
 - **ui-admin** : 4.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.3...v4.0.0)
-### BREAKING CHANGES 
 
-**In order to enhance security level, the password encryption strategy has been updated, and LinShare's administrator password  was reset to the default value.**
-**After upgrading process, you can change your password**
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Main features:
+
+* **Second factor authentication:**
+
+ In order to enhance the level of security of LinShare a second factor authentication is added.
+
+ Here we can see the interface where the user can generate the shared key:
+
+  <img src="http://download.linshare.org/screenshots/4.0.0/01.generate_Key_2fa.png" alt="init second factor shared key" width="600"/>
+
+In the second screenshot we can see the interface where the user will enter  the received six digit code.
+
+   <img src="http://download.linshare.org/screenshots/4.0.0/02.auth.png" alt="OTP six digit code" width="600"/>
+
+* **Lockout account:**
+
+ To avoid giving the attacker the time to guess the valid account credentials, a process of locking out an account is added to LinShare after unsuccessful consecutive attempts for a user login.
+
+* **Change password:**
+
+In LinShare 4.0.0 guests are able to change their passwords without using the reset/lost password feature.
+
+In this screenshot we can see the interface where the guest will be able to change and enter the new password.
+
+   <img src="http://download.linshare.org/screenshots/4.0.0/03.change_pwd.png" alt="change password" width="600"/>
+
+   * **Passay** framework is added in order to enhance the complexity of the entered password, Here we can see the list of the different rules which should be respected in the entered password(Minimum/Maximum length, Minimum number of upper/lower case, Minimum number of digits, Minimum number of special characters).
+
+   * The new entered password must be different from  the last 10 saved passwords.
+
+* **Drive(alpha, API only):**
+
+In LinShare we have workgroups in shared spaces. These groups are designed to make a team works together on one topic. If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
+
+The main goals of `Drive` are :
+
+  * Regroup all worgkoups of a team in one item
+  * Define default team members in the Drive to avoid workgroup members redefinition
+  * Manage globally team members rigths (right should be applied from drive to its workgroups
+  * A workgroup can be in a drive or be standalone
 
 
-**NB:**
+*NB:* This feature is just implemented on **LinShare-core**, which means there is no user interface, there are just the different APIs of the feature.
 
-Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+#### Upgraded dependencies:
 
-#### Bug fixes and improvments
+  - `JAVA` version is upgraded from 8 to 11
+  - `Tomcat` is upgraded from 8 to 9
+  - `PostgreSQL` is upgraded from 9 to 11
+  - `MongoDB` is upgraded from 3.6 to 4.2
 
-* Core:
+  * Upgraded libraries: Jcloud, Hibernate, Spring, Spring data
 
+To upgrade LinShare to 4.0.0 version you can [see](https://github.com/linagora/linshare/blob/master/documentation/EN/upgrade/linshare-upgrade-from-v2.3-to-v4.0.md)
 
-* UI-User:
+>**NB**: If LinShare is not yet installed you can follow this [documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md) to have an instance of.
 
-* UI-Admin:
+### Breaking changes:
 
-* Thunderbird:
+  In order to enhance security level, the password encryption strategy has been updated, and LinShare's administrator password was reset to the default value.
+  After upgrading process, you can change your password
+
+  - As the password encoding strategy is updated, upgrade tasks are created to notify anonymous users and guests in order to reset their passwords.
 
 ## [2.3.5](https://github.com/linagora/linshare/compare/2.3.4...2.3.5) (2020-04-20) [Download link](http://download.linshare.org/versions/2.3.5/)
 
@@ -721,10 +768,10 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
   * Fix out-dated LinShare licence link
   * Fix and Improve the documentation related to documents cleaner batches on default properties file
-  * Fix the PostgrSQL ls_prechecks procedure on LinShare migration scripts 
+  * Fix the PostgrSQL ls_prechecks procedure on LinShare migration scripts
   * Fix bug related to delete expired shares
   * Refactor the batches code source related to documents cleaning
-  * Replace deprecated antisamy library by new library to sanitize html injections 
+  * Replace deprecated antisamy library by new library to sanitize html injections
   * Improve security against HTML injections in upload share email notification
   * Make private keys revealable only in trace mode
 
@@ -984,12 +1031,12 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 * Core:
 
-  * Fix out-dated LinShare licence link 
+  * Fix out-dated LinShare licence link
   * Fix and Improve the documentation related to documents cleaner batches on default properties file
-  
+
 * UI-User:
 
-  * Fix out-dated LinShare licence link 
+  * Fix out-dated LinShare licence link
 
 <a name="2.0.6"></a>
 # [2.0.6](https://github.com/linagora/linshare/compare/2.0.5....2.0.6) (2019-07-02) [Download link](http://download.linshare.org/versions/2.0.6/)

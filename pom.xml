@@ -4,13 +4,13 @@
   <groupId>org.linagora.linshare</groupId>
   <artifactId>linshare</artifactId>
   <packaging>pom</packaging>
-  <version>2.3.6-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>2.3.5</linshare-core>
-    <linshare-ui-user>2.3.5</linshare-ui-user>
-    <linshare-ui-admin>3.3.3</linshare-ui-admin>
+    <linshare-core>4.0.0</linshare-core>
+    <linshare-ui-user>4.0.0</linshare-ui-user>
+    <linshare-ui-admin>4.0.0</linshare-ui-admin>
     <thumbnail-server>2.1.1</thumbnail-server>
     <linshare-plugin-thunderbird>1.9.1</linshare-plugin-thunderbird>
   </properties>
@@ -56,7 +56,7 @@
       <groupId>org.linagora.linshare</groupId>
       <artifactId>linshare-core</artifactId>
       <version>${linshare-core}</version>
-      <classifier>documentation-ws-api-userv2</classifier>
+      <classifier>documentation-webservices</classifier>
       <type>tar.bz2</type>
       <exclusions>
         <exclusion>
