@@ -1,5 +1,3 @@
-/title [STORY][THEME] Tittle
-
 # Summary
 
 * [Related EPIC](#related-epic)
@@ -29,5 +27,4 @@ None
 
 [Back to Summary](#summary)
 
-/label ~#STORY#
-/cc @fmartin
+/label #STORY#
