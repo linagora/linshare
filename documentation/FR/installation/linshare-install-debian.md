@@ -499,6 +499,21 @@ Activer au moins un des profils de système de sockage de fichiers ci-dessous :
 > Note :<br/>
 Le profil recommandé est jcloud avec swift.
 
+
+Tomcat9 peut écrire uniquement dans ses propres répertoires, si vous utilisez le mode local de stockage des fichiers, vous devez surcharger la configuration par défaut de Tomcat, vous devez créer sous `/etc/systemd/system/tomcat9.service.d/` un ficher `override.conf` qui contient:
+
+```
+    [Service]
+    ReadWritePaths=/var/lib/linshare
+```
+
+Puis vous devez:
+
+```
+systemctl daemon-reload
+systemctl restart tomcat9
+```
+
 Démarrer le service tomcat, afin de démarrer l'application __LinShare__ :
 ```bash
 service tomcat8 start

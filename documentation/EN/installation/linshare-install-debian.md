@@ -524,6 +524,20 @@ You must enable at least one authentication profile:
 > Note :<br/>
 Recommended profile for production is jcloud with Swift.
 
+Tomcat9 is sandboxed to write just in its own directories, if you try to use a local Filesystem storage you need to override the default configuration of Tomcat by creating in `/etc/systemd/system/tomcat9.service.d/` a file named `override.conf` containing:
+
+```
+    [Service]
+    ReadWritePaths=/var/lib/linshare
+```
+
+Then you need to:
+
+```
+systemctl daemon-reload
+systemctl restart tomcat9
+```
+
 Start the tomcat service, in order to start the __LinShare__ application:
 ```bash
 systemctl start tomcat9

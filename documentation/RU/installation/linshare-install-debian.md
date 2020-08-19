@@ -547,6 +547,18 @@ mail.smtp.charset=UTF-8
 
 Профиль по умолчанию - jcloud с файловой системой для тестирования.
 
+Tomcat9 is sandboxed to write just in its own directories, if you try to use a local Filesystem storage you need to override the default configuration of Tomcat by creating in `/etc/systemd/system/tomcat9.service.d/` a file named `override.conf` containing:
+
+```
+    [Service]
+    ReadWritePaths=/var/lib/linshare
+```
+Then you need to:
+```
+systemctl daemon-reload
+systemctl restart tomcat9
+```
+
 > Примечание:<br/>
     - Мы используем JackRabbit только соединения хранилищ файлов. Мы категорически не рекомендуем использовать это хранилище как основное.
 
