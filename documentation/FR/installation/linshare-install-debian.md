@@ -312,6 +312,11 @@ Au cas ou vous voulez changer l'emplacement des fichiers temporaires, vous pouve
 ```conf
 CATALINA_TMPDIR=/your/path/tmp
 ```
+
+> Note :<br/>
+Si vous rencontrez une erreur en surchargeant votre nouveau chemin de répertoire `tmp`, cela peut être dû au manque d'autorisation d'écriture de Tomcat sur votre nouveau répertoire.
+Vous pouvez vérifier [cette section](https://github.com/linagora/linshare/blob/master/documentation/FR/installation/linshare-install-debian.md#configuration-et-lancement-de-linshare)
+
 ####profiles
 LinShare fournis différent profiles qui permettent de conditionner le lancement de l'application selon le besoin (support de stockage, mode d'authentification ...).
 Pour configurer les profiles vous devez ajouter la ligne ci-dessous dans `/etc/default/tomcat8`, pour le profile par défaut par exemple:
@@ -487,17 +492,17 @@ Sur __LinShare__, il existe deux modes d'authentification possibles, le premier 
 * default : processus d'authentification par défaut.
 * sso : permet l'injection d'entête pour le SSO. Ce profil inclue les "..." du profil par défaut.
 
-Le profile par défaut est `jcloud` pour le filesystem pour les tests.
+Le profile par défaut est `jcloud` pour le filesystem de stockage des fichiers.
 
 Il est possible de surcharger ces paramètres en utilisant `-Dspring.profiles.active=xxx`
 Ou bien d'utiliser une variable d'environnement : `SPRING_PROFILES_ACTIVE`.
 
 Activer au moins un des profils de système de sockage de fichiers ci-dessous :
-* jcloud : Utilisant `jcloud` comme système de stockage de fichier : Amazon S3, Swift, Ceph, filesystem (que pour les tests).
+* jcloud : Utilisant `jcloud` comme système de stockage de fichier : Amazon S3, Swift, Ceph, filesystem.
 * gridfs : Utilisant `gridfs` (mongodb) comme système de stockage de fichier.
 
 > Note :<br/>
-Le profil recommandé est jcloud avec swift.
+Le profil recommandé pour la production est jcloud.
 
 
 Tomcat9 peut écrire uniquement dans ses propres répertoires, si vous utilisez le mode local de stockage des fichiers, vous devez surcharger la configuration par défaut de Tomcat, vous devez créer sous `/etc/systemd/system/tomcat9.service.d/` un ficher `override.conf` qui contient:

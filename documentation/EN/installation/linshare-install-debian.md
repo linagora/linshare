@@ -346,6 +346,10 @@ If you want to change the location of tmp directory you need to override the def
 ```conf
 CATALINA_TMPDIR=/your/path/tmp
 ```
+> Note :<br/>
+If you encounter an error in overriding your new `tmp` directory path, it could be due to the lack of write permission of Tomcat on your new directory.
+You can check [this section](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md#linshare-configuration-and-launching).
+
 #### profiles
 LinShare provides different profiles that can allow you to conditionally setup the application (different way of storage, authentication ...).
 ##### Available profiles:
@@ -359,9 +363,9 @@ Available authentication profiles :
 Available file data store profiles :
 * **jcloud** : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
 * **gridfs** : Using gridfs (mongodb) as file data store.
-Recommended profile for production is jcloud with Swift.
+The recommended profile for production is jcloud.
 
-> LinShare default data store profile is `jcould` 
+> LinShare uses `jcould` profile as a default filesystem data storage.
 
 Additional profiles :
 * **batches** : if this profile is enabled, it will enable all Quartz jobs (cron tasks).
@@ -518,7 +522,7 @@ You can override this parameter by using `-Dspring.profiles.active=xxx`
 Or you can use the environment variable : `SPRING_PROFILES_ACTIVE`.
 
 You must enable at least one authentication profile:
-* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem (test only).
+* jcloud : Using jcloud as file data store : Amazon S3, Swift, Ceph, filesystem.
 * gridfs : Using gridfs (mongodb) as file data store.
 
 > Note :<br/>
