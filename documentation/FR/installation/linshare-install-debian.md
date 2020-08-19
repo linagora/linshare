@@ -307,9 +307,10 @@ JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
 JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
 ```
 
-Au cas ou vous voulez changer l'emplacement des fichiers temporaires ajoutez:
-```config
-JAVA_OPTS="${JAVA_OPTS} -Djava.io.tmpdir=/tmp/"
+Au cas ou vous voulez changer l'emplacement des fichiers temporaires, vous pouvez changer le répertoire utilisé par défaut par Tomcat9 `/tmp` et modifiez `/etc/default/tomcat9` en ajoutant:
+
+```conf
+CATALINA_TMPDIR=/your/path/tmp
 ```
 ####profiles
 LinShare fournis différent profiles qui permettent de conditionner le lancement de l'application selon le besoin (support de stockage, mode d'authentification ...).

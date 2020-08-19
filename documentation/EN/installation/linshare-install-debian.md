@@ -341,13 +341,14 @@ JAVA_OPTS="${JAVA_OPTS} -Xms512m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
 JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
 ```
-If you want to change the location of tmp directory:
+If you want to change the location of tmp directory you need to override the default directory used by Tomcat9 which is `/tmp`, by editing `/etc/default/tomcat9` and add:
+
 ```conf
-JAVA_OPTS="${JAVA_OPTS} -Djava.io.tmpdir=/tmp/"
+CATALINA_TMPDIR=/your/path/tmp
 ```
 #### profiles
 LinShare provides different profiles that can allow you to conditionally setup the application (different way of storage, authentication ...).
-##### Available profiles: 
+##### Available profiles:
 
 Available authentication profiles :
 * **default** : default authentication process.
