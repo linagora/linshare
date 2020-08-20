@@ -72,7 +72,7 @@ apt install openjdk-11-jdk
 > Note :<br />
 At the beginning, LinShare was developped with PostgreSQL. New functionalities have been developped with MongoDB. Roadmap is to move everything to MongoDB. Task is huge, so LinShare is actually using both databases.
 
-#### <a name="postgre">PostgreSQL Installation</a>
+### <a name="postgre">PostgreSQL Installation</a>
 
 __Linshare__ requires the use of PostgreSQL for its files and configuration. This section gives details about the PostgreSQL installation.
 
@@ -173,12 +173,12 @@ See the [official guide](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-
 ```bash
 sudo systemctl start mongod
 ```
-> In case you have erros launching mongoDB try:
+> In case you have errors launching mongoDB try:
 ```bash
 chown -R mongodb:mongodb /var/lib/mongodb
 chown mongodb:mongodb /tmp/mongodb-27017.sock
 ```
-Than restart :
+Then restart :
 ```bash
  sudo systemctl restart  mongod.service
 ```
@@ -295,7 +295,7 @@ mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thu
 mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
-Creating a systemd service can be useful to automcatically start the thumbnail engine in background at system boot. Create the file `/lib/systemd/system/linshare-thumbnail-server.service`, and add the following content :
+Creating a systemd service can be useful to automatically start the thumbnail engine in background at system boot. Create the file `/lib/systemd/system/linshare-thumbnail-server.service`, and add the following content :
 
 ```bash
 [Unit]
@@ -321,7 +321,7 @@ systemctl start linshare-thumbnail-server.service
 
 ## <a name="tomcat">Tomcat Installation</a>
 
-__LinShare__ is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
+__LinShare__ is a Java application compiled and embedded under the WAR (**W**eb **A**pplication a**R**chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
 
 Install Tomcat from the repositories:
 ```bash
@@ -334,6 +334,7 @@ options, get the commented lines in the header of the `linshare.properties` file
 All starting needful options by default to LinShare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
+
 It is required to add the following lines in: `/etc/default/tomcat9`:
 
 ```conf
@@ -562,7 +563,9 @@ INFO: Server startup in 23151 ms
 
 Then restart the Apache service :
 
-`[root@localhost ~]$ sudo systemctl restart apache2`
+```
+sudo systemctl restart apache2
+```
 
 ### <a name="firstAccess">First Access</a>
 
