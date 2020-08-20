@@ -1,3 +1,3 @@
 # FIXME-MISSING-I18N
 
-This documentation is not yet available in your language, please look at the [English version.](../../EN/administration/how-to-use-file-versioning.md)
+This documentation is not yet available in your language, please look at the [English documentation](../../EN/API/README.md)

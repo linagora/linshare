@@ -1,2 +1,2 @@
-# API Documentation 
-* [use LinShare v2 API](user-v2-api.md) 
+# Документация по API 
+* [Использование LinShare API v2 ](user-v2-api.md)

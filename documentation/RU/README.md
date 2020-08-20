@@ -15,3 +15,5 @@
 * [Руководство по конфигурации](../EN/configuration/README.md) [`EN`]
 
 * [Руководство по развитию](../EN/development/README.md) [`EN`]
+
+* [Руководство по API](API/README.md)

@@ -17,3 +17,5 @@ Cette page vous permet de parcourir facilement la documentation de LinShare.
 * [Guide d'administration](administration/README.md)
 
 * [Guide de dévelopement ](../EN/development/README.md) [`EN`]
+
+* [Guide d'utilisation des APIs](API/README.md)
