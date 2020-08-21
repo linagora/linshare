@@ -17,17 +17,17 @@ We can follow this steps to upgrade our MongoDB to 4.0 version:
 
 `wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add -`
 
-* Create a `/etc/apt/sources.list.d/mongodb-org-4.0.list` file for MongoDB 4.0 and add the package source for apt-get
+* Create a `/etc/apt/sources.list.d/mongodb-org-4.0.list` file for MongoDB 4.0 and add the package source for apt
 
-`echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.listt`
+`echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list`
 
 * update Packages:
 
-`apt-get update`
+`sudo apt update`
 
 * Install MongoDb 4.0
 
-`apt-get install -y mongodb-org`
+`sudo apt install -y mongodb-org`
 
 *  start your mongo service:
 
@@ -60,17 +60,17 @@ Then
 
  `wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -`
 
-* Create a `/etc/apt/sources.list.d/mongodb-org-4.2.list` file for MongoDB 4.2 and add the package source for apt-get:
+* Create a `/etc/apt/sources.list.d/mongodb-org-4.2.list` file for MongoDB 4.2 and add the package source for apt:
 
 `echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`
 
 * update Packages:
 
-`apt-get update`
+`sudo apt update`
 
 * Install MongoDb 4.2:
 
-`apt-get install -y mongodb-org`
+`sudo apt install -y mongodb-org`
 
 *  start your mongo service:
 

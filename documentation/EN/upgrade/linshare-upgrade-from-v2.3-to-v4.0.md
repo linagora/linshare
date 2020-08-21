@@ -1,34 +1,10 @@
 # LINSHARE UPGRADE
 
-> Note :</br>
- - We explain in this file how to upgrade your LinShare instance from 2.3 to 4.0. </br>
- - Please note that all the components found in each version folder, [here](http://download.linshare.org/versions),
- must be upgraded together.
+> **Note** : 
+> - We explain in this file how to upgrade your LinShare instance from 2.3 to 4.0. The application of this process consists of installing LinShare on a new machine and you will be able to restore databases and the storage space on the new machine, to achieve the migration as we are going to explain in the next steps.
+> - Please note that all the components found in 4.0 version folder [here](http://download.linshare.org/versions) must be upgraded together.
+
  </br>
-Each LinShare version folder contains the dependencies required to install the version properly. </br>
-
-# Prerequisites
-
-## Operating System:
-
-For LinShare 4.0 the recommended OS is **Debian 10 (Buster)**.
-The application of this process consists of installing LinShare on a new machine and you will be able to restore databases and the storage space on the new machine
-to achieve the migration as we are going to explain in the next steps.
-
-NB: Make sure that your OS is up to date and ready to satisfy LinShare requirements
-like Java 11, Tomcat9 and MongoDB 4.2.
-
-## Application's server:
-
-In LinShare 4.0 the used Java version is Java11, to insure that LinShare runs smoothly, the recommended Tomcat version is Tomcat9.
-
-## DataBases:
-
-In LinShare 4.0 both dataBases are upgraded:
-
-* In **Debian 10** the default PostgreSQL's version is 11, it can be used for LinShare (Recommended PostgresSql versions 9, 10 and 11)
-* MongoDB from 3.6 to 4.2  
-
 
 ## Overview
 
@@ -43,26 +19,22 @@ In LinShare 4.0 both dataBases are upgraded:
 
 # Procedure
 
-## Prerequisites
+## Requirements
 
-This procedure presumes that you are using: Java11, Tomcat9, PostgreSQL11, MongoDB 4.2 and apache2 as we can see [here](./requirements.md) in **Debian 10 (Buster)**.
+This procedure presumes that you are using in **Debian 10 (Buster)** machine : 
+- OpenJDK 11
+- Tomcat 9
+- PostgreSQL 11
+- MongoDB 4.2
+- apache2 
+
+All requirements are listed [here](./requirements.md).
 
 <a name="lsinstall">
 
 ## Install the new version of LinShare
 
 </a>
-
-* Download LinShare resources from [here](http://download.linshare.org/versions/4.0.0)
-
-Please download all the component already in the repository of the version
-4.0.0 of LinShare.
- * linshare-ui-user.tar.bz2 : Includes the new interface user
- * linshare-ui-admin.tar.bz2 : Includes the admin interface
- * linshare-core.war : Include the LinShare "core" (API REST only)
- * linshare-core-sql.tar.bz2 : Includes the SQL migration scripts.
-
-* Follow the standard installation procedure
 
 On your new machine, install LinShare by following the official [documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md#linshare-installation-on-debian)
 
@@ -129,7 +101,7 @@ You can then begin the upgrade process.
 
 <a name="backup">
 
-## Data backup
+## Data backup on old machine
 
 </a>
 
@@ -150,8 +122,9 @@ $ pg_dump -h host -p port -U linshare -W  -f dump-linshare.sql
 ```bash
 $ mongodump --host `host` --port `port`
 ```
+This will generate a folder named by default `dump`on ther current directory
 
-* Backup the file system
+* Backup the Filesystem
 
 The data is stored in `/var/lib/linshare`,
 a simple disk snapshot would be more than enough to back-up the data.
@@ -162,25 +135,75 @@ a simple disk snapshot would be more than enough to back-up the data.
 
 </a>
 
-Once the backup is done, transfer the SQL dumps and the file space  
-on the new machine to `/var/lib/linshare` (using rsync for example).
+### Restore data
 
-Then you will have to set Tomcat as the data owner of `/var/lib/linshare`: `chown -R tomcat9:tomcat9 /var/lib/linshare`
+Transfer the backups (`/var/lib/linshare`, `/dump-linshare.sql`, `/dump`) on the new machine  (using rsync for example).
+#### Filesystem
 
-If it is a new machine, you have to add sufficient storage space
+- Set Tomcat as the data owner of `/var/lib/linshare`:
+ ```bash
+ chown -R tomcat:tomcat /var/lib/linshare
+ ```
+
+> If it is a new machine, you have to add sufficient storage space
 in order to copy the former data. If you are using the new filesystem store, you must have
 at least the same amount of free space than the old used storage.
 
-
-You must delete `linshare` database from the new machine in order to load the dump
+#### PostgreSQL
+You must delete and recreate `linshare` database in the new machine in order to load the dump
 
 ```bash
 $ systemctl stop tomcat9
 $ su - postgres
 $ psql
-> drop database linshare;
-> \i dump-linshare.sql
+
+> DROP DATABASE IF EXISTS linshare;
+> 
+> CREATE DATABASE linshare
+>   WITH OWNER = linshare
+>        ENCODING = 'UTF8'
+>        TABLESPACE = pg_default
+>        LC_COLLATE = 'en_US.UTF-8'
+>        LC_CTYPE = 'en_US.UTF-8'
+>        CONNECTION LIMIT = -1;
+> 
+> GRANT ALL ON DATABASE linshare TO linshare;
 > \q
+```
+Than execute the dump script
+```bash
+$ psql -h localhost -U linshare -W -d linshare -f dump-linshare.sql
+```
+#### MongoDB
+
+- Drop existing Data:  
+
+```bash
+mongo --host localhost --port 27017
+```
+Follow this steps to drop the concerned databases
+> To see all available databases run `show dbs` on your Mongo Shell
+```bash
+use linshare
+db.dropDatabase()
+```
+expected output `{ "dropped" : "linshare", "ok" : 1 }`
+
+```bash
+use linshare-files
+db.dropDatabase()
+```
+expected output `{ "dropped" : "linshare-files", "ok" : 1 }`
+```bash
+use linshare-bigfiles
+db.dropDatabase()
+```
+expected output `{ "dropped" : "linshare-bigfiles", "ok" : 1 }`
+> **Note:**: `linshare-bigfiles` is available only if `gridfs` profile was enabled in the launched LinShare instance. 
+
+- To restore linshare DB:
+```bash
+mongorestore dump
 ```
 
 Once this step is achieved, you can move to the next step.
@@ -215,7 +238,7 @@ You can view the database schema version through the following query `select * f
 
 Once the former database is loaded and upgraded in version 4.0, make sure that the file transfer `/var/lib/linshare` is complete.
 
-Don't forget to do a `chown -R tomcat9:tomcat9 /var/lib/linshare `
+Don't forget to do a `chown -R tomcat:tomcat /var/lib/linshare `
 
 Finally restart your Tomcat server
 
@@ -238,7 +261,7 @@ admin interface : http://linshare-admin.local/#/upgradetasks/list
 
 All the tasks must be executed by order and succeed in order to complete the upgrade.  
 
-NB: A task can finish with a succesful status but errors can be noticed during the progress.
+> NB: A task can finish with a succesful status but errors can be noticed during the progress.
     It is necessary to check the execution reports found in the console.
     In case of errors, we must read the logs of Tomcat server for more details,
     resolve the problems and launch the task before carrying on.
@@ -252,7 +275,7 @@ these tasks can be executed simultaneously without disrupting the user activity.
 
 Once the mandatory tasks have been executed, you can switch to the next step if you want to
 re-establish quickly the LinShare service.
-The required tasks can take some time depending on amout of data.
+The required tasks can take some time depending on amount of data.
 
 <a name="nominal">
 
