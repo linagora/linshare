@@ -16,6 +16,9 @@
 
 * Update linshare-github pom.xml
 
+* Only for major releases: 
+    * [ ] Change LinShare version to new one in sql migration script
+
 * Update the project CHANGELOG
     * [ ] Backend changeLog  
     * [ ] User changeLog 
