@@ -1,3 +1,36 @@
+# [4.0.1](https://github.com/linagora/linshare/compare/4.0.0...4.0.1) (2020-09-07) [Download link](http://download.linshare.org/versions/4.0.1/)
+
+**The 4.0.1 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 4.0.1 - [changelog](https://github.com/linagora/linshare-core/compare/4.0.0...4.0.1)
+* **ui-user** : 4.0.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.0...v4.0.1)
+* **ui-admin** : 4.0.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.0...v4.0.1)
+
+####  Bug fixes and improvments
+
+  * Core:
+
+    * Fix the issue of `SSO` authentication of a user who has never logged in before.
+    * The administrator is able to unlock the locked users after consecutive unsuccessful attempts for login.
+    * Add the missing traces of JWT authentication provider.
+
+  * UI-User:
+    * Fix displaying the expiration date on received shares
+    * Fix the automatic redirection to personal space after copying files from received shares.
+    * Disable adding SharedSpace member when user does not have creation permission
+    * Fix displaying audit traces
+    * Fix issue of previewing file in full screen
+
+  * UI-Admin:
+    * Add the admin interface to unlock the locked users.
+
+Here we can see the new interface where the administrator will be able to unlock the blocked user.
+
+  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="init second factor shared key" width="600"/>
+
 ## [4.0.0](https://github.com/linagora/linshare/compare/2.3.5...4.0.0) (2020-07-16) [Download link](http://download.linshare.org/versions/4.0.0/)
 
 **The 4.0.0 release of LinShare is out**
