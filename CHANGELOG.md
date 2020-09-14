@@ -29,7 +29,11 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 Here we can see the new interface where the administrator will be able to unlock the blocked user.
 
-  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="init second factor shared key" width="600"/>
+  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="unlock_accounts_screeshot" width="600"/> 
+  
+For more information about lockout feature [here](documentation/EN/administration/lockout.md)  
+  
+
 
 ## [4.0.0](https://github.com/linagora/linshare/compare/2.3.5...4.0.0) (2020-07-16) [Download link](http://download.linshare.org/versions/4.0.0/)
 

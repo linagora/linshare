@@ -13,3 +13,5 @@
 * How to [use JWT on LinShare](../../EN/administration/how-to-use-jwt.md) (`EN`).
 
 * How to [use file versioning on LinShare](../../EN/administration/how-to-use-file-versioning.md) (`EN`).
+
+* [Verouillage des comptes](verouillage-des-comptes.md)

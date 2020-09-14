@@ -9,3 +9,5 @@
 * How to [use JWT on LinShare](how-to-use-jwt.md).
 
 * How to [use file versioning on LinShare](how-to-use-file-versioning.md).
+
+* [Lockout accounts](lockout.md)
