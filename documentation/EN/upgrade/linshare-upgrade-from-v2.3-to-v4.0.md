@@ -238,6 +238,13 @@ You can view the database schema version through the following query `select * f
 
 Once the former database is loaded and upgraded in version 4.0, make sure that the file transfer `/var/lib/linshare` is complete.
 
+Tomcat9 is sandboxed to write just in its own directories, if you try to use a local Filesystem storage you need to override the default configuration of Tomcat by creating in `/etc/systemd/system/tomcat9.service.d/` a file named `override.conf` containing:
+
+```
+[Service]
+ReadWritePaths=/var/lib/linshare
+```
+
 Don't forget to do a `chown -R tomcat:tomcat /var/lib/linshare `
 
 Finally restart your Tomcat server
