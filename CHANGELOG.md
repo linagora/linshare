@@ -1,3 +1,51 @@
+# [4.0.2](https://github.com/linagora/linshare/compare/4.0.1...4.0.2) (2020-10-12) [Download link](http://download.linshare.org/versions/4.0.2/)
+
+**The 4.0.2 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 4.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/4.0.1...4.0.2)
+* **ui-user** : 4.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.1...v4.0.2)
+* **ui-admin** : 4.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.1...v4.0.2)
+
+#### Bug fixes and improvments
+
+> This version include a lot of bugfixes and enhancements mainly related to mobile compatibility especially for Iphone/Ipad devices.
+
+  * Core:
+    * Add null Content-Type interceptor for LinShare API for all Http Methods
+    * Add an endpoint with GET http method to get all enums on LinShare
+    * Exclude unused enums returned from LinShare API
+    
+  * UI-User:
+    * *Change renaming behaviour*:
+       * Open an input dialog for renaming item
+       * Save on different name (eg: on shared space creation)
+    * Bugfixes:
+       * Fix CSS to display expiration field on ipad
+       * Fix two buttons display in ipad responsive
+       * Fix UI in home page iPad
+       * Fix search bar not working on mobile screen
+       * Fix the display of toolbar function name
+       * Fix preview image on sidebar when clicked on another document
+       * Fix conflict with creating normal contact list
+       * Fix rename function for duplicated contact list
+       * Fix search members by name
+       * Fix several issues with expiration date
+       * Fix the display of translation in Guest page
+       * Fix restrain contact list option
+       * Fix background content goes over the table
+       * Fix button copy in my space
+       * Fix disable copy in a work group
+       * Update CSS for responsive platforms
+    * Implement new otp input
+    
+
+  * UI-Admin:
+    * Fix translate Upload request sub-functionalities description
+    * Fix delete domain patterns 
+
 # [4.0.1](https://github.com/linagora/linshare/compare/4.0.0...4.0.1) (2020-09-07) [Download link](http://download.linshare.org/versions/4.0.1/)
 
 **The 4.0.1 release of LinShare is out**
