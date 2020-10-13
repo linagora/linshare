@@ -29,6 +29,7 @@
 * [ ] Update Linshare.org Download link to the new version. 
     * [ ] Update link to last version
     * [ ] Create a new `ticket GLPI` for (support team) to update the new changes.
+    * [ ] Add the new tag in linshare-org repository
 
 * [ ] Update docker-compose files:
     * [ ] [linshare-docker](https://ci.linagora.com/linagora/lgs/linshare/saas/linshare-docker) 
