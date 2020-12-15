@@ -1,3 +1,28 @@
+# [4.0.3](https://github.com/linagora/linshare/compare/4.0.2...4.0.3) (2020-12-15) [Download link](http://download.linshare.org/versions/4.0.3/)
+
+**The 4.0.3 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 4.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/4.0.2...4.0.3)
+* **ui-user** : 4.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.2...v4.0.3)
+* **ui-admin** : 4.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.2...v4.0.3)
+
+#### Bug fixes and improvments
+
+  * Core:
+    * Fix issue when downloading a folder archive in a workgroup.
+    * Fix duplicate method for an existing and already duplicated contact list.
+
+  * UI-User:
+    * Improvement: Internal users are now able to change their passwords using a external server. The link to it can be provided in the config.js of user interface.
+
+
+  * UI-Admin:
+    * Fix delete ldap connections, domains and domain's patterns
+
+
 # [4.0.2](https://github.com/linagora/linshare/compare/4.0.1...4.0.2) (2020-10-12) [Download link](http://download.linshare.org/versions/4.0.2/)
 
 **The 4.0.2 release of LinShare is out**
