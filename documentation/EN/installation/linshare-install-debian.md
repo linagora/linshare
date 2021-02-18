@@ -11,13 +11,16 @@
    * [Web Server Installation](#apache)
      * [ui-user vhost Configuration](#ui-user)
      * [ui-admin vhost Configuration](#ui-admin)
+     * [ui-upload-request vhost Configuration(optional)](#ui-upload-request)
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
+   * [Upload Request](#uploadRequest)
 
 Welcome to LinShare installation Guide, 
-This page provides a __LinShare__ version 4.0 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
+This page provides a __LinShare__ version 4.1 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install.md)
 > - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/EN/installation/linshare-install.md)
@@ -404,10 +407,10 @@ chown -R www-data: linshare-ui-user
 Moreover, it is necessary to add the following configuration:
 ```bash
 cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-user.conf
-sudo a2dissite 000-default.conf
+sudo a2dissite 000-default
 sudo a2enmod ssl
 sudo a2enmod headers
-sudo a2ensite linshare-ui-user.conf
+sudo a2ensite linshare-ui-user
 sudo a2enmod proxy proxy_http
 ```
 
@@ -448,10 +451,10 @@ chown -R www-data: linshare-ui-admin
 Moreover, it is necessary to add the following configuration:
 ```bash
 cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-admin.conf
-sudo a2dissite default
+sudo a2dissite 000-default
 sudo a2enmod ssl
 sudo a2enmod headers
-sudo a2ensite linshare-admin.conf
+sudo a2ensite linshare-ui-admin
 sudo a2enmod proxy proxy_http headers
 ```
 
@@ -477,6 +480,47 @@ DocumentRoot /var/www/linshare-ui-admin
 
 ErrorLog /var/log/apache2/linshare-admin-error.log
 CustomLog /var/log/apache2/linshare-admin-access.log combined
+</Virtualhost>
+```
+
+### <a name="ui-upload-request">vhost ui-upload-request Configuration (optional)</a>
+
+First, go [here](#uploadRequest) to download the upload request module.
+
+To deploy the Upload-Request interface of __LinShare__, you need to open your linshare-ui-upload-request.conf virtualhost file :
+
+```
+cp /etc/apache2/sites-available/000-default.conf
+/etc/apache2/sites-available/linshare-ui-upload-request.conf
+sudo a2dissite 000-default
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2ensite linshare-ui-upload-request
+sudo a2enmod proxy proxy_http
+```
+
+And then you can change the virtualhost configuration file as follows:
+
+```xml
+<VirtualHost *:80>
+ServerName linshare-upload-request.local
+DocumentRoot /var/www/linshare-ui-upload-request
+<Location /linshare>
+    ProxyPass http://127.0.0.1:8080/linshare
+    ProxyPassReverse http://127.0.0.1:8080/linshare
+    ProxyPassReverseCookiePath /linshare /
+
+    # Workaround to remove httpOnly flag (could also be done with tomcat)
+    Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/"
+    # For https, you should add Secure flag.
+    # Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/; Secure"
+
+    #This header is added to avoid the  JSON cache issue on IE.
+    Header set Cache-Control "max-age=0,no-cache,no-store"
+</Location>
+
+ErrorLog /var/log/apache2/linshare-ui-upload-request-error.log
+CustomLog /var/log/apache2/linshare-ui-upload-request-access.log combined
 </Virtualhost>
 ```
 
@@ -589,3 +633,55 @@ Please change the password in the administration interface.
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+### <a name="uploadRequest">Upload Request component installation</a>
+
+<a name="dlmoduleUR1">
+
+#### Download of the module
+
+</a>
+
+This module in on free download at the following address :
+
+  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
+
+For this Installation, download the following file according to the version you want :
+
+  * linshare-ui-upload-request-{VERSION}.tar.bz2
+
+>Note :<br/>
+  The upload request feature is only available from LinShare 1.7 to LinShare 1.12, and since LinShare 4.1.
+
+<a name="deployUR1">
+
+#### deployment of the archive
+
+</a>
+
+Deploy the __LinShare__ UI UploadRequest archive in the Apache server repository :
+
+```
+[root@localhost ~]$ cd /var/www/
+[root@localhost ~]$ tar xjf linshare-ui-upload-request-{VERSION}.tar.bz2
+[root@localhost ~]$ chown -R www-data: linshare-ui-upload-request
+```
+Next, you may follow the vhost configuration of upload request module [here](#ui-upload-request).
+
+To access at __LinShare Upload Request__, first start the Core, then restart the Apache2 service :
+
+`[root@localhost ~]$ service apache2 restart`
+
+<a name="firstAccessUR1">
+
+### First access
+
+</a>
+
+The __Upload Request service__ is now reachable at the address below by default :
+
+  * Repository installation version : __http://linshare-user.local/upload-request/{uuid}__
+
+> Note :<br/>
+  You need to inquire the url into your upload request url parameter in your administration interface. 
+  To do so, go to your administration interface, choose the __Upload Request__ functionnality, and inquire the url in the "parameters" fields. 
