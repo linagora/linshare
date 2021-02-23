@@ -1,7 +1,8 @@
 # Paramétrage applicatif
 
 > Note :<br/>
-Cette page est basée sur le contenu du document __Linagora_DOC_LinShare-1.7.0_Guide-Config-Admin_fr_20150303.odt__ (version **1.0** du **03/03/2015**). Ce document a été remplacé par cette page courante. Cette courante page est la version la plus actuelle.
+Ce guide d'administration de la solution LinShare a été réalisé pour les
+versions 4 et supérieures de LinShare.
 
 > Note :<br/>
 Pour des raisons de maintenabilité de la documentation, toute capture d'écran de ce présent document est en anglais.
