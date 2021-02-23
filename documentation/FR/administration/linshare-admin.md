@@ -6,40 +6,45 @@ Cette page est basée sur le contenu du document __Linagora_DOC_LinShare-1.7.0_G
 > Note :<br/>
 Pour des raisons de maintenabilité de la documentation, toute capture d'écran de ce présent document est en anglais.
 
-   * [Notion de domaines](#num01)
-   * [Portail web LinShare](#num02)
-   * [Général](#num04)
-      * [Connexion](#num05)
-      * [Changement du mot de passe](#num06)
-      * [Changer la langue de l’interface](#num07)
-   * [Domaines](#num1)
-      * [Configuration des domaines](#num11)
-      * [Règles de communication inter-domaines](#num12)
-      * [Fonctionnalités](#num13)
-      * [Connexions LDAP](#num14)
-      * [Modèles de domaine](#num15)
-      * [Modèles de groupe de travail](#num16)
-      * [Règles de typeMIME](#num17)
-      * [Messages d'accueil](#num18)
-      * [Configuration du quota des domaines](#num19)
-   * [Utilisateurs](#num2)
-      * [Configuration des utilisateurs](#num21)
-      * [Utilisateurs incohérents](#num22)
-      * [Comptes techniques](#num23)
-   * [Groupes de travail](#num3)
-   * [Listes de diffusion](#num4)
-   * [Historique (Audit)](#num5)
-   * [Courriels](#num6)
-      * [Configuration de courriel](#num61)
-      * [Structure de courriel](#num62)
-      * [Pied de courriel](#num63)
-      * [Contenu de courriel](#num64)
-      * [Activation des notifications](#num65)
-   * [Tâches de mise à jour](#num7) -
+   * [1. AVANT-PROPOS](#num01)
+   * [2. CONSOLE D'ADMINISTRATION DE LINSHARE](#num02)
+   * [3. GENERAL](#num04)
+      * [Général : Connexion](#num05)
+      * [Général : Changement du mot de passe](#num06)
+      * [Général : Changer la langue de l’interface](#num07)
+   * [4. DOMAINES](#num1)
+      * [Domaines : Configuration des domaines](#num11)
+      * [Domaines : Règles de communication inter-domaines](#num12)
+      * [Domaines : Fonctionnalités](#num13)
+      * [Domaines : Connexions LDAP](#num14)
+      * [Domaines : Modèles de domaine](#num15)
+      * [Domaines : Modèles de groupe de travail](#num16)
+      * [Domaines : Règles de typeMIME](#num17)
+      * [Domaines : Messages d'accueil](#num18)
+      * [Domaines : Configuration du quota des domaines](#num19)
+   * [5. UTILISATEURS](#num2)
+      * [Utilisateurs : Configuration des utilisateurs](#num21)
+      * [Utilisateurs : Utilisateurs incohérents](#num22)
+      * [Utilisateurs : Comptes techniques](#num23)
+   * [6. GROUPES DE TRAVAIL](#num3)
+   * [7. LISTES DE DIFFUSION](#num4)
+   * [8. HISTORIQUE (AUDIT)](#num5)
+   * [9. COURRIELS](#num6)
+      * [Courriels : Configuration de courriel](#num61)
+      * [Courriels : Structure de courriel](#num62)
+      * [Courriels : Pied de courriel](#num63)
+      * [Courriels : Contenu de courriel](#num64)
+      * [Courriels : Activation des notifications](#num65)
+   * [10. TÂCHES DE MISE A JOUR](#num7)
 
 Le paramétrage applicatif est réalisé via l’__interface web d’administration__ de LinShare.
 
-## <a name="num01">Notion de domaines</a>
+## <a name="num01">1. AVANT-PROPOS</a>
+
+Ce chapitre décrit les grand principes de fonctionnement de Linshare, et sa compréhension est indispensable à la bonne prise en main de l'outil.
+
+### <ins>Principe 1 : La hiérarchisation des domaines</ins>
+
 
 LinShare s’appuie sur un __système de gestion par domaine__ pour les besoins suivants :
 
@@ -51,17 +56,17 @@ Dans LinShare, les domaines sont structurés selon le modèle hiérarchique suiv
 
 ![linshare-admin-10000000000003820000024F1B1C4A57](../../img/linshare-admin-10000000000003820000024F1B1C4A57.png)
 
-Le __domaine __Root____ est la racine de tous domaines. Il n’est pas visible dans la rubrique __Domaines__. Ce domaine __Root__ possède un ou plusieurs domaines sous son contrôle : les domaines __Top__.
+- Le __domaine __Root____ 
+: C'est la racine de tous les domaines. Ce domaine ne possède pas d'utilisateurs (en dehors du compte root) et n'a donc pas d'objets de configuration à paramétrer : il sert donc uniquement à définir les paramétrages par défaut des fonctionnalités pour toute l'application (les sous domaines). Ce domaine __Root__ possède un ou plusieurs domaines sous son contrôle : les domaines __Top__.
 
-De même un __domaine __Top____ possède un ou plusieurs sous-domaines appelés __domaines __Sub____ et un __domaine __Guest____ optionnel (pour les comptes invités).
+- Le __domaine __Top____ : il possède un ou plusieurs sous-domaines appelés __domaines __Sub____ et un __domaine __Guest____ optionnel (pour les comptes invités).
 
-La configuration des fonctionnalités est liée à un domaine. Si aucune modification de fonctionnalités n’a été faite sur un domaine __Sub__, alors LinShare se base sur le paramétrage du domaine supérieur, ainsi de suite.
+- Le __domaine Sub__ : C'est le dernier niveau de domaine, il ne possède donc pas de sous-domaine.
 
-Grâce à cette hiérarchie, il est possible de définir une configuration obligatoire pour certains sous-domaines tout en laissant quelques fonctionnalités personnalisables par sous-domaines.
 
-De plus, chaque administrateur possèdent les droits d’administration sur le domaine auquel il est rattaché ainsi que sur tous les sous-domaines. Une population d’administrateurs peut donc être associée au domaine __Top__ tandis que les utilisateurs seront associés aux domaines __Sub__. Un administrateur peut être administrateur de plusieurs domaines __Top__ dans la mesure où il est rattaché à chacun de ces domaines __Top__.
+Cette gestion hiérarchique en cascade est utile à plusieurs niveau, par exemple, chaque administrateur possède les droits d’administration sur le ou les domaine(s) auquel(s) il est rattaché ainsi que sur tous les sous-domaines : Une population d’administrateurs peut donc être associée au domaine __Top__ tandis que les utilisateurs seront associés aux domaines __Sub__. 
 
-Lors de création d’un utilisateur invité, les domaines de type __Sub__ recherchent le domaine invité au même niveau, alors que les domaines de type __Top__ le recherchent dans leurs sous-domaines.
+
 
 L’__ajout d’un domaine__ dans LinShare est réalisé selon les étapes suivantes :
 
@@ -70,7 +75,44 @@ L’__ajout d’un domaine__ dans LinShare est réalisé selon les étapes suiva
 3.  Création d’un domaine __Top__ ;
 4.  Création de sous-domaines __Sub__ et d’un domaine «__Guest__»
 
-## <a name="num02">Portail web LinShare</a>
+
+_Note concernant les comptes invités : Lors de création d’un __compte invité__, les domaines de type __Sub__ recherchent le domaine invité au même niveau, alors que les domaines de type __Top__ le recherchent dans leurs sous-domaines._
+
+![Hiérarchie des domaines](../../img/linshare-admin/2021-02-23-14-51-05.png)
+
+
+### <ins>Principe 2 : Héritage et propagation des droits</ins>
+
+
+La __configuration des fonctionnalités est liée à un domaine__ et suit le principe de  fonctionnement en "cascade hiérarchique" décrit plus haut, : Si aucune modification de fonctionnalités n’a été faite sur un domaine inférieur, alors __LinShare se base sur le paramétrage du domaine supérieur__.
+
+Par exemple, si je définie une configuration dans le domaine Root, alors l'ensemble des sous-domaines bénéficiera de cette configuration.
+
+Grâce à cette hiérarchie, il est possible de __définir une configuration par défaut et maximale__ pour certains sous-domaines tout en __laissant quelques fonctionnalités personnalisables__ par sous-domaines.
+
+Par exemple, si je restreins la configuration du domaine Root, les sous-domaines ne pourront modifier <ins>au mieux</ins> que ce que permet le domaine root, mais <ins>jamais davantage</ins>.
+
+Note : Les différentes options de droits seront décrites plus en détail dans le chapitre dédié.
+
+
+![Distribution des droits](../../img/linshare-admin/2021-02-23-14-51-29.png)
+
+
+### <ins>Principe 3 : La création d'objets de configuration</ins>
+
+Les __objets de configuration__ sont des entités qui, une fois crées, peuvent être rattachées à des domaines afin de définir certains paramètres (message d'accueil, etc) pouvant être exclusifs ou communs à plusieurs domaines.
+
+Dans LinShare __la création de ces objets est indépendante de leur rattachement à un domaine__, ce qui permet de les utiliser pour plusieurs domaines différents, et elle reste soumise au principe de cascade hiérarchique : un objet de configuration créé dans un domaine ne sera utilisable que par ce domaine ET par tous ses sous-domaines.
+
+__Il est donc important__, lorsqu'on crée un objet au sein d'un domaine, __de veiller ensuite à l'attribuer au(x) domaine(s) souhaité(s).__
+
+
+![Création d'objets de configuration](../../img/linshare-admin/2021-02-23-14-51-48.png)
+
+
+## <a name="num02">2. CONSOLE D'ADMINISTRATION DE LINSHARE</a>
+
+Ce portail permet d'accéder à une grande partie de la configuration de votre instance LinShare (en complément du fichier de configuration) : Par défaut elle est accessible à l'url http://linshare-admin.local/ .
 
 #### Page d’accueil de LinShare Administration
 
@@ -84,9 +126,11 @@ Toutes les pages de rubrique dans LinShare sont découpées en __plusieurs panne
 2.  __Panneau __Paramétrage de l’accès__ :__ langue, mot de passe, déconnexion ;
 3.  __Zone principale :__ information, formulaire, etc.
 
-## <a name="num04">Général</a>
+## <a name="num04">3. GENERAL</a>
 
-### <a name="num05">Connexion</a>
+### <a name="num05"><ins>Général : Connexion</ins></a>
+
+La connexion à l'administration de LinShare se fait dès l'accès à l'Url. Celle-ci se fait obligatoirement par login/motdepasse (pas de connexion automatique via un SSO). Seules les utilisateurs avec des profils d'administrateurs peuvent accéder à l'interface d'administration.
 
 #### Synoptique
 
@@ -102,13 +146,17 @@ L’interface est en langue anglo-saxonne, car comme l’utilisateur n’a pas e
 
 2.  Saisissez vos identifiant et mot de passe, puis cliquez sur le bouton __Connexion__.
 
-### <a name="num06">Changement du mot de passe</a>
+![login](../../img/linshare-admin/2021-02-18-09-17-47.png)
+
+### <a name="num06"><ins>Général : Changement du mot de passe</ins></a>
+
+Seul l'utilsateur __root@localhost.localdomain__ est autorisé à modifier son mot de passe : les autres utilisateurs provenants de l'annuaire devront se référer à leur système de gestion d'identité.
 
 #### Synoptique
 
 Pré-requis :
 
--   avoir un compte utilisateur invité existant dans LinShare.
+-   être connecté en tant que  __root@localhost.localdomain__
 
 Opérations :
 
@@ -116,7 +164,11 @@ Opérations :
 
 2.  Saisissez votre ancien mot de passe, puis deux fois le nouveau.
 
-### <a name="num07">Changer la langue de l’interface</a>
+![password](../../img/linshare-admin/2021-02-18-09-18-29.png)
+
+### <a name="num07"><ins>Général : Changer la langue de l’interface</ins></a>
+
+Il est possible de modifier individuellement la langue d'affichage de l'interface d'administration.
 
 #### Synoptique
 
@@ -128,9 +180,13 @@ Opérations :
 
 1.  Depuis l’en-tête de n’importe quelle page, cliquez sur un le lien de sélection de langue.
 
-## <a name="num1">Domaines</a>
+![language](../../img/linshare-admin/2021-02-18-09-19-08.png)
 
-### <a name="num11">Configuration des domaines</a>
+## <a name="num1">4. DOMAINES</a>
+
+### <a name="num11"><ins>Domaines : Configuration des domaines</ins></a>
+
+Ce menu permet de créer, modifier et supprimer des domaines au sein de LinShare.
 
 #### Synoptique
 
@@ -183,7 +239,9 @@ Paramètres pour un sous-domaine __Guest__ :
 -   __Politique de type MIME__ ;
 -   __Règles de communication inter-domaines__.
 
-### <a name="num12">Règles de communication inter-domaines</a>
+### <a name="num12"><ins>Domaines : Règles de communication inter-domaines</ins></a>
+
+Ce menu permet de définir des règles afin d'autoriser des domaines à intéragir entre eux : cela permet aux utilisateurs de retrouver (par auto-complétion) les utilisateurs d'autres domaines dans le cadre d'un partage, d'un ajout de membre dans un groupe...
 
 #### Synoptique
 
@@ -201,7 +259,9 @@ Opérations :
 
 3.  Il est alors possible d'ajouter éventuellement des règles pour chaque domaine : __Autorisé__, __Tout autorisé__, __Interdit__, __Tout interdit__.
 
-### <a name="num13">Fonctionnalités</a>
+### <a name="num13"><ins>Domaines : Fonctionnalités</ins></a>
+
+Ce menu dresse la liste des différentes fonctionnalités disponibles pour chaque domaine. Il est alors possible de les configurer.
 
 #### Synoptique
 
@@ -221,7 +281,150 @@ Opérations :
 
 ![linshare-admin-1000020100000397012343ZD9FFC81B9](../../img/linshare-admin-1000020100000397012343ZD9FFC81B9.png)
 
-### <a name="num14">Connexion LDAP</a>
+
+### Liste des différentes fonctonnalités de LinShare :
+
+
+#### <ins>URL anonyme</ins>
+
+Les URLs anonymes permettent de partager un fichier vers un utilisateur anonyme (une personne possédant une adresse de courriel), c'est à dire un utilisateur qui ne possède pas de compte dans l’application LinShare (interne ou invité).
+
+* __URL anonymes - forcer le partage en anonyme :__ En activant cette fonctionnalité, l'utilisateur peut choisir de partager uniquement via les URLs anonymes. Dans ce cas, les utilisateurs internes ne recevront plus le partage dans leur Partage Reçus.
+* __Cacher le menu Partages Reçus :__ En activant cette fonctionnalité, les utilisateurs internes n'auront plus l'accès à leur Espace Partage Reçus.
+* __Notification de téléchargement__ : La notification de téléchargement d'un document via les urls anonymes sera envoyée à chaque téléchargement, ou seulement au premier téléchargement.
+* __URL de notification courriel :__ Permet de configurer le lien qui redirige vers le portail de téléversement (utilisé dans le mail envoyé pour le partage avec un utilisateur 'anonyme').
+
+
+#### <ins>Antivirus</ins>
+
+Les antivirus sont des logiciels conçus pour identifier, neutraliser et éliminer des logiciels malveillants. Ils peuvent modifier ou supprimer des fichiers infectés. En activant l'antivirus sur votre application LinShare celui-ci analysera automatiquement les fichiers au moment où ils sont déposés. Son analyse contribue à la protection de tous les utilisateurs de LinShare et évitent que les virus ne se propagent. Si un document s'avère être malveillant il sera alors rejeté et son expéditeur sera prévenu.
+
+Note : Pour fonctionner, l'antivurus doit également avoir été installé et configuré dans le fichier linshare.properties.
+
+
+
+#### <ins>Complétion</ins>
+
+La complétion permet de compléter automatiquement la saisie d'une chaîne de caractère saisie au clavier, c'est-à-dire l'aide à la saisie d'informations dans un champ lié à une source de données. Vous pouvez configurer soit le seuil de complétion, soit le nombre de caractères à partir duquel cette auto-complétion est réalisée.
+
+
+
+#### <ins>Liste de contacts</ins>
+
+Cette fonctionnalité permet la création d'une liste de contacts contenant des adresses courriels d'utilisateurs internes, externe ou anonyme.
+Cette liste peut alors être directement sélectionnée comme destinaitaire (à la place de la saisie manuelle), comme par exemple dans le cas d'un partage de fichier.
+
+* __Droit de création :__ Permet d'autoriser les utilisateurs à créer des listes de contacts.
+
+
+#### <ins>Expiration de document</ins>
+
+Cette fonctionnalité permet de définir une valeur d'expiration pour les documents déposés sur LinShare. Un document déposé mais non partagé possède une date d'expiration par défaut. Lorsque le dernier partage d'un document est supprimé, on calcule une date d'expiration pour ce document.
+
+#### <ins>Domaine</ins>
+
+Permet la configuration des paramètres généraux du domaine.
+
+* __Adresse de courriel du domaine :__ C'est l'adresse qui sera utilisée comme envoyeur ("sender") dans tous les mails envoyés par linshare.
+* __URL de base pour les notifications par courriel :__ Cette fonctionnalité vous permet de définir l’URL de base pour les notifications par courriel. Avant la version 1.3.0 de LinShare ce paramétrage était réalisé dans le fichier de configuration de LinShare et était donc global à l’application.
+
+
+#### <ins>Invités</ins>
+
+En activant cette fonctionnalité vous permettrez aux utilisateurs interne de créer des comptes temporaires pour vos invités. Ils pourront télécharger les documents, en déposer et en envoyer (si vous activez 'L'envoi de fichiers' pour les invités).
+
+* __Envoi de fichiers :__ L'activation de ce paramètre vous permet d'autoriser les invités à déposer des fichiers, leur donnant ainsi accès à l'onglet "mon espace" qui permet de partager des fichiers. Ce paramétrage peut également être modifié pour des utilisateurs déjà existant dans la page d'édition de leur profil
+* __Expiration des comptes invités :__ Les comptes invités sont toujours soumis à une date d'expiration. Vous devez configurer un délai d’expiration pour ces derniers. Vous pouvez également autoriser les utilisateurs internes à personnaliser cette date d'expiration.
+* __Autoriser la prolongation de la date d'expiration des invités :__ Cette fonctionnalité permet d'autoriser les utilisateurs à modifier la date d'expiration d'un invité, de repousser indéfiniment sa date d'expiration lors de l'édition.
+* __Restriction de contacts :__ Vous pouvez restreindre les invités à partager avec une liste restreinte de contacts. Cette liste est personnelle, par défaut elle est initialisé avec l'adresse de courriel du créateur de l'invité
+
+
+#### <ins>Envoi de fichiers</ins>
+
+L'envoi de fichier permet aux utilisateurs interne le téléversement de fichiers, via l'activation de leur espace personnel, leur donnant ainsi accès au partage de documents.
+
+
+#### <ins>Jeton JWT permanent</ins>
+
+Cette fonctionnalité permet aux utilisateurs et administrateurs de créer, utiliser et supprimer les jetons JWT permanents, permettant ainsi aux utilisateurs de créer un lien permanent entre une application client et linshare, telle que l'application mobile.
+
+* __Jeton JWT permanent pour les utilisateurs :__ Cette fonctionnalité permet aux utilisateurs de contrôler l'utilisation des jetons JWT permanents
+
+
+#### <ins>Type MIME</ins>
+
+Gestion des règle de type MIME : Cette fonctionnalité vous permet de paramétrer les filtres par type MIME. Ainsi vous pouvez autoriser ou interdire le dépôt de fichiers d’un type donné, e.g. interdire le dépôt de fichiers vidéos (MPEG, etc.) : c'est le principe d'une liste blanche.
+
+Une fois activée :
+
+1. Depuis le menu de navigation, allez à la rubrique « Paramètres > Règles de type MIME » ;
+2. Sélectionnez un domaine depuis l’« Arbre des domaines », cliquer sur le bouton « Ajouter » ;
+3. Cliquer sur le filtre « Mon filtre » ;
+4. Pour chaque type MIME, activez-le ou désactivez-le, puis enregistrez en cliquant sur le bouton « Soumettre ».
+5. Enfin, rendez-vous dans l'édition du domaine pour l'utiliser.
+
+
+#### <ins>Authentification double facteur</ins>
+
+La fonctionnalité permet de rendre l'authentification à double facteur disponible pour les utilisateurs, voir même de la rendre obligatoire. Attention : Toute modification apportée sur cette page affecterait tous les utilisateurs de LinShare 
+
+
+
+#### <ins>Accusé de partage</ins>
+
+Lors d'un partage, l'émetteur peut recevoir un récapitulatif des documents et destinataires de son partage via un courriel.
+
+![sharing](../../img/linshare-admin/2021-02-22-16-01-16.png)
+
+#### <ins>Expiration de partage</ins>
+
+L’expiration de partage : Les partages sont des liens entre un document présent dans l'espace personnel de l'utilisateur et un destinataire (adresse de courriel). Il est possible de limiter la durée de vie de ces liens via cette fonctionnalité. Une fois le partage expiré, le lien sera détruit. Tous accès à la ressource sera alors impossible. L'administrateur peut configurer le délais d'expiration des partages ainsi que le droit des utilisateurs à modifier cette valeur. Ce délais permet de calculer la date d'expiration par défaut ainsi que la date d'expiration maximale.La fonctionnalité 'Suppression des fichiers lors de l'expiration des partages' permet de supprimer le document sous-jacent à un partage lors de l'expiration du dernier partage associé
+
+* __Suppression des fichiers lors de l'expiration des partages :__ Lorsque le dernier partage associé à un document sera supprimé, le document sera automatiquement supprimé.
+
+
+#### <ins>Alerte de non téléchargement</ins>
+
+En activant cette fonctionalité, les utilisateurs auront la possibilité de demander une alerte de non téléchargement de fichiers lors d'un partage. L'alerte est envoyée si au moins un document du partage n'a pas été téléchargé par au moins un destinataire. 
+
+* __Alerte de non téléchargement - Nombre de jours avant notification :__ Ceci représente le nombre de jours que vous paramétrez avant de recevoir l'alerte.
+
+![download](../../img/linshare-admin/2021-02-22-16-21-44.png)
+
+
+#### <ins>Invitation de dépôt (LinShare 4.1+)</ins> 
+
+Une invitation de dépôt est l'ouverture temporaire et réglementée pour un utilisateur externe, de déposer des fichiers dans l'espace personnel d'un utilisateur.
+
+* __Droit de clôture :__
+  * Clôturer l'invitation de dépôt (emetteur/destinataire)
+    * L'emetteur et le destinataires peuvent clôturer une invitation de dépôt.
+    * Le destinaitaire ne pourra alors plus modifier, ajouter ou supprimer des documents dans le dépôt.
+    * Le dépôt apparaîtra alors comme "clôturé" dans l'interface.
+    * Quand une invitation de dépôt expire, elle est automatiquement clôturée.
+* __Droit de suppression de fichiers pour le destinataire :__ Le destinataire d'une invitation de dépôt pourra supprimer des fichiers selon le paramétrage de l'invitation. 
+* __Délais avant activation :__ Le délai entre la date de création de l'invitation de dépôt et sa date d'activation (la demande de téléchargement est disponible et les utilisateurs peuvent téléverser des documents) 
+* __Délais avant expiration :__ La délais avant expiration est utilisée pour calculer la date d'expiration de l'invitation à partir de sa date d'activation. L'expiration d'une invitation intervient à minuit le lendemain de la date d'expiration. Exemple : une expiration instanciée pour le 3 janvier prend effet le 4 janvier à minuit. La vérification et l'expiration s'effectue via une tâche planifiée qui s'exécute toutes les heures afin d'activer/clôturer les invitations.
+* __Délais avant notification d'expiration :__  Cette notification permet d'indiquer à l'émetteur et au destinataire que l'invitation est sur le point d'expirer. La durée qui sépare la date d'envoi de la notification et la date d'expiration de l'invitation est configurable. 
+* __Taille maximale du dépôt :__ La taille maximale du dépôt limites les utilisateurs à ajouter des fichiers jusqu'a la taille limite définie du dépôt. 
+* __Nombre maximum de fichiers :__ Le nombre maximum de fichiers permet de limiter le nombre de fichiers à déposer dans le dépôt dans la limite de la taille du dépôt.
+* __Taille maximale d'un fichier :__ Permet de limiter la taille de chaque fichier deposé par les utilisateurs dans le dépôt. 
+* __Langue d'émission des courriels :__ Configurer La langue par défaut des notifications envoyé par le système. 
+* __Protection par mot de passe des URLs :__ Une fois activée, les URLS seront protégés par un mot de passe à usage unique. Le mot de passe est généré par le serveur est envoyé par courriel séparé au(x) destinataire(s).
+
+
+#### <ins>Groupe de Travail</ins>
+
+Cette fonctionnalité permet de gérer les droits des groupes de travails.
+
+* __Droit de création :__ Permet d'autoriser ou non la création d'un groupe de travail par les utilisateurs.
+* __Droit de téléchargment d'un dossier :__ Permet d'autoriser ou non le téléchargement d'un dossier dans un groupe de travail par les utilisateurs, et d'en définir la taille maximale.
+* __Droit de création des versions de fichiers :__ Permet d'autoriser le versionnage d'un fichier.
+
+
+### <a name="num14"><ins>Domaines : Connexion LDAP</ins></a>
+
+Ce menu permet de créer une ou plusieurs connexion(s) entre LinShare et un annuaire LDAP (OpenLDAP, ActiveDirectory...).
 
 #### Synoptique
 
@@ -254,7 +457,12 @@ Le DN est différent d'un utilisateur standard du LDAP. En effet, il s'agit ici 
 >Attention :<br/>
 L’indisponibilité d’un annuaire paralyse fortement le fonctionnement de l’application. En effet, le cœur de LinShare s’appuie sur les annuaires, beaucoup d’opérations seront donc impossibles.
 
-### <a name="num15">Modèle de domaines</a>
+### <a name="num15"><ins>Domaines : Modèle de domaines</ins></a>
+
+Ce menu permet de créer des filtres pour récupérer des utilisateurs depuis l'annuaire. Par défaut les filtres ne sont pas associés à des domaines, mais il est nécessaire de les attribuer à des domaines pour qu'ils puissent fonctionner.
+Une fois attribué à un domaine, le filtre pourra récupérer les utilisateurs tel que configuré à la création du filtre.
+
+> Attention : un utilisateur ne doit pas être présent dans plusieurs domaines : il faut donc veiller à ce qu'il n'y ait pas de conflits entre les filtres.
 
 #### Synoptique
 
@@ -349,7 +557,10 @@ ldap.search(domain, "(&(objectClass=inetOrgPerson)(mail=*)(givenName=*)(sn=*)(|(
 
     La valeur zéro désactive la limite de résultats.
 
-### <a name="num16">Modèles de groupe de travail</a>
+### <a name="num16"><ins>Domaines : Modèles de groupe de travail</ins></a>
+
+Ce menu fonctionne de manière identique au précédent, à la différence qu'il récupère les groupes LDAP et non les utilisateurs, afin de créer des "groupes de travail" dans LinShare.
+
 
 #### Synoptique
 
@@ -422,7 +633,11 @@ ldap.search(baseDn, "(&(objectClass=groupOfNames)(cn=workgroup-" + pattern + "))
 
     La valeur zéro désactive la pagination.
 
-### <a name="num17">Règles de typeMIME</a>
+Vous trouverez des informations plus détaillées concernant la synchonisation des groupes entre LinShare et LDAP ici : https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/administration/ldap.md
+
+### <a name="num17"><ins>Domaines : Règles de type MIME</ins></a>
+
+Ce menu permet de définir la liste blanche des fichiers qui seront autorisés à être déposés dans LinShare.
 
 #### Synoptique
 
@@ -438,7 +653,9 @@ Opérations :
 
 ![linshare-admin-100002010000051E01400157A9D6C9D7](../../img/linshare-admin-100002010000051E01400157A9D6C9D7.png)
 
-### <a name="num18">Messages d'accueil</a>
+### <a name="num18"><ins>Domaines : Messages d'accueil</ins></a>
+
+Ce menu permet de définir le message d'accueil qui apparaîtra sur l'interface utilisateur de LinShare.
 
 #### Synoptique
 
@@ -459,7 +676,20 @@ Il s'agit ici du message qui s'affiche sur la page d'accueil de l'interface util
 
 ![linshare-admin-100002010000047E01400157A9D6C9D7](../../img/linshare-admin-100002010000047E01400157A9D6C9D7.png)
 
-### <a name="num19">Configuration du quota des domaines</a>
+### <a name="num19"><ins>Domaines : Configuration du quota des domaines</ins></a>
+
+Ce menu permet de gérer les différents espaces de stockage alloués en fonction du __domaine__, des __conteneurs__ (groupes de travail / utilisateurs) et des __utilisateurs__.
+
+* __L'espace de stockage du Domaine__ permet de définir le quota maximal de fichiers stockables sur l'ensemble du domaine _(ex : un Domaine de 50 Go)_.
+* __L'espace de stockage des Conteneurs__ permets de définir de manière indépendante le quota maximal de fichiers stockables sur les groupes de travail et sur les groupes utilisateurs, dans la limite de celle du Domaine _(Ex : 30 Go pour les groupes de travail et 20 Go pour les groupes d'utilisateur, soit 50 Go au total pour le Domaine)_.
+* __L'espace de stockage des Utilisateurs__ permet de définir le quota maximal de fichiers stockables pour chaque utilisateur, dans la limite de celle du Domaine et indépendamment des conteneurs _(Ex : je peux définir une limite à 50 Go pour chacun des 100 utilisateurs du domaine à 50 Go)_
+(Note : cela ne fera pas "5000 Go de donnée utilisateur sur les 50 Go du domaine" => voir détail ci-dessous).
+
+Il est important de comprendre que cette allocation s'effectue de manière __dynamique__ : il est possible d'allouer autant de stockage souhaités (dans la limite du domaine), mais __la limite du domaine ne pourra de toute manière jamais être dépassée__.
+
+Dans l'exemple utilisé si dessus avec 100 utilisateurs disposants de 50 Go chacuns dans un domaine de 50 Go, si un utilisateur en utilise 40 Go alors les 99 autres utilisateurs n'aurons plus qu'une réserve de 10 Go à se partager.
+
+A noter qu'il est également possible de définir __la taille maximale d'un fichier déposable__ pour les conteneurs et les utilisateurs _(ex : Une taille maximale autorisée de 200 Mo)_.
 
 #### Synoptique
 
@@ -470,6 +700,7 @@ Pré-requis :
 Opérations :
 
 1.  Depuis le menu de navigation, allez à la rubrique __Domaines  Configuration du quota des domaines__, puis sélectionner le domaine à configurer ;
+
 
 ![linshare-admin-100002010000047E01400157A9D6C9FF](../../img/linshare-admin-100002010000047E01400157A9D6C9FF.png)
 
@@ -491,9 +722,11 @@ Si aucune limite n'est définie, la limite est héritée du domaine parent.
 
 -     __Paramétrages des quotas des sous-domaines__ : idem __Quota des espaces__, sauf que ces réglages vont être hérités aux domaines enfants du domaine courant.
 
-### <a name="num2">Utilisateurs</a>
+## <a name="num2">5. UTILISATEURS</a>
 
-### <a name="num21">Configuration des utilisateurs</a>
+### <a name="num21"><ins>Utilisateurs : Configuration des utilisateurs</ins></a>
+
+Ce menu permet d'éditer le profil d'un utilisateur (nom, prénom, droits, etc).
 
 #### Synoptique
 
@@ -520,7 +753,11 @@ Une __recherche simple__ porte simultanément sur les trois champs suivants : l
 
 ![linshare-admin-10000201000003880000022D9DB29318](../../img/linshare-admin-10000201000003880140122D9DB29318.png)
 
-### <a name="num22">Utilisateurs incohérents</a>
+### <a name="num22"><ins>Utilisateurs : Utilisateurs incohérents</ins></a>
+
+Ce menu permet de gérer les utilisateurs qui ont (encore) un compte LinShare, mais qui ne sont plus rattachés à un annuaire (personne quittant la société) ou qui ont changé de domaine.
+
+> Note : les utilisateurs inconhérents ne peuvent plus se connecter à LinShare.
 
 #### Synoptique
 
@@ -539,7 +776,9 @@ Toute modification ou suppression d'un utilisateur sur l'annuaire LDAP entraîne
 
 ![linshare-admin-1000020100000480000002BA2D2C257B](../../img/linshare-admin-1000020100000480000002BA2D2C257B.png)
 
-### <a name="num23">Comptes techniques</a>
+### <a name="num23"><ins>Utilisateurs : Comptes techniques</ins></a>
+
+Ce menu permet de créer des comptes utilisés pour effectuer des opérations à la place d'utilisateurs : ils sont destinés à des applications, comme par exemple dans le cas d'un service de paie qui téléverse les bulletins de paie dans l'espace personnel des utilisateurs.
 
 #### Synoptique
 
@@ -557,7 +796,9 @@ Opérations :
 
 ![linshare-admin-1000020100000480000002BA2D2C257B](../../img/linshare-admin-1000020100000480000002BA2D2C257Z.png)
 
-## <a name="num3">Groupes de Travail</a>
+## <a name="num3">6. GROUPES DE TRAVAIL</a>
+
+Un groupe de travail est un espace collaboratif permettant à plusieurs utilisateurs (internes et/ou invités) d'effectuer différentes opérations ( déposer, consulter, éditer, supprimer selon les permissions qui leur y sont attribuées) sur des fichiers.
 
 Pré-requis :
 
@@ -573,7 +814,9 @@ Opérations :
 
 ![linshare-admin-1000020100000480000002CF2D2C257Z](../../img/linshare-admin-1000020100000480000002CF2D2C257Z.png)
 
-## <a name="num4">Listes de Diffusion</a>
+## <a name="num4">7. LISTES DE CONTACTS</a>
+
+Précédement appelé "Liste de Diffusion", la liste de contact permet de créer une liste d'adresse mail. Cette liste est utile pour envoyer des fichiers de manière individuelle à un ensemble de personnes (c'est à dire que chaque personne à l'impression de recevoir un partage unique : il ne verra pas les autres utilisateurs destinataires).
 
 Pré-requis :
 
@@ -581,16 +824,18 @@ Pré-requis :
 
 Opérations :
 
-1.  Depuis le menu de navigation, allez à la rubrique __LISTE DE DIFFUSION__ : les différentes listes s'affichent.
+1.  Depuis le menu de navigation, allez à la rubrique __LISTE DE CONTACTS__ : les différentes listes s'affichent.
 
-2.  Cliquez sur une liste de diffusion: la liste de ses membres s'affichent.
+2.  Cliquez sur une liste de contacts: la liste de ses membres s'affichent.
 
 ![linshare-admin-1000020100000480000006GF2D4C257Z](../../img/linshare-admin-1000020100000480000006GF2D4C257Z.png)
 
 >Note:<br />
-Bien qu'il ne soit pas possible pour l'administrateur de créer une liste de diffusion, il est cependant tout à fait possible de modifier les listes existantes : ajouter, supprimer des membres, changer la visibilité de la liste, changer la description.
+Bien qu'il ne soit pas possible pour l'administrateur de créer une liste de contacts, il est cependant tout à fait possible de modifier les listes existantes : ajouter, supprimer des membres, changer la visibilité de la liste, changer la description.
 
-## <a name="num5">Historique (Audit)</a>
+## <a name="num5">8. HISTORIQUE (AUDIT)</a>
+
+Cette page permet d'afficher __l'ensemble des actions__ effectuées par les utilisateurs.
 
 #### Synoptique
 
@@ -606,9 +851,13 @@ Opérations :
 
 ![linshare-admin-10000201000003850000023EC6440875](../../img/linshare-admin-10000201000003850000023EC6440875.png)
 
-## <a name="num6">Courriels</a>
 
-### <a name="num61">Configuration de courriel</a>
+
+## <a name="num6">9. COURRIELS</a>
+
+### <a name="num61"><ins>Courriels : Configuration de courriel</ins></a>
+
+Ce menu permet de configurer les templates de mails envoyés par LinShare. Chaque template utilisera la structure (layout) commune, un contenu et un pieds de page.
 
 #### Synoptique
 
@@ -626,7 +875,10 @@ Opérations :
 
 3.  Dans chacune des trois zones de paramétrage, modifiez le texte souhaité.
 
-### <a name="num62">Structure de courriel</a>
+### <a name="num62"><ins>Courriels : Structure de courriel</ins></a>
+
+Ce menu permet de configurer la structure générale qu'utilisera LinShare pour l'ensemble des mails envoyés.
+Il est possible de créer plusieurs structures, mais seule une structure pourra être utlisée par domaine.
 
 #### Synoptique
 
@@ -647,7 +899,9 @@ Opérations :
 >Note :<br />
 Il existe une structure pour chaque langue d'affichage disponible sur LinShare : Anglais, Français et Russe.
 
-### <a name="num63">Pied de courriel</a>
+### <a name="num63"><ins>Courriels : Pied de courriel</ins></a>
+
+Ce menu permet de configurer la zone de pied de page.
 
 #### Synoptique
 
@@ -668,7 +922,9 @@ Opérations :
 >Note :<br />
 Il existe une structure pour chaque langue d'affichage disponible sur LinShare : Anglais, Français et Russe.
 
-### <a name="num64">Contenu de courriel</a>
+### <a name="num64"><ins>Courriels : Contenu de courriel</ins></a>
+
+Ce menu permet de configurer la zone de contenu du mail.
 
 #### Synoptique
 
@@ -688,7 +944,9 @@ Opérations :
 
 ![linshare-admin-100002010000039C00000122E4D3EF0B](../../img/linshare-admin-100002010000039C00000122E4D3EF0B.png)
 
-### <a name="num65">Activation des notifications</a>
+### <a name="num65"><ins>Courriels : Activation des notifications</ins></a>
+
+Ce menu permet d'activer ou désactiver les notifications envoyées par LinShare pour chacun des différents mails existants.
 
 #### Synoptique
 
@@ -707,3 +965,28 @@ Opérations :
 3.  Il est possible de cliquer sur __Avancé__ pour configurer les détails de la notification :
 
 ![linshare-admin-1000020100000480000008DF7C277T43](../../img/linshare-admin-1000020100000480000008DF7C277T43.png)
+
+
+
+## <a name="num7">10. TÂCHES DE MISE A JOUR</a>
+
+Les tâches de migration s’exécutent dans l’interface d'administration: http://linshare-admin.local/#/upgradetasks/list
+
+Toutes les tâches doivent être exécutées dans l'ordre et réussies afin de terminer la mise à niveau.
+
+> Note : Une tâche peut se terminer avec un statut réussi mais des erreurs peuvent être constatées pendant la progression : Il est donc nécessaire de vérifier les rapports d'exécution trouvés dans la console.
+
+En cas d'erreurs, il faut lire les logs du serveur Tomcat pour plus de détails, puis résoudre les problèmes et lancer la tâche avant de continuer.
+
+Tant que les tâches avec le statut 'Obligatoire' ne sont pas terminées :
+* les utilisateurs ne peuvent pas utiliser le système.
+* le système fonctionnera en mode de fonctionnalité réduite : certaines fonctionnalités ou données ne sont pas accessibles.
+
+>  Note : Ces tâches peuvent être exécutées simultanément sans perturber l'activité de l'utilisateur.
+
+Une fois les tâches obligatoires exécutées, vous pouvez passer à l'étape suivante si vous souhaitez
+rétablir rapidement le service LinShare.
+
+>  Note : Les tâches requises peuvent prendre un certain temps en fonction de la quantité de données.
+
+Vous pouvez trouver des informations complèmentaires dans le guide d'upgrade de LinShare : https://github.com/linagora/linshare/blob/master/documentation/FR/upgrade/README.md
