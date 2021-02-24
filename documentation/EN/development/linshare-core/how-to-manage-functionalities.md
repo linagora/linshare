@@ -68,12 +68,21 @@ In the functionality table:
 - *policy_configuration_id:* the identifier of the 2nd policy table corresponds to a more advanced configuration by adding three parameters (policy).
 - *policy_delegation_id:* for the delegation role we need to create a 3rd policy table  to parameter the  curent functionality.
 
-- In order to add a sub-functionality: it is necessary to proceed at the same way except that it is necessary to add the field *parent_identifier* which corresponds to the parent functionality and the field *param* which confirms that functionality is a sub-functionality of relative.  
+- In order to add a sub-functionality: it is necessary to proceed at the same way except that it is necessary to add the field *parent_identifier* which corresponds to the parent functionality and the field *param* which confirms that functionality is a sub-functionality of relative.
 
-6.**Migration Script**:  
+6. **How to disable and hide a functionality:**
+
+If the user wants to:
+
+* Disable a functionality, we need update the `status` of activation policy of the related functionality to `False` and policy = 2 to forbid any access or update.
+* Functionality uneditable by the admin from the interface, the `system` parameter of the functionality should be `True`.
+* Hide a functionality the `system` parameter of the related policy should be `True`.
+* Hide sub-functionality, the *param* parameter should be `False`.
+
+7. **Migration Script**:  
 update the migration script with functionality SQL queries.
 Ex: /linshare-core/src/main/resources/sql/postgresql/Migration_2.2.0_to_2.3.0.sql
 
-7.**Test**:  
+8. **Test**:  
 create the SQL script to load the functionality for testing.
 /linshare-core/src/test/resources/import-tests-your-functionality-name.sql
