@@ -1,3 +1,58 @@
+## [4.1.0](https://github.com/linagora/linshare/compare/4.0.3...4.1.0) (2021-02-25) [Download link](http://download.linshare.org/versions/4.1.0/)
+
+**The 4.1.0 release of LinShare is out**
+
+- **core** : 4.1.0 - [changelog](https://github.com/linagora/linshare-core/compare/4.0.3...4.1.0-1)
+- **ui-user** : 4.1.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.3...v4.1.0)
+- **ui-admin** : 4.1.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.3...v4.1.0)
+- **ui-upload-request** : 4.1.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/releases/tag/v4.1.0)
+
+#### Main features:
+
+  * Upload request:
+
+  The 4.1.0 version of LinShare updated the *Upload Request* feature which was introduced before, on the version 1.7.x.
+
+  This feature consists of giving the ability to an Internal and guest users to send a request to an External user(just an email) to upload files.
+
+  The recipient will receive an email saying that the issuer created an upload request for him and he can follow the link to an external portal where he will be able to upload his files, as we will see in the screenshots below.
+
+  >**NB:**
+  >The external user can access to the external portal and upload his files without having a LinShare account.
+
+In this screenshot we can see the user interface for the upload request:
+
+![User interface upload request](http://download.linshare.org/screenshots/4.1.0/02.user.interface.upload.request.png)
+
+In the second screeshot we can see the received email where the recipient can access to the external portal:
+
+![Activation email upload request](http://download.linshare.org/screenshots/4.1.0/03.activation.email.upload.request.png)
+
+
+In the last screenshot we can see the external portal for the upload request on which the recipient is able to access, through the received mail, and upload his files:
+
+![External portal upload request](http://download.linshare.org/screenshots/4.1.0/01.external.portal.upload.request.png)
+
+* Authentication using OpenID Connect:
+
+The new authentication process consists of delegating users' authentication to an external service called OIDC Provider, for that we have chosen to support the OpenID Connect (aka OIDC) as a technical solution, for more details you can follow the [official documentation](https://openid.net/connect/).
+
+The LinShare roadmap, is to fully use the authentication using OIDC without the need of using LDAP, but curently it is still required to work.
+Because users must be present in the LDAP during the OIDC authentication.
+
+- *Technical information*:
+
+We support the following flow : authorization code flow with pkce. For now, only access token with opaque format is handled.
+Here is a documentation of [Opaque access token](https://auth0.com/docs/tokens/access-tokens#opaque-access-tokens).
+
+To enable/use the OIDC you can [see](https://github.com/linagora/linshare/tree/master/documentation/EN/administration/how-to-use-OIDC.md)
+
+#### Upgrade:
+
+To upgrade LinShare to 4.1.0 version you can see this [upgrade guide](https://github.com/linagora/linshare/blob/master/documentation/EN/upgrade/linshare-upgrade-from-v4.0-to-v4.1.md#linshare-upgrade-guide)
+
+>**NB**: If LinShare is not yet installed you can [follow](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md#linshare-installation-on-debian) to have an instance of.
+
 # [4.0.3](https://github.com/linagora/linshare/compare/4.0.2...4.0.3) (2020-12-15) [Download link](http://download.linshare.org/versions/4.0.3/)
 
 **The 4.0.3 release of LinShare is out**

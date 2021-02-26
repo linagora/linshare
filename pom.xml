@@ -8,9 +8,10 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>4.0.3</linshare-core>
-    <linshare-ui-user>4.0.3</linshare-ui-user>
-    <linshare-ui-admin>4.0.3</linshare-ui-admin>
+    <linshare-core>4.1.0-1</linshare-core>
+    <linshare-ui-user>4.1.0</linshare-ui-user>
+    <linshare-ui-admin>4.1.0</linshare-ui-admin>
+    <linshare-ui-upload-request>4.1.0</linshare-ui-upload-request>
     <thumbnail-server>2.1.1</thumbnail-server>
     <linshare-plugin-thunderbird>1.9.1</linshare-plugin-thunderbird>
   </properties>
@@ -64,6 +65,12 @@
             <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.linagora.linshare</groupId>
+      <artifactId>linshare-ui-upload-request</artifactId>
+      <version>${linshare-ui-upload-request}</version>
+      <type>tar.bz2</type>
     </dependency>
     <dependency>
       <groupId>org.linagora.linshare</groupId>
