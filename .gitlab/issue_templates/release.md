@@ -18,7 +18,8 @@
 
 * Update linshare-github pom.xml
 
-* Only for major releases:
+* Only for major or minor releases: 
+    * [ ] IMPORTANT! : Change the version in /linshare-core/src/main/resources/sql/common/import-settings.sql
     * [ ] Change LinShare version to new one in sql migration script
 
 * Update the project CHANGELOG
