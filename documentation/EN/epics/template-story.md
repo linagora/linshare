@@ -7,9 +7,9 @@
 
 ## Related EPIC
 
-> Link to the epic issue
+> Links to the epic document in the epic folder, normally README.
 
-* [Name of the epic]()
+* [Name of the epic](./README.md)
 
 ## Definition
 
@@ -32,5 +32,3 @@
 ## Misc
 
 [Back to Summary](#summary)
-
-/label #STORY#
