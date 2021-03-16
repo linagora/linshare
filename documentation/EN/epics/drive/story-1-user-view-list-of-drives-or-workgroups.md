@@ -32,7 +32,7 @@
 
 #### Mockups
 
-![view list of drives/workgroups](./resources/viewlistofdrive.png)
+![view list of drives workgroups](./resources/viewlistofdrive.png)
 
 #### Final design
 
