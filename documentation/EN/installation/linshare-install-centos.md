@@ -11,14 +11,16 @@
    * [Web Server Installation](#apache)
      * [ui-user vhost Configuration](#ui-user)
      * [ui-admin vhost Configuration](#ui-admin)
+     * [ui-upload-request vhost Configuration](#ui-upload-request)
    * [Firewall Configuration](#firewalld)
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
 
-Welcome to LinShare installation Guide, This page provides a LinShare version 4.0 installation on Centos 7(older CentOS versions are not supported).
+Welcome to LinShare installation Guide, This page provides a LinShare version 4.1 installation on *Centos 7* (older CentOS versions are not supported).
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-centos.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-centos.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install-centos-7.md)
 > - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install-centos-7.md)
@@ -26,7 +28,7 @@ Welcome to LinShare installation Guide, This page provides a LinShare version 4.
 
 ## <a name="dlLinshare">LinShare Download</a>
 
-__LinShare__  can be downloaded here :
+__LinShare__  can be downloaded here:
 
 [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
@@ -44,6 +46,7 @@ For this installation, download the following files :
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
 
 To manipulate the archives, it is necessary to install `unzip` and `bzip2`:
+
 ```bash
 yum install -y unzip bzip2
 ```
@@ -51,6 +54,7 @@ yum install -y unzip bzip2
 ## <a name="installFile">Archive and files configuration Deployment</a>
 
 Create the configuration repository of __LinShare__, past the configuration files, and rename the sample file as follow :
+
 ```bash
 mkdir -p /etc/linshare
 mv /tmp/linshare_data/linshare-core-{VERSION}.war /etc/linshare/linshare.war
@@ -108,6 +112,7 @@ yum install -y postgresql postgresql-server
 ```
 
 Configure and start the PostgreSQL service :
+
 ```bash
 postgresql-setup initdb
 systemctl enable postgresql
@@ -128,6 +133,7 @@ These lines are usually at the end of the file.
 For security reasons, the postgreSQL service only listens in local.
 
 Restart PostgreSQL service:
+
 ```bash
 systemctl restart postgresql
 ```
@@ -483,6 +489,50 @@ CustomLog /var/log/httpd/linshare-admin-access.log combined
   * After any modification of a vhost, you must reload the Apache server :<br/>
    `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
 
+### <a name="ui-upload-request">ui-upload-request vhost Configuration </a>
+
+> Note :<br/>
+  The upload request component is optional on LinShare(it is not required to make LinShare work), by default its functionality is enabled, so for a proper functioning of this feature you need to follow the guide below to deploy its insterface.If it is not the case you can disable the functionality on the administration interface.
+
+Deploy the archive of the application __LinShare__ UI upload request in the httpd repository :
+
+```bash
+mv /tmp/linshare_data/linshare-ui-upload-request-{VERSION}.tar.bz2 /var/www
+cd /var/www/
+tar xjf linshare-linshare-ui-upload-request-{VERSION}.tar.bz2
+chown -R apache: linshare-ui-upload-request
+rm -fr /var/www/linshare-ui-upload-request-<VERSION>.tar.bz2
+```
+
+To deploy the __LinShare__ upload request interface, it is necessary to create the virtualhost configuration file. Add the file `/etc/httpd/conf.d/linshare-ui-upload-request.conf` with the following content:
+
+```xml
+<VirtualHost *:80>
+ServerName linshare-upload-request.local
+DocumentRoot /var/www/linshare-ui-upload-request
+<Location /linshare>
+    ProxyPass http://127.0.0.1:8080/linshare
+    ProxyPassReverse http://127.0.0.1:8080/linshare
+    ProxyPassReverseCookiePath /linshare /
+
+    # Workaround to remove httpOnly flag (could also be done with tomcat)
+    Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/"
+    # For https, you should add Secure flag.
+    # Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/; Secure"
+
+    #This header is added to avoid the  JSON cache issue on IE.
+    Header set Cache-Control "max-age=0,no-cache,no-store"
+</Location>
+
+ErrorLog /var/log/apache2/linshare-ui-upload-request-error.log
+CustomLog /var/log/apache2/linshare-ui-upload-request-access.log combined
+</Virtualhost>
+```
+
+> Note:<br/>
+  * After any modification of a vhost, you must reload the Apache server :<br/>
+   `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
+
 > Note :<br/>
 You have some vhost's examples in the following repository : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
@@ -575,7 +625,7 @@ Then restart the Apache service :
 ### <a name="firstAccess">First Access</a>
 
 > Note: <br>
-Before the first access to __LinShare__ you need to add `linshare-user.local` and `linshare-admin.local` to `/etc/hosts`
+Before the first access to __LinShare__ you need to add `linshare-user.local`,  `linshare-admin.local` and `linshare-upload-request.local` to `/etc/hosts`
 
 __LinShare__ service is now reachable at the following adresses:
 
@@ -597,3 +647,16 @@ Please change the password in the administration interface.
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+
+For the __Upload Request service__ is now reachable at the address below by default :
+
+  * Repository installation version : __http://linshare-upload-request.local/#/{uuid}__
+
+> Note :<br/>
+  You need to inquire the url into your upload request url parameter in your administration interface.
+  To do so, go to your administration interface, choose the __Upload Request__ functionnality, and inquire the url in the "parameters" fields.
+
+  * http://linshare-upload-request.local
+
+![External portal upload request](http://download.linshare.org/screenshots/4.1.0/01.external.portal.upload.request.png)

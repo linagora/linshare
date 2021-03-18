@@ -135,9 +135,9 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
 
  ```
  $ cd /var/www/
- $ rm linshare-ui-admin
+ $ rm -rf linshare-ui-admin
  $ tar xjvf /root/downloads/linshare-ui-admin-4.1.0.tar.bz2
- $ chown -R apache: /var/www/linshare-ui-admin
+ $ chown -R www-data: /var/www/linshare-ui-admin
  ```
  <a name="ui-user">
 
@@ -148,9 +148,9 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
 
  ```
  $ cd /var/www/
- $ rm linshare-ui-user
+ $ rm -rf linshare-ui-user
  $ tar xjvf  /root/downloads/linshare-ui-user-4.1.0.tar.bz2
- $ chown -R apache: /var/www/linshare-ui-user
+ $ chown -R www-data: /var/www/linshare-ui-user
  ```
  Now you can start your Apache service again.
 

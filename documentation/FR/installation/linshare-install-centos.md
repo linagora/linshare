@@ -11,13 +11,16 @@
    * [Installation du serveur web](#apache)
      * [Configuration vhost ui-user](#ui-user)
      * [Configuration vhost ui-admin](#ui-admin)
+     * [Configuration vhost ui-upload-request](#ui-upload-request)
    * [Configuration du pare-feu](#firewalld)
    * [Configuration et lancement de Linshare](#linconf)
    * [Premier accès](#firstAccess)
 
+Ce guide propose l'installation de la version __LinShare__ 4.1 sur *CentOS 7* (les versions antérieures de CentOS ne sont pas prises en charge).
+
 > Note :<br/>
-> Ce guide propose l'installation de la version __LinShare__ 4 sur CentOS 7. Les
-> guides d'installation des versions précédentes sont disponibles ici:
+> Les guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/FR/installation/linshare-install-centos-7.md)
 > - [LinShare 2.1](https://github.com/linagora/linshare/blob/maintenance-2.1.x/documentation/FR/installation/linshare-install-centos-7.md)
@@ -455,6 +458,50 @@ CustomLog /var/log/httpd/linshare-admin-access.log combined
    * Après toute modification d'un vhost, il faut relancer le serveur Apache:
    `[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
 
+### <a name="ui-upload-request">Configuration vhost ui-upload-request</a>
+
+> Note :<br/>
+Le composant de l'Invitation de dépôt est facultatif sur LinShare(il n'est pas nécessaire pour le fonctionnement de LinShare), par défaut sa fonctionnalité est activée, donc pour le bon fonctionnement  de cette fonctionnalité, vous devez suivre le guide ci-dessous pour déployer son insterface. Si ce n'est pas le cas, vous pouvez désactiver la fonctionnalité sur l'interface d'administration.
+
+Déployer l'archive de l'application __LinShare__ UI upload request  dans le répertoire du serveur httpd :
+
+```bash
+mv /tmp/linshare_data/linshare-ui-upload-request-{VERSION}.tar.bz2 /var/www
+cd /var/www/
+tar xjf linshare-linshare-ui-upload-request-{VERSION}.tar.bz2
+chown -R apache: linshare-ui-upload-request
+rm -fr /var/www/linshare-ui-upload-request-<VERSION>.tar.bz2
+```
+
+Pour déployer l’interface de l'Invitation de dépôt de __LinShare__, il est nécessaire de créer le fichier de configuration du vhost. Ajouter le fichier `/etc/httpd/conf.d/linshare-ui-upload-request.conf` avec le contenu suivant :
+
+```xml
+<VirtualHost *:80>
+ServerName linshare-upload-request.local
+DocumentRoot /var/www/linshare-ui-upload-request
+<Location /linshare>
+    ProxyPass http://127.0.0.1:8080/linshare
+    ProxyPassReverse http://127.0.0.1:8080/linshare
+    ProxyPassReverseCookiePath /linshare /
+
+    # Workaround to remove httpOnly flag (could also be done with tomcat)
+    Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/"
+    # For https, you should add Secure flag.
+    # Header edit Set-Cookie "(JSESSIONID=.*); Path.*" "$1; Path=/; Secure"
+
+    #This header is added to avoid the  JSON cache issue on IE.
+    Header set Cache-Control "max-age=0,no-cache,no-store"
+</Location>
+
+ErrorLog /var/log/apache2/linshare-ui-upload-request-error.log
+CustomLog /var/log/apache2/linshare-ui-upload-request-access.log combined
+</Virtualhost>
+```
+
+> Note:<br/>
+* Après toute modification d'un vhost, il faut relancer le serveur Apache:
+`[root@localhost ~]$ sudo systemctl restart httpd.service` <br/>
+
 > Note :<br/>
     Des exemples de vhosts sont disponibles dans le repertoire : [utils/apache2/vhosts-sample/](../../../utils/apache2/vhosts-sample/)
 
@@ -547,7 +594,7 @@ Puis redémarrez le service Apache:
 ### <a name="firstAccess">Premier accès</a>
 
 > Note: <br>
-Avant le premier accès à __LinShare__, vous devez ajouter `linshare-user.local` et` linshare-admin.local` à `/etc/hosts`.
+Avant le premier accès à __LinShare__, vous devez ajouter `linshare-user.local`, ` linshare-admin.local` et `linshare-upload-request.local` à `/etc/hosts`.
 
 Le service __LinShare__ est désormais accessible aux adresses suivantes :
 
@@ -569,3 +616,13 @@ Veuiller changer le mot de passe depuis l'interface d'administration.
   Il n'est pas possible d'ajouter d'autres utilisateurs standards LinShare en local sans LDAP. Voir la section dédiée à la configuration du LDAP dans la [paramétrage applicatif](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+Pour le service __Invitation de dépôt__ est désormais accessible à l'adresse ci-dessous par défaut: __http://linshare-upload-request.local/#/{uuid}__
+
+> Note: <br/>
+   Vous pouvez vérifier l'url dans le paramètre de la fonctionalité de l'Invitation de dépôt dans votre interface d'administration.
+   Pour cela, allez dans votre interface d'administration, choisissez la fonctionnalité __Invitation de dépôt__, et renseignez-vous sur l'url dans les champs "paramètres".
+
+  * http://linshare-upload-request.local
+
+![External portal upload request](http://download.linshare.org/screenshots/4.1.0/01.external.portal.upload.request.png)

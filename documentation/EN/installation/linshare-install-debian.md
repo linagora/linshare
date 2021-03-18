@@ -11,13 +11,13 @@
    * [Web Server Installation](#apache)
      * [ui-user vhost Configuration](#ui-user)
      * [ui-admin vhost Configuration](#ui-admin)
-     * [ui-upload-request vhost Configuration(optional)](#ui-upload-request)
+     * [ui-upload-request vhost Configuration](#ui-upload-request)
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
    * [Upload Request](#uploadRequest)
 
-Welcome to LinShare installation Guide, 
-This page provides a __LinShare__ version 4.1 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
+Welcome to LinShare installation Guide, This page provides a __LinShare__ version 4.1 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
+
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-debian.md)
@@ -109,7 +109,7 @@ systemctl restart postgresql
 
 You should also add those rules among the first. Indeed, PostgreSQL uses the first valid rule which match the authentication request.
 
-Create the linshare user and database: 
+Create linshare user and database:
 > sample password is **linshare** used for convenience, it should be changed
 ```bash
 su - postgres
@@ -484,6 +484,9 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ```
 
 ### <a name="ui-upload-request">vhost ui-upload-request Configuration (optional)</a>
+
+> Note :<br/>
+  The upload request component is optional on LinShare(it is not required to make LinShare work), by default its functionality is enabled, so for a proper functioning of this feature you need to follow the guide below to deploy its insterface.If it is not the case you can disable the functionality on the administration interface.
 
 First, go [here](#uploadRequest) to download the upload request module.
 

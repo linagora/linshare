@@ -11,14 +11,15 @@
    * [Installation du serveur web](#apache)
      * [Configuration vhost ui-user](#ui-user)
      * [Configuration vhost ui-admin](#ui-admin)
-     * [Configuration vhost ui-upload-request(optionnel)](#ui-upload-request)
+     * [Configuration vhost ui-upload-request](#ui-upload-request)
    * [Configuration et lancement de Linshare](#linconf)
    * [Premier accès](#firstAccess)
    * [Invitation de dépôt](#uploadRequest)
 
+Ce guide propose l'installation de la version __LinShare__ 4.1 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
+
 > Note :<br/>
-> Ce guide propose l'installation de la version __LinShare__ 4.1 sur Debian 10. Les
-> guides d'installation des versions précédentes sont disponibles ici:
+> Les guides d'installation des versions précédentes sont disponibles ici:
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/FR/installation/linshare-install-centos-7.md)
@@ -460,6 +461,9 @@ CustomLog /var/log/apache2/linshare-admin-access.log combined
 ```
 ### <a name="ui-upload-request">Configuration vhost ui-upload-request(optionnel)</a>
 
+> Note :<br/>
+Le composant de l'Invitation de dépôt est facultatif sur LinShare(il n'est pas nécessaire pour le fonctionnement de LinShare), par défaut sa fonctionnalité est activée, donc pour le bon fonctionnement  de cette fonctionnalité, vous devez suivre le guide ci-dessous pour déployer son insterface. Si ce n'est pas le cas, vous pouvez désactiver la fonctionnalité sur l'interface d'administration.
+
 Tout d'abord, veuillez vous rendre à [cette section](#uploadRequest) pour télécharger le module d'invitation de dépôt.
 Pour déployer l'interface d'invitation de dépôt de __LinShare__, il faut ouvrir le fichier virtualhost linshare-ui-upload-request.conf et le modifier de la façon suivante :
 
@@ -659,4 +663,4 @@ Le __service d'invitation de dépôt__ est maintenant accessible à l'adresse su
 
 > Note :<br/>
   Vous pouvez modifier l'url avec le paramètre "URl de l'invitation de dépôt" dans l'interface d'administration
-  Pour ce faire, rendez vous dans votre interface d'administration, choisissez la fonctionnalité  de __l'invitation de dépôt__, et renseignez l'url dans le champ "paramètres". 
+  Pour ce faire, rendez vous dans votre interface d'administration, choisissez la fonctionnalité  de __l'invitation de dépôt__, et renseignez l'url dans le champ "paramètres".
