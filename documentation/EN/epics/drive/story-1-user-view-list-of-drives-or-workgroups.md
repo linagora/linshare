@@ -24,8 +24,7 @@
 *  If the functionality of Drives is disabled in Admin setting, when i click button +, the option Create a drive is not shown
 
 #### Postconditions
-
-
+*  I can see the list of drives that i am a member. 
 [Back to Summary](#summary)
 
 ## UI Design
