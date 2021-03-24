@@ -6,13 +6,15 @@
 * [Misc](#misc)
 
 ## Context
-In LinShare we have workgroups in shared spaces. These groups are design to make a team works together on one topic.
-If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
+In LinShare we have workgroups in shared spaces. These workgroups are designed to let a team works together on one topic.
+If you have multiple topics in a team, you have to create one workgroup per topic, each time you will also need to add team members as part of this workgroups.
+So the membership of a workgroup can differ for each workgroups.
+
 
 The main goal of Drive are :
 
 * regroup all worgkoups of a team in one item
-* define default team members in the Drive to avoid workgroup members redefinition 
+* define default team membership in the Drive to avoid workgroup members redefinition 
 * Manage globally team members rigths (right should be applied from drive to its workgroups
 * a workgroup can be in a drive or be standalone
 
