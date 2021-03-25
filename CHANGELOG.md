@@ -1,3 +1,111 @@
+## [4.1.1](https://github.com/linagora/linshare/compare/4.1.0...4.1.1) (2021-02-25) [Download link](http://download.linshare.org/versions/4.1.1/)
+
+**The 4.1.1 release of LinShare is out**
+
+- **core** : 4.1.1 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.0...4.1.1)
+- **ui-user** : 4.1.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.0...v4.1.1)
+- **ui-admin** : 4.1.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.0...v4.1.1)
+- **ui-upload-request** : 4.1.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.0...v4.1.1)
+- **thunderbird-plugin** : 2.0.0 [changelog](https://github.com/linagora/linshare-plugin-thunderbird/blob/master/README.md)
+
+Exceptionally, this version contains an optional [patch](https://github.com/linagora/linshare-core/blob/4.1.1/src/main/resources/sql/postgresql/Patch_4.1.1.sql)
+that will fix a delete/reset Issue with functionalities.
+
+#### Bug fixes and improvements
+
+  * Thunderbird Plugin:
+    * New version that supports newer versions of LinShare and Thunderbird.
+
+  * Core:
+    * Fix default values of UR notifaction and expiration functionalites
+    * Fix quota bug when deleting files in workgroups
+    * Add patch script for removing duplicate units in functionality_unit (sql patch 4.1.1)
+    * Add sql function to fix LinShare DB version (sql patch 4.1.1)
+    * Fix reset and delete functionality bug
+    * Fix wrong count of uploaded documents in Upload Request mail CLOSED_BY_RECIPIENT template
+    * Fix recipients list don't dispayed on emails
+    * Forbid token creation by admin for users
+    * Fix Share expiration functionality didn't support max value
+    * Sanitize upload request group inputs
+    * Add content type annotation in documents/audit endpoint
+    * Adding not null constraints on max and default value of functionalities
+    * Fixing supporting unlimited values for max value and revamping migration
+    * Fix api v1 parameters default value used and max value used
+    * Add mising condition to the finder: findAllRequestsToBeNotified
+    * Remove reminder mail sent with expiry alert for UR.
+    * Fix logger for NotifyBeforeExpirationUploadRequestBatchI
+    * Update of various libraries for security purpose.
+
+  * UI-User:
+    * Fix delete action is missing in activity tab
+    * Disable validation on usda if functionality is not enabled
+    * Support sharing multiple UREs
+    * Fix quick share form not fully displayed when showing more options
+    * Add pluralization for translations of upload request FILE_UPLOADED
+    * Add badge on each upload request group detail
+    * Resize two upload request icons
+    * Fix default value of expiration date in sharing
+    * fix audit log value of notification locale update
+    * Fix theme entry point not being ignored
+    * Fix text not localized in Vietnamese
+    * Fix ui issue of popup confirm on ipad
+    * rename webpack entry point
+    * Hide update button when upload request is closed
+    * Tighten check for beginDate and endDate when searching activity logs
+    * Show full description on clicking view full button
+    * Add translations for forwarding files
+    * Adding forward action in receivedShares
+    * Update sidebar-share, add new sidebar sidebar-content-forward and remove sidebar-content-more-options
+    * Refactor shareController and share method in shareObjectService
+    * Implement quickShare component
+    * Refactor receivedShareController using tableParamsService
+    * Add a check to prevent double fetching upload request details
+    * Fix dialog confirmation in members panel
+    * Do not allow to go to token management page if JWT_PERMANENT_TOKEN is enabled
+    * Fix validation of expiration date in upload request
+    * Fix validation of notification alert date on undownloaded share file
+    * Catch the error of used password
+    * Do not tab into the eye icon in password input
+    * ES6ify change password module
+    * Fix renaming workgroup node
+    * Add created work groups to the list, then refresh permissions table
+    * do not stop progpagation event for option copyToMySpace in dropdown
+    * Reset selected all icon after delete / close upload requests
+    * Update translation for vietnamese unknown user text
+    * Fix console error of hour picker controller
+    * Update details of audit log for upload request
+    * Fix cancel deleting jwt dialog not working
+    * Rename functionality UPLOAD_REQUEST_SECURED_URL to PROTECTED_BY_PASSWORD
+    * Implement feature to let user select their default home page
+    * Add a check for already visible sidebar with UR details
+    * use document copy endpoint for sharing upload request entry
+    * Fix filter checkbox not initialized correctly
+    * Fix bug with filtering sender in filter box
+    * Fix removing date in Upload Request form
+    * Implement updating a token feature
+    * Bring JWT feature to production
+    * Support vieweing JWT details
+    * Fix upload request form:
+    * Some field names are in correct
+    * Error message is wrong
+    * Message should always colored red
+    * Fix search by date in audit log
+    * Automatically update hour when date change in upload request form
+    * Fix validation of activation date on edit upload request
+    * Update translation for delete upload request entry in audit log
+    * Fix notification language options are not translated
+
+  * UI-Upload-Request:
+    * Fix close button disappeared when closed the upload request
+    * Hide upload menu bar once close upload request
+    * Check the visibility of close button based on canClose permission
+    * Display server processing instead of 0s
+    * Add missing error code for quota limit reached
+
+  * UI-Admin:
+    * Fix user is undefined error in audt logs
+    * Translate missing mail keys
+
 ## [4.1.0](https://github.com/linagora/linshare/compare/4.0.3...4.1.0) (2021-02-25) [Download link](http://download.linshare.org/versions/4.1.0/)
 
 **The 4.1.0 release of LinShare is out**
@@ -53,6 +161,8 @@ To upgrade LinShare to 4.1.0 version you can see this [upgrade guide](https://gi
 
 >**NB**: If LinShare is not yet installed you can [follow](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-debian.md#linshare-installation-on-debian) to have an instance of.
 
+
+
 # [4.0.3](https://github.com/linagora/linshare/compare/4.0.2...4.0.3) (2020-12-15) [Download link](http://download.linshare.org/versions/4.0.3/)
 
 **The 4.0.3 release of LinShare is out**
@@ -64,7 +174,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 * **ui-user** : 4.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.2...v4.0.3)
 * **ui-admin** : 4.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.2...v4.0.3)
 
-#### Bug fixes and improvments
+#### Bug fixes and improvements
 
   * Core:
     * Fix issue when downloading a folder archive in a workgroup.
@@ -89,7 +199,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 * **ui-user** : 4.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.1...v4.0.2)
 * **ui-admin** : 4.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.1...v4.0.2)
 
-#### Bug fixes and improvments
+#### Bug fixes and improvements
 
 > This version include a lot of bugfixes and enhancements mainly related to mobile compatibility especially for Iphone/Ipad devices.
 

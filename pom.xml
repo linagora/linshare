@@ -8,12 +8,12 @@
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
-    <linshare-core>4.1.0-1</linshare-core>
-    <linshare-ui-user>4.1.0</linshare-ui-user>
-    <linshare-ui-admin>4.1.0</linshare-ui-admin>
-    <linshare-ui-upload-request>4.1.0</linshare-ui-upload-request>
+    <linshare-core>4.1.1</linshare-core>
+    <linshare-ui-user>4.1.1</linshare-ui-user>
+    <linshare-ui-admin>4.1.1</linshare-ui-admin>
+    <linshare-ui-upload-request>4.1.1</linshare-ui-upload-request>
     <thumbnail-server>2.1.1</thumbnail-server>
-    <linshare-plugin-thunderbird>1.9.1</linshare-plugin-thunderbird>
+    <linshare-plugin-thunderbird>2.0.0</linshare-plugin-thunderbird>
   </properties>
   <dependencies>
     <dependency>
