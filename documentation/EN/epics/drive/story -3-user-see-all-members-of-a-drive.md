@@ -40,10 +40,11 @@
 ## UI Design
 
 #### Mockups
-![story3.1](./resources/story3.1.png)
-![story3.2](./resources/story3.2.png)
+![story3.1](./mockups/story3.1.png)
+![story3.2](./mockups/story3.2.png)
 #### Final design
-
+![story3.1](./design/story3.1.png)
+![story3.1](./design/story3.2.png)
 [Back to Summary](#summary)
 ## Misc
 
