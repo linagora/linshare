@@ -43,7 +43,7 @@
 ![story3.1](./resources/story3.1.png)
 ![story3.2](./resources/story3.2.png)
 #### Final design
-https://www.figma.com/file/uEjMnsiLPSByz7m6wfTLLA/LinShare-Web?node-id=2459%3A0
+
 [Back to Summary](#summary)
 ## Misc
 

@@ -30,10 +30,10 @@
 
 #### Mockups
 
-![view list of drives workgroups](./resources/viewlistofdrive.png)
+![view list of drives workgroups](./mockups/viewlistofdrive.png)
 
 #### Final design
-
+![story3.1](./resourdesign/story1.png)
 [Back to Summary](#summary)
 ## Misc
 
