@@ -51,7 +51,7 @@
 
 #### Final design
 ![story6](./design/6.1.png)
-![story6](./design/6.1.png)
+![story6](./design/6.2.png)
 [Back to Summary](#summary)
 ## Misc
 
