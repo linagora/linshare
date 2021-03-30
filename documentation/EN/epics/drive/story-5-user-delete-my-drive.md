@@ -44,9 +44,11 @@
 ![story5](./mockups/5.2.png)
 ![story5](./mockups/5.3.png)
 #### Final design
+**Delete one drive**
 ![story5](./design/5.1.png)
 ![story5](./design/5.2.png)
 ![story5](./design/5.3.png)
+**Delete multiple drives**
 ![story5](./design/5.4.png)
 ![story5](./design/5.5.png)
 ![story5](./design/5.6.png)
