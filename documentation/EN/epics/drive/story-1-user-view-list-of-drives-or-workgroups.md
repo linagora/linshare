@@ -33,7 +33,7 @@
 ![view list of drives workgroups](./mockups/viewlistofdrive.png)
 
 #### Final design
-![story1](./resourdesign/story1.png)
+![story1](./design/story1.png)
 [Back to Summary](#summary)
 ## Misc
 
