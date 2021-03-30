@@ -31,11 +31,12 @@
 ## UI Design
 
 #### Mockups
-![view list of drives workgroups](./resources/Create drive 1.png)
-![view list of drives workgroups](./resources/Create drive 2.png)
+![view list of drives workgroups](./mockups/Create drive 1.png)
+![view list of drives workgroups](./mockups/Create drive 2.png)
 
 #### Final design
-https://www.figma.com/file/uEjMnsiLPSByz7m6wfTLLA/LinShare-Web?node-id=2450%3A1
+![story2.1](./design/story2.1.png)
+![story2.2](./design/story2.2.png)
 [Back to Summary](#summary)
 ## Misc
 
