@@ -30,10 +30,12 @@
 
 #### Mockups
 
-![story4](./resources/story4.png)
+![story4](./mockups/4.1.png)
 
 #### Final design
-https://www.figma.com/file/uEjMnsiLPSByz7m6wfTLLA/LinShare-Web?node-id=2456%3A2
+![story4](./design/4.1.png)
+![story4](./design/4.2.png)
+
 [Back to Summary](#summary)
 ## Misc
 
