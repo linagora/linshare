@@ -11,14 +11,15 @@ If you have multiple topics in a team, you have to create one workgroup per topi
 So the membership of a workgroup can differ for each workgroups.
 
 
-The main goal of Drive are :
+The main goals of Drive are :
 
-* regroup all worgkoups of a team in one item
-* define default team membership in the Drive to avoid workgroup members redefinition 
-* Manage globally team members rigths (right should be applied from drive to its workgroups
-* a workgroup can be in a drive or be standalone
+* to group some workgroups together, like workgroups were belonging to the same team or project.
+* to avoid workgroup membership redefintion each time you are creating a new workgroup.
+
+Of course, we also want to keep to pisiblity to create standalone workgroups, with the requirement to be part of a Drive.
 
 [Back to Summary](#summary)
+
 ## Definition
 
 ### Rules
