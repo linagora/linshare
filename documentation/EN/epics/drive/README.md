@@ -65,9 +65,29 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
 
 ### Drive Permissions 
 
-TODO: use markdown format
-![permission](./resources/permission.png)
 
+Drive are managed using 3 different roles. Workgroup roles are just here as reminder.
+
+| Permissions / Role | DRIVE READER | DRIVE WRITER | DRIVE ADMIN | WORKGROUP READER | WORKGROUP CONTRIBUTOR | WORKGROUP WRITER | WORKGROUP ADMIN |
+| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| See member of the Drive        |X|X|X| | | | |
+| Add member to the Drive        | | |X| | | | |
+| Update member on the Drive     | | |X| | | | |
+| Delete Member on the Drive     | | |X| | | | |
+| Update The Drive               | | |X| | | | |
+| Delete the Drive               | | |X| | | | |
+| - |
+| Add a workgroup                | |X|X| | | | |
+| Update a Workgroup             | |X|X| | | |X|
+| Delete a Workgroup             | |X|X| | | |X|
+| Add member to the Workgroup    | | |?| | | |X|
+| Delete Member on the Workgroup | | |?| | | |X|
+| Update member on the Workgroup | | |?| | | |X|
+| - |
+| See the documents              | | | |X|X|X|X|
+| Download a document            | | | |X|X|X|X|
+| Upload Document                | | | | |X|X|X|
+| Delete a document              | | | | | |X|X|
 
 [Back to Summary](#summary)
 
