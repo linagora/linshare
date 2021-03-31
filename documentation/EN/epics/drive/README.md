@@ -25,19 +25,13 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
 ### Rules
 
 * This feature must be available on sharedSpace. 
-* The Drive will be managed as nested workgroups functionality.
+* The Drive will be managed as a new functionality.
 * A Drive can only contain workgroups. A Drive can't contain a Drive, a Document or a Folder.
-* Add preferences to manage the Drive. 
-* List all permissions related to Drive.
-* List all roles related to Drive.
-
-> Note : <br>
-   We need to have two kind of roles on Drive: <br>
-    - Drive roles (DRIVE_ADMIN for example) is applied to the current Drive. <br> 
-    - Default workgroups roles : Defined on the Drive and applied on the workgroups inside it. <br>
-
-* The workgroups inside the Drive inherite the Drive roles and properties.
-* When an external user (from the drive) is added to a workgroup, he can't/shouldn't see the Drive name
+* Among a Drive a member have two roles, one role dedicated to the Drive by itself. A second one wich will be his role by default in workgroups created inside a Drive.
+    - Drive roles (DRIVE_ADMIN, for example) is applied to the current Drive. <br> 
+    - Default workgroups roles : Defined on the Drive and applied on the workgroups inside it as a default value. <br>
+* The workgroups inside the Drive inherite the Drive roles and properties but they can be overriden locally.
+* When an external user (from the drive) is added to a nested workgroup, he can't see the Drive name, only the workgroup name. (To be confirmed)
 
 ### Actions 
 
@@ -45,23 +39,25 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
   - Anyone can create Drives if the functionality is enabled.
   - The Drive creator is Admin by default, and has default admin role on workgroups inside the Drive.
 
-* Add member to the Drive :
+* Add member to a Drive :
   -  To add member to the Drive we need to have __DRIVE_ADMINISTRATOR__ permission.
   -  The new member is added with a Drive role and a default Workgroups role.
-  -  The new member is added also to all workgroups inside the Drive with the default role defined on the Drive.
+  -  The new member is also added to all nested workgroups inside the Drive with the default role defined on the Drive. If he already exists in a nested workgroup, the higher role is kept in order to resolve the conflict.
 
-* Add Workgroups to the Drive :
-  -  We need to have a specificate role to add a workgroups.
-  -  The ADMIN role is attributed to the creator of workgroups and the members who had this role defined on the Drive.
+* Create Workgroups into a Drive :
+  - We must have the DRIVE_WRITER role to create workgroups.
+  - The WORKGROUP_ADMIN role is attributed to the creator of the workgroup
+  - All drive members are also added to the workgroup with their own default workgroup role
 
-* We can add an external member of the Drive to the workgroups :
+* Add an external user of the Drive to workgroup :
+  - Just edit the workgroup to add the user with his role.
+  - You must be admin of the drive or the workgroup.
 
-  
 * Update the Drive informations and member of Drive :
-  - All member with the Right permissions  can update a Drive.
+  - All member with DRIVE_WRITER role can update a Drive.
   - We need to propagate all modifications on Drive members into the workGroups. we have two mode :
+       - Soft : the changes are only applied to workgroup members if they were not upgraded locally, with a higher rrole for example.
        - Force : it overrides all workgroups preferencies by the drives one.
-       - Soft : the changes is only applied if the members of workgroups is not overridden before.
 
 * Delete a workgroup :
    - All member with the right permissions on the workgroup
@@ -69,12 +65,12 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
 
 ### Drive Permissions 
 
+TODO: use markdown format
 ![permission](./resources/permission.png)
 
 
-
-
 [Back to Summary](#summary)
+
 ## Stories
 
 > A list of all the story documentation in the epic, must format as a list of links to corresponding user story files inside epic folder
