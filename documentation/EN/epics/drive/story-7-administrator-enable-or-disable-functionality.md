@@ -32,7 +32,7 @@
 #### Mockups
 
 #### Final design
-![story7](./7.png)
+![story7](./design/7.png)
 
 [Back to Summary](#summary)
 ## Misc
