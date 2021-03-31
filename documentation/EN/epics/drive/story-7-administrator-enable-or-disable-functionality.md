@@ -1,4 +1,3 @@
-
 # Summary
 
 * [Related EPIC](#related-epic)
@@ -13,7 +12,8 @@
 ## Definition
 
 #### Preconditions
-*  Given that i am Linshare administrator. I logged in the admin interface
+
+*  Given that i am LinShare administrator. I logged in the admin interface
 #### Description
 * I go to parameters on the side menu. 
 * I click on functionalities.
@@ -21,8 +21,8 @@
 * I can now enable or disable Drive functionality and enable/disable Creation right: 
    *  When the functionality is enabled, the Drives are displayed on User interface. 
    *  When the functionality is disabled, the Drives are hidden on User interface   
-   *  When the functionality is enabled and Creation right is enabled, the button create Drive (button "+" at top left of Listing drives screen) is enabled.
-   *  When the unctionality is enabled and Creation right is disabled, the button Create Drive is disabled on USer interface. 
+   *  When the functionality is enabled and Creation right is enabled, the button Create Drive (button "+" at top left of Listing drives screen) is enabled on User interface.
+   *  When the functionality is enabled and Creation right is disabled, the button Create Drive is disabled on User interface. 
 
 
 [Back to Summary](#summary)
@@ -32,9 +32,11 @@
 #### Mockups
 
 #### Final design
+
 ![story7](./design/7.png)
 
 [Back to Summary](#summary)
+
 ## Misc
 
 [Back to Summary](#summary)
