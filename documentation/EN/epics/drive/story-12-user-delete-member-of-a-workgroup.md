@@ -7,9 +7,7 @@
 
 ## Related EPIC
 
-> Links to the epic document in the epic folder, normally README.
-
-* [Name of the epic](./README.md)
+* [Drive](./README.md)
 
 ## Definition
 
