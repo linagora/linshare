@@ -16,7 +16,7 @@ The main goals of Drive are :
 * to group some workgroups together, like workgroups were belonging to the same team or project.
 * to avoid workgroup membership redefintion each time you are creating a new workgroup.
 
-Of course, we also want to keep to pisiblity to create standalone workgroups, with the requirement to be part of a Drive.
+Of course, we also want to have the possiblity to create standalone workgroups, with the requirement of being part of a Drive.
 
 [Back to Summary](#summary)
 
@@ -27,10 +27,10 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
 * This feature must be available on sharedSpace. 
 * The Drive will be managed as a new functionality.
 * A Drive can only contain workgroups. A Drive can't contain a Drive, a Document or a Folder.
-* Among a Drive a member have two roles, one role dedicated to the Drive by itself. A second one wich will be his role by default in workgroups created inside a Drive.
+* Among a Drive, a member has two roles, one role dedicated to the Drive by itself. A second one which will be his role by default in workgroups created inside that Drive.
     - Drive roles (DRIVE_ADMIN, for example) is applied to the current Drive. <br> 
     - Default workgroups roles : Defined on the Drive and applied on the workgroups inside it as a default value. <br>
-* The workgroups inside the Drive inherite the Drive roles and properties but they can be overriden locally.
+* The workgroup members inside a Drive inherit from the defaut workgroup roles and properties but they can be overridden locally.
 * When an external user (from the drive) is added to a nested workgroup, he can't see the Drive name, only the workgroup name. (To be confirmed)
 
 ### Actions 
@@ -40,14 +40,14 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
   - The Drive creator is Admin by default, and has default admin role on workgroups inside the Drive.
 
 * Add member to a Drive :
-  -  To add member to the Drive we need to have __DRIVE_ADMINISTRATOR__ permission.
+  -  To add new members to the Drive, member must have the role of __DRIVE_ADMIN__.
   -  The new member is added with a Drive role and a default Workgroups role.
   -  The new member is also added to all nested workgroups inside the Drive with the default role defined on the Drive. If he already exists in a nested workgroup, the higher role is kept in order to resolve the conflict.
 
-* Create Workgroups into a Drive :
-  - We must have the DRIVE_WRITER role to create workgroups.
-  - The WORKGROUP_ADMIN role is attributed to the creator of the workgroup
-  - All drive members are also added to the workgroup with their own default workgroup role
+* Create new Workgroups inside a Drive :
+  - Members must have at least the __DRIVE WRITER__ role.
+  - The __WORKGROUP ADMIN__ role is automatically assigned to the creator of the workgroup
+  - All drive members are also added to the workgroup with their own default workgroup roles
 
 * Add an external user of the Drive to workgroup :
   - Just edit the workgroup to add the user with his role.
@@ -57,7 +57,7 @@ Of course, we also want to keep to pisiblity to create standalone workgroups, wi
   - All member with DRIVE_WRITER role can update a Drive.
   - We need to propagate all modifications on Drive members into the workGroups. we have two mode :
        - Soft : the changes are only applied to workgroup members if they were not upgraded locally, with a higher rrole for example.
-       - Force : it overrides all workgroups preferencies by the drives one.
+       - Force : overrides member's role in all nested workgroups by the drive's one.
 
 * Delete a workgroup :
    - All member with the right permissions on the workgroup
