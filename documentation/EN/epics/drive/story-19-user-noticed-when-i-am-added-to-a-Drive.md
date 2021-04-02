@@ -6,13 +6,17 @@
 * [Misc](#misc)
 
 ## Related EPIC
+
 * [Drive](./README.md)
 
 ## Definition
 
 #### Preconditions
+
 *  Notifications related to Drives for user are enabled by admin
+
 #### Description
+
 **UC1. Send notification when an user is added to a Drive**
 *  When a Linshare user is added to a drive, he will receive an email notification with the following content: 
 
@@ -40,6 +44,7 @@
 #### Final design
 
 [Back to Summary](#summary)
+
 ## Misc
 
 [Back to Summary](#summary)
