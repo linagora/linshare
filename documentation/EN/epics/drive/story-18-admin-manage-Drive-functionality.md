@@ -12,8 +12,11 @@
 ## Definition
 
 #### Preconditions
+
 *  As administrator : i'm logged in the admin interface
+
 #### Description
+
 * I go to parameters on the side menu. 
 * I click on functionalities.
 * I click on the Drive functionality.
@@ -33,8 +36,11 @@
 #### Mockups
 
 #### Final design
+
 ![story18](./design/18.png)
+
 [Back to Summary](#summary)
+
 ## Misc
 
 [Back to Summary](#summary)
