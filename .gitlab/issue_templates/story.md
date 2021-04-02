@@ -3,6 +3,7 @@
 * [Related EPIC](#related-epic)
 * [Definition](#definition)
 * [Screenshots](#screenshots)
+* [Technical issues](#technical-issues)
 * [Misc](#misc)
 
 ## Related EPIC
@@ -29,6 +30,11 @@
 #### Final design
 
 [Back to Summary](#summary)
+
+## Technical issues
+
+[Back to Summary](#summary)
+
 ## Misc
 
 [Back to Summary](#summary)
