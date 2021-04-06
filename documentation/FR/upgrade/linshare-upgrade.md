@@ -22,6 +22,7 @@
 > Note :
 
  - Dans ce document, nous présentons comment effectuer une mise à jour de votre version de Linshare.
+ - Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](../installation/requirements.md)
  - Veuillez par ailleurs noter que le core et l'interface d'administration doivent être mise à jour conjointement. En effet pour chaque version du core, vous avez une version correspondante cf lien vers tableau
  
 <a name="upgradecore">

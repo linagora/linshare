@@ -7,3 +7,5 @@
 * [Как установить LinShare на CentOS 7](linshare-install-centos.md).
 
 * [Интеграция с LemonLDAP::NG](../../EN/installation/sso.md).
+
+* [Required versions of LinShare's dependencies](requirements.md)

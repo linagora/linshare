@@ -22,6 +22,7 @@
 > Note :
 
  - In this document, we explain how to upgrade your LinShare version.
+ - You can find the required versions of LinShare's dependencies [here](../installation/requirements.md)
  - The core and the admin must be both upgraded at the same time. Indeed for each core version, there is an Admin version (CF ...)
  
 <a name="upgradecore">

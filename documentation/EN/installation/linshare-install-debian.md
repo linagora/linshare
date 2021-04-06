@@ -62,7 +62,8 @@ mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
 ```
 ## <a name="installOpenJDK">JDK Installation</a>
 
-__LinShare__ requires OpenJDK-11 or Sun/Oracle-JDK 11.
+**LinShare** requires OpendJDK 11
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 You can install OpenJDK11 from Debian official packages:
 
 ```bash
@@ -83,7 +84,7 @@ __Linshare__ requires the use of PostgreSQL for its files and configuration. Thi
 ```bash
 apt install postgresql
 ```
-> You can find LinShare supported versions [here](./requirements.md)
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 Configurer and start the PostgreSQL service :
 ```bash
@@ -152,7 +153,7 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the __LinShare__ installation, it is required to install a MongoDB database.
 **LinShare** requires MongoDB 4.2
-> You can find LinShare supported versions [here](./requirements.md)
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 - Import MongoDB GPG Key
 
@@ -325,7 +326,7 @@ systemctl start linshare-thumbnail-server.service
 ## <a name="tomcat">Tomcat Installation</a>
 
 __LinShare__ is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
-
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 Install Tomcat from the repositories:
 ```bash
 sudo apt install -y tomcat9
@@ -386,7 +387,7 @@ mv /tmp/linshare_data/linshare.{VERSION}.war /var/lib/tomcat9/webapps/linshare.w
 ## <a name="apache">Web Server Installation</a>
 
 __LinShare__ administration interface is exploiting web languages such as HTML/CSS and JavaScript. It requires a simple web server such as Apache or Nginx. This section presents the Apache HTTP server installation.
-
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 Install Apache 2 from the repositories :
 ```bash
 apt install -y apache2

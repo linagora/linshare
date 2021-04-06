@@ -4,6 +4,7 @@
  - Nous expliquons dans ce guide comment mettre à jour votre instance LinShare. </br>
  - Tous les composants se trouvant dans (http://download.linshare.org/version/{VERSION}) doivent être mis à jour ensemble. </br>
  Chaque dossier de version LinShare, contient toutes les dépendances requises pour installer correctement cette version. </br>
+ - Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](../installation/requirements.md)
 
 
 ## Sommaire

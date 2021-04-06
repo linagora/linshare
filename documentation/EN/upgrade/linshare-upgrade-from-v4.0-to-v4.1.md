@@ -5,6 +5,7 @@
  - Please note that all the components found in each LinShare's version
 (http://download.linshare.org/versions/{VERSION}) must be upgraded together.  
 Each LinShare version folder, contains the dependencies required to install the version properly. </br>
+- You can find the required versions of LinShare's dependencies [here](../installation/requirements.md)
 
 
 ## Overview

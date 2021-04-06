@@ -81,6 +81,7 @@ log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 ## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
 
 __LinShare__  works with OpenJDK or Sun/Oracle Java 11. Install it and activate it from the repositories :
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 ```bash
 yum install java-11-openjdk-devel
@@ -103,6 +104,7 @@ At the beginning, LinShare was developped with PostgreSQL. New functionalities h
 ### <a name="postgre">PostgreSQL Installation</a>
 
 __Linshare__ requires the use of PostgreSQL 9.x and newer versions for its files and configurations. This section gives details about the PostgreSQL installation.
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 > Note :<br/>
 MySQL database is not compatible anymore since LinShare v2.
@@ -195,6 +197,7 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 For the __LinShare__ installation, it is required to install MongoDB 4.2.
 For more details about the different mongoDB databases of __LinShare__ you can refer to this [Documentation](https://github.com/linagora/linshare/blob/master/documentation/EN/installation/linshare-install-centos.md#mongodb-installation)
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 Create a file `/etc/yum.repos.d/mongodb-org.repo`, and add the repository informations in the latest stable release  to the file:
 
@@ -333,7 +336,7 @@ systemctl start linshare-thumbnail-server.service
 ## <a name="tomcat">Tomcat Installation</a>
 
 __LinShare__ is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
-
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 Install Tomcat from the repositories:
 ```bash
 yum install -y tomcat
@@ -396,6 +399,7 @@ mv /etc/linshare/linshare.war /usr/share/tomcat/webapps/linshare.war
 ## <a name="apache">Web Server Installation</a>
 
 __LinShare__ administration interface is exploiting web languages such as HTML/CSS and JavaScript. It requires a simple web server such as Apache or Nginx. This section presents the Apache HTTP server installation.
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 Install httpd from the repositories :
 ```bash

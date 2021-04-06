@@ -80,6 +80,7 @@ log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 ## <a name="installOpenJDK">Installation de OpenJDK Java JRE</a>
 
 __LinShare__  supporte l'OpenJDK ou Sun/Oracle Java en version 8. Voici son installation et son activation depuis les dépôts :
+> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 ```bash
 yum -y install java-1.8.0-openjdk.x86_64
@@ -97,6 +98,7 @@ Historiquement LinShare était développé sur PostgreSQL. Les nouvelles fonctio
 ### <a name="postgre">Installation de PostgreSQL</a>
 
 __Linshare__ requière l’utilisation d’une base de données (PostgreSQL) pour ses fichiers et sa configuration. Ce guide présente une installation avec PostgreSQL.
+> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 > Note :<br/>
 La base de données MySQL n'est pas prise en charge dans LinShare v2.
@@ -194,6 +196,7 @@ Désormais, depuis la version 2.3.5, nous vous conseillons d'utiliser MongoDB 3.
 En effet les versions 3.2 et 3.4 ne sont plus supportées [officiellement](https://www.mongodb.com/support-policy).
 
 > Au besoin, voici un [guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) de mise à jour de 3.2 a 3.6.
+> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 Créer un fichier `/etc/yum.repos.d/mongodb-org.repo`, et ajouter les informations du référentiel de la dernière version stable au fichier :
 ```bash
@@ -310,7 +313,7 @@ systemctl start linshare-thumbnail-server.service
 ## <a name="tomcat">Installation de Tomcat</a>
 
 __LinShare__ étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de `servlets` Java (Tomcat ou Jetty) pour fonctionner. Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
-
+> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 Installer Tomcat depuis les dépôts :
 ```bash
 yum install -y tomcat
@@ -368,6 +371,7 @@ mv /etc/linshare/linshare.war /usr/share/tomcat/webapps/linshare.war
 ## <a name="apache">Installation du serveur web</a>
 
 L’interface d’administration de __LinShare__ est une application s’appuyant sur les langages web HTML/CSS et JavaScript. Elle nécessite un simple serveur web de type Apache ou Nginx. Ce guide présente l’installation de Apache HTTP Server.
+> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 Installer httpd depuis les dépôts :
 ```bash
