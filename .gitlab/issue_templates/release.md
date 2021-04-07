@@ -1,4 +1,9 @@
 /title RELEASE LinShare {VERSION}
+* [ ] Test manually a migration from the previous version with sample data
+* [ ] Check if emails are enabled for the new features (fresh install/migration)
+* [ ] Backport required changes from sql Patches (if exists) to Migration script
+* [ ] Update [requirements](../../documentation/EN/installation/requirements.md) file
+
 * Build and Perform Mvn release of each component
 
  * [ ] core {VERSION}
@@ -21,6 +26,7 @@
 * Only for major or minor releases: 
     * [ ] IMPORTANT! : Change the version in /linshare-core/src/main/resources/sql/common/import-settings.sql
     * [ ] Change LinShare version to new one in sql migration script
+    * [ ] Create a new upgrade file documentation
 
 * Update the project CHANGELOG
     * [ ] Backend changeLog  
