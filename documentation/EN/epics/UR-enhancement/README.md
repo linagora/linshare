@@ -8,6 +8,8 @@
 ## Context
 An upload request is a feature through which a person (email) can upload files for a LinShare user, in a temporary and regulated manner. The uploaded documents will impact the issuer’s personal space quota. 
 Currently, the feature is fully implemented with the basic workflow but still remains some limitations. 
+
+![workflow](./mockups/UR workflow.png)
 ## Definition
 The goals of this epic are:
 *  Continue improving timezone issue of date/time fields in Upload Request form
