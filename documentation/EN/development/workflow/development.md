@@ -34,6 +34,7 @@
 | Severity::Medium | It causes some undesirable behavior, but the application is still functional |
 | Severity::Minor | It won't cause any major break-down of the application |
 
+> Labels handle by the QA team
 
 #### State labels
 
@@ -41,8 +42,9 @@
 |----------------|-------------|
 | STATE::CONFIRMED | This issue is confirmed and need to be fixed.|
 | STATE::PENDING | This issue is not yet confirmed, it may be a false positive, a missing feature, a corner case, same data are needed to pursuit the investigation. |
-| STATE::REJECTED | This isn't a bug, it could be a false positive, a feature or a corner case that will won't handle. |
+| STATE::REJECTED | This isn't a bug, it could be a false positive, a feature or a corner case that we won't handle. |
 
+> Labels handle by the Dev team
 
 #### Priority labels
 
@@ -53,5 +55,4 @@
 | Priority::Medium | This issue should be handled when we have spare time, when the sprint finishes earlier than planned.|
 | Priority::Low | This issue can be handled by for say newcommers, as a way to discover LinShare without pressure. |
 
-
-
+> Labels handle by the PO
