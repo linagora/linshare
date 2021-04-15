@@ -1,10 +1,10 @@
-## Development
+# Development
 
-#### Participants
+## Participants
 
 - Engineering Teams (Frontend, Backend), QA Department
 
-### Glossary
+## Glossary
 
 - PO: Product Owner
 - Back team:   Backend developers team.        See @teamss/linshare/back
@@ -13,7 +13,7 @@
 - QA team:     Quality assurance team.         See @teamss/linshare/qa
 
 
-#### Outcome and activities
+## Outcome and activities
 
 | Outcomes | Activities | Participants |
 |----------|------------|--------------|
@@ -24,6 +24,27 @@
 
 > At the first daily of the week, each week, two members of the Dev team, one front, one back, will be chosen to review the QA board and analyse issues.
 
+## Development rules
+
+* Once the technical issue is created, severity, priority and target labels must be set according to the QA issue (if they are defined)
+* For each merge request, we must set the milestone field according to the release, ex "LinShare release 4.1.3" or "LinShare release 4.0.4".
+* Once the QA issues have been reviewed and technical issues created, dev team must assign the QA issue to the PO, then he will be able to set TARGET and PRIORITY labels.
+
+
+## Releases
+
+### Milestones and labels
+
+Before planning a new release for a component, a new "LinShare release x.y.z" milesone must be created as long as its related TARGET label.
+For the version 4.1.3, we must create the label TARGET:4.1.3 and the milestone "LinShare release 4.1.3".
+
+Once a component is released, all closed issues marked with the label TARGET:4.1.3 must be updated with the milestone "LinShare release 4.1.3".
+ 
+
+Once the sprint is completed, the PO updates the milestone field with "LinShare release" milestone according to the higher target label. ie: if an issue has the target 4.0.4 and 4.1.3, the milestone value will be "LinShare release 4.1.3".
+
+
+## Annexes
 
 #### Severity labels
 
