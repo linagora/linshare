@@ -628,8 +628,14 @@ Then restart the Apache service :
 
 ### <a name="firstAccess">First Access</a>
 
-> Note: <br>
-Before the first access to __LinShare__ you need to add `linshare-user.local`,  `linshare-admin.local` and `linshare-upload-request.local` to `/etc/hosts`
+> Note: Before the first access to __LinShare__ you need to add all `linshare-*.local` ServerNames to the `/etc/hosts` file.
+
+
+```Bash
+127.0.0.1   linshare-user.local
+127.0.0.1   linshare-admin.local
+127.0.0.1   linshare-upload-request.local
+```
 
 __LinShare__ service is now reachable at the following adresses:
 
