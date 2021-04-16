@@ -39,4 +39,4 @@
 
 [Back to Summary](#summary)
 
-/label #STORY#
+/label #STORY# STORY::DRAFT
