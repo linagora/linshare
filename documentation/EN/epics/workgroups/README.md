@@ -21,7 +21,7 @@ TODO: Define all roles.
 
 > A list of all the story documentation in the epic, must format as a list of links to corresponding user story files inside epic folder
 
-1. [As a user, i can do something](./link-to-the-file.md)
+1. [As an user, I would like to be able to filter workgroups by name when I try to copy/move a file/folder to another workgroup](./story-1-user-filter-workgroup-in-pick-destination-screen.md)
 
 [Back to Summary](#summary)
 
