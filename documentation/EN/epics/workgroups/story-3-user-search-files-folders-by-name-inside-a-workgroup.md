@@ -1,0 +1,76 @@
+# Summary
+
+* [Related EPIC](#related-epic)
+* [Definition](#definition)
+* [Screenshots](#screenshots)
+* [Misc](#misc)
+
+## Related EPIC
+
+> Links to the epic document in the epic folder, normally README.
+
+* [Workgroups](./README.md)
+
+## Definition
+
+#### Preconditions
+
+- Given that i am a LinShare user.
+- Given that "Workgroup" functionality is enabled in Admin.
+
+#### Description
+
+**UC1. Seaarch files or folders inside a workgroup**
+- After logged-in successfully to LinShare, i go to Shared Space and see the list of workgroups.
+- I click on a workgroup and see the list of files/folders inside.
+- I can see field "Search files and folders" on top right of screen and click on icon setting next to this field
+- A popup will be displayed (Screen1) and i can see the list of search criteria including:
+    - Type: a dropdown list including options: Any types/ Files/Folders
+    - Size: i can custom the range of size 
+    - Creation date: I can custom creation date range
+    - Modification date: I can custom modification date range
+    - File/folder's Owner: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
+- After choosing search critetia, i input characters on the field " Search files and folders"
+- The system will search files and folders name  inside that workgroup and display search result instantly in the list below (Screen 2)
+- The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
+**UC2. Seaarch files or folders inside a folder**
+- After logg-in successfully to LinShare, i go to Shared Space 
+- I click on a workgroup and go to a folder inside that workgroup
+- On the top right of screen i see the field "Search files and folders" and click on icon setting next to this field.
+- - A popup will be displayed (Screen 3) and i can see the list of search criteria including:
+    - Type: a dropdown list including options: Any types/ Files/Folders
+    - Size: i can custom the range of size 
+    - Creation date: I can custom creation date range
+    - Modification date: I can custom modification date range
+    - File/folder's Owner: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
+    - A checkbox: Only search inside of [current folder's name]: The checkbox is ticked by defautl.
+- After choosing search critetia, i input characters on the field " Search files and folders"
+- If the checkbox Only search inside of [current folder's name] is ticked, the system will only search file/folders inside current folder, including child folders of current folder. 
+- If the checkbox is not ticked, the system will search files/folders inside the containing workgroup, including child folders of the workgroup. 
+
+#### Postconditions
+
+- The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
+- In result list, with each item, i can see a full path below each item with an file type/folder icon. 
+- When i click on one item, it will go directly to the location of that item.
+
+
+[Back to Summary](#summary)
+
+## UI Design
+
+#### Mockups
+
+##### Screen 1
+![screen 1](./mockups/3.1.png)
+##### Screen 2
+![screen 2](./mockups/3.2.png)
+##### Screen 3
+![screen 3](./mockups/3.3.png)
+
+#### Final design
+
+[Back to Summary](#summary)
+## Misc
+
+[Back to Summary](#summary)
