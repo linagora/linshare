@@ -20,35 +20,37 @@
 
 #### Description
 
-**UC1. Seaarch files or folders inside a workgroup**
+**UC1. Search files or folders inside a workgroup**
 
 - After logged-in successfully to LinShare, i go to Shared Space and see the list of workgroups.
 - I click on a workgroup and see the list of files/folders inside.
-- I can see field "Search files and folders" on top right of screen and click on icon setting next to this field
-- A popup will be displayed (Screen1) and i can see the list of search criteria including:
-    - Type: a dropdown list including options: Any types/ Files/Folders
-    - Size: i can custom the range of size 
-    - Creation date: I can custom creation date range
+- I can see field "Search by name" on top right of screen and click on icon setting next to this field
+- The popup Advanced Search settings will be displayed (Screen1) and i can see the list of search criteria including:
+    - Type: includes three checkboxes Files/Folders/Revisions and be ticked by default.
+     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Video/Other.
+    - Size: i can custom the range of size with a tooltip : only applied for file and revision
+    - Creation date: I can custom creation date. 
     - Modification date: I can custom modification date range
-    - File/folder's Owner: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
-- After choosing search critetia, i input characters on the field " Search files and folders"
+    - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
+- After choosing search critetia, i input characters on the field " Search by name"
 - The system will search files and folders name  inside that workgroup and display search result instantly in the list below (Screen 2)
 - The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup.
 
-**UC2. Seaarch files or folders inside a folder**
+**UC2. Search files or folders inside a folder**
 
 - After logg-in successfully to LinShare, i go to Shared Space 
 - I click on a workgroup and go to a folder inside that workgroup
-- On the top right of screen i see the field "Search files and folders" and click on icon setting next to this field.
-- - A popup will be displayed (Screen 3) and i can see the list of search criteria including:
-    - Type: a dropdown list including options: Any types/ Files/Folders
-    - Size: i can custom the range of size 
+- On the top right of screen i see the field "Search by name" and click on icon setting next to this field.
+- A popup Advanced Search Settings will be displayed (Screen 3) and i can see the list of search criteria including:
+    - Type: includes three checkboxes Files/Folders/Revisions and be ticked by default.
+     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations
+    - Size: i can custom the range of size with a tooltip : only applied for file and revision
     - Creation date: I can custom creation date range
     - Modification date: I can custom modification date range
-    - File/folder's Owner: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
-    - A checkbox: Only search inside of [current folder's name]: The checkbox is ticked by defautl.
+    - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
+    - A checkbox Seach in the whole workgroup: The checkbox is ticked by defautl.
 - After choosing search critetia, i input characters on the field " Search files and folders"
-- If the checkbox Only search inside of [current folder's name] is ticked, the system will only search file/folders inside current folder, including child folders of current folder. 
+- If the checkbox  Seach in the whole workgroup is unticked, the system will only search file/folders inside current folder, including child folders of current folder. 
 - If the checkbox is not ticked, the system will search files/folders inside the containing workgroup, including child folders of the workgroup. 
 
 #### Postconditions
@@ -56,7 +58,7 @@
 - The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
 - In result list, with each item, i can see a full path below each item with an file type/folder icon. 
 - When i click on one item, it will go directly to the location of that item.
-
+- The Search criteria will be kept until user change the setting
 
 [Back to Summary](#summary)
 
