@@ -21,6 +21,7 @@
 #### Description
 
 **UC1. Seaarch files or folders inside a workgroup**
+
 - After logged-in successfully to LinShare, i go to Shared Space and see the list of workgroups.
 - I click on a workgroup and see the list of files/folders inside.
 - I can see field "Search files and folders" on top right of screen and click on icon setting next to this field
@@ -32,8 +33,10 @@
     - File/folder's Owner: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
 - After choosing search critetia, i input characters on the field " Search files and folders"
 - The system will search files and folders name  inside that workgroup and display search result instantly in the list below (Screen 2)
-- The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
+- The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup.
+
 **UC2. Seaarch files or folders inside a folder**
+
 - After logg-in successfully to LinShare, i go to Shared Space 
 - I click on a workgroup and go to a folder inside that workgroup
 - On the top right of screen i see the field "Search files and folders" and click on icon setting next to this field.
