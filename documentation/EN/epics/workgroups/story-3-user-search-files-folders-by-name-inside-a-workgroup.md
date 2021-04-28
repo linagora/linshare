@@ -49,16 +49,16 @@
     - Modification date: I can custom modification date range
     - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
     - A checkbox Seach in the whole workgroup: The checkbox is ticked by defautl.
-- After choosing search critetia, i input characters on the field " Search files and folders"
-- If the checkbox  Seach in the whole workgroup is unticked, the system will only search file/folders inside current folder, including child folders of current folder. 
-- If the checkbox is not ticked, the system will search files/folders inside the containing workgroup, including child folders of the workgroup. 
+- After choosing search critetia, i input characters on the field " Search by name"
+- If the checkbox  Seach in the whole workgroup is not ticked, the system will only search file/folders inside current folder, including child folders of current folder. 
+- If the checkbox is ticked, the system will search files/folders inside the containing workgroup, including child folders of the workgroup. 
 
 #### Postconditions
 
 - The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
 - In result list, with each item, i can see a full path below each item with an file type/folder icon. 
 - When i click on one item, it will go directly to the location of that item.
-- The Search criteria will be kept until user change the setting
+- The Search criteria will be kept until user change the setting.
 
 [Back to Summary](#summary)
 
