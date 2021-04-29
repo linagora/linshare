@@ -1,3 +1,61 @@
+## [4.1.2](https://github.com/linagora/linshare/compare/4.1.1...4.1.2) (2021-04-29) [Download link](http://download.linshare.org/versions/4.1.2/)
+
+**The 4.1.2 release of LinShare is out**
+
+- **core** : 4.1.2 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.1...4.1.2)
+- **ui-user** : 4.1.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.1...v4.1.2)
+- **ui-admin** : 4.1.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.1...v4.1.2)
+- **ui-upload-request** : 4.1.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.1...v4.1.2)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Fix creating shares from a list created from workgroup members.
+    * Fix updating nested uploadRequests after their uploadRequestsGroups have been canceled
+    * Fix the preview of a duplicated sharedSpaceDocument
+    * Fix managing token by a guest
+    * Fix moving file between shared spaces
+    * Delete upload request entries when archiving the upload request
+    * Fix user's quota after upload request entries deletion by the recipient
+
+  * UI-User:
+    * Improve audit message for copying file to workgroup
+    * Add tooltip for restricted contacts
+    * Change date format in placeholder and update error message for guest expiration date
+    * Add missing VNese translation
+    * Fix Reset state after new workgroup creation
+    * Fix date picker going overboard on sidebar
+    * Adjust space between label and creation date in token management screen
+    * Fix Reorder role list in shared space members panel
+    * Update Vnese translation for audit log
+    * Translate date text in JWT detail
+    * Translate date field accross app
+    * Fix do not submit token create when form invalid
+    * Fix displaying flex on the restricted contacts of guest only
+    * Fix unable to delete fields when edit contact
+    * Fix click on share text when file name is long
+    * Fix token management issues
+    * Fix unable to move folder inside a workgroup
+    * support archiving multiple selected upload requests
+    * Fix archive downloads
+    * Deselect closed upload requests after close
+    * Fix tooltip of restricted contacts in guest details sidebar
+    * Fix wrong default value of expiration date when reopen the guest creation form
+    * Fix error of select all checkbox not updated while toggle selection of a single guest
+    * Add clicking on LinShare logo redirection to user customized home page
+    * Fix UI issue of token sidebar on iPad
+
+  * UI-Upload-Request:
+    * Fix error redirecting to the uploadRequest when it is protected by password
+    * Use configuration key to change app title
+    * Add dynamic configs for file size chunks
+    * Change subject position
+    * Fix catching backend errors for closing upload request and deleting entries
+    * Fix hiding close button if functionality is disabled
+
+  * UI-Admin:
+    * Translate mail activation missing keys
+
 ## [4.1.1](https://github.com/linagora/linshare/compare/4.1.0...4.1.1) (2021-02-25) [Download link](http://download.linshare.org/versions/4.1.1/)
 
 **The 4.1.1 release of LinShare is out**
