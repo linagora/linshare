@@ -39,7 +39,7 @@ At first we need to define which categories will be available per each profile:
 |------------------------------------|------|-------|
 | Home page                          |  X   |   X   |
 |  |  |  |
-| Configuration > Domains            |  X   |       |
+| Configuration > Domains*           |  X   |   X   |
 | Configuration > Parameters         |  X   |   X   |
 | Configuration > Email Templates    |  X   |   X   |
 | Configuration > Welcome Messages   |  X   |   X   |
@@ -63,6 +63,16 @@ At first we need to define which categories will be available per each profile:
 
 In order to grant access to these pages (display the menu links) into the new admin interface, we need to implement a basic permission management in the frontend app itself. Of course, the backend won't rely on this because it already have fine access control checks.
 These permissions will be used to dynamically build the admin interface at the authentication step according to the user's profile.
+
+For "Configuration > Domains", not all properties will be editable by administrators
+
+* Name : ROOT=ReadUpdate, ADMIN=Read
+* Descritption : ROOT=ReadUpdate, ADMIN=None
+* Default Email Language : ROOT=ReadUpdate, ADMIN=ReadUpdate
+* Default User Role : ROOT=ReadUpdate, ADMIN=ReadUpdate
+* Type : ROOT=Read, ADMIN=Read
+* creationDate : ROOT=Read, ADMIN=Read
+* modificationDate : ROOT=Read, ADMIN=Read
 
 
 [Back to Summary](#summary)
