@@ -7,6 +7,8 @@
 - **ui-admin** : 4.1.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.1...v4.1.2)
 - **ui-upload-request** : 4.1.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.1...v4.1.2)
 
+Exceptionally, this version contains an optional [patch](https://github.com/linagora/linshare-core/blob/4.1.2/src/main/resources/sql/postgresql/Patch_4.1.2.sql) that will update the email activations of upload requests.
+
 #### Bug fixes and improvements
 
   * Core:
