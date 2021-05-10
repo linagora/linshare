@@ -25,7 +25,6 @@
 ## UI Design
 
 #### Mockups
-
 #### Final design
 
 [Back to Summary](#summary)
