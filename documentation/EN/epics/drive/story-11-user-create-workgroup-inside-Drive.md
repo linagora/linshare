@@ -32,6 +32,8 @@
 *  All the Drive'members are added automatically to the new created workgroup with his default role to Workgroup
 *  The creator of the workgroup is wprkgroup's admin by default.
 *  I can see this action on the Drive audit and Workgroup audit. 
+*  The creator of the workgroup is wprkgroup's admin by default.
+*  I can see this action on the Drive audit and Workgroup audit. 
 
 [Back to Summary](#summary)
 
