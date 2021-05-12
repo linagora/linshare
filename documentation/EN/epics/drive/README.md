@@ -93,9 +93,9 @@ Drive are managed using 3 different roles. Workgroup roles are just here as remi
 
 ## Stories
 
-1. [As an user, I want to view list of Drives or Workgroups in Shared Space](./story-1-user-view-list-of-drives-or-workgroups.md)
+1. [As an user, I want to view list of Drives and Workgroups in Shared Space](./story-1-user-view-list-of-drives-or-workgroups.md)
 2. [As an user, I want to create a Drive](./story-2-user-create-a-drive.md)
-3. [As an user, I want to view all members of a dDive](./story-3-user-see-all-members-of-a-drive.md)
+3. [As an user, I want to view all members of a Drive](./story-3-user-see-all-members-of-a-drive.md)
 4. [As an user, I want to view all Workgroups inside a drive](./story-4-user-see-all-workgroups-inside-my-drive.md)
 5. [As an user, I want to delete my Drive](./story-5-user-delete-my-drive.md)
 6. [As an user, I want to view Drive detail](./story-6-user-view-drive-detail.md)
@@ -110,7 +110,7 @@ Drive are managed using 3 different roles. Workgroup roles are just here as remi
 15. [As an user, I want to view Drive's activity](./story-15-user-view-Drive's-activity.md)
 16. [As an user, I want to update member's role on Drive](./story-16-user-update-member-role-on-Drive.md)
 17. [As an user, I want to update default Workgroup's role of Drive member](./story-17-user-update-default-workgroup-role-of-Drive-member.md)
-18. [As an user, I want to be noticed qhen I am added to a Drive](./story-18-user-noticed-when-I-am-added-to-a-Drive.md)
+18. [As an user, I want to be noticed when I am added to a Drive](./story-18-user-noticed-when-I-am-added-to-a-Drive.md)
 
 [Back to Summary](#summary)
 
