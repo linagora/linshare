@@ -2,7 +2,6 @@
 
 * [Related EPIC](#related-epic)
 * [Definition](#definition)
-* [Screenshots](#screenshots)
 * [Technical issues](#technical-issues)
 * [Misc](#misc)
 
@@ -14,20 +13,7 @@
 
 ## Definition
 
-#### Preconditions
-
-#### Description
-
-#### Postconditions
-
-
-[Back to Summary](#summary)
-
-## UI Design
-
-#### Mockups
-
-#### Final design
+* [link towards the final makdown file]()
 
 [Back to Summary](#summary)
 
