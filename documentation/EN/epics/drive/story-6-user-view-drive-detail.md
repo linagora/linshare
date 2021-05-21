@@ -13,12 +13,16 @@
 ## Definition
 
 #### Preconditions
+
 *  Given that i am a Linshare user 
 *  Given that the functionality of Drives is enabled in Admin setting
 *  After logged-in successfully, i go to Shared Space 
 *  I can see the list of my drives and workgroups that are not inside any drive.
+
 #### Description
+
 **UC1. View detailed information of a drive.**
+
 *  After logged-in successfully, i go to Shared Space 
 *  I can see the list of my drives and workgroups that are not inside any drive.
 *  When i hover the drive name, i can see the icon information, i click on this icon, the Detail panel will be opened on the right 
@@ -39,6 +43,14 @@
 *  If i am the Drive reader, i can only see the field as non editable text 
 *  If i am the admin/writer of the drive, i can see the icon Edit next to the field
 *  When i click on icon Edit, i can change the description then save.
+
+**UC3. View detailed information of a drive when I'm inside a drive**
+
+*  After logged-in successfully, i go to Shared Space 
+*  I can see the list of my drives and workgroups that are not inside any drive.
+*  I go inside in a Drive to browser workgroups
+*  I click on the "View Drive details" button (like workgroups), near to the "AZ" button.
+*  Then the Detail panel will be opened on the righ.
 
 [Back to Summary](#summary)
 

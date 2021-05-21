@@ -13,9 +13,12 @@
 ## Definition
 
 #### Preconditions
+
 *  Given that i am a Linshare user 
 *  Given that the functionality of Drives is enabled in Admin setting
+
 #### Description
+
 **UC1.View existing member list**
 
 *  After logged-in successfully, i go to Shared Space 
@@ -32,6 +35,7 @@
 *  I can click icon sort, a drop-down list will be opened that including 2 part:
    *  Sort by: List the sort criteria that i can choose: First name, last name, user rights. I can double click on any criteria to change between descending or ascending sort
    *  Filter by: List the filter criteria that i can choose: Reader right, admin right, contributor right 
+
 #### Postconditions
 
 
