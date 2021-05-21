@@ -13,11 +13,15 @@
 
 ## Definition
 
-* [link towards the final makdown file]()
+* [link towards the final markdown file]()
+
+> Once the MR merged, we can add link for master to the markdown file containing the story.
 
 [Back to Summary](#summary)
 
 ## Technical issues
+
+* [link towards backend/frontend issues]()
 
 [Back to Summary](#summary)
 
