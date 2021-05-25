@@ -18,6 +18,8 @@
 *  After logged-in successfully, i go to Shared Space 
 *  I can see the list of my drives and workgroups that are not inside any drives 
 *  When i  click button "+" on top left of screen, there will be 2 options: Create a drive / Create a workgroup
+*  When i hover the option Create Workgroup, there will be a helper message:"A workgroup is a collaborating space that that can be managed by internal users or guests. A workgroup can be inside a drive (as nested) or standalone. Only Workgroups contains files or folders."
+*  When i hover the option Create Drive, there will be a helper message:" A Drive contains only Workgroups, a Drive will allow you to define a list of default members for all nested Workgroups." 
 *  I choose create a Drive 
 *  A popup will be displayed with a default drive name 
 *  I can edit the name or not then click button Create  

@@ -30,10 +30,10 @@
 *  The new workgroup is created , there will be a successful notification message 
 *  If there is any error, there will be an error message. (Invalid Workgroup's name, network error...)
 *  All the Drive'members are added automatically to the new created workgroup with his default role to Workgroup
-*  The creator of the workgroup is wprkgroup's admin by default.
+*  The creator of the workgroup is workgroup's admin by default.
 *  I can see this action on the Drive audit and Workgroup audit. 
-*  The creator of the workgroup is wprkgroup's admin by default.
-*  I can see this action on the Drive audit and Workgroup audit. 
+*  When i access an Drive, i can see the breadcrumb on top of screen : Share Space > Drive's name 
+*  When i access one Workgroup inside the Drive, i can see the breadcrumb on top of screen: Shared Space > Drive's name > Workgroup's name.
 
 [Back to Summary](#summary)
 
