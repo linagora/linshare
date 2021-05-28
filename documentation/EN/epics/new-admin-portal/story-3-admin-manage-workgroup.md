@@ -33,8 +33,10 @@
       - Drive: The link to parent Drive that contain current workgroup. I can click on this link to go to Manage drive . If this workgroup is standalone, the text "None" is displayed.
       - Creation date
       - Modification date 
+      - Author: Creator of workgroup
    - On the left part i can see the editable fields including:
-      - Worgkroup name: Text field. This field cannot be blank or contains special characters. When click Save button, if the workgroup name is invalid, i can see an error message.
+      - Worgkroup name: Text field. This field cannot be blank or contains special characters. When click icon Edit, i can change the name and click Save icon, if the workgroup name is invalid, i can see an error message.
+      - Description: Display workgroup's desctiption. When i click on icon Edit, i can update the field and click save icon. 
    
 **UC2.Manage member list of a standalone workgroup**
 - In Manage workgroup screen, i can see the list of user: 
