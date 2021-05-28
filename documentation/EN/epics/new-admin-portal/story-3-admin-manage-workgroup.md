@@ -18,7 +18,7 @@
 
 ### Description
 
-**UC1.View/Ddit/Delete workgroup**
+**UC1.View/Edit/Delete workgroup**
 - After log-in Admin Portal successfully, i go to Administration tab
 - On Administration tab, i can see the list of links to screens: My users, My Drives/workgroups, My contact lists, Inconsistent users, loggers 
 - I click on My Drives/ Workgroups, the screen My Drives and Workgroups list will be opened
