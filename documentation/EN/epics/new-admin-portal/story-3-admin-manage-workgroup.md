@@ -22,13 +22,13 @@
 - After log-in Admin Portal successfully, i go to Administration tab
 - On Administration tab, i can see the list of links to screens: My users, My Drives/workgroups, My contact lists, Inconsistent users, loggers 
 - I click on My Drives/ Workgroups, the screen My Drives and Workgroups list will be opened
-- I click on a workgroup in the list, the screen Manage workgroup screen.
+- I click on a workgroup in the list, the screen Manage workgroup is displayed.
 - The Manage workgroup page will include:
    - Workgroup's name 
    - "Delete workgroup" button:
       - When i click on this button, there will be a confirmation message.
       - When i choose Yes to confirm, the workgroup will be removed. Now the workgroup members cannot find that workgroup in User app.
-      - I wil see a toast notification and back to the Workgroups/Drive list screen. 
+      - I will see a toast notification and back to the Workgroups/Drive list screen. 
    - On the right part i can see uneditable fields including: 
       - Drive: The link to parent Drive that contain current workgroup. I can click on this link to go to Manage drive . If this workgroup is standalone, the text "None" is displayed.
       - Creation date
