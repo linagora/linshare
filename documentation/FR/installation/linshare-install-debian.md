@@ -657,9 +657,7 @@ Pour accéder au __portail d'invitation de dépôt de LinShare__, démarrer __Li
 
 </a>
 
-Le __service d'invitation de dépôt__ est maintenant accessible à l'adresse suivante par défaut :
-
-  * __http://linshare-user.local/upload-request/{uuid}__
+Le __service d'invitation de dépôt__ est maintenant accessible à l'adresse suivante par défaut : __http://linshare-upload-request.local/__
 
 > Note :<br/>
   Vous pouvez modifier l'url avec le paramètre "URl de l'invitation de dépôt" dans l'interface d'administration

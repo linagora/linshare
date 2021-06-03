@@ -688,9 +688,7 @@ To access at __LinShare Upload Request__, first start the Core, then restart the
 
 </a>
 
-The __Upload Request service__ is now reachable at the address below by default :
-
-  * Repository installation version : __http://linshare-user.local/upload-request/{uuid}__
+The __Upload Request service__ is now reachable at the address below by default : __http:///linshare-upload-request.local/__
 
 > Note :<br/>
   You need to inquire the url into your upload request url parameter in your administration interface. 
