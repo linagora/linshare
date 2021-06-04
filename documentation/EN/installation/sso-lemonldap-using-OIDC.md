@@ -47,10 +47,20 @@ please use 'default' instead.
 
 You need to edit `/etc/linshare/linshare.properties` and add/uncomment the following keys:
 
+Since LinShare 4.1:
 ```
 ## OIDC Parameters
 oidc.on=true
 oidc.introspectionUri=http://auth.linshare.local/oauth2/introspect
+oidc.client.id=linshare
+oidc.client.secret=linshare
+```
+
+Since LinShare 4.2:
+```
+## OIDC Parameters
+oidc.on=true
+oidc.issuerUri=http://auth.linshare.local
 oidc.client.id=linshare
 oidc.client.secret=linshare
 ```
