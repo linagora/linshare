@@ -36,7 +36,10 @@
     * First name: text that shows current'user first name 
     * Last name: text that shows current's user last name 
     * Notification language: Drop-down. Option list: English, French, Russian
-    * Expiration date: Display current expiration date. When i click on date picker, i can chooose another expiration date. I cannot choose the expiration date <= today. When i click Save button, the new expiration date will be updated. 
+    * Expiration date: Display current expiration date. 
+       * When i click on date picker, i can chooose another expiration date. I cannot choose the expiration date <= today. When i click Save button, the new expiration date will be updated.
+       * On date picker, the maximum expiration date, which is set in Guest functionality and applied for end user, is marked with a tooltip
+       * When i hover the tooltip, i can see the message :" Maximum expiration date of end user. You are not limited by this date"
     * Email: text that show current's user email.
     * Enable personal space: Check box. If i untick this box, the user cannot see Myspace section and cannot upload file to Myspace
     * Restricted contact list: Check box 
@@ -54,6 +57,10 @@
 #### Final design
 
 ![story15](./mockups/15.1.png)
+
+![story15](./mockups/15.2.png)
+
+![story15](./mockups/15.3.png)
 
 [Back to Summary](#summary)
 ## Misc
