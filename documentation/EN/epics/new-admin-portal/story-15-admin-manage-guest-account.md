@@ -38,7 +38,7 @@
     * Notification language: Drop-down. Option list: English, French, Russian
     * Expiration date: Display current expiration date. 
        * When i click on date picker, i can chooose another expiration date. I cannot choose the expiration date <= today. When i click Save button, the new expiration date will be updated.
-       * On date picker, the maximum expiration date, which is set in Guest functionality and applied for end user, is marked with a tooltip
+       * On date picker, the maximum expiration date is displayed with a tooltip. The value is computed with the Guest functionality of the author's domain.
        * When i hover the tooltip, i can see the message :" Maximum expiration date of end user. You are not limited by this date"
     * Email: text that show current's user email.
     * Enable personal space: Check box. If i untick this box, the user cannot see Myspace section and cannot upload file to Myspace
