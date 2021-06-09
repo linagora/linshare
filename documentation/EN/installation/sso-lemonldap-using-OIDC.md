@@ -24,8 +24,8 @@ do:
 * Add OpenID Relying Party: LinShare
   * exported attributes:
     * email => mail
-    * email => sn
-    * email => givenName
+    * family_name => sn
+    * name => givenName
   * Options/Basic
     * ClientID: linshare
     * Client secret: linshare
