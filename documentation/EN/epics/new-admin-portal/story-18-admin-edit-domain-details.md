@@ -30,6 +30,7 @@
    * If the field: "Name" is invalid (blank, over max length..), the field will be marked with red border and an error message
    * If valid, the updates will be saved and system will display a successful notification
 * When i click Cancel button, the updates will not be saved.
+
 **UC2. As a super-admin, i can view and edit lower-level domains details**
 * With a lower-level domain (Top domain/Sub domain/Guest domain), i can see the information:
    * Name: A text field when i click on, i can edit current name 
@@ -42,6 +43,7 @@
    * If the field: "Name" is invalid (blank, over max length..), the field will be marked with red border and an error message
    * If valid, the updates will be saved and system will display a successful notification
 * When i click Cancel button, the updates will not be saved.
+
 **UC3. As an nested admin, i can view and edit Details page of my domains which i am admin on**
 * If i am the nested admin, i can see the information:
    * Name: Non-editable field displays current domain name. I cannot edit this field
