@@ -23,7 +23,7 @@
 **UC1. As a super-admin, i can view and edit root domain details**
 * With the Root domain Detail page, I can see the information: 
    * Name: A text field when i click on, i can edit current name 
-   * Description: A text field when i click on, i can edut current description
+   * Description: A text field when i click on, i can edit current description
    * Creation date: Non-editable field
    * Modification date: Non-editable field
 * When i click Save button, the system will validate:
