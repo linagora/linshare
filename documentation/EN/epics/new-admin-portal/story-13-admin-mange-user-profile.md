@@ -31,8 +31,8 @@
 *  In Personal profile page, i can see: 
    *  In the right part, these fields are not editable: User type, Creation date, modification date, domain. 
    *  The editable fields on the left including:
-      *  First name: text 
-      *  Last name: text 
+      *  First name: text, this field cannot be blank. 
+      *  Last name: text, this field cannot be blank
       *  Role: Drop-down. Options list: Simple, Administrator
       *  Notification language: Drop-down. Option list: English, French, Russian
       *  Enable personal space: Check box. If i untick this box, the user cannot see Myspace section and cannot upload file to Myspace 
