@@ -29,9 +29,9 @@
    *  User's personal space allocated quota: I can see 2 fields Default value is 100 GB and non-editable. and Current value that can be overrided. When i click button Override default value, the field is editable now (number only) and i can choose the unit in the dropdown list (B, KB,MB,GB,TB,PB,EB,ZB,YB). Total files size in user's myspace cannot exceed this values. 
    *  User's max upload file size in Personal Space:  I can see 2 fields Default value is 10 GB and non-editable. and Current value that can be overrided. When i click button Override default value, the field is editable now (number only) and i can choose the unit in the dropdown list (B, KB,MB,GB,TB,PB,EB,ZB,YB). User cannot upload file with the size exceed this value. 
    *  The user's max upload file size in Personal space need to be smaller than User'personal space allocated quota. If not, there will be an error message and the field is highlight. 
-* When i click on button Reset, the User's personal space allocated quota and User's personal space allocated quota will be set to default value
+* When i click on button Use default, the User's personal space allocated quota and User's personal space allocated quota will be set to default value
 *  When i click button Save, all the changes will be updated 
-*  When i click button cancel, all the changed will not be saved. 
+*  When i click button Reset, all the changed will not be saved. 
 
 [Back to Summary](#summary)
 
