@@ -40,8 +40,8 @@
 **UC2. Edit description **
   
 *  On Detail tab of a Drive, i can see the field " Description" below the Drive's name 
-*  If i am the Drive reader, i can only see the field as non editable text 
-*  If i am the admin/writer of the drive, i can see the icon Edit next to the field
+*  If i am the Drive reader or writer, i can only see the field as non editable text 
+*  If i am the admin of the drive, i can see the icon Edit next to the field
 *  When i click on icon Edit, i can change the description then save.
 
 **UC3. View detailed information of a drive when I'm inside a drive**
