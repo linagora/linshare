@@ -64,6 +64,16 @@
 - I choose Yes to confirm, the server connection will be deleted.
 - System will prompt a deletion confirmation toast. 
 
+**UC5. Delete multiple LDAP connections**
+
+- On Remote servers listing screen, i can select multiple servers on the list by tick the checkbox of each item
+- There will be a top bar that indicates number of selected servers, an isolation icon, an Undo icon and a Delete icon. 
+- When i click on Isolation icon, the screen only shows selected items 
+- When i click on Undo icon, all the selected items are unselected 
+- When i click icon Delete, there will be a confirmation popup: "You are about to delete [number of seleted items] remote sever connection, this procedure is irreversible. Do you want to proceed?" and YEs/No button 
+- I choose Yes to confirm, the selected server connections will be deleted.
+- System will prompt a deletion confirmation toast. 
+
 #### Postconditions
 
 
@@ -82,6 +92,8 @@
 ![story21](./mockups/21.4.png)
 
 ![story21](./mockups/21.5.png)
+
+![story21](./mockups/21.6.png)
 
 #### Final design
 
