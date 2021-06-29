@@ -27,7 +27,7 @@
 - I can see field "Search by name" on top right of screen and click on icon setting next to this field
 - The popup Advanced Search settings will be displayed (Screen1) and i can see the list of search criteria including:
     - Type: includes three checkboxes Files/Folders/Revisions and be ticked by default.
-     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Video/Other.
+     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Video/Other. 
     - Size: i can custom the range of size with a tooltip : only applied for file and revision
     - Creation date: I can custom creation date. 
     - Modification date: I can custom modification date range
@@ -57,6 +57,8 @@
 
 - The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
 - In result list, with each item, i can see a full path below each item with an file type/folder icon. 
+- With revision in the result list: i can see the original file name and the version ID = Creation date. 
+- When i hover the Version ID, i can see the detailed hour, minute and second of creation date. 
 - When i click on one item, it will go directly to the location of that item.
 - The Search criteria will be kept until user change the setting.
 
