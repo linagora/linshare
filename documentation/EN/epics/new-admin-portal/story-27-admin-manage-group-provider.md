@@ -22,12 +22,13 @@
 
 **UC1. Create LDAP group Provider** 
 - I select Group Providers, if the current selected domain doesn't have a group provider, screen 2 will be displayed.
-- When i click button "Add Group provider", there will be a drop-down list with 2 options: LDAP provider, Twake provider
-- I select LDAP provider, screen 3 will be displayed, the button Add group provider will be disabled.
+- When i click button "Add Group provider", screen 3 will be displayed, the button Add group provider will be disabled.
 - To add an LDAP group provider, i need to fill the followings:
    - LDAP connection: mandatory field, a drop-downlist which contain current LDAP connections list. There is a button next to this field that when i click on, i am navigated to Create LDAP connection screen
+   - After i create a LDAP connection successfully, i am navigated back to this screen
    - Group filter:  mandatory field,  a drop-down list which contain current LDAP group filter list. There is a button next to this field that when i click on, i am navigated to Create LDAP group filter Screen 
-   - Base dn:  a text field and mandatory.
+   - After i create a group filter successfully, i am navigated back to this screen
+   - Base dn:  a text field and mandatory.  When i hover the tooltip, there will be a legend: "LinShare will start looking for group members from this position in your LDAP."
    - Search in other domains: A checkbox, if i select, i will search users who are members of the remote LDAP groups in others domains than my own domain, according to the domain policies. 
 - When i click button Save, the system will validate if any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the Group provider is saved and there will be a successful notification, I am redirected to Screen 4. 
@@ -36,7 +37,7 @@
 **UC2. Edit LDAP Group Provider**
 
 - I select Group Providers, if current selected domain already had an group provider, screen 4 will be displayed.
-- On this screen, i can edit all fields: LDAP connection, group filter, Basedn, chekcbox Search user in other domains. 
+- On this screen, i can edit all fields: LDAP connection, group filter, Basedn, checkbox Search user in other domains. 
 - I click button Save, the system will validate if any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the Group provider is updated and there will be a successful notification. 
 - If i click button Reset, all the fields will be reset to the before-updated values.
