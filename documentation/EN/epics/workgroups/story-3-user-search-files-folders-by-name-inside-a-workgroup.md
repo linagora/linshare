@@ -48,10 +48,8 @@
     - Creation date: I can custom creation date range
     - Modification date: I can custom modification date range
     - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
-    - A checkbox Seach in the whole workgroup: The checkbox is ticked by defautl.
-- After choosing search critetia, i input characters on the field " Search by name"
-- If the checkbox  Seach in the whole workgroup is not ticked, the system will only search file/folders inside current folder, including child folders of current folder. 
-- If the checkbox is ticked, the system will search files/folders inside the containing workgroup, including child folders of the workgroup. 
+- After choosing search critetia, i input characters on the field " Search by name" and click Enter 
+- The system will search file/folders inside current folder, including child folders of current folder and display result list.
 
 #### Postconditions
 
