@@ -74,6 +74,17 @@
 - I choose Yes to confirm, the selected server connections will be deleted.
 - System will prompt a deletion confirmation toast. 
 
+**UC6. View Associated domains**
+
+- On Remote servers listing screen, i click on three-dot button on Action column.
+- I select option "View associated domains"
+- A new screen will be opened
+- I can see the list of domain's name which are using the LDAP connection with its's user provider/group provider/drive provider. 
+- There will be a lablel next to each domain's name that indicating domain type of that domain
+- Only Top domain or sub domain can use LDAP connection, Root domain and guest domain can't.
+- When i click one domain on the list, i am navigated to one of provider pages of that domain. The order will be user provider=>group provider=>Drive provider, 
+- If the LDAP connection is not Associated with any domain, there will be a text message: " There is no domain using this LDAP connection. "
+
 #### Postconditions
 
 
@@ -94,6 +105,12 @@
 ![story21](./mockups/21.5.png)
 
 ![story21](./mockups/21.6.png)
+
+![story21](./mockups/21.7.png)
+
+![story21](./mockups/21.8.png)
+
+![story21](./mockups/21.9.png)
 
 #### Final design
 
