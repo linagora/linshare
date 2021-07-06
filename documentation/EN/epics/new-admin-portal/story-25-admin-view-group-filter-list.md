@@ -40,7 +40,7 @@
 - Default sort is last modification date
 - In Action column, when i click on thee-dots button, i can see the drop-down list: Duplicate, Edit, Delete, See asscociated domains 
 - I can see a search bar and typing in, the system will search by filter name and display corresponding result in the table below
-- When i click button "Create", I am navigated to LDAP filter cration screen.
+- When i click button "Create", I am navigated to LDAP filter creation screen.
 
 [Back to Summary](#summary)
 
