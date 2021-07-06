@@ -38,9 +38,9 @@
    - Action
 - I can sort by each column: Name, Type, Creation date, Modification date
 - Default sort is last modification date
-- In Action column, when i click on thee-dots button, i can see the drop-down list: Duplicate, Edit, Delete
+- In Action column, when i click on thee-dots button, i can see the drop-down list: Duplicate, Edit, Delete, See asscociated domains 
 - I can see a search bar and typing in, the system will search by filter name and display corresponding result in the table below
-- When i click button "Create", i can see the drop-down list: LDAP filter, Twake filter
+- When i click button "Create", I am navigated to LDAP filter cration screen.
 
 [Back to Summary](#summary)
 
