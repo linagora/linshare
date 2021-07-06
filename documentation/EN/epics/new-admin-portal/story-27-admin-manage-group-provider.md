@@ -62,13 +62,13 @@
 
 #### Mockups
 
-![Screen1](./mockups.27.1.png)
+![Screen1](./mockups/27.1.png)
 
-![Screen2](./mockups.27.2.png)
+![Screen2](./mockups/27.2.png)
 
-![Screen3](./mockups.27.3.png)
+![Screen3](./mockups/27.3.png)
 
-![Screen4](./mockups.27.4.png)
+![Screen4](./mockups/27.4.png)
 
 #### Final design
 
