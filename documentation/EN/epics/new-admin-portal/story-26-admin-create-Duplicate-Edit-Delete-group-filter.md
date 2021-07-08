@@ -51,7 +51,7 @@
    - Or i can click an the LDAP group filter row on the  group filter listing table. 
 - On the LDAP group filter screen, i can edit all fields excepting "Model selector" (this field will not be shown in Edit mode) then click button Save.
 - If any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
-- If non of the mandatory fields is  blank, the updates will be saved and there will be a successful toast message.
+- If none of the mandatory fields is  blank, the updates will be saved and there will be a successful toast message.
 - If i click button Reset, all the updates will be reset to the before values.
 - I can click Group filters on the breadcrumb to navigate back to the Group filter listing screen.
 
