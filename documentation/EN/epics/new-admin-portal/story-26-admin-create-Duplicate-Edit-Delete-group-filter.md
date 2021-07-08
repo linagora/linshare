@@ -30,15 +30,15 @@
    - Description: a text field and optional
    - Search all workgroups query: a text field and mandatory
    - Search workgroup query: a text field and mandatory
+   - Workgroup prefix: a text field and optional
+   - Search page size: a text field and mandatory
    - Attributes fields on the right of screen are:
       - Member email: a text field and mandatory
       - Member first name: a text field and mandatory
       - Member last name: a text field and mandatory
-      - Workgroup prefix: a text field and optional
       - Workgroup name: a text field and mandatory
       - Workgroup member: a text field and mandatory
-      - Search page size: a text field and mandatory
-      - Below each of filed,  there will be a grey text to explain what is this field used for (check the screen 2)
+      - Below each of field,  there will be a grey text to explain what is this field used for (check the screen 2)
 - When i click button Save, the system will validate if any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the new LDAP group filter is created and there will be a successful notification
 - I am redirected to the Screen Group filters listing, and the new create LDAP group filter appears on the list.
@@ -71,10 +71,10 @@
    - In the group filter listing screen, i click on three dot-button of an LDAP group filter  and select option Delete from the drop-down list
    - Or i can click an LDAP Group filter row on the Group filter listing table to go to LDAP group filter detail screen. On this screen i can see the button Delete.
 - When i click on button Delete:
-   - If the group filter is not accociated with any domain, there will be an confirmation popup: "You are about to delete this Group filter, this procedure is irreversible. Do you want to proceed?" and Yes/No button
+   - If the group filter is not associated with any domain, there will be an confirmation popup: "You are about to delete this Group filter, this procedure is irreversible. Do you want to proceed?" and Yes/No button
       - I choose Yes to confirm, the Group filter will be deleted.
       - System will prompt a deletion confirmation toast.
-   - If the Group filter is accociated with any domain, the system will display message: "This group filter is accociated with at least one domain. You cannot delete."
+   - If the Group filter is associated with any domain, the system will display message: "This group filter is associated with at least one domain. You cannot delete."
 
 **UC5. Delete multiple group filters**
 
@@ -83,10 +83,10 @@
 - When i click on Isolation icon, the screen only shows selected items 
 - When i click on Undo icon, all the selected items are unselected 
 - When i click on button Delete:
-   - If any of selected group filters is not accociated with any domain, there will be an confirmation popup: "You are about to delete [number of seleted items] group filters, this procedure is irreversible. Do you want to proceed?" and YEs/No button 
+   - If any of selected group filters is not associated with any domain, there will be an confirmation popup: "You are about to delete [number of selected items] group filters, this procedure is irreversible. Do you want to proceed?" and Yes/No button 
       - I choose Yes to confirm, the selected Group filters will be deleted.
       - System will prompt a deletion confirmation toast.
-   - If any of selected group filters is accociated with any domain, the system will display message: " One of selected group filters is accociated with at least one domain. You cannot delete."
+   - If any of selected group filters is associated with any domain, the system will display message: " One of selected group filters is associated with at least one domain. You cannot delete."
 
 **UC6. View associated domains**
 
