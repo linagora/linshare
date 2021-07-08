@@ -55,7 +55,9 @@
 
 - The result will include not only files/folders at first level of the workgroup but also files/folder at child levels of folders inside the workgroup. 
 - In result list, with each item, i can see a full path below each item with an file type/folder icon. 
-- With revision in the result list: i can see the original file name and the version ID = Creation date. 
+- When i click on three-dots button of a file in the list, i can see the options: Details, Go to destination, Preview, Download. If the workgoup's versioning is enabled and the file is not a version file, i can see the option Manage version, If the file is a version file i cannot see the option Manage version. 
+- When i click on go to destination, i am navigated to file location
+- With revision in the result list: i can see the original file name and the version ID = Creation date.
 - When i hover the Version ID, i can see the detailed hour, minute and second of creation date. 
 - When i click on one item, it will go directly to the location of that item.
 - The Search criteria will be kept until user change the setting.
