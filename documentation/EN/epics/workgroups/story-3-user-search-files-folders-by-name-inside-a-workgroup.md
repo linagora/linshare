@@ -7,7 +7,6 @@
 
 ## Related EPIC
 
-> Links to the epic document in the epic folder, normally README.
 
 * [Workgroups](./README.md)
 
@@ -26,9 +25,10 @@
 - I click on a workgroup and see the list of files/folders inside.
 - I can see field "Search by name" on top right of screen and click on icon setting next to this field
 - The popup Advanced Search settings will be displayed (Screen1) and i can see the list of search criteria including:
-    - Type: includes three checkboxes Files/Folders/Revisions and be ticked by default.
-     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Video/Other. 
-    - Size: i can custom the range of size with a tooltip : only applied for file and revision
+    - Type: includes three checkboxes Files/Folders/Versions and Files and Folders are ticked by default.
+    - File types: a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Archive /Other. 
+    - If Type Files or Versions is not selected, then the field File type is disabled. 
+    - Size: i can custom the range of size with a tooltip : only applied for file and version
     - Creation date: I can custom creation date. 
     - Modification date: I can custom modification date range
     - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
@@ -42,9 +42,10 @@
 - I click on a workgroup and go to a folder inside that workgroup
 - On the top right of screen i see the field "Search by name" and click on icon setting next to this field.
 - A popup Advanced Search Settings will be displayed (Screen 3) and i can see the list of search criteria including:
-    - Type: includes three checkboxes Files/Folders/Revisions and be ticked by default.
-     and a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations
-    - Size: i can custom the range of size with a tooltip : only applied for file and revision
+    - Type: includes three checkboxes Files/Folders/Versions and Files and Folders are ticked by default.
+    - File types: a drop-down list with the options: Any types/ Images/Documents/PDFs/Spreadsheets/Presentations/Audio/Archive /Other. 
+    - If Type Files or Versions is not selected, then the field File type is disabled.
+    - Size: i can custom the range of size with a tooltip : only applied for file and version
     - Creation date: I can custom creation date range
     - Modification date: I can custom modification date range
     - File/folder's Author: When i input some character of name or email, system will display a suggestion list that allow me to pick. I can input multiple owners in this field.
@@ -57,7 +58,7 @@
 - In result list, with each item, i can see a full path below each item with an file type/folder icon. 
 - When i click on three-dots button of a file in the list, i can see the options: Details, Go to destination, Preview, Download. If the workgoup's versioning is enabled and the file is not a version file, i can see the option Manage version, If the file is a version file i cannot see the option Manage version. 
 - When i click on go to destination, i am navigated to file location
-- With revision in the result list: i can see the original file name and the version ID = Creation date.
+- With Version in the result list: i can see the original file name and the version ID = Creation date.
 - When i hover the Version ID, i can see the detailed hour, minute and second of creation date. 
 - When i click on one item, it will go directly to the location of that item.
 - The Search criteria will be kept until user change the setting.
