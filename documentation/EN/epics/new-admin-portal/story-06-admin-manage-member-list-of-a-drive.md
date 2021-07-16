@@ -59,6 +59,11 @@
 ## UI Design
 
 #### Mockups
+
+![story6](./mockups/6.1.png)
+![story6](./mockups/6.2.png)
+![story6](./mockups/6.3.png)
+
 #### Final design
 
 [Back to Summary](#summary)
