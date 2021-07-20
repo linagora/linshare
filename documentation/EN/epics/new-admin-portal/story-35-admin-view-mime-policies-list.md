@@ -41,7 +41,7 @@
 - Default sort is last modification date
 - I can see a search bar and typing in, the system will search by Mime policy's name and display corresponding result in the table below
 - When i click button "Create", the screen Create new mime policy screen will be opened.
-
+- If i log-in as nested admin, i can only see the domain tree that contains only my nested domain and see the he mime policies list of my nested domain
 [Back to Summary](#summary)
 
 ## UI Design
