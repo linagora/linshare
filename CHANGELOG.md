@@ -16,9 +16,16 @@
 
 * **Drive**
 
-The Drive feature was introduced as an alpha verion (API only) on 4.0 version as we can see [here](https://github.com/linagora/linshare/blob/master/CHANGELOG.md#400-2020-07-16-download-link)
+In LinShare we have workgroups in shared spaces. These groups are designed to make a team works together on one topic. If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
 
-In this 4.2 version of LinShare the Drive feature is ready, all related interfaces are created.
+The main goals of `Drive` are :
+
+  * Regroup all worgkoups of a team in one item
+  * Define default team members in the Drive to avoid workgroup members redefinition
+  * Manage globally team members rigths (right should be applied from drive to its workgroups
+  * A workgroup can be in a drive or be standalone
+
+The Drive feature was introduced as an alpha verion (API only) on 4.0 version as we can see [here](https://github.com/linagora/linshare/blob/master/CHANGELOG.md#400-2020-07-16-download-link). In this 4.2 version of LinShare the Drive feature is ready, all related interfaces are created.
 
 Now in the **SharedSpace** section the user is able to create a **Workgroup** or a **Drive**
 
@@ -71,6 +78,8 @@ On this new 4.2 version of LinShare a several improvments were done on it. The m
 
   * DEPRECATED: oidc.introspectionUri=http://auth.linshare.local/oauth2/introspect
   * NEW: oidc.issuerUri=http://auth.linshare.local
+
+For more details you can follow this [installation guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/installation/sso-lemonldap-using-OIDC.md).
 
 **NB:**
 This provider will be reached on LinShare startup, if no provider launched, Linshare startup will fail.
