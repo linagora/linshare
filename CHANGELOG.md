@@ -1,3 +1,89 @@
+## [4.2.0](https://github.com/linagora/linshare/compare/4.1.2...4.2.0) (2021-07-19) [Download link](http://download.linshare.org/versions/4.2.0/)
+
+**The 4.2.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 4.2.0 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.2...4.2.0)
+- **ui-user** : 4.2.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.2...v4.2.0)
+- **ui-admin** : 4.2.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.2...v4.2.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Main features
+
+* **Drive**
+
+In LinShare we have workgroups in shared spaces. These groups are designed to make a team works together on one topic. If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
+
+The main goals of `Drive` are :
+
+  * Regroup all worgkoups of a team in one item
+  * Define default team members in the Drive to avoid workgroup members redefinition
+  * Manage globally team members rigths (right should be applied from drive to its workgroups
+  * A workgroup can be in a drive or be standalone
+
+The Drive feature was introduced as an alpha verion (API only) on 4.0 version as we can see [here](https://github.com/linagora/linshare/blob/master/CHANGELOG.md#400-2020-07-16-download-link). In this 4.2 version of LinShare the Drive feature is ready, all related interfaces are created.
+
+Now in the **SharedSpace** section the user is able to create a **Workgroup** or a **Drive**
+
+![SharedSpace](http://download.linshare.org/screenshots/4.2.0/01.user.interface.shared.spaces.png)
+
+![SharedSpaces list](http://download.linshare.org/screenshots/4.2.0/02.user.interface.shared.spaces.list.png)
+
+In this screenshot we see when a Drive admin will add a sharedSpaceMember to his **Drive**, he needs to specify the new member's role on the Drive and on its nested Workroups.
+
+By default the new member's roles are:
+  * DRIVE READER on the Drive
+  * READER on the nested workgroups
+
+![Drive details](http://download.linshare.org/screenshots/4.2.0/03.user.interface.drive-detail.png)
+
+In this screeshot we see the list of nested workgroups on a **Drive**
+
+![Nested workgroups of a Drive](http://download.linshare.org/screenshots/4.2.0/04.user.interface.nested.workgroups-drive.png)
+
+**Search on workgroup**
+
+In this 4.2 version of LinShare an advanced search feature in order to allow a user to filter the created resources into the workgroup by:
+   * Name
+   * Types (Folder, Workgroup document or revision)
+   * Resource kind (image, pdf, audio, archive ...)
+   * Size
+   * Creation and modification date
+   * Last author on the workgroup
+
+![Advanced search of workgroup nodes](http://download.linshare.org/screenshots/4.2.0/05.search.workgroup.nodes.png)
+
+In this screeshot we will see the filter by type and creation date.
+
+![Filter by type and creation date](http://download.linshare.org/screenshots/4.2.0/06.search.workgroup.nodes.result.png)
+
+#### Improvements
+
+The [upload request feature](https://github.com/linagora/linshare/blob/master/CHANGELOG.md#410-2021-02-25-download-link) was updated on the 4.1 version of linshare.
+On this new 4.2 version of LinShare a several improvments were done on it.
+
+Now the recipient of the upload request is able to **preview** and **download** the uploaded documents.
+
+![Preview and download entries](http://download.linshare.org/screenshots/4.2.0/07.external.upload.request.portal.png)
+
+#### Technical information
+
+The [Authentication using OpenID Connect](https://github.com/linagora/linshare/blob/master/CHANGELOG.md#410-2021-02-25-download-link) was introduced on the 4.1 version of LinShare.
+
+On this new 4.2 version of LinShare a several improvments were done on it. The main updates was done on:
+
+  * DEPRECATED: oidc.introspectionUri=http://auth.linshare.local/oauth2/introspect
+  * NEW: oidc.issuerUri=http://auth.linshare.local
+
+For more details you can follow this [installation guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/installation/sso-lemonldap-using-OIDC.md).
+
+**NB:**
+This provider will be reached on LinShare startup, if no provider launched, Linshare startup will fail.
+
 ## [4.1.2](https://github.com/linagora/linshare/compare/4.1.1...4.1.2) (2021-04-29) [Download link](http://download.linshare.org/versions/4.1.2/)
 
 **The 4.1.2 release of LinShare is out**

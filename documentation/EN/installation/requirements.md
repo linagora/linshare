@@ -9,3 +9,13 @@ This file provides a list of dependencies's versions required by **LinShare**
 | 2.1   | Debian 8, Centos 7  | OpenJDK 8  | postgreSql 9  | MongoDB 3.2 | Tomcat 8 | Apache 2.4 |
 | 2.0   | Debian 8, Centos 7  | OpenJDK 8  | postgreSql 9  | MongoDB 3.2 | Tomcat 8 | Apache 2.4 |
 | 1.12  | Debian 8, Centos 7  | OpenJDK 7  | postgreSql 9  |      X      | Tomcat 7 | Apache 2.2 |
+
+# Supported browsers
+
+This is the list of supported browsers' versions required by **LinShare**:
+
+| Browsers    | version |
+|-------------|---------|
+| Chrome      | 90+     |
+| Firefox     | 88+     |
+| Firefox ESR | 78+     |
