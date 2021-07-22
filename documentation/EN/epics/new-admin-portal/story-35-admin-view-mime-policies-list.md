@@ -13,7 +13,7 @@
 
 #### Preconditions
 
-* Given that i am super-admin or admin in LinShare 
+* Given that i am super-admin or nested admin in LinShare 
 * I logged-in to Admin portal successfully
 
 #### Description
@@ -21,10 +21,9 @@
 - I select a domain in Domain tree and go to Configuration tab on top navigation bar
 - I click on Mime policies, the screen Mine policies listing list will be opened.
 
-#### Postconditions
-
+**UC1.Super-admin view the list of mime policies**
 - If i am selecting root domain in domain tree, i can see the list of mime policies that i created. They can be used for any lower-level domains.
-- If i am selecting a nested domain in the domain tree, i can see the list of mime policies that i created and the mime policies from higher level domain. 
+- If i am selecting a nested domain in the domain tree, i can see the list of mime policies that created by that domain and the mime policies from higher level domain. 
 - I can see a tooltip icon on screen name, which i can click on and see the explaination text. 
 - The mime policies list includes columns:
    - Name
@@ -37,6 +36,9 @@
       - If the selected domain is root domain, the actions are: Duplicate, Edit, Delete. 
       - If the selected domain is a nested domain (top domain/Sub domain/Guest domain), the actions are: Assign, Duplicate, Edit, Delete
       - If the mime policy is currently used, the In use value is Yes, the option "Assign" is disabled. 
+
+#### Postconditions
+
 - I can sort by columns: Name, Read only, Domain, Creation date, Modification date
 - Default sort is last modification date
 - I can see a search bar and typing in, the system will search by Mime policy's name and display corresponding result in the table below
