@@ -37,6 +37,18 @@
       - If the selected domain is a nested domain (top domain/Sub domain/Guest domain), the actions are: Assign, Duplicate, Edit, Delete
       - If the mime policy is currently used, the In use value is Yes, the option "Assign" is disabled. 
 
+**UC1.Super-admin view the list of mime policies**
+   - I can see the list of mime policies that created for selected domain, which can be used for lower-level domain, and mime policies from higher-level domain. 
+   - The mime policies list includes columns:
+      - Name
+      - Read-only: True/False. If false, this mime policy is created by the selected domain on tree memu. If true, this mime policy is created by the higher-level domain. 
+      - Domain: The name of domain that created the mime policy
+      - Creation date
+      - Modification date
+      - In use: Yes/No. This column indicates which mime policy is used for the current selected domain in the domain tree. Each domain can use only 1 mime policy a time 
+   - Action: When i click on three-dot button, i can see actions: 
+      - If the mime policies is from my higher-level domain (eg: i am admin of Top domain and the mime policy is from Root domain), i can see the action: Assign, Duplicate, View
+      - If the mime pilicy is from my domain or lower-level domain, i can see the action: Assign, Duplicate, Edit, Delete
 #### Postconditions
 
 - I can sort by columns: Name, Read only, Domain, Creation date, Modification date
@@ -54,6 +66,8 @@
 ![story35](./mockups/35.2.png)
 ![story35](./mockups/35.3.png)
 ![story35](./mockups/35.4.png)
+![story35](./mockups/35.5.png)
+![story35](./mockups/35.6.png)
 
 #### Final design
 
