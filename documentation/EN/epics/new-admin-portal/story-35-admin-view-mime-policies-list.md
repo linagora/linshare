@@ -31,7 +31,7 @@
    - Domain: The name of domain that created the mime policy
    - Creation date
    - Modification date
-   - In use: Yes/No. This column indicates which mime policy is used for the current selected domain in the domain tree. Each domain can use only 1 mime policy a time 
+   - Assigned: Yes/No. This column indicates which mime policy is used for the current selected domain in the domain tree. Each domain can use only 1 mime policy a time 
    - Action: When i click on three-dot button, i can see actions: 
       - If the selected domain is root domain, the actions are: Duplicate, Edit, Delete. 
       - If the selected domain is a nested domain (top domain/Sub domain/Guest domain), the actions are: Assign, Duplicate, Edit, Delete
@@ -45,7 +45,7 @@
       - Domain: The name of domain that created the mime policy
       - Creation date
       - Modification date
-      - In use: Yes/No. This column indicates which mime policy is used for the current selected domain in the domain tree. Each domain can use only 1 mime policy a time 
+      - Assigned: Yes/No. This column indicates which mime policy is used for the current selected domain in the domain tree. Each domain can use only 1 mime policy a time 
    - Action: When i click on three-dot button, i can see actions: 
       - If the mime policies is from my higher-level domain (eg: i am admin of Top domain and the mime policy is from Root domain), i can see the action: Assign, Duplicate, View
       - If the mime pilicy is from my domain or lower-level domain, i can see the action: Assign, Duplicate, Edit, Delete
