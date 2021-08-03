@@ -35,7 +35,7 @@
    - Action: When i click on three-dot button, i can see actions: 
       - If the selected domain is root domain, the actions are: Duplicate, Edit, Delete. 
       - If the selected domain is a nested domain (top domain/Sub domain/Guest domain), the actions are: Assign, Duplicate, Edit, Delete
-      - If the mime policy is currently used, the In use value is Yes, the option "Assign" is disabled. 
+      - If the mime policy is currently used, the option "Assign" is disabled. 
 
 **UC1.Super-admin view the list of mime policies**
    - I can see the list of mime policies that created for selected domain, which can be used for lower-level domain, and mime policies from higher-level domain. 
@@ -55,7 +55,7 @@
 - Default sort is last modification date
 - I can see a search bar and typing in, the system will search by Mime policy's name and display corresponding result in the table below
 - When i click button "Create", the screen Create new mime policy screen will be opened.
-- If i log-in as nested admin, i can only see the domain tree that contains only my nested domain and see the he mime policies list of my nested domain
+- If i log-in as nested admin, i can only see the domain tree that contains only my nested domain and see the  mime policies list of my nested domain
 [Back to Summary](#summary)
 
 ## UI Design
