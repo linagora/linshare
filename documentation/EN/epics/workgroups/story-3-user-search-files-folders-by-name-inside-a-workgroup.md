@@ -62,6 +62,7 @@
 - When i hover the Version ID, i can see the detailed hour, minute and second of creation date. 
 - When i click on one item, it will go directly to the location of that item.
 - The Search criteria will be kept until user change the setting.
+- When i click button Reset, the Search criteria is cleared, the Search result disappears and the screen content disppays current folder. 
 
 [Back to Summary](#summary)
 
