@@ -497,6 +497,57 @@ To upgrade LinShare to 4.0.0 version you can [see](https://github.com/linagora/l
 
   - As the password encoding strategy is updated, upgrade tasks are created to notify anonymous users and guests in order to reset their passwords.
 
+## [2.3.6](https://github.com/linagora/linshare/compare/2.3.5...2.3.6) (2021-08-10) [Download link](http://download.linshare.org/versions/2.3.6/)
+
+**The 2.3.6 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 2.3.6 - [changelog](https://github.com/linagora/linshare-core/compare/2.3.5...2.3.6)
+- **ui-user** : 2.3.6 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v2.3.5...v2.3.6)
+- **ui-admin** : 3.3.4 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v3.3.3...v3.3.4)
+
+#### Bug fixes and improvments
+
+* Core:
+
+  * Clean favorite contact list according to allowed contacts for restricted guests.
+  * Fix adding guest to restricted contact
+  * Forbid email update for guest
+  * Security issues: Upgrading rhino
+  * Security issues: Upgrading xerces
+  * Fix quota bug when deleting files in workgroups
+  * Fix preview duplicated sharedSpace document
+  * Fix moving file from shared space to another one
+  * Delete change password for delegation api
+  * Fix find all audit traces
+
+* UI-User:
+
+  * Fix error of unability to create guest
+  * Fix error message displaying incorrecly for restricted contacts list, no default contact.
+  * Issue #1075: Show restricted contacts list when delegacy policy is off
+  * Issue #1057: Prevent user from updating email for guest account
+  * Issue #1058: add error message if there is no restricted contacts
+  * Issue #1068: Fix no restricted contact on update the restricted field
+  * Issue #1041 Do not show copy to myspace when user upload permission is disabled
+  * Issue #1009: Disable clicking eyes icon in folder detail sidebar
+  * Issue #1008: hide options menu after clicking on details option of a shared space node
+  * Issue #1009: Hide preview option for folders
+  * Issue #997: Fix initial value when renaming a shared space 
+  * Issue #992: Reset state after create new workgroup
+  * Issue #970: Fix move files between workgroups
+  * Issue #626: Fix view details file in preview mode
+  * Issue #545: Fix preview image on sidebar when clicked on another document
+  * Issue #545: Fix navigation for preview files
+  * Using shared spaces params for retrieving audit data
+  * #478: Allow to click all the sidebar section
+
+* UI-Admin:
+
+  * #84: Add conditional for remove can-create-guest checkbox for guest
+
 ## [2.3.5](https://github.com/linagora/linshare/compare/2.3.4...2.3.5) (2020-04-20) [Download link](http://download.linshare.org/versions/2.3.5/)
 
 **The 2.3.5 release of LinShare is out**
