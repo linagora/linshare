@@ -1,3 +1,48 @@
+## [4.2.1](https://github.com/linagora/linshare/compare/4.2.0...4.2.1) (2021-08-10) [Download link](http://download.linshare.org/versions/4.2.1/)
+
+**The 4.2.1 release of LinShare is out**
+
+ * **core** : 4.2.1 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.0...4.2.1)
+ * **ui-user** : 4.2.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.0...v4.2.1)
+ * **ui-admin** : 4.2.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.0...v4.2.1)
+ * **ui-upload-request** : 4.2.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.0...v4.2.1)
+
+### Bug fixes and improvements
+
+ * Core:
+
+   * Clean favorite contact list according to allowed contacts for restricted guests.
+   * Fix adding guest to restricted contact
+   * Fix negative remaining days in warn before expiry
+   * Updating SharedSpace modification date when updating SharedSpace members
+   * Updating parent SharedSpace modification date when updating SharedSpace members
+   * Fix exceeting uploaded entries max total deposit size
+   * Forbid email update for guest
+
+ * UI-User:
+
+   * Issue #1074: Update field creation date in data table of token management page
+   * Issue # 1078: fix being able to move file to original folder when file is direct sibling of a workgroup
+   * Issue #1077 Make restricted contacts editable even when delegation policy is off
+   * Fix bottom scroll bar is displayed on some sidebar
+   * Issue #1033: Add loading spinner in browse dialog
+   * Issue #1055: Update conditions of filtering by file types of search files in workgroups
+   * Issue #1005: Handle long shared space name in sidebar header and add tooltip
+   * Issue #1072: Fix focus input cause broken ui in shared space member tab
+   * Issue #1055: Update conditions to disable file types
+
+ * UI-Upload-Request:
+
+   * Issue #98: Support multiple entries download
+   * Fix data table offset when UR is closed
+   * Issue #97: Preview upload request entries on clicking file name
+   * Issue #92: Add translated error message for error 30005
+   * Fix max width of warning dialog not working
+
+ * UI-Admin:
+
+   * Packaging old ui twice, standard and legacy archives.
+
 ## [4.2.0](https://github.com/linagora/linshare/compare/4.1.2...4.2.0) (2021-07-19) [Download link](http://download.linshare.org/versions/4.2.0/)
 
 **The 4.2.0 release of LinShare is out**
@@ -353,7 +398,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
     * Add null Content-Type interceptor for LinShare API for all Http Methods
     * Add an endpoint with GET http method to get all enums on LinShare
     * Exclude unused enums returned from LinShare API
-    
+
   * UI-User:
     * *Change renaming behaviour*:
        * Open an input dialog for renaming item
@@ -376,7 +421,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
        * Fix disable copy in a work group
        * Update CSS for responsive platforms
     * Implement new otp input
-    
+
 
   * UI-Admin:
     * Fix translate Upload request sub-functionalities description
