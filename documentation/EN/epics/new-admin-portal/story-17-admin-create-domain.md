@@ -29,8 +29,11 @@
 * When i click on button "Add top domain", a screen will be opened. 
 * On this new screen, i can see:
    * Screen name: Create a new [domain type] in [Parent domain name]
-   * Domain name: A text field that allow me to input domain name. This field is mandatory
+   * Domain name: A text field that allow me to input domain name. This field is mandatory. I can click on Information icon to see the explaination: "This domain name will be used officially in whole platform, both Admin site and End user site" 
    * Description: A text field that allow me to input description. This field is optional 
+   * A toggle : Create domain policy automatically. Default value is false. I can click on con Information to see the explaination:" If enabled, a rule will be created automatically by authorizing the newly created domain to communicate with itself only. All other communications are forbidden by default. If disabled, the default domain policy will be applied. It will allow all other domains to see this domain."
+   * I can see a text message:"  The domain will be created with default values, for example default role or locale, etc...After creating domain, please edit the domain and its parameters for more advanced settings."
+
 
 #### Postconditions
 
