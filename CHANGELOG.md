@@ -1,3 +1,42 @@
+# [4.0.4](https://github.com/linagora/linshare/compare/4.0.3...4.0.4) (2020-08-11) [Download link](http://download.linshare.org/versions/4.0.4/)
+
+**The 4.0.4 release of LinShare is out**
+
+> **NB :**
+You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+* **core** : 4.0.4 - [changelog](https://github.com/linagora/linshare-core/compare/4.0.3...4.0.4)
+* **ui-user** : 4.0.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.0.3...v4.0.4)
+* **ui-admin** : 4.0.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.0.3...v4.0.4)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Clean favorite contact list according to allowed contacts for restricted guests.
+    * Fix adding guest to restricted contact.
+    * Forbid email update for guest.
+    * Fix quota issue when deleting files in workgroups
+    * Fix preview duplicated sharedSpace document
+    * Fix moving file between shared spaces
+
+  * UI-User:
+    * Fix action button height in form guest
+    * Fix editing restricted contacts even when delegation policy is off
+    * Prevent user from updating email for guest account
+    * Fix showing current user as restricted contact even when contact restriction delagation policy if off
+    * Fix displaying copy to myspace when user upload permission is disabled
+    * Hide download button in preview dialog when archive download is disabled
+    * Hide copy function in the folder preview
+    * Hide options menu after clicking on details option of a shared space node
+    * Fix versioning parameter toggle not working
+    * Fix unable to preview duplicated node in workgroup
+    * Fix initial value in rename shared space
+    * Update move file API instead of copy and delete
+
+  * UI-Admin:
+    * Fix undefined user error in audit log traces
+    * Fix delete resources
+
 # [4.0.3](https://github.com/linagora/linshare/compare/4.0.2...4.0.3) (2020-12-15) [Download link](http://download.linshare.org/versions/4.0.3/)
 
 **The 4.0.3 release of LinShare is out**
