@@ -1,3 +1,39 @@
+## [4.1.3](https://github.com/linagora/linshare/compare/4.1.2...4.1.3) (2021-08-11) [Download link](http://download.linshare.org/versions/4.1.3/)
+
+**The 4.1.3 release of LinShare is out**
+
+- **core** : 4.1.3 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.2...4.1.3)
+- **ui-user** : 4.1.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.2...v4.1.3)
+- **ui-admin** : 4.1.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.2...v4.1.3)
+- **ui-upload-request** : 4.1.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.2...v4.1.3)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Clean favorite contact list according to allowed contacts for restricted guests.
+    * Fix adding guest to restricted contact
+    * Fix negative remaining days in warn before expiry for upload request
+    * Forbid email update for guest
+    * Fix glitch between activation and closure date for warn before expiry of an upload request
+    * Fix exceeding max file number on an upload request
+
+  * UI-User:
+    * Update field creation date in data table of token management page
+    * Fix editing restricted contacts even when delegation policy is off
+    * Prevent user from updating email for guest account
+    * Add error message if there is no restricted contacts
+    * Fix unable to create guest when contact restriction delgationp policy if off
+    * Hide copy to my space of an upload request entry when upload permission is disabled
+    * Hide download button in preview dialog when archive download is disabled
+    * Fix initial value in rename shared space
+    * Hide preview option for folders
+    * Fix versioning parameter toggle not working
+    * Fix unable to preview duplicated node in workgroup
+    * Fix token form validation
+
+  * UI-Admin:
+    * Hide max value field for guest expiration functionality
+
 ## [4.1.2](https://github.com/linagora/linshare/compare/4.1.1...4.1.2) (2021-04-29) [Download link](http://download.linshare.org/versions/4.1.2/)
 
 **The 4.1.2 release of LinShare is out**
