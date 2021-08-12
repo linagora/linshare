@@ -15,7 +15,9 @@ will be located in this repository. You can switch to another branch to view
 documentation related to an older version.
 
 The main branches are :
- * [master (4.1.x)](https://github.com/linagora/linshare/tree/master/documentation)
+ * [master (4.2.x)](https://github.com/linagora/linshare/tree/master/documentation)
+ * [maintenance-4.1.x](https://github.com/linagora/linshare/tree/maintenance-4.1.x/documentation)
+ * [maintenance-4.0.x](https://github.com/linagora/linshare/tree/maintenance-4.0.x/documentation)
  * [maintenance-2.3.x (old stable)](https://github.com/linagora/linshare/tree/maintenance-2.3.x/documentation)
  * [maintenance-1.12.x (deprecated)](https://github.com/linagora/linshare/tree/maintenance-1.12.x/documentation)
 
