@@ -1,3 +1,24 @@
+## [4.2.2](https://github.com/linagora/linshare/compare/4.2.1...4.2.2) (2021-08-16) [Download link](http://download.linshare.org/versions/4.2.2/)
+
+**The 4.2.2 release of LinShare is out**
+
+This release is fixing the upgrade process from LinShare 4.1 to 4.2 (SQL and
+upgrade tasks).
+
+ * **core** : 4.2.2 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.1...4.2.2)
+ * **ui-user** : 4.2.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.1...v4.2.2)
+ * **ui-admin** : 4.2.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.1...v4.2.2)
+ * **ui-upload-request** : 4.2.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.1...v4.2.2)
+
+### Bug fixes and improvements
+
+ * Core:
+
+   * Fix upgrade script: handling missing revision for workgroup documents.
+   * Fix upgrade script: Delete if exist mailing_list indexes.
+   * Fix upgrade script: handling NOT NULL constraint on column create_operation_sum
+   * Using John DOE when author of a workgroup is missing.
+
 ## [4.1.3](https://github.com/linagora/linshare/compare/4.1.2...4.1.3) (2021-08-11) [Download link](http://download.linshare.org/versions/4.1.3/)
 
 **The 4.1.3 release of LinShare is out**
