@@ -37,7 +37,7 @@
       - If the selected domain is a nested domain (top domain/Sub domain/Guest domain), the actions are: Assign, Duplicate, Edit, Delete
       - If the welcome message is currently used, the option "Assign" is disabled. 
 
-**UC1.Super-admin view the list of welcome messages**
+**UC2. Nested admin view the list of welcome messages**
    - I can see the list of welcome messages that created for selected domain, which can be used for lower-level domain, and welcome messages from higher-level domain. 
    - The welcome messages list includes columns:
       - Name
