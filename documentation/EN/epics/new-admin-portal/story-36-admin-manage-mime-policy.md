@@ -57,7 +57,7 @@
    - In the Mime policy listing screen, i click on three dot-button of a Mime policy and select option Detail from the drop-down list
    - Or i can click an the  mime policy row on the mime policy listing table. 
 - By default, the Mime policy detail screen will be in View mode
-- There will be button Edit, i click on this button, the Edit mode will be enabled
+- If i have permission to Edit, there will be button Edit, i click on this button, the Edit mode will be enabled
 - On the mime policy screen, i can edit all fields and select/unselect mime types then click button Save.
 - The system will validate if field "Name" is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the updates will be saved and there will be a successful toast message.
@@ -115,6 +115,17 @@ I can see the option "Detail"
 - The value in column "Assigned" of the old mime policy will be changed from Yes => No and the new assigned mime policy will be changed to Yes. 
 - When i hover the tooltip on column title "Assigned", there will be an explaination text: "If the mime policy is used for the current selected domain in domain tree, the value will be Yes".
 
+**UC8. View associated domains**
+
+- On mime policies listing screen, i click on three-dot button on Action column.
+- I select option "View associated domains"
+- A new screen will be opened
+- I can see the list of domain's name which are using this mime policy.
+- There will be a label next to each domain's name that indicating domain type of that domain
+- When i click one domain on the list, i am navigated to Mime policies listing screen of that domain.
+- If the mime policy is not associated with any domain, there will be a text message: " There is no domain using this mime policy. "
+- If i am the nested admin, i can only view associates domains which are under my administration permission. 
+
 #### Postconditions
 
 
@@ -138,6 +149,11 @@ I can see the option "Detail"
 
 ![story36](./mockups/36.7.png)
 
+![story36](./mockups/36.8.png)
+
+![story36](./mockups/36.9.png)
+
+![story36](./mockups/36.10.png)
 
 #### Final design
 
