@@ -46,7 +46,7 @@
    - In the welcome message listing screen, i click on three dot-button of a welcome message and select option Edit from the drop-down list
    - Or i can click on the welcome message row in the welcome message listing table. 
 - By default, the Welcome message detail screen will be in View mode 
-- There will be button Edit, i click on this button, the Edit mode will be enabled 
+- If i have permission to Edit, there will be button Edit, i click on this button, the Edit mode will be enabled
 - I can edit all fields Name, Description and Message content then click button Save.
 - The system will validate if field "Name" is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the updates will be saved and there will be a successful toast message.
@@ -104,8 +104,18 @@ I can see the option "View"
 - The value in column "Assigned" of the old  Welcome message will be changed from Yes => No and the new assigned Welcome message will be changed to Yes. 
 - When i hover the tooltip on column title "Assigned", there will be an explaination text: "If the Welcome message is used for the current selected domain in domain tree, the value will be Yes".
 
-#### Postconditions
+**UC8. View associated domains**
 
+- On welcome message listing screen, i click on three-dot button on Action column.
+- I select option "View associated domains"
+- A new screen will be opened
+- I can see the list of domain's name which are using this welcome message.
+- There will be a label next to each domain's name that indicating domain type of that domain
+- When i click one domain on the list, i am navigated to Welcome messages listing screen of that domain.
+- If the welcome message is not associated with any domain, there will be a text message: " There is no domain using this welcome message. "
+- If i am the nested admin, i can only view associates domains which are under my administration permission. 
+
+#### Postconditions
 
 [Back to Summary](#summary)
 
@@ -121,6 +131,9 @@ I can see the option "View"
 
 ![story38](./mockups/38.4.png)
 
+![story38](./mockups/38.5.png)
+
+![story38](./mockups/38.6.png)
 
 #### Final design
 
