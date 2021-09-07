@@ -12,10 +12,13 @@
 ## Definition
 
 #### Preconditions
+
 - Given that am super admin or nested admin of LinShare admin
 - After log-in successfully, I go to Configuration Tab
 - I click on Parameters, then select Anonymous URL, the screen setting for this feature will be opened.
+
 #### Description
+
 - Anonymous URL is the original function: When this functionality is not activated, the below 4 sub-functions will not work"
 
 **Sub-function 1. Force anonymous sharing process**
@@ -77,6 +80,11 @@
               - If default value of toggle "1.1" in nested domain is disabled, the field ""LinShare ui user URL" is non-editable. Nested Admin can re-enable toggle 1.1 and the field "LinShare ui user URL"is editable now.
           - If this toggle is off in parent domain, and toggle (1.1) is on, then in nested domain, admin see the toggle (1.1) in read only mode and toggle (1.2) disappear. I can edit the field: "LinShare ui user URL"
     - When 2 toggles  are both disabled, they also disappear on nested domains, the field: "LinShare ui user URL" is in read only mode and inherited from parent domain.
+- Default parameter: 
+   - Field name: LinShare UI User URL
+   - This is a text field
+   - When I click on icon "i",  I can see a collapsible legend: "You can input your email notification URL in this field. This URL will be appeared in receiver 's notification when user in this domain shares file with anonymous URL'
+
 #### Postconditions
 [Back to Summary](#summary)
 
