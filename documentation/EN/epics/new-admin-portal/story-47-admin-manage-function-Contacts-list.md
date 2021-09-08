@@ -20,7 +20,7 @@
 - On the screen Contacts list, I can see 2 functions: Contacts list and Creation right
 
 **UC1. Contacts list**
-- Contact list is the original function. I can click on the icon "i" to see a collapsible legend :"The functionality allows users to create his contact lists. When this functionality is not activated, the below sub-function will not work"
+- Contact list is the original function. I can click on the icon "i" to see a collapsible legend :"The functionality allows user of this domain to create his contact lists. A Contact list may include internal/guest users, or external users and can be public or private. When a contact list is public, other LinShare users can use this contact list when sharing document, creating upload request... If the contact list is private, only the owner can use it. When this functionality is not activated, the below sub-function will not work"
 - In Contacts list setting, there is only Activation policy, including 2 toggles:
    - Enable functionality: When I click on the icon "i", I can see a collapsible legend:
       - If this toggle is switched on, user of this domain can access the menu Contact > Contacts list and manage available Contacts list.
