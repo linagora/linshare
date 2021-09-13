@@ -18,14 +18,18 @@ A Live demo of LinShare is available at https://demo.linshare.org/.
 This demo reflects the latest developments done on LinShare, it will be
 reseted and updated on regulary basis.
 
-This instance of LinShare is set up with some test users, from user1 to user7 :
- * user1@linshare.org : password1
- * user2@linshare.org : password2
- * user3@linshare.org : password3
- * user4@linshare.org : password4
- * user5@linshare.org : password5
- * user6@linshare.org : password6
- * user7@linshare.org : password7
+This instance of LinShare is set up with some test users:
+- abbey.curry@linshare.org : secret
+- amy.wolsh@linshare.org : secret
+- anderson.waxman@linshare.org : secret
+- cornell.able@linshare.org : secret
+- dawson.waterfield@linshare.org : secret
+- felton.gumper@linshare.org : secret
+- grant.big@linshare.org : secret
+- nick.derbies@linshare.org : secret
+- peter.wilson@linshare.org : secret
+- walker.mccallister@linshare.org : secret
+
 
 If you want to share with some external users, use these five email addresses *external1@linshare.org* to *external5@linshare.org*.
 External users are just an email address without a LinShare account.
