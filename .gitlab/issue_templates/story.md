@@ -21,7 +21,7 @@
 
 ## Technical issues
 
-* [link towards backend/frontend issues]()
+* TODO
 
 [Back to Summary](#summary)
 
