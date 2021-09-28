@@ -302,6 +302,8 @@ function installThumbnailServer() {
   mv ${LS_TMPDIR}/thumbnail-server-${TNS_VERSION}-config.yml /etc/linshare/linshare-thumbnail-server.yml
   mv ${LS_TMPDIR}/thumbnail-server-${TNS_VERSION}.jar /usr/local/sbin/linshare-thumbnail-server.jar
 
+  sed -i 's/linshare.documents.thumbnail.enable=.*/linshare.documents.thumbnail.enable=true/g' /etc/linshare/linshare.properties
+
     cat <<EOF >/lib/systemd/system/linshare-thumbnail-server.service
 [Unit]
 Description=LinShare thumbnail server
