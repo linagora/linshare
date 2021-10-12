@@ -47,24 +47,7 @@
     * Default value = current date + default period of Guest Expiration
     * The date range is between [Current date] and [ current date + max value] of Guest Expiration set by domain admin.
 * If the function Postpone guest expiry date is disabled, when I edit a guest's expiration date, the date range is  defined as : [ Current date ] and [Creation date + max value] 
-* If the function Postpone guest expiry date is enabled, when I edit a guest's expiration date, the date range is defined as : [Current date] and [ current date + max value] 
-
-#### 3. Un-downloaded shared document alert - Days before the alert
-
-**UC1. Admin UI**
-- Given that I am an Admin LinShare
-- In Admin portal, I go to Domain => Functionalities => Un-downloaded shared document alert => Days before the alert
-- I can see there are 2 parameters in Share expiration setting :
-  - Default value: include a text box that only contain number 
-  - Max value: include a text box that only contain number
-
-**UC2. User UI**
-* Given that I am a LinShare user and the Functionalities "Undownloaded shared document alert" is enabled in Admin UI
-* When I share a file, I can see the checkbox Expiration date
-* If I tick this checkbox, the field Notification of the un-downloaded is displayed that allow me to choose date
-* If the Delegation policy of "Un-downloaded shared document alert - Days before the alert" in Admin is enabled, the value of this field is defined as :
-   * Default value = current date + default value of days before alert
-   * The date range is between [Current date] and [ current date + max value] of Days before alert. If the expiration date is < [ current date + max value], the date range will be between [Current date] and expiration date
+* If the function Postpone guest expiry date is enabled, when I edit a guest's expiration date, the date range is defined as : [Current date] and [ current date + max value]
 
 [Back to Summary](#summary)
 
