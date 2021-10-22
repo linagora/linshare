@@ -1,3 +1,34 @@
+## [4.1.4](https://github.com/linagora/linshare/compare/4.1.3...4.1.4) (2021-10-22) [Download link](http://download.linshare.org/versions/4.1.4/)
+
+**The 4.1.4 release of LinShare is out**
+
+- **core** : 4.1.4 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.3...4.1.4)
+- **ui-user** : 4.1.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.3...v4.1.4)
+- **ui-admin** : 4.1.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.3...v4.1.4)
+- **ui-upload-request** : 4.1.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.3...v4.1.4)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Change TLS default version + document
+    * Add SSL protocols configuration in mail notification
+    * Adding more traces to flow api to debug stuck upload.
+    * Improving TimingOutInterceptor (error code, decrease verbosity)
+    * Using spring-framework-bom 5.2.16.RELEASE
+    * Upgrading tika-parsers to 1.27
+    * Removing useless pdfbox dependencies
+    * Upgrading xstream to 1.4.17
+
+  * UI-User:
+    * Issue #1091: Fix the validation range of share expiration date and USDA notification date
+
+  * UI-Upload-Request:
+    * nothing to report
+
+  * UI-Admin:
+    * nothing to report
+
+
 ## [4.1.3](https://github.com/linagora/linshare/compare/4.1.2...4.1.3) (2021-08-11) [Download link](http://download.linshare.org/versions/4.1.3/)
 
 **The 4.1.3 release of LinShare is out**
