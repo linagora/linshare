@@ -29,6 +29,8 @@
     - Twake connection: mandatory field, a drop-down list which contain current Twake connections list. There is a button next to this field that when I click on, I am navigated to Create Twake connection screen
     - After I created and saved a Twake connection successfully, I am navigated back to this screen instead of Remote server listing screen
     - Company id:  a text field and mandatory. When I hover the tooltip, there will be a legend: "LinShare will start retrieving users from this company in Twake."
+    - A checkbox: When the checkbox is ticked, the text displays:"Only guest users will be retrieved from the remote server". When it is un-ticked, the text displays:" All users except guest users will be retrieved from the remote server".
+    - The checkbox is un-ticked by default.
 - When I click button Save, the system will validate:
    - If any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the User provider is saved and there will be a successful notification, I am redirected to Screen 4.
@@ -37,7 +39,7 @@
 #### UC2. Edit Twake User Provider
 
 - I select User Providers, if current selected domain already had an user provider, screen 4 will be displayed.
-- On this screen, I can edit all fields: Twake connection, Company id
+- On this screen, I can edit all fields: Twake connection, Company id and the checkbox
 - When I click button Save, the system will validate:
   - If any mandatory field is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
 - If there is no error, the User provider is updated and there will be a successful notification.
@@ -65,8 +67,7 @@
 
 ![story65](./mockups/65.1.png)
 ![story65](./mockups/65.2.png)
-![story65](./mockups/65.3.png)
-![story65](./mockups/65.4.png)
+
 
 
 #### Final design
