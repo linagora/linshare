@@ -67,7 +67,8 @@
 
 ![story65](./mockups/65.1.png)
 ![story65](./mockups/65.2.png)
-
+![story65](./mockups/65.3.png)
+![story65](./mockups/65.4.png)
 
 
 #### Final design
