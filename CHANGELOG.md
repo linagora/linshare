@@ -1,3 +1,42 @@
+## [4.2.3](https://github.com/linagora/linshare/compare/4.2.2...4.2.3) (2021-10-28) [Download link](http://download.linshare.org/versions/4.2.3/)
+
+**The 4.2.3 release of LinShare is out**
+
+- **core** : 4.2.3 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.2...4.2.3)
+- **ui-user** : 4.2.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.2...v4.2.3)
+- **ui-admin** : 4.2.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.2...v4.2.3)
+- **ui-upload-request** : 4.2.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.2...v4.2.3)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Fix issue of checking entry size and max deposit size
+    * Fix checking max count number of upload request entries
+    * Change TLS default version + document
+    * Add SSL protocols configuration in mail notification
+    * Fix undownloaded share mail notification
+    * Adding more traces to flow api to debug stuck upload.
+    * Using spring-framework-bom 5.2.16.RELEASE
+    * Upgrading tika-parsers to 1.27
+    * Removing useless pdfbox dependencies
+    * Upgrading xstream to 1.4.17
+
+  * UI-User:
+    * Fix the validation range of share expiration date and USDA notification date
+    * Allow editing contacts list description
+    * Fix shared space fetching error
+    * Fix error of unable to override file when clicking the option in preview dialog
+    * Fix error of workgroup member can not see current list in browse dialog
+    * Show secured sharing option for guests
+    * Fix incorrect refetch shared space permission behavior
+
+  * UI-Admin:
+    * Fix delete contact
+
+  * UI-Upload-Request:
+    * Rework selected items toolbar
+    * Fix warning on vue-i18n
+
 ## [4.1.4](https://github.com/linagora/linshare/compare/4.1.3...4.1.4) (2021-10-22) [Download link](http://download.linshare.org/versions/4.1.4/)
 
 **The 4.1.4 release of LinShare is out**
