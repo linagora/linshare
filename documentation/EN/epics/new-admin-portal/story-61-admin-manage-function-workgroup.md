@@ -30,8 +30,8 @@
    - Allow nested admin to override "Enable functionality": Toggle. When I click on the icon "i", I can see a collapsible legend: " Once activated, nested admin can override the setting "Enable  functionality" for his own domain. When disabled, the value of setting "Enable functionality" is applied for all nested domains and nested admin cannot update"
       - The rule is as same as toggle (1.2) in story 43. Admin manage function anonymous URL
 
-**Sub-function 1. Creation right**
-- When I can click on the icon "i" next to "Creation right", I see a collapsible legend: "By enabling, this functionality allows users to create workgroup "
+**Sub-function 1. Creation right-standalone workgroup**
+- When I can click on the icon "i" next to "Creation right", I see a collapsible legend: "In LinShare, there are 2 kinds of workgroups: Standalone workgroup and nested workgroup. Standalone workgroup is not under any Drive and nested workgroup is created inside a Drive. This setting is ony applied for Standalone workgroup. Creation right of nested workgroup depends on Drive user's role "
 - There is on ly Activation policy which includes 2 toggles:
    - Enable functionality: When I click on the icon "i", I can see a collapsible legend:
       - If this toggle is switched on, when user of this domain access menu Shared space, he can click the button "+" on the top left of screen to create a new workgroup.

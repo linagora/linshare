@@ -24,7 +24,7 @@
    - And when I click icon "i": next to "Drive", all below legends will be expanded too.
 
 **Drive**
-- I can click on the icon "i" to see a collapsible legend :"This functionality allow users to manage Drives. The main goal of Drives is to gather workgroups together and to define default membership and roles for a bunch of users. You may see workgroups as projects and Drive as team, a team who handle theses projects. When this functionality is not activated, the below sub-function will not work"
+- I can click on the icon "i" to see a collapsible legend :"This functionality allow users to manage Drives. The main goal of Drives is to gather workgroups together and to define default membership and roles for a bunch of users. You may see workgroups as projects and Drive as team, a team who handle these projects. When this functionality is not activated, the below sub-function will not work"
 - I can see 2 policies: 
    - Activation policy includes 2 toggles
       - Enable functionality: When I click on the icon "i", I can see a collapsible legend:
