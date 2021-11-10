@@ -18,7 +18,7 @@ For any new feature or update on an existing feature, Project Owner and Business
 
 For every epic, create a folder named similarly with the epic title, words are separated by dashes (f.i: `upload-requests`). Inside the folder, a README.md contains all the basic information of the epic (following [epic template](../../epics/template-epic.md)). For each story of the epic, create a markdown file to describe the story (following [story template](../../epics/template-story.md)). The mardown must be named using following format:
 
-> story-[story number]-[actor]-[an action toward an entity].md
+> story-[issue number]-[actor]-[an action toward an entity].md
 
 There is also a `resources` folder to store files (images, documents) that are attached in the epic or stories.
 
