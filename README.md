@@ -43,7 +43,7 @@ In order to see emails sent by LinShare, we also put at your disposal a webmail
 available at *https://demo-webmail.linshare.org*.
 
 Webmail passwords :
- * user1@linshare.org : password1
+ * abbey.curry@linshare.org : secret
  * ...
  * external1@linshare.org : password1
  * ...
