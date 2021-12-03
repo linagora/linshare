@@ -18,4 +18,4 @@
 
 * [Verrouillage des comptes](account-lockout-policy.md)
 
-* [Configuration de mot de passe](configuration-password-policy.md)
+* [Configuration de la complexité des mot de passe](configuration-password-policy.md)
