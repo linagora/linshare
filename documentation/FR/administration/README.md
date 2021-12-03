@@ -15,3 +15,5 @@
 * How to [use file versioning on LinShare](../../EN/administration/how-to-use-file-versioning.md) (`EN`).
 
 * [Verouillage des comptes](verouillage-des-comptes.md)
+
+* [Configuration de mot de passe](configuration-password-policy.md)
