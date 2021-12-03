@@ -17,3 +17,5 @@
 * How to [use file versioning on LinShare](how-to-use-file-versioning.md).
 
 * [Lockout accounts](account-lockout-policy.md)
+
+* How to [configure password policy](configuration-password-policy.md)
