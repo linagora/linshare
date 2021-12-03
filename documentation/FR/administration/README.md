@@ -17,3 +17,5 @@
 * How to [use file versioning on LinShare](../../EN/administration/how-to-use-file-versioning.md) (`EN`).
 
 * [Verrouillage des comptes](account-lockout-policy.md)
+
+* [Configuration de la complexité des mot de passe](configuration-password-policy.md)
