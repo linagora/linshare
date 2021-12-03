@@ -16,4 +16,4 @@
 
 * [Verouillage des comptes](verouillage-des-comptes.md)
 
-* [Configuration de mot de passe](configuration-password-policy.md)
+* [Configuration de la complexité des mot de passe](configuration-password-policy.md)
