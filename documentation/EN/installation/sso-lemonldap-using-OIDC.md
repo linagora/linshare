@@ -29,7 +29,8 @@ do:
   * Options/Basic
     * ClientID: linshare
     * Client secret: linshare
-    * Allowed redirection addresses for login: http://linshare-user.local/#!/oidc
+    * for LinShare < 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc
+    * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback
   * Options/Security
     * Require PKCE: On
 
@@ -81,9 +82,6 @@ and add the following keys:
       authority: 'http://auth.linshare.local',
       client_id: 'linshare',
       client_secret: 'linshare',
-      redirect_uri: window.location.origin + '/#!/oidc',
-      post_logout_redirect_uri: window.location.origin + '/#!/login',
-      response_type: 'code',
       scope: 'openid email profile'
     },
     oidcEnabled: true,
