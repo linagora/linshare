@@ -29,6 +29,7 @@ do:
   * Options/Basic
     * ClientID: linshare
     * Client secret: linshare
+    * Public client: Off
     * for LinShare < 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc
     * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback
   * Options/Security
