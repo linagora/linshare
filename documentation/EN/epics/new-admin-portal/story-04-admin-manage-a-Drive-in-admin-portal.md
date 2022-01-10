@@ -27,6 +27,7 @@
       - Creation date
       - Modification date 
       - Author: Creator of the Drive
+      - Domain: The link displays domain name of the current workgroup. When I click on this link, the domain detail page will be opened
    - On the left part i can see the editable fields including:
       - Drive's name: Text field. This field cannot be blank or contains special characters. When click icon Edit, i can change the name and click Enter to Save, if the name is invalid, i can see an error message. If the name is valid, the field will be updated. 
       - Description: a text field displaying current Drive's desctiption. When i click on icon Edit, i can change the name and click Enter to Save. This field can be blank. 

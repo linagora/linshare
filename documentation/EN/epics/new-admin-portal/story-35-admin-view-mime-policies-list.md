@@ -53,9 +53,11 @@
 
 - I can sort by columns: Name, Read only, Domain, Creation date, Modification date
 - Default sort is last modification date
+- The mime policies list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 - I can see a search bar and typing in, the system will search by Mime policy's name and display corresponding result in the table below
 - When i click button "Create", the screen Create new mime policy screen will be opened.
 - If i log-in as nested admin, i can only see the domain tree that contains only my nested domain and see the  mime policies list of my nested domain
+
 [Back to Summary](#summary)
 
 ## UI Design
