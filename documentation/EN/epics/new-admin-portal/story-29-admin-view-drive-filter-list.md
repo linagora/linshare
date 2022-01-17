@@ -38,6 +38,7 @@
    - Action
 - I can sort by each column: Name, Type, Creation date, Modification date
 - Default sort is last modification date
+- The drive filter list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 - In Action column, when i click on thee-dots button, i can see the drop-down list: Duplicate, Edit, Delete, See associated domains. 
 - I can see a search bar and typing in, the system will search by filter name and display corresponding result in the table below
 - When i click button "Create", i am navigated to screen Drive filter creation. 

@@ -50,7 +50,7 @@
    - Default workgroup role: Display current default workgroup role. When i click icon Edit, there will be a popup, in which i can choose another role from drop-down list and a check box to override the new role for all existing workgroups inside of Drive
 - I click on icon Delete, there will be a confirmation popup
 - If i choose Yes, that member will be removed out of Drive and all workgroups inside. 
-   
+- The member list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 #### Postconditions
 
 

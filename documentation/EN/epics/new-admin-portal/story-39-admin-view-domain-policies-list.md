@@ -39,6 +39,7 @@
 
 - I can sort by columns: Name, Creation date, Modification date
 - Default sort is last modification date
+- The domain policies list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 - I can see a search bar and typing in, the system will search by Domain policy's name and display corresponding result in the table below
 - When i click on column name "Assign",there will be a help text message. 
 - When i click button "Create", the screen Create new domain policy screen will be opened.

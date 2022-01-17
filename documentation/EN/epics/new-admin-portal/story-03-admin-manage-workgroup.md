@@ -26,17 +26,18 @@
 - The Manage workgroup page will include:
    - Workgroup's name 
    - "Delete workgroup" button:
-      - When i click on this button, there will be a confirmation message.
-      - When i choose Yes to confirm, the workgroup will be removed. Now the workgroup members cannot find that workgroup in User app.
-      - I will see a toast notification and back to the Workgroups/Drive list screen. 
+	  - When i click on this button, there will be a confirmation message.
+	  - When i choose Yes to confirm, the workgroup will be removed. Now the workgroup members cannot find that workgroup in User app.
+	  - I will see a toast notification and back to the Workgroups/Drive list screen. 
    - On the right part i can see uneditable fields including: 
       - Drive: The link to parent Drive that contain current workgroup. I can click on this link to go to Manage drive . If this workgroup is standalone, the text "None" is displayed.
       - Creation date
       - Modification date 
       - Author: Creator of workgroup
+      - Domain: The link displays domain name of the current workgroup. When I click on this link, the domain detail page will be opened. 
    - On the left part i can see the editable fields including:
-      - Worgkroup name: Text field. This field cannot be blank or contains special characters. When click icon Edit, i can change the name and click Save icon, if the workgroup name is invalid, i can see an error message.
-      - Description: Display workgroup's desctiption. When i click on icon Edit, i can update the field and click save icon. 
+	  - Worgkroup name: Text field. This field cannot be blank or contains special characters. When click icon Edit, i can change the name and click Save icon, if the workgroup name is invalid, i can see an error message.
+	  - Description: Display workgroup's desctiption. When i click on icon Edit, i can update the field and click save icon. 
    
 **UC2.Manage member list of a standalone workgroup**
 - In Manage workgroup screen, i can see the list of user: 
@@ -61,6 +62,7 @@
 - If member is a drive member, i can only update the role and cannot delete the member, so there is no Delete icon
 - If member is external member, i can both update member role and Delete that member
 - When i add a member to the workgroup, this member is an external member
+- The member list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 
 [Back to Summary](#summary)
 
