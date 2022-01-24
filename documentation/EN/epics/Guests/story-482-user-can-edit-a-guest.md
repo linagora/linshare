@@ -47,6 +47,11 @@
 
 - After I click button Update, if there is any new guest's moderator or any current moderator is removed, the moderator list in Guest detail panel is updated too
 - If I click button Cancel, every update will not be saved. 
+- When a moderator of a guest is updated right or removed from moderator list, he will receive an email notification with information:
+  - Guest's email and full name
+  - Updated information: Change role or be removed 
+  - Full name and email of the person who change your role or remove your moderator right
+  - And a button link to that guest detail panel.
 
 [Back to Summary](#summary)
 

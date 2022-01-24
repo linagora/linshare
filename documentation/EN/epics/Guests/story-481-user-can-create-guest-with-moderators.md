@@ -40,6 +40,12 @@
 - I can add someone to the restricted contact list which is not a moderator 
 - After adding all moderators as restricted contact, I can remove some of them from the restricted contact list. 
 - The information of Guest owner is still kept in Guest detail
+- When an user is added as moderator of a guest (except the guest author), the moderator will receive an email notification with information:
+  - Guest's email and full name
+  - Date of guest creation
+  - Moderator Right to that new guest (simple or admin)
+  - Full name and email of the person who added you as moderator 
+  - And a button link to that guest detail panel.
 
 [Back to Summary](#summary)
 
