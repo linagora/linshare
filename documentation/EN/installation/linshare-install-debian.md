@@ -496,8 +496,7 @@ First, go [here](#uploadRequest) to download the upload request module.
 To deploy the Upload-Request interface of __LinShare__, you need to open your linshare-ui-upload-request.conf virtualhost file :
 
 ```
-cp /etc/apache2/sites-available/000-default.conf
-/etc/apache2/sites-available/linshare-ui-upload-request.conf
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-upload-request.conf
 sudo a2dissite 000-default
 sudo a2enmod ssl
 sudo a2enmod headers
