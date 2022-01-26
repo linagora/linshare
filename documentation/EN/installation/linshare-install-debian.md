@@ -37,7 +37,7 @@ __LinShare__  can be downloaded here :
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
 In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
-Roadmap is to move everything to the new admin interface.
+Our goal for the future is to implement all features in the old interface into the new one.
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -453,10 +453,8 @@ As mentioned before for application __LinShare__ UI Admin we will need two compo
 cd /var/www/
 tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}-legacy.tar.bz2
 chown -R www-data: linshare-ui-admin
-rm -fr /var/www/linshare-ui-admin-{VERSION}-legacy.tar.bz2
 cd linshare-ui-admin
-tar xjf linshare-ui-admin-{VERSION}.tar.bz2
-rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
 mv linshare-ui-admin new
 ```
 

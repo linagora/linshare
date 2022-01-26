@@ -16,10 +16,11 @@
    * [Premier accès](#firstAccess)
    * [Invitation de dépôt](#uploadRequest)
 
-Ce guide propose l'installation de la version __LinShare__ 4.2 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
+Ce guide propose l'installation de la version __LinShare__ 5 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
 
 > Note :<br/>
 > Les guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/FR/installation/linshare-install-debian.md)
@@ -37,15 +38,19 @@ Il existe plusieurs versions de __LinShare__. Choisir la version de __LinShare__
 Chaque version de __LinShare__ contient tous les composants nécessaires liés à une version spécifique de __LinShare__.
 Ne pas installer et utiliser un composant dont la version est différente de celles présentes dans le même dossier : afin d'éviter des problèmes de dépendances.
 
+Dans cette version de LinShare, une nouvelle interface d'administration est introduite, nous aurons donc besoin de deux composants ui-admin (l'ancien et le nouveau composant), comme cela sera expliqué plus tard.
+Notre objectif pour l'avenir est d'implémenter toutes les fonctionnalités de l'ancienne interface dans la nouvelle.
+
+> Note :<br/>
+Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
+
 Pour cette installation, télécharger les fichiers, nommés ci-dessous, sur le serveur :
   * linshare-core-{VERSION}.war
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
+  * linshare-ui-admin-{VERSION}-legacy.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
   * linshare-ui-upload-request-{VERSION}.tar.bz2
-
-> Note :<br/>
-Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
 
 Afin de manipuler les archives, il sera nécessaire d’utiliser les outils `unzip` et `bzip2` :
 ```bash
@@ -474,13 +479,15 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 
 ### <a name="ui-admin">Configuration vhost ui-admin</a>
 
-Déployer l'archive de l'application __LinShare__ UI Admin dans le répertoire du serveur Apache 2 :
+Comme mentionné précédemment pour l'application __LinShare__ UI Admin, nous aurons besoin de deux composants, vous pouvez suivre les étapes ci-dessous pour les déployer dans le référentiel apache2 :
+
 ```bash
-mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
-tar xjf linshare-ui-admin-{VERSION}.tar.bz2
-chown -R apache: linshare-ui-admin
-rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}-legacy.tar.bz2
+chown -R www-data: linshare-ui-admin
+cd linshare-ui-admin
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+mv linshare-ui-admin new
 ```
 
 De plus, il faut ajouter la configuration ci-après au fichier fourni par défaut par Debian :
@@ -679,6 +686,13 @@ Veuillez changer le mot de passe depuis l'interface d'administration.
   Il n'est pas possible d'ajouter d'autres utilisateurs standards LinShare en local sans LDAP. Voir la section dédiée à la configuration du LDAP dans la [paramétrage applicatif](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+Pour accéder à la nouvelle interface d'administration:
+   * http://linshare-admin.local/new/
+
+![linshare-authentication-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
+
+![linshare-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
 
 ### <a name="uploadRequest">Installation du portail d'invitation de dépôt</a>
 
