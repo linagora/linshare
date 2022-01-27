@@ -16,10 +16,11 @@
    * [First Access](#firstAccess)
    * [Upload Request](#uploadRequest)
 
-Welcome to LinShare installation Guide, This page provides a __LinShare__ version 4.2 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
+Welcome to LinShare installation Guide, This page provides a __LinShare__ version 5 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-debian.md)
@@ -33,9 +34,10 @@ __LinShare__  can be downloaded here :
 
 [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
-> Note:<br/>
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
+In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
+Our goal for the future is to implement all features in the old interface into the new one.
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -44,6 +46,7 @@ For this installation, download the following files in `/tmp/linshare_data`:
   * linshare-core-{VERSION}.war
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
+  * linshare-ui-admin-{VERSION}-legacy.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
   * linshare-ui-upload-request-{VERSION}.tar.bz2
 
@@ -444,11 +447,15 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 
 ### <a name="ui-admin">ui-admin vhost Configuration</a>
 
-Deploy the archive of the application __LinShare__ UI Admin in the apache 2 repository :
+As mentioned before for application __LinShare__ UI Admin we will need two components, you can follow the steps bellow to deploy them in the apache2 repository :
+
 ```bash
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}-legacy.tar.bz2
 chown -R www-data: linshare-ui-admin
+cd linshare-ui-admin
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+mv linshare-ui-admin new
 ```
 
 Moreover, it is necessary to add the following configuration:
@@ -644,6 +651,13 @@ Please change the password in the administration interface.
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+To access to the new admin interface :
+   * http://linshare-admin.local/new/
+
+![linshare-authentication-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
+
+![linshare-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
 
 ### <a name="uploadRequest">Upload Request component installation</a>
 
