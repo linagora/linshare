@@ -16,6 +16,7 @@ Each LinShare version folder, contains the dependencies required to install the 
 * [Upgrade LinShare core](#core)
 * [Upgrade LinShare ui-admin](#ui-admin)
 * [Upgrade LinShare ui-user](#ui-user)
+* [Upgrade LinShare-ui-upload-request](#ui-upload-request)
 * [Upgrade tasks](#tasks)
 
 <a name="lversions">
@@ -146,7 +147,7 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  $ tar xjvf /root/downloads/linshare-ui-admin-4.2.3-legacy.tar.bz2
  $ chown -R www-data: linshare-ui-admin
  $ cd linshare-ui-admin
- $ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+ $ tar xjf /tmp/linshare_data/linshare-ui-admin-5.0.0.tar.bz2
  $ mv linshare-ui-admin new
 
  ```
