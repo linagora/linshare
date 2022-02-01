@@ -1,3 +1,38 @@
+## [4.2.4](https://github.com/linagora/linshare/compare/4.2.3...4.2.4) (2022-02-01) [Download link](http://download.linshare.org/versions/4.2.4/)
+
+**The 4.2.4 release of LinShare is out**
+
+- **core** : 4.2.4 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.3...4.2.4)
+- **ui-user** : 4.2.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.3...v4.2.4)
+- **ui-admin** : 4.2.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.3...v4.2.4)
+- **ui-upload-request** : 4.2.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.3...v4.2.4)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Max integer values does not exist on functionality endpoint v1.
+    * Fix issue with UPGRADE_4_2_ADD_MISSING_PROPERTIES_TO_WORK_GROUP_NODE
+      (missing wokgroup)
+
+  * UI-User:
+    * Issue #1108: Fix webpack configuration for common images
+
+  * UI-Admin:
+    * Translate upgrade tasks keys
+    * Issue #208: Fix audit log translation key
+    * Issue #208: Add translation for WORKSPACE
+    * Issue #205: Hide following features on legacy mode ( LDAP connections Domain patterns Manage domains Workgroups Workgroup patterns)
+    * Translate missing upgrade tasks keys
+    * Fix missing key translation
+    * Issue #201: Update JWT functionality
+    * Issue #196: Add shared space functionality translation
+    * Issue #194: Add collected emails expiration functionality
+    * Refactor internal can upload functionality
+    * Issue #171: Show max value input for guest expiration functionality
+
+  * UI-Upload-Request:
+    * Issue #101: Fix Fr translation
+
 ## [4.2.3](https://github.com/linagora/linshare/compare/4.2.2...4.2.3) (2021-10-28) [Download link](http://download.linshare.org/versions/4.2.3/)
 
 **The 4.2.3 release of LinShare is out**
