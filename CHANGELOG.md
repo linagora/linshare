@@ -1,3 +1,67 @@
+## [5.0.0](https://github.com/linagora/linshare/compare/4.2.4...5.0.0) (2022-02-01) [Download link](http://download.linshare.org/versions/5.0.0/)
+
+**The 5.0.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 5.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.4...5.0.0)
+- **ui-user** : 5.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.4...v5.0.0)
+- **ui-admin** : 5.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.4...v5.0.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Main features:
+
+* **Appearance**
+
+    The logo of LinShare was updated along of the general theme:
+
+  <img src="http://download.linshare.org/screenshots/5.0.0/03.LinShare.User.Home.page.png" alt="LinShare User Home page" width="600"/>
+
+
+* **New administration interface (Beta)**
+
+    With this new version, we had to introduce a new API (admin/v5) and its new
+interface. Our main goal is to backport every old features of the old interface
+but using up to date technologies (Vue.js 3). Of course, this will allow us to
+redesign the whole interface, the whole user experience and to also bring new features.
+
+* **Workspaces**
+
+It was introduced in version 4.2 as  **Drive**, it was finally renamed as
+**Workspace** to make more sense.
+
+*Tiny remember of the feature:*
+
+In LinShare we have workgroups in shared spaces. These groups are designed to make a team works together on one topic. If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
+
+The main goals of `Workspace` are :
+
+  * Regroup all worgkoups of a team in one item
+  * Define default team members in the Workspace to avoid workgroup members redefinition
+  * Manage globally team members rigths (right should be applied from workspace to its workgroups)
+  * A workgroup can belong to a workspace or be standalone
+
+
+* **User providers**
+
+At first, LinShare was designed to retrieve users from a LDAP directory. These
+users were called *Internal users*, they were able to create some temporary
+accounts, called *guest users*.
+
+In this version of LinShare, we added more user providers:
+
+* OIDC user provider
+
+This provider allows LinShare to create users "on-the-fly" at the first log in (using OIDC).
+
+* Twake Console user provider
+
+This provider allows LinShare to retrieve users from the Twake Console app, which is the portal of our new SAAS offer.
+
+
 ## [4.2.4](https://github.com/linagora/linshare/compare/4.2.3...4.2.4) (2022-02-01) [Download link](http://download.linshare.org/versions/4.2.4/)
 
 **The 4.2.4 release of LinShare is out**
@@ -32,6 +96,7 @@
 
   * UI-Upload-Request:
     * Issue #101: Fix Fr translation
+
 
 ## [4.2.3](https://github.com/linagora/linshare/compare/4.2.2...4.2.3) (2021-10-28) [Download link](http://download.linshare.org/versions/4.2.3/)
 
