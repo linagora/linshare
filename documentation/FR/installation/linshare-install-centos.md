@@ -308,18 +308,17 @@ systemctl start linshare-thumbnail-server.service
 
 __LinShare__ étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de `servlets` Java (Tomcat ou Jetty) pour fonctionner. Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
 
-Installer Tomcat depuis les dépôts :
-```bash
-yum install -y tomcat
-```
+Cette version de LinShare utilise Java 11, elle nécessite donc au moins la version 8.5 de __Tomcat__. Sur CentOs __Tomcat__ n'existe plus dans les packages par défaut du système d'exploitation.
 
-Pour spécifier l’emplacement de la configuration de __LinShare__ (fichier `linshare.properties` ) ainsi que les options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans le fichier `linshare.properties` et copier-coller les dans le fichier Tomcat (`/etc/sysconfig/tomcat`):
+Vous pouvez donc rechercher sur Internet comment l'installer manuellement. Et puis ajoutez les configurations de serveur ci-dessous.
+
+Pour spécifier l’emplacement de la configuration de __LinShare__ (fichier `linshare.properties` ) ainsi que les options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans le fichier `linshare.properties` et copier-coller les dans le fichier de configuration de Tomcat (Exemple: /etc/sysconfig/tomcat):
 
 L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ sont indiquées dans les en-têtes des fichiers de configuration suivants :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/etc/sysconfig/tomcat`:
+Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous dans le fichier de configuration de Tomcat (Exemple: /etc/sysconfig/tomcat):
 
 ```conf
 JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,batches"

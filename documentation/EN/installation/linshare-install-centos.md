@@ -325,20 +325,20 @@ systemctl start linshare-thumbnail-server.service
 ## <a name="tomcat">Tomcat Installation</a>
 
 __LinShare__ is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
+> You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
-Install Tomcat from the repositories:
-```bash
-yum install -y tomcat
-```
+This LinShare version is using Java 11 so it requires at least the version 8.5 of __Tomcat__. On CentOs __Tomcat__ does not exist any more on the OS default packages.  
+
+So you can search on internet how to install it manually. And then add the server configurations bellow.
 
 To specify the location of the __LinShare__ configuration (_linshare.properties_ file) and also the default start
-options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/sysconfig/tomcat`):
+options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat configuration file (Example: /etc/sysconfig/tomcat):
 
 All starting needful options by default to Linshare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-It is required to add the following lines in: `/etc/sysconfig/tomcat`:
+It is required to add the following lines in the tomcat configuration file (Example: /etc/sysconfig/tomcat):
 
 ```conf
 JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
