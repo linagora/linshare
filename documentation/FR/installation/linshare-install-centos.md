@@ -16,10 +16,11 @@
    * [Configuration et lancement de Linshare](#linconf)
    * [Premier accès](#firstAccess)
 
-Ce guide propose l'installation de la version __LinShare__ 4.1 sur *CentOS 7* (les versions antérieures de CentOS ne sont pas prises en charge).
+Ce guide propose l'installation de la version __LinShare__ 4.2 sur *CentOS 7* (les versions antérieures de CentOS ne sont pas prises en charge).
 
 > Note :<br/>
 > Les guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/FR/installation/linshare-install-centos.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/FR/installation/linshare-install-centos-7.md)
@@ -42,6 +43,7 @@ Pour cette installation, télécharger les fichiers, nommés ci-dessous, sur le 
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
+  * linshare-ui-upload-request-{VERSION}.tar.bz2
 
 > Note :<br/>
 Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
@@ -79,11 +81,11 @@ log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 
 ## <a name="installOpenJDK">Installation de OpenJDK Java JRE</a>
 
-__LinShare__  supporte l'OpenJDK ou Sun/Oracle Java en version 8. Voici son installation et son activation depuis les dépôts :
+__LinShare__  supporte l'OpenJDK ou Sun/Oracle Java en version 11. Voici son installation et son activation depuis les dépôts :
 > Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 ```bash
-yum -y install java-1.8.0-openjdk.x86_64
+yum install java-11-openjdk-devel
 update-alternatives --config java
 ```
 
@@ -190,29 +192,52 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ### <a name="mongo">Installation de MongoDB</a>
 
-Pour l'installation de __LinShare__, il est nécessaire d'installer une base de données mongoDB.
-Le guide d'Installation de LinShare 2.3 recommandait l'usage de MongoDB 3.2.
-Désormais, depuis la version 2.3.5, nous vous conseillons d'utiliser MongoDB 3.6.
-En effet les versions 3.2 et 3.4 ne sont plus supportées [officiellement](https://www.mongodb.com/support-policy).
+Pour l'installation de __LinShare__, il est nécessaire d'installer une base de données mongoDB 4.2.
 
-> Au besoin, voici un [guide](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/blob/master/documentation/EN/upgrade/mongodb-upgrade-from-3.2-to-3.6-debian.md) de mise à jour de 3.2 a 3.6.
 > Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
 
 Créer un fichier `/etc/yum.repos.d/mongodb-org.repo`, et ajouter les informations du référentiel de la dernière version stable au fichier :
 ```bash
-[mongodb-org-3.6]
+[mongodb-org-4.2]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 ```
 
 Installer le paquet mongodb-org à partir du référentiel en utilisant l'utilitaire yum :
 ```bash
 yum install -y mongodb-org
 ```
-> Si besoin, voici le lien vers le [guide officiel](https://docs.mongodb.com/v3.6/tutorial/install-mongodb-on-centos/).
+> Si besoin, voici le lien vers le [guide officiel](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-red-hat/).
+
+- Démarrer le serveur MongoDB
+```bash
+sudo systemctl start mongod
+```
+
+- Configurer l'authentification MongoDB:  
+Exécutez les commandes suivantes pour activer l'authentification
+
+```bash
+mongo
+```
+```bash
+> use admin;
+```
+```bash
+> db.createUser(
+  {
+    user: "linshare",
+    pwd: "linshare",
+    roles: [
+      { role: "readWrite", db: "linshare" },
+      { role: "readWrite", db: "linshare-files" } ]
+  }
+)
+```
+>  **linshare** est un exemple de mot de passe, il doit être changé
 
 Par défaut, MongoDB est configuré de la manière suivante dans la configuration de __LinShare__ `/etc/linshare/linshare.properties` :
 
@@ -228,8 +253,18 @@ linshare.mongo.socket.timeout=30000
 #                               using the default write concern configured on the server.
 linshare.mongo.write.concern=MAJORITY
 
-# Standard URI connection scheme
-linshare.mongo.client.uri=mongodb://127.0.0.1:27017/linshare
+#### connection for data
+# replicaset: host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+linshare.mongo.data.replicaset=127.0.0.1:27017
+linshare.mongo.data.database=linshare
+# linshare.mongo.data.credentials=[user:password[@database]]
+linshare.mongo.data.credentials=linshare:linshare@admin
+
+#### connection for small files
+# Using MongoDb to store very small files (thumbnails, mail attachments, ...)
+linshare.mongo.smallfiles.replicaset=127.0.0.1:27017
+linshare.mongo.smallfiles.database=linshare-files
+linshare.mongo.smallfiles.credentials=linshare:linshare@admin
 ```
 
 Avant de démarer le service MongoDB, s'assurer que le fichier que `/etc/mongod.conf` a l'adresse ip du bind: 127.0.0.1
@@ -313,19 +348,18 @@ systemctl start linshare-thumbnail-server.service
 ## <a name="tomcat">Installation de Tomcat</a>
 
 __LinShare__ étant une application Java compilée et empaquetée au format WAR (**W** eb **A** pplication a **R** chive), il lui faut donc un conteneur de `servlets` Java (Tomcat ou Jetty) pour fonctionner. Ce paragraphe présente l’installation et la configuration du serveur Tomcat.
-> Vous pouvez trouver les versions des dépendances requises pour le fonctionnement de LinShare [ici](./requirements.md)
-Installer Tomcat depuis les dépôts :
-```bash
-yum install -y tomcat
-```
 
-Pour spécifier l’emplacement de la configuration de __LinShare__ (fichier `linshare.properties` ) ainsi que les options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans le fichier `linshare.properties` et copier-coller les dans le fichier Tomcat (`/etc/sysconfig/tomcat`):
+Cette version de LinShare utilise Java 11, elle nécessite donc au moins la version 8.5 de __Tomcat__. Sur CentOs __Tomcat__ n'existe plus dans les packages par défaut du système d'exploitation.
+
+Vous pouvez donc rechercher sur Internet comment l'installer manuellement. Et puis ajoutez les configurations de serveur ci-dessous.
+
+Pour spécifier l’emplacement de la configuration de __LinShare__ (fichier `linshare.properties` ) ainsi que les options de démarrage par défaut nécessaire, récupérer les lignes commentées dans l'en-tête dans le fichier `linshare.properties` et copier-coller les dans le fichier de configuration de Tomcat (Exemple: /etc/sysconfig/tomcat)::
 
 L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ sont indiquées dans les en-têtes des fichiers de configuration suivants :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/etc/sysconfig/tomcat`:
+Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous dans le fichier de configuration de Tomcat (Exemple: /etc/sysconfig/tomcat):
 
 ```conf
 JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties -Dspring.profiles.active=default,jcloud,batches"
