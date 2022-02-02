@@ -24,6 +24,8 @@
     - First name: Plain-text 
     - Last name : Plain-text
     - Email: Plain-text
+    - Allowed to create guests: readonly toggle (on/off)
+    - Personal space enabled: readonly toggle (on/off)
     - Creation date: Plain-text
     - Modification date: Plain-text
     - Notification language: A drop-down list with options: English/French/Russian
@@ -36,6 +38,7 @@
     - Last name : Plain-text
     - Email: Plain-text
     - Owner: Plain-text. Displays Full name - email address of my guest account's creator. 
+    - Personal space enabled: readonly toggle (on/off)
     - Creation date: Plain-text
     - Modification date: Plain-text
     - Expiration date: Plain-text . This date is set by the owner can be changed by the owner.
