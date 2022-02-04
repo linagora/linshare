@@ -82,6 +82,8 @@
 - When I click button Save, If there is no error, there will be a successful notification
 - The updated information will be saved and applied for nested domains.
 - If after updating, the settings in root domain conflicts with current setting of nested domain, the error symbol will be shown in domain tree and in every detail setting.
+- I can click on the link :"Allocate quota for specific user", then I am navigated to User list screen
+- I can find a user then set up quota for that user. Otherwise, the quota of each user will be inherited from its domain setting.
 
 [Back to Summary](#summary)
 
