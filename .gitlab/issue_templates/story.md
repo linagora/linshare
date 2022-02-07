@@ -1,7 +1,7 @@
 # Summary
 
 * [Definition](#definition)
-* [Technical issues](#technical-issues)
+* [Related issues / Linked issues](#related-issues)
 * [Misc](#misc)
 * [TODO](#todo)
 
