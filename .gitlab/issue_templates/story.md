@@ -3,6 +3,7 @@
 * [Definition](#definition)
 * [Technical issues](#technical-issues)
 * [Misc](#misc)
+* [TODO](#todo)
 
 ## Definition
 
@@ -14,7 +15,9 @@
 
 ## Misc
 
-TODO:
+[Back to Summary](#summary)
+
+## TODO
 
 * [ ] add link towards EPIC to "linked issues" section
 * [ ] add links towards backend technical issues to "linked issues" section AND label BACKEND:TODO
