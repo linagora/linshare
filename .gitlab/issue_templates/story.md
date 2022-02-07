@@ -14,6 +14,12 @@
 
 ## Misc
 
+TODO:
+
+* [ ] add link towards EPIC to "linked issues" section
+* [ ] add links towards backend technical issues to "linked issues" section AND label BACKEND:TODO
+* [ ] add links towards frontend technical issues to "linked issues" section AND label FRONTEND:TODO
+
 [Back to Summary](#summary)
 
 /label #STORY# STORY::DRAFT
