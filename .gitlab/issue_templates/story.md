@@ -7,9 +7,7 @@
 
 ## Definition
 
-> Once the MR merged, we can add link for master to the markdown file containing the story.
-
-* TODO: link towards the final markdown file
+* TODO: link towards the final markdown file (master branch)
 
 [Back to Summary](#summary)
 
