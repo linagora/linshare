@@ -2,7 +2,7 @@
 
 * [Related EPIC](#related-epic)
 * [Definition](#definition)
-* [Screenshots](#screenshots)
+* [UI Design](#ui-design)
 * [Misc](#misc)
 
 ## Related EPIC
@@ -25,9 +25,11 @@
 ## UI Design
 
 #### Mockups
+
 #### Final design
 
 [Back to Summary](#summary)
+
 ## Misc
 
 [Back to Summary](#summary)
