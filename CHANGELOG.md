@@ -1,3 +1,30 @@
+## [5.0.1](https://github.com/linagora/linshare/compare/5.0.0...5.0.1) (2022-03-02) [Download link](http://download.linshare.org/versions/5.0.1/)
+
+**The 5.0.1 release of LinShare is out**
+
+- **core** : 5.0.1 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.0...5.0.1)
+- **ui-user** : 5.0.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.0...v5.0.1)
+- **ui-admin** : 5.0.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.0...v5.0.1)
+- **ui-upload-request** : 5.0.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.0...v5.0.1)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Fix upgrade task of renaming workgroup deletion audit traces.
+    * Fix init permissions and roles.
+
+  * UI-User:
+    * Update LinShare logo and theme color
+    * Fix autocomplete search
+
+  * UI-Admin:
+    * Fix bug domain creation with empty description
+    * Fix redirect to users list after user deletion
+    * Fix checking invalid guest max expiration date
+
+  * UI-Upload-Request:
+    * Update logo and theme color
+
 ## [5.0.0](https://github.com/linagora/linshare/compare/4.2.4...5.0.0) (2022-02-01) [Download link](http://download.linshare.org/versions/5.0.0/)
 
 **The 5.0.0 release of LinShare is out**
