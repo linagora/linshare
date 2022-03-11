@@ -12,18 +12,112 @@
   * Core:
     * Fix upgrade task of renaming workgroup deletion audit traces.
     * Fix init permissions and roles.
+    * Add new endpoint to get supported API version, we will see a sample below.
+    * Fix user provider mapping (using lazy loading)
+    * Fix delete user admin v5
+    * Fix updating modification date when creating or deleting sharedSpace node
+    * Recalculate account quota
 
   * UI-User:
     * Update LinShare logo and theme color
     * Fix autocomplete search
+    * Show button for support link(Crisp Integration)
+    * Show an error when anonymous URL is invalid
 
   * UI-Admin:
     * Fix bug domain creation with empty description
+    * Fix undefined functionality on logout
     * Fix redirect to users list after user deletion
+    * Support loading certain domain on configuration routes
+    * Support managing role of workspace members
     * Fix checking invalid guest max expiration date
 
   * UI-Upload-Request:
     * Update logo and theme color
+
+**Add new endpoint to get supported API version**
+
+* To retrieve all supported API versions, the returned list is ordered by the most recent created API, we can see:
+
+`curl  "http://{your_server}/linshare/webservice/rest/api-versions" -H "accept: application/json" -s |jq`
+
+```
+    {
+  "USER": {
+    "name": "USER",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 2
+      },
+      {
+        "version": 1
+      }
+    ]
+  },
+  "ADMIN": {
+    "name": "ADMIN",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 1
+      }
+    ]
+  },
+  "DELEGATION": {
+    "name": "DELEGATION",
+    "versions": [
+      {
+        "version": 2
+      }
+    ]
+  },
+  "UPLOADREQUEST": {
+    "name": "UPLOADREQUEST",
+    "versions": [
+      {
+        "version": 4
+      }
+    ]
+  }
+}
+```
+
+* To retrieve just one API we can see:
+
+`curl  "http://{your_server}/linshare/webservice/rest/api-versions?type=USER" -H "accept: application/json" -s |jq`
+
+```
+{
+  "USER": {
+    "name": "USER",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 2
+      },
+      {
+        "version": 1
+      }
+    ]
+  }
+}
+```
 
 ## [5.0.0](https://github.com/linagora/linshare/compare/4.2.4...5.0.0) (2022-02-01) [Download link](http://download.linshare.org/versions/5.0.0/)
 
