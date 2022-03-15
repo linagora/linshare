@@ -1,3 +1,23 @@
+## [5.0.2](https://github.com/linagora/linshare/compare/5.0.1...5.0.2) (2022-03-15) [Download link](http://download.linshare.org/versions/5.0.2/)
+
+**The 5.0.2 release of LinShare is out**
+
+- **core** : 5.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.1...5.0.2)
+- **ui-user** : 5.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.1...v5.0.2)
+- **ui-admin** : 5.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.1...v5.0.2)
+- **ui-upload-request** : 5.0.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.1...v5.0.2)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix init permissions and roles.
+
+* UI-User:
+    
+* UI-Admin:
+
+* UI-Upload-Request:
+
 ## [5.0.1](https://github.com/linagora/linshare/compare/5.0.0...5.0.1) (2022-03-02) [Download link](http://download.linshare.org/versions/5.0.1/)
 
 **The 5.0.1 release of LinShare is out**
