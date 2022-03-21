@@ -13,7 +13,7 @@
     * Fix init permissions and roles.
 
 * UI-User:
-    
+
 * UI-Admin:
 
 * UI-Upload-Request:
@@ -43,6 +43,15 @@
     * Fix autocomplete search
     * Show button for support link(Crisp Integration)
     * Show an error when anonymous URL is invalid
+    * Fix an error of not being able to change logo images
+      * **Breaking change** Update the path of default logo images. Now all images are stored inside `images` folder after bundled. If you are using default logo images, update the image configurations as following:
+      ``` javascript
+      applicationLogo : {
+        small: 'images/linshare-logo-white.svg',
+        large : 'images/ls-logo-big.svg'
+      },
+      loginBackground : 'images/bg-linshare-desktop.png',
+      ```
 
   * UI-Admin:
     * Fix bug domain creation with empty description
@@ -221,6 +230,14 @@ This provider allows LinShare to retrieve users from the Twake Console app, whic
 
   * UI-User:
     * Issue #1108: Fix webpack configuration for common images
+      * **Breaking change** Update the path of default logo images. Now all images are stored inside `images` folder after bundled. If you are using default logo images, update the image configurations as following:
+      ``` javascript
+      applicationLogo : {
+        small: 'images/linshare-logo-white.png',
+        large : 'images/ls-logo-big.png'
+      },
+      loginBackground : 'images/bg-linshare-desktop.png',
+      ```
 
   * UI-Admin:
     * Translate upgrade tasks keys
@@ -829,7 +846,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
   * UI-Admin:
     * Fix translate Upload request sub-functionalities description
-    * Fix delete domain patterns 
+    * Fix delete domain patterns
 
 # [4.0.1](https://github.com/linagora/linshare/compare/4.0.0...4.0.1) (2020-09-07) [Download link](http://download.linshare.org/versions/4.0.1/)
 
@@ -862,10 +879,10 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 Here we can see the new interface where the administrator will be able to unlock the blocked user.
 
-  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="unlock_accounts_screeshot" width="600"/> 
-  
-For more information about lockout feature [here](documentation/EN/administration/lockout.md)  
-  
+  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="unlock_accounts_screeshot" width="600"/>
+
+For more information about lockout feature [here](documentation/EN/administration/lockout.md)
+
 
 
 ## [4.0.0](https://github.com/linagora/linshare/compare/2.3.5...4.0.0) (2020-07-16) [Download link](http://download.linshare.org/versions/4.0.0/)
@@ -984,7 +1001,7 @@ To upgrade LinShare to 4.0.0 version you can [see](https://github.com/linagora/l
   * Issue #1009: Disable clicking eyes icon in folder detail sidebar
   * Issue #1008: hide options menu after clicking on details option of a shared space node
   * Issue #1009: Hide preview option for folders
-  * Issue #997: Fix initial value when renaming a shared space 
+  * Issue #997: Fix initial value when renaming a shared space
   * Issue #992: Reset state after create new workgroup
   * Issue #970: Fix move files between workgroups
   * Issue #626: Fix view details file in preview mode
@@ -1698,7 +1715,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 * UI-User:
    * Fix out-dated LinShare licence link
-   * Fix user Long name displaying in dropdown list on ui-user in my-space interface  
+   * Fix user Long name displaying in dropdown list on ui-user in my-space interface
    * Fix autocomplete item html template and related css
 
 uI-Admin:
