@@ -162,6 +162,11 @@
 >**NB:**
 >Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
 
+#### Breaking changes:
+  * **OIDC Authentication**
+    * Drop supports for some **ui-user** oidc settings in **config.js**. Now only following settings are required: `authority`, `client_id`, `client_secret`, `scope`.
+    * Update redirection address for **ui-user**, the relative path of redirection address is now `#!/oidc/callback`. You are required to update settings of your OIDC Provider. See [LemonLDAP OIDC configurations](documentation/EN/installation/sso-lemonldap-using-OIDC.md#step-1-lemonldapng-configuration) for more details.
+
 #### Main features:
 
 * **Appearance**
