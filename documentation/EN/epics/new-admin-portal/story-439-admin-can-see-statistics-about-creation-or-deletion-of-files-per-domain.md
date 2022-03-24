@@ -29,7 +29,7 @@
             - If I am root domain, I can see the list of all domains .
             - If I am nested admin, I can see list of domains in which I have administration right.
             - Default option is "All".
-        - Type: A combo-box with options: Domain, Workgroup, User. This field is only displayed if option "All" is not selected in field "Domain".
+        - Type: A combo-box with options: All, Sharedspaces, Users. This field is only displayed if option "All" is not selected in field "Domain".
         - Period: A combo-box
            - When click on this field, I can see the list of options: Daily, Monthly, weekly, yearly. Default value is monthly, time frame is 1 year
            - The field "From" and "To" will be displayed corresponding: If I selected monthly period, I can only select From[month/year] to [month/year]. If I select weekly, I can only select From [week/year] to [week/year].  If I select yearly, I can only select From [Year] to [Year]
@@ -62,7 +62,7 @@
           - Storage balance (MB)
           - Number balance
        
-##### UC2. Statistics of workgroup
+##### UC2. Statistics of sharedspaces
 
 - When I select one Domain in the field "Domain" then select "Workgroup" in field Type and time then click Enter, the charts and detail report below will reflect data of all workgroups of the selected domain in selected time
     - First tab includes 2 Charts :
