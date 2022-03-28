@@ -44,7 +44,7 @@
 #### Post-conditions
 
 - The rule is as same as Post-condition of Story 43. Admin manage function anonymous URL.
-- On UI for user, When the number of nested workgroups inside a workspace in this domain reaches the limitation,  and a user clicks button Create new workgroup, there will be a message: "You have reached maximum number of workgroups inside this workspace. To create and use more workgroups, Please Upgrade your plan"
+- On UI for user, When the number of nested workgroups inside a workspace in this domain reaches the limitation,  and a user clicks button Create new workgroup, there will be a message: "You have reached maximum number of workgroups inside this workspace. "
 - At the time admin set the limitation of nested workgroups, if current number of workgroups inside a workspace exceeded the limitation, user cannot create new workgroup.
 
 [Back to Summary](#summary)

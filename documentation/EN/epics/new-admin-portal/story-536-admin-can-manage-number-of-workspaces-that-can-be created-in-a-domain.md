@@ -44,7 +44,7 @@
 #### Post-conditions
 
 - The rule is as same as Post-condition of Story 43. Admin manage function anonymous URL.
-- On UI for user, When the number of workspaces in this domain reaches the limitation,  and a user clicks button Create new workspace, there will be a message:"You have reached maximum number of workspaces. To create and use more workspaces, Please Upgrade your plan"
+- On UI for user, When the number of workspaces in this domain reaches the limitation,  and a user clicks button Create new workspace, there will be a message:"You have reached maximum number of workspaces. "
 - At the time admin set the limitation of workspace, if a current number of workspaces exceeded the limitation, user of this domain cannot create new workspace. 
 
 [Back to Summary](#summary)
