@@ -44,7 +44,7 @@
 #### Post-conditions
 
 - The rule is as same as Post-condition of Story 43. Admin manage function anonymous URL.
-- On UI for user, When user create a new upload request and inputting the field "Add recipient", if the number of inputted recipients have reached the maximum limitation, there will be a message: "You have reached maximum number of recipients for this upload request. To send this upload request to more recipients, Please Upgrade your plan"
+- On UI for user, When user create a new upload request and inputting the field "Add recipient", if the number of inputted recipients have reached the maximum limitation, there will be a message: "You have reached maximum number of recipients for this upload request."
 - The recipient limitation is also applied when user edit an upload request 
 - The recipient limitation is applied for both collective and individual upload request 
 
