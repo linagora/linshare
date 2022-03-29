@@ -1,3 +1,31 @@
+## [4.2.5](https://github.com/linagora/linshare/compare/4.2.4...4.2.5) (2022-03-29) [Download link](http://download.linshare.org/versions/4.2.5/)
+
+**The 4.2.5 release of LinShare is out**
+
+- **core** : 4.2.5 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.4...4.2.5)
+- **ui-user** : 4.2.5 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.4...v4.2.5)
+- **ui-admin** : 4.2.5 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.4...v4.2.5)
+- **ui-upload-request** : 4.2.5 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.4...v4.2.5)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * New endpoint added: SupportedApiVersionImpl
+    * Fix delete user method of admin v5 API
+    * Update modification date when creating or deleting folder
+    * Recalculate account quota on migration script
+    * Add patch to recalculate user quota after ure deletion
+
+  * UI-User:
+    * Issue #1093: Use completion functionality value for typeahead min length
+    * Issue #1093: Use functionality value for max char autocompletion
+    * Issue #1111: Show an error when url is invalid
+
+  * UI-Admin:
+    * Issue #225: Show medium date as tooltip for audit logs
+    * Issue #229: Hide domain provider management only, instead of hiding entire domain management
+
+
 ## [5.0.2](https://github.com/linagora/linshare/compare/5.0.1...5.0.2) (2022-03-15) [Download link](http://download.linshare.org/versions/5.0.2/)
 
 **The 5.0.2 release of LinShare is out**
