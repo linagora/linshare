@@ -19,3 +19,5 @@
 * [Verrouillage des comptes](account-lockout-policy.md)
 
 * [Configuration de la complexité des mot de passe](configuration-password-policy.md)
+
+* How to [login into LinShare without email](how-to-login-without-email.md).
