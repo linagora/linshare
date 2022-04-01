@@ -19,3 +19,5 @@
 * [Lockout accounts](account-lockout-policy.md)
 
 * How to [configure password policy](configuration-password-policy.md)
+
+* How to [login into LinShare without email](how-to-login-without-email.md).
