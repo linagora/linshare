@@ -1,3 +1,27 @@
+## [4.1.5](https://github.com/linagora/linshare/compare/4.1.4...4.1.5) (2022-04-05) [Download link](http://download.linshare.org/versions/4.1.5/)
+
+**The 4.1.5 release of LinShare is out**
+
+- **core** : 4.1.5 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.4...4.1.5)
+- **ui-user** : 4.1.5 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.4...v4.1.5)
+- **ui-admin** : 4.1.5 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.4...v4.1.5)
+- **ui-upload-request** : 4.1.5 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.4...v4.1.5)
+
+#### Bug fixes and improvements
+
+* Core:
+    * New endpoint added: SupportedApiVersionImpl
+    * Fix Spring security issue: CVE-2022-22965
+
+* UI-User:
+    * Issue #1092: Correct locale keys in extLink default config
+
+* UI-Upload-Request:
+    * nothing to report
+
+* UI-Admin:
+    * Issue #171: Show max value input for guest expiration functionality
+
 ## [4.2.5](https://github.com/linagora/linshare/compare/4.2.4...4.2.5) (2022-03-29) [Download link](http://download.linshare.org/versions/4.2.5/)
 
 **The 4.2.5 release of LinShare is out**
