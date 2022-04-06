@@ -15,6 +15,16 @@ For the whole guide, I will assume you are using my favorite Linux distribution,
 According to our installation guide, LinShare is deployed on http://linshare-user.local.
 
 
+/!\ there is two ways to use OIDC:
+  * You can only delegate the authentication to OIDC but for the provisioning
+    you will still rely on user providers (LDAP or TWAKE) to create/provision
+    users.
+  * You can also decide to delegate the provisioning to OIDC (full delegation).
+    To do that, you need to use the OIDC user provider. Users will be created at
+    first connection or when they are added to a sharing or a worgroups. User's
+    profile will be created using OIDC claims as source of information. See Step 4.
+
+
 ## Step 1: LemonLDAP::NG configuration.
 
 You need to add a new relying party named LinShare.
@@ -88,3 +98,17 @@ and add the following keys:
     oidcEnabled: true,
 
 ```
+
+## Step 4: OIDC User Provider (Optional)
+
+As explained above, you can also configure LinShare to create user's profile
+from OIDC claims.
+
+In the admin interface, you need to go to [configuration](https://admin.linshare-5-0-on-commit.integration-linshare.org/new/#/configuration)
+page then go to a Top or Sub Domain, click on Providers/UserProviders and create
+an 'OIDC Provider'. You will be able to provide a discriminant value aka associated
+domain identifier, using the claim 'domain_discriminator', in order to create new users in this domain.
+
+
+Look at documentation above each field for more details. Go step 1 to see how to
+add other claims.
