@@ -1,3 +1,26 @@
+## [4.2.6](https://github.com/linagora/linshare/compare/4.2.5...4.2.6) (2022-04-05) [Download link](http://download.linshare.org/versions/4.2.6/)
+
+**The 4.2.6 release of LinShare is out**
+
+- **core** : 4.2.6 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.5...4.2.6)
+- **ui-user** : 4.2.6 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.5...v4.2.6)
+- **ui-admin** : 4.2.6 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.5...v4.2.6)
+- **ui-upload-request** : 4.2.6 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.5...v4.2.6)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix Spring security issue: CVE-2022-22965
+
+* UI-User:
+    * nothing to report
+
+* UI-Admin:
+    * Issue #231: Add translation for weak password error
+
+* UI-Upload-Request:
+    * nothing to report
+
 ## [4.1.5](https://github.com/linagora/linshare/compare/4.1.4...4.1.5) (2022-04-05) [Download link](http://download.linshare.org/versions/4.1.5/)
 
 **The 4.1.5 release of LinShare is out**
