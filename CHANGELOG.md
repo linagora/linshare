@@ -1,3 +1,30 @@
+## [5.0.3](https://github.com/linagora/linshare/compare/5.0.2...5.0.3) (2022-04-06) [Download link](http://download.linshare.org/versions/5.0.3/)
+
+**The 5.0.3 release of LinShare is out**
+
+- **core** : 5.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.2...5.0.3)
+- **ui-user** : 5.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.2...v5.0.3)
+- **ui-admin** : 5.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.2...v5.0.3)
+- **ui-upload-request** : 5.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.2...v5.0.3)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix Spring security issue: CVE-2022-22965
+    * Fix retrieving sharedSpace audits
+    * Fix UserProvider findAll (prevent from NPE)
+
+* UI-User:
+    * Add missing file version.properties
+
+* UI-Admin:
+    * Issue #239: Make home route configurable, change it to Administration page
+    * Issue #232: Add editable fields and date fields to OIDC provider form
+    * Fix inconsistent type of error code between api errors and auth error
+
+* UI-Upload-Request:
+    * nothing to report
+
 ## [4.2.6](https://github.com/linagora/linshare/compare/4.2.5...4.2.6) (2022-04-05) [Download link](http://download.linshare.org/versions/4.2.6/)
 
 **The 4.2.6 release of LinShare is out**
