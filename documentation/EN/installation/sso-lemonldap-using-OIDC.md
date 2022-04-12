@@ -41,7 +41,7 @@ do:
     * Client secret: linshare
     * Public client: Off
     * for LinShare < 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc
-    * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback
+    * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback, http://linshare-admin.local/new/#!/oidccallback
   * Options/Security
     * Require PKCE: On
 
@@ -82,12 +82,31 @@ Finally just restart Tomcat : `systemctl restart tomcat`.
 
 ## Step 3: LinShare frontend configuration
 
+## Step 3.1: LinShare frontend configuration : Ui-User
+
 You need to edit the configuration file linshare-ui-user/config/config.js
 and add the following keys:
 
 ```
     ...
     homePage: 'home',
+    ...
+    oidcSetting: {
+      authority: 'http://auth.linshare.local',
+      client_id: 'linshare',
+      client_secret: 'linshare',
+      scope: 'openid email profile'
+    },
+    oidcEnabled: true,
+
+```
+
+## Step 3.2: LinShare frontend configuration : Ui-Admin
+
+You need to edit the configuration file linshare-ui-admin/new/config/config.js
+and add the following keys:
+
+```
     ...
     oidcSetting: {
       authority: 'http://auth.linshare.local',
