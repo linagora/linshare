@@ -131,9 +131,17 @@ from OIDC claims.
 In the admin interface, you need to go to [configuration](https://admin.linshare-5-0-on-commit.integration-linshare.org/new/#/configuration)
 page then go to a Top or Sub Domain, click on Providers/UserProviders and create
 an 'OIDC Provider'. You will be able to provide a discriminant value aka associated
-domain identifier, using the claim 'domain_discriminator', in order to create new users in this domain.
+domain identifier, using the claim `domain_discriminator`, in order to create new users in this domain.
 
-So you may need to create a new scope, named 'linshare' with this new claim.
+In order to be flexible, this claim is a list (ex ['DOMAIN_8']). For now
+LinShare supports only one domain at the time but we expect to be able to
+support multiple domains in the futur. This field can also contains application roles, and
+only some of them are useful for LinShare, ex: `['APP_1_ROLE_1','APP_2_ROLE_8','LINSHARE_ROLE_VIP','APP_2_ROLE_ADMIN', ...]`
+In this example, only `LINSHARE_ROLE_VIP` will be useful to match a domain 'VIP'.
+Maybe for other users, it could be `LINSHARE_ROLE_REGULAR`. These other roles can
+be provided but will be silently ignored if they do not match any domains.
+
+So you may need to create a new scope, named `linshare` with this new claim.
 Then you need to edit ui-user and ui-admin config.js file to change the scope
 value as : `scope: 'openid email profile linshare'`
 
