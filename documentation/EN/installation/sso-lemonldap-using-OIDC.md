@@ -1,6 +1,8 @@
 # Integration with LemonLDAP::NG
 
-LemonLDAP::NG is an open source Web Single Sign On software (WebSSO).
+LemonLDAP::NG is an open source Web Single Sign On (WebSSO) supporting multiple
+protocoles, like CAS, SAML, header injections, OIDC, ... In this case, we are
+going to use OIDC which is the recommended protocole.
 
 
 ## Resume
@@ -35,15 +37,18 @@ do:
   * exported attributes:
     * email => mail
     * family_name => sn
-    * name => givenName
+    * given_name => givenName
   * Options/Basic
     * ClientID: linshare
     * Client secret: linshare
     * Public client: Off
     * for LinShare < 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc
-    * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback, http://linshare-admin.local/new/#!/oidccallback
+    * for LinShare >= 5 : Allowed redirection addresses for login: http://linshare-user.local/#!/oidc/callback, http://linshare-admin.local/new/#/oidc/callback
   * Options/Security
     * Require PKCE: On
+
+NB: Prior LinShare 5.0, it was:
+    * name => givenName
 
 Now you need to save to apply the configuration. 
 Hint you will need the Issuer identifier URL for the next step, so grab it
@@ -127,6 +132,10 @@ In the admin interface, you need to go to [configuration](https://admin.linshare
 page then go to a Top or Sub Domain, click on Providers/UserProviders and create
 an 'OIDC Provider'. You will be able to provide a discriminant value aka associated
 domain identifier, using the claim 'domain_discriminator', in order to create new users in this domain.
+
+So you may need to create a new scope, named 'linshare' with this new claim.
+Then you need to edit ui-user and ui-admin config.js file to change the scope
+value as : `scope: 'openid email profile linshare'`
 
 
 Look at documentation above each field for more details. Go step 1 to see how to
