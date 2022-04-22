@@ -25,6 +25,10 @@
    - Restricted contact list
    - Moderator list 
 - In Moderators list tab, I can see the current Moderators list of that guest
+- On moderator list, I can see a filter "Role" with the default option is "All"
+- When I click on this filter, there wil be a drop-down list with options: All/Simple/Admin
+- If I select one role and click enter, the system will display the moderators with selected role
+- I can type in search bar to search moderators by email/first name/ Last name.
 
 **UC1. Add a Moderator**
 
