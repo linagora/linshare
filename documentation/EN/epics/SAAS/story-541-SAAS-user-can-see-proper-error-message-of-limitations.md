@@ -22,6 +22,7 @@
      - Number of workspaces: [story 536](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/-/blob/master/documentation/EN/epics/new-admin-portal/story-536-admin-can-manage-number-of-workspaces-that-can-be%20created-in-a-domain.md) 
      - Number of workgroups inside a workspace: [story 538](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/-/blob/master/documentation/EN/epics/new-admin-portal/story-538-admin-can-manage-number-of-workgroups-that-can-be-created-inside-a-workspace.md)
      - Number of recipients in an Upload request: [story 539](https://ci.linagora.com/linagora/lgs/linshare/products/linshare-github/-/blob/master/documentation/EN/epics/new-admin-portal/story-539-admin-can-manage-number-of-recipients-of-an-upload-request.md)
+     - Number of uploaded file per day: [story 560](./story-560-limit-the-number-of-uploaded-files-per-day.md)
    - If saasMode=true, user is using SAAS offer, the error messages when user reaches limitations are changed as following: 
      - With number of workspaces:
         - The message is "You have reached maximum number of workspaces. Please contact your company owner to upgrade the company plan at [Console]()."
@@ -29,6 +30,8 @@
         - The message is: " You have reached maximum number of workgroups inside this workspace. Please contact your company owner to upgrade the company plan at [Console]()."
      - With number of recipients of an upload request: 
         - The message is: "You have reached maximum number of recipients for this upload request.  Please contact your company owner to upgrade the company plan at [Console]()."
+     - With number of uploaded files per day:
+        - The message is: "You have reached maximum number of uploaded files per day. Please contact your company owner to upgrade the company plan at [Console]()."
 - When user clicks on the link [Console](), user is redirected to Console page. 
 
 #### Postconditions
