@@ -43,7 +43,7 @@
 - Given that the functionality Limit number of uploaded files per day is enabled 
 - When I upload a file to Myspace in LinShare, the system will validate:
 - If my total uploaded files in Myspace today are smaller than value of "Max uploaded file count" (set by domain admin), the uploading is processed as normally 
-- If my total uploaded files in Myspace today are smaller than value of "Max uploaded file count" (set by domain admin), there will be an error message: "You have reached maximum number of uploaded files per day."
+- If my total uploaded files in Myspace today has reached the value of "Max uploaded file count" (set by domain admin), there will be an error message: "You have reached maximum number of uploaded files per day."
 
 **UC3. As a user, I want to upload multiple files to Myspace with the limitation of number of files**
 
