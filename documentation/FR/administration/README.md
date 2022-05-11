@@ -21,3 +21,5 @@
 * [Configuration de la complexité des mot de passe](configuration-password-policy.md)
 
 * How to [login into LinShare without email](how-to-login-without-email.md).
+
+* How to [migrate your Log4j 1.x configuration to Log4j 2.x](how-to-migrate-log4j-configuration.md).
