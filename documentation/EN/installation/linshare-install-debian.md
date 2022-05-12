@@ -343,6 +343,9 @@ options, get the commented lines in the header of the `linshare.properties` file
 All starting needful options by default to LinShare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
+
+N.B.: if you are using __LinShare__ version >= 5.1.0, then the `log4j.properties` should be replaced by `log4j2.properties`
+
 It is required to add the following lines in: `/etc/default/tomcat9`:
 
 ```conf
