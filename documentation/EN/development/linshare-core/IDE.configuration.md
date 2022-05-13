@@ -184,7 +184,7 @@ Go to your Eclipse and click on the "run" tab then choose "run configuration"
 Richt click on Jetty Webapp and choose new. Rename it the way you want, you can see that some options are already pre-filled.
 Add the those lines to the VM arguments :
 
-      -Dlog4j.configuration=file:${workspace_loc}/configurations/my_conf1/log4j.properties
+      -Dlog4j2.configurationFile=file:${workspace_loc}/configurations/my_conf1/log4j2.properties
       -Dlinshare.config.path=file:${workspace_loc}/configurations/my_conf1
       -XX:MaxPermSize=256m -Djava.awt.headless=true -Xms512m -Xmx1538m  -XX:-UseSplitVerifier
 
@@ -224,7 +224,7 @@ You can create a new server by going on File>New>server. click next and move lin
 On servers views, double click on your linshare server, and click on __Open launch configuration__.
 - In the Arguments tab you have add those lines:
 
-      -Dlog4j.configuration=file:${workspace_loc}/configurations/my_conf1/log4j.properties
+      -Dlog4j2.configurationFile=file:${workspace_loc}/configurations/my_conf1/log4j2.properties
       -Dlinshare.config.path=file:${workspace_loc}/configurations/my_conf1
       -Djava.awt.headless=true -Xms512m -Xmx1538m
 
