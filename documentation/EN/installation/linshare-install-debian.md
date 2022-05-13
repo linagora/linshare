@@ -351,7 +351,7 @@ It is required to add the following lines in: `/etc/default/tomcat9`:
 ```conf
 JAVA_OPTS="${JAVA_OPTS} -Xms512m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
-JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j2.configurationFile=file:/etc/linshare/log4j2.properties"
 ```
 If you want to change the location of tmp directory you need to override the default directory used by Tomcat9 which is `/tmp`, by editing `/etc/default/tomcat9` and add:
 

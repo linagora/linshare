@@ -23,7 +23,7 @@ Here are all parameters from the __properties__ file:
 ## <a name="num1">Path and Files</a>
 
 -   java.io.tmpdir (`/tmp/` by default).
--   log4j.configuration (`file:/etc/linshare/log4j.properties` by default).
+-   log4j2.configuration (`file:/etc/linshare/log4j2.properties` by default).
 -   linshare.config.path (`file:/etc/linshare/` by default).
 
 ## <a name="num2">Databases</a>

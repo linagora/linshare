@@ -369,7 +369,7 @@ Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/e
 ```conf
 JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true -Xms512m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
-JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j2.configurationFile=file:/etc/linshare/log4j2.properties"
 ```
 
 Au cas ou vous voulez changer l'emplacement des fichiers temporaires, vous pouvez changer le répertoire utilisé par défaut par Tomcat9 `/tmp` et modifiez `/etc/default/tomcat9` en ajoutant:

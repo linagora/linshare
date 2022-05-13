@@ -17,7 +17,7 @@ from `log4j.properties` to `log4j2.properties`.
 Then, you will have to take care of this change in case you are defining it in your runtime command.  
 Example:  
 ```
-JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j2.properties"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j2.configurationFile=file:/etc/linshare/log4j2.properties"
 ```
 
 #### 2.2) Root elements
