@@ -47,6 +47,7 @@
 - If I do not select the checkbox and click button Log-in
    - If the server URL is valid, a new screen will be displayed 
    - I input username and password to login: The log-in process is as normal
+   - I can select a button "Forgotten password". If I click on this button, I am re-direct to a web-link to reset password. 
    - If 2FA is enabled:
       - If log-in credentials are correct, 2FA popup is displayed. I have to fill the 6-digits code on my FreeOTP app and click button Log-in to validate 
       - If the code is valid, I log-in system successfully
