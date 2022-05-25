@@ -55,6 +55,20 @@ Hint you will need the Issuer identifier URL for the next step, so grab it
 before leaving the manager. (See: OpenID Connect Service / Issuer identifier)
 In our example we will use "http://auth.linshare.local".
 
+* Add OpenID Relying Party: LinShareMobile
+  * exported attributes:
+    * email => mail
+    * family_name => sn
+    * given_name => givenName
+  * Options/Basic
+    * ClientID: linshare-mobile
+    * Client secret: linshare
+    * Public client: Off
+    * PostLogoutRedirectUris : "linshare.mobile://oauthredirect" // must be, unless you can change that in mobile
+    * RedirectUris: "linshare.mobile://oauthredirect"  // must be, unless you can change that in mobile
+  * Options/Security
+    * Require PKCE: On
+
 ## Step 2: LinShare backend configuration
 
 You need to enablde OIDC support in LinShare.
@@ -104,6 +118,21 @@ and add the following keys:
     },
     oidcEnabled: true,
 
+```
+
+You can add this if you want to enable OIDC for the mobile app:
+```
+    ...
+    mobileOidcEnabled: true,
+    mobileOidcSetting: {
+      authority: 'https://auth.linshare.local',
+      client_id: 'linshare-mobile',
+      redirect_url: 'linshare.mobile://oauthredirect',
+      post_logout_redirect_uri: 'linshare.mobile://oauthredirect',
+      response_type: 'code',
+      scope: 'openid email profile'
+    },
+    ...
 ```
 
 ## Step 3.2: LinShare frontend configuration : Ui-Admin
