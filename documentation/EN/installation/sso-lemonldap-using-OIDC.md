@@ -120,21 +120,6 @@ and add the following keys:
 
 ```
 
-You can add this if you want to enable OIDC for the mobile app:
-```
-    ...
-    mobileOidcEnabled: true,
-    mobileOidcSetting: {
-      authority: 'https://auth.linshare.local',
-      client_id: 'linshare-mobile',
-      redirect_url: 'linshare.mobile://oauthredirect',
-      post_logout_redirect_uri: 'linshare.mobile://oauthredirect',
-      response_type: 'code',
-      scope: 'openid email profile'
-    },
-    ...
-```
-
 ## Step 3.2: LinShare frontend configuration : Ui-Admin
 
 You need to edit the configuration file linshare-ui-admin/new/config/config.js
@@ -150,6 +135,23 @@ and add the following keys:
     },
     oidcEnabled: true,
 
+```
+
+## Step 3.3: LinShare mobile app configuration:
+
+You can add this if you want to enable OIDC for the mobile app:
+```
+    ...
+    mobileOidcEnabled: true,
+    mobileOidcSetting: {
+      authority: 'https://auth.linshare.local',
+      client_id: 'linshare-mobile',
+      redirect_url: 'linshare.mobile://oauthredirect',
+      post_logout_redirect_uri: 'linshare.mobile://oauthredirect',
+      response_type: 'code',
+      scope: 'openid email profile'
+    },
+    ...
 ```
 
 ## Step 4: OIDC User Provider (Optional)
