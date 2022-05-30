@@ -1,3 +1,42 @@
+## [5.0.4](https://github.com/linagora/linshare/compare/5.0.3...5.0.4) (2022-05-30) [Download link](http://download.linshare.org/versions/5.0.4/)
+
+**The 5.0.4 release of LinShare is out**
+
+- **core** : 5.0.4 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.3...5.0.4)
+- **ui-user** : 5.0.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.3...v5.0.4)
+- **ui-admin** : 5.0.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.3...v5.0.4)
+- **ui-upload-request** : 5.0.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.3...v5.0.4)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Downloading should not fail when mail notification to document owners fail.
+    * Add support of unlimited expiry date for user api.
+    * Fix update of unlimited parameter of integer functionalities
+    * Fix wrong number of remaining days of UR
+    * Raising exception when user belong to multiple domains (domain discriminator)
+    * Fix usage of given_name for OIDC claim.
+    * Fix OIDC provider creation and update
+    * Add debug traces for OIDC provider.
+    * Add specific error code when OIDC user provider is not found by its discriminant.
+    * Add default available languages for functionalities.
+
+* UI-User:
+    * Issue #1136: French translation issue for upload request
+    * Issue #1132: Add more OIDC errors handling
+    * Issue #1131: Do not authRedirect for oidc authentication route
+
+* UI-Admin:
+    * Issue #258: Fix unable to create workspace filter
+    * Issue #249: Add error translation for OIDC error
+    * Issue #238: Handle properly 403 http code
+    * Issue #247: Fix oidc redirect uri, it should be adapt to webserver origin and path
+    * Issue #243: Rename oidc callback url
+    * Issue #243: Move config.js to a config folder
+
+* UI-Upload-Request:
+    * nothing to report
+
 ## [5.0.3](https://github.com/linagora/linshare/compare/5.0.2...5.0.3) (2022-04-06) [Download link](http://download.linshare.org/versions/5.0.3/)
 
 **The 5.0.3 release of LinShare is out**
