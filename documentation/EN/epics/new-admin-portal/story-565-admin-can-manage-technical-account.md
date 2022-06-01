@@ -28,13 +28,15 @@
         * Name 
         * Email 
         * Status: Enabled or disabled
-        * Role: Currently there is only 1 role : Delegation 
+        * Role: Currently there is only 1 role : Delegation
+        * Locked account: If the account has been locked, there will be a label. 
 * A search bar
 * A sort field
 * When I click on the search bar, there will be a drop-down list of search criteria including:
     * Status: When select this search criteria, the search bar will display: Status = "dropdown list" The options are: Enabled/Disabled. I select one status, the search tag is completed with a delete icon.Then I click enter the system will search technical account which have selected status.
     * Name: When I select this search criteria, the search bar will display: Name contains = "text input". I click Enter, the search tag is completed and an icon Delete. Then I click enter the system will search technocal accounts which have field Name contains text inputted.
     * Identifier: When I select this search criteria, the search bar will display: Id = "text input". I click Enter, the search tag is completed and an icon Delete. Then I click enter the system will search technical accounts which have id contains  inputted text. 
+    * Locked account : When I select this search criteria, the search bar will display: Locked account  = "dropdown list". with options Yes/No. I select one option, the search tag is completed with a delete icon.Then I click enter the system will search technical account which have been locked or unlocked.
 * When I start typing on search bar, the system will show default search criteria is email 
 - I can search technical account by one of above criteria or combine them
 - Each search criteria in the search bar is seperated by a delete icon. I can click this icon to delete the criteria
@@ -86,12 +88,16 @@
    - If there is no error, the new password is saved and there will be a notification message 
 
 **UC4. Delete a technical account**
+- Delete 1 account: 
+   - On Account detail screen, I can see a button Delete
+   - When I click on this button, there will be a confirmation popup: You are about to delete this technical account, this procedure is irreversible. Do you want to proceed??"
+   - If I choose Yes, the account is removed and I am back to the listing technical account screen.
+- Delete multiple account:
+   - On Listing account screen, I can select multiple account and see option Delete
+   - When I select Delete, there will be a confirmation popup.
+   - If I choose Yes, all selected account will be removed from the list
 
-- On Account detail screen, I can see a button Delete
-- When I click on this button, there will be a confirmation popup: You are about to delete this technical account, this procedure is irreversible. Do you want to proceed??"
-- If I choose Yes, the account is removed and I am back to the listing technical account screen.
-
-**UC6. Lock/unlock a technical account**
+**UC5. Lock/unlock a technical account**
 
 - When a technical account log-in unsuccessfully several times, the account will be locked by the rule:
    - After 3 attempts : account is locked for 10 minutes. 
@@ -101,14 +107,20 @@
    - After 15 attempts : account is locked indefinitely.
 
 - After locking period, the account will be unlocked automatically, except fot the case locking indefinitely.
-- When a technical account is locked, when I open detail screen of that account on admin portal, I can see a message "This user is locked due to many failed login attempts" and a button Unlock
-- When I click on this button, the account is unlocked.
+- Unlock a single account:
+   - When a technical account is locked, when I open detail screen of that account on admin portal, I can see a message "This user is locked due to many failed login attempts" and a button Unlock
+   - When I click on this button, the account is unlocked.
+
+- Unlock multiple accounts: 
+   - On listing account screen, If I select multiple locked accounts, the option Unlock will be enabled.
+   - I select Unlock, all selected account will be unlocked. 
 
 #### Postconditions
 
 - When a technical account is created successfully, an identifier is generated for that account and user can use this information with password to log-in.
 - This technical account can perform action on behalf of any user in the platform. The permissions can be edited after account creation. 
 - After account deletion, user cannot use information of that account to log-in to LinShare on behalf of other user
+- When an account is disabled, he cannot log-in to LinShare 
 
 [Back to Summary](#summary)
 
