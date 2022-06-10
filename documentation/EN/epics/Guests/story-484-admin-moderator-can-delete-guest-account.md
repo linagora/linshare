@@ -19,15 +19,15 @@
 
 - From menu, I go to Contacts => Guests
 - I can see all guests in my domain
-- If I am manager of the guest, When I hover that guest or click on three-dot button, I can see options: Detail, Edit, Delete
+- If I am admin moderator of the guest, When I hover that guest or click on three-dot button, I can see options: Detail, Edit, Delete
 - I select option :"Delete", a confirmation popup will be displayed 
 - I click button "Yes, Delete"
 
 #### Postconditions
 
 - The deleted guest is removed from my guest list 
-- Only guest's manager can remove that guest
-- Every other user cannot see that deleted guest on his guest list.
+- Only admin moderators can remove that guest
+- Every other user cannot see that deleted guest on his guest list after deletion
 
 [Back to Summary](#summary)
 
