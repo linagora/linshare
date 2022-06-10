@@ -17,9 +17,11 @@
 
 ## TODO
 
-* [ ] add link towards EPIC to "linked issues" section
-* [ ] add links towards backend technical issues to "linked issues" section AND label BACKEND:TODO
-* [ ] add links towards frontend technical issues to "linked issues" section AND label FRONTEND:TODO
+* [ ] link added towards EPIC to "linked issues" section
+* [ ] links added towards backend technical issues to "linked issues" section AND label BACKEND:TODO
+* [ ] links added towards frontend technical issues to "linked issues" section AND label FRONTEND:TODO
+* [ ] checked if design is done or not needed
+
 
 [Back to Summary](#summary)
 
