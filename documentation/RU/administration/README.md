@@ -19,3 +19,5 @@
 * How to [migrate your Log4j 1.x configuration to Log4j 2.x](how-to-migrate-log4j-configuration.md).
 
 * How to [put log configuration in debug](how-to-put-log-configuration-in-debug.md).
+
+* How to [activate GDPR on LinShare](how-to-activate-gdpr.md)
