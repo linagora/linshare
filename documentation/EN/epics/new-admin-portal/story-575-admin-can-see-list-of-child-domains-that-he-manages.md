@@ -39,7 +39,15 @@
 - If I choose Yes, all selected domains will be removed from the list
 - When I select a domain to delete, its nested domains must be selected too. 
 
+**UC3. Search domain by name**
+
+- In domain listing screen, I can see a search bar "Search by name"
+- I input text in Search bar then click Enter, the system will search for domains which have name matching with inputted text
+- The result will include all child domain levels
+
 #### Postconditions
+
+- paginated and the default number of displayed items is 25, I can change this number at the bottom of page.
 
 [Back to Summary](#summary)
 
