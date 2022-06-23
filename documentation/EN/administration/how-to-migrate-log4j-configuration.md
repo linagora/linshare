@@ -47,6 +47,14 @@ appender.LINSHARE.name=LINSHARE
 Then, you can have a look on the extra elements for each appenders on this documentation:  
 https://logging.apache.org/log4j/2.0/manual/appenders.html
 
+You can define a `LOG4J2_APPENDER` environment variable in order to change the default value: `CONSOLE`.  
+In the default configuration, the available appenders are: 
+- `CONSOLE`: append to the default system log
+- `CONSOLE_JSON`:  append to the default system log, but in JSON format
+- `LINSHARE`: append to a specific file (`/var/log/tomcat9/linshare.log`)
+
+You can also use specify multiple appenders in the env variable by joining them with a comma (ex. `CONSOLE, LINSHARE`)
+
 #### 2.4) Loggers
 
 As for appenders, loggers are now defined in two lines:
