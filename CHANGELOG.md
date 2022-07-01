@@ -1,3 +1,85 @@
+## [5.1.0](https://github.com/linagora/linshare/compare/5.0.4...5.1.0) (2022-06-30) [Download link](http://download.linshare.org/versions/5.1.0/)
+
+**The 5.1.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.0-to-v5.1.md).
+
+- **core** : 5.1.0 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.4...5.1.0)
+- **ui-user** : 5.1.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.4...v5.1.0)
+- **ui-admin** : 5.1.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.4...v5.1.0)
+- **ui-upload-request** : 5.1.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.4...v5.1.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **Log4j configuration**
+
+  As many of you have requested, we have upgraded the Log4J version from 1.x to the latest 2.x.  
+  This change comes with a new log4j configuration file, in order to help you take a look on the [migration guide](documentation/EN/administration/how-to-migrate-log4j-configuration.md).
+
+#### Main features:
+* **Moderator**
+
+  This new feature is bringing a new way for managing Guests. Rather than having one owner for each guest, now you can have multiple moderator for each guest.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/01.new.moderator.png" alt="LinShare Moderator" width="600"/>
+
+* **GDPR**
+
+  The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy in the European Union (EU) and the European Economic Area (EEA).  
+Hence, data such as **first name**, **last name**, **mail** will be anonymized after one year of inactivity in LinShare.  
+  You can [activate this feature in the backend configuration.](documentation/EN/administration/how-to-activate-gdpr.md)
+
+* **SAAS Limitations**
+
+  Using LinShare as a SAAS service for free users may cost a lot to a company.  
+  We introduced some configuration in order to limit:
+  * number of workspaces that can be created by domain
+  * number of workgroup that can be created in a workspace
+  * number of opened/closed upload requests per users  
+
+  This can be configured on the admin side at functionalities level.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/02.new.saas-limitation.png" alt="LinShare SAAS limitation" width="600"/>
+
+* **Profile page**
+
+  The profile page for users and guests has been enhanced:
+  * adding favorite recipients list for users
+  * adding favorite recipients list and restricted contacts list for guests
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/03.guest-profile-page.png" alt="LinShare Guest profile page" width="600"/>
+
+* **New Admin portal**
+
+  We are continuing the migration of LinShare admin portal to the new design.
+
+* Functionalities
+  In this version, the functionalities management has been rewritten.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/04.new-functionalities.png" alt="LinShare new Functionalities admin portal" width="600"/>
+
+* Welcome Messages
+  Also, the welcome messages has been rewritten.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/04.new-welcome-messages.png" alt="LinShare new Functionalities admin portal" width="600"/>
+
+* **New emails**
+
+  We have defined new kinds of emails when a user is uploading a file or a new revision in a work group.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/05.new-email-new-revision.png" alt="LinShare new mail - New revision" width="600"/>
+  <img src="http://download.linshare.org/screenshots/5.1.0/05.new-email-new-document.png" alt="LinShare new mail - New document" width="600"/>
+
+* **New upgrade task**
+
+  A new kind of upgrade task has been introduced: OPTIONAL.  
+  Such task might be processed by the admin of LinShare if he needs to.  
+  They are non-blocking, and the upgrade icon will not blink.  
+  Tasks regarding special behaviour / process will use this kind of upgrade task.
+
 ## [5.0.4](https://github.com/linagora/linshare/compare/5.0.3...5.0.4) (2022-05-30) [Download link](http://download.linshare.org/versions/5.0.4/)
 
 **The 5.0.4 release of LinShare is out**
