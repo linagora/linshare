@@ -119,6 +119,19 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  ```bash
  $ psql -h `host` -d linshare -U linshare -f Migration_5.0.0_to_5.1.0.sql
  ```
+If this script is producing such error:
+```bash
+ERROR:  permission denied to create extension "uuid-ossp"
+HINT:  Must be superuser to create this extension.
+```
+then, you will have to follow those commands:
+```bash
+$ su - postgres
+$ psql
+postgres=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+finally, you can retry to run the migration script.
+
  Once the migration script is done, you can check the database's version through the following query: `select * from version`.
 
  The next step, you should replace the `linShare.war` with `LinShare-core-5.1.0.war`:

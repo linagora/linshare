@@ -117,6 +117,19 @@ Afin de mettre à jour LinShare de 5.0 à 5.1 vous devez exécuter ce script :
 ```bash
 $ psql -h `host` -d linshare -U linshare -f Migration_5.0.0_to_5.1.0.sql
 ```
+Si ce script produit ce type d'erreur:
+```bash
+ERROR:  permission denied to create extension "uuid-ossp"
+HINT:  Must be superuser to create this extension.
+```
+alors, vous devrez exécuter les commandes suivantes:
+```bash
+$ su - postgres
+$ psql
+postgres=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+enfin, vous pourrez rejouer le script de migration.
+
 
 Vous pouvez afficher la version de la base de données en exécutant la requête suivante `select * from version`.
 
