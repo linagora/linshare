@@ -52,6 +52,11 @@ Pour cette installation, télécharger les fichiers, nommés ci-dessous, sur le 
   * linshare-ui-user-{VERSION}.tar.bz2
   * linshare-ui-upload-request-{VERSION}.tar.bz2
 
+Assurez-vous que la langue par défaut de votre système est `en_US.UTF-8` par le biais de cette commande:
+```bash
+dpkg-reconfigure locales
+```
+
 Afin de manipuler les archives, il sera nécessaire d’utiliser les outils `unzip` et `bzip2` :
 ```bash
 aptitude install unzip bzip2
@@ -63,10 +68,10 @@ Créer le répertoire de configuration de __LinShare__, puis copier les fichiers
 ```bash
 mkdir -p /etc/linshare
 mv /tmp/linshare_data/linshare-core-{VERSION}.war /etc/linshare/linshare.war
-unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
+unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j2}.*
 Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
-  inflating: /etc/linshare/log4j.properties
+  inflating: /etc/linshare/log4j2.properties
 mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
 ```
 
@@ -94,7 +99,8 @@ __Linshare__ requière l’utilisation d’une base de données (PostgreSQL) pou
 - La version installée pour est PostgreSQL 11, vous pouvez l'installer avec :
 
 ```bash
-aptitude install postgresql
+apt update
+apt install postgresql
 ```
 
 > Vous pouvez trouver les versions requises des dépendances de LinShare [ici](./requirements.md)
@@ -311,8 +317,8 @@ linshare.documents.thumbnail.pdf.enable=true
 Cela va permettre de générer des aperçus après chaque dépôt de fichiers.
 
 Pour utiliser ce mode, télécharger les fichiers suivants depuis l'adresse [http://download.linshare.org/versions/](http://download.linshare.org/versions/) :
-* linshare-thumbnail-server-{VERSION}.jar
-* linshare-thumbnail-server-{VERSION}.yml
+* thumbnail-server-{VERSION}.jar
+* thumbnail-server-{VERSION}.yml
 
 > Note :<br/>
 Dans cette procédure, on considérera que les fichiers sont téléchargés dans le répertoire temporaire `/tmp/linshare_data`. Il est bien sûr possible d'utiliser n'importe quel autre dossier temporaire.
@@ -320,10 +326,10 @@ Dans cette procédure, on considérera que les fichiers sont téléchargés dans
 > Note <br>
 Par défaut, le serveur est configuré pour écouter sur le port 80 : il est possible de le changer.
 
-Installer le fichier `linshare-thumbnail-server-{VERSION}.yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et installer l'archive java `linshare-thumbnail-server-{VERSION}.jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar` :
+Installer le fichier `thumbnail-server-{VERSION}.yml` dans `/etc/linshare/linshare-thumbnail-server.yml` et installer l'archive java `thumbnail-server-{VERSION}.jar` dans le répertoire  `/usr/local/sbin/linshare-thumbnail-server.jar` :
 ```java
-mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
-mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+mv /tmp/linshare_data/thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+mv /tmp/linshare_data/thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
 Créer un service systemd permet d'automatiser le lancement du serveur thumbnail en arrière plan. Créer le fichier `/etc/systemd/system/linshare-thumbnail-server.service`, et ajouter le contenu suivant :
@@ -362,7 +368,7 @@ Pour spécifier l’emplacement de la configuration de __LinShare__ (fichier `li
 
 L’ensemble des options de démarrage par défaut nécessaires à __Linshare__ sont indiquées dans les en-têtes des fichiers de configuration suivants :
   * `/etc/linshare/linshare.properties`
-  * `/etc/linshare/log4j.properties`
+  * `/etc/linshare/log4j2.properties`
 
 Il est indispensable de modifier la variable `JAVA_OPTS` lignes ci-dessous : `/etc/default/tomcat9`:
 
@@ -413,7 +419,7 @@ xom-*.jar
 Déployer l’archive de l’application __LinShare__ dans le serveur Tomcat :
 
 ```bash
-mv /etc/linshare/linshare.war /var/lib/tomcat9/webapps/linshare.war
+mv /tmp/linshare_data/linshare-core-{VERSION}.war /var/lib/tomcat9/webapps/linshare.war
 ```
 
 ## <a name="apache">Installation du serveur web</a>
@@ -669,7 +675,7 @@ Avant le premier accès à __LinShare__, vous devez ajouter ` à `/etc/hosts`:
 Le service __LinShare__ est désormais accessible aux adresses suivantes :
 
 Pour l’interface utilisateur :
-  * http://linshare-user.local/linshare
+  * http://linshare-user.local/
 
 ![linshare-user-000002010000047E01400157A9D6C9G6](../../img/linshare-user-000002010000047E01400157A9D6C9G6.png)
 
