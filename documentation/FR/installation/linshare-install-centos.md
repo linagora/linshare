@@ -1,3 +1,5 @@
+# WARNING: deprecated
+
 # Installation de LinShare sur CentOS
 
    * [Téléchargement de LinShare](#dlLinshare)
