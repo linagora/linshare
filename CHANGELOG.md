@@ -19,6 +19,9 @@
   As many of you have requested, we have upgraded the Log4J version from 1.x to the latest 2.x.  
   This change comes with a new log4j configuration file, in order to help you take a look on the [migration guide](documentation/EN/administration/how-to-migrate-log4j-configuration.md).
 
+  If you are deploying LinShare in Docker, then the Dockerfile has been changed according to this modification.  
+  Be aware the both environment variable and its value has to be changed if you are using a custom Docker image.
+
 #### Main features:
 * **Moderator**
 
