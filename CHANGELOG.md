@@ -22,6 +22,11 @@
   If you are deploying LinShare in Docker, then the Dockerfile has been changed according to this modification.  
   Be aware the both environment variable and its value has to be changed if you are using a custom Docker image.
 
+  For docker images, the log format has changed:
+
+    * We added more details to each record for linshare-ui-user and linshare-ui-admin, see [here](https://github.com/linagora/linshare-ui-user-dockerfile/commit/aab2741f0636d2900db4b095b224021e1d42067b)
+    * For linshare-backend image, we provide new appenders, see [here](https://github.com/linagora/linshare-backend-dockerfile), parameter: LOG4J2_APPENDER
+
 #### Main features:
 * **Moderator**
 
