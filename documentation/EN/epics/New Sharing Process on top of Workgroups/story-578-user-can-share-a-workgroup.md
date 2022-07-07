@@ -17,19 +17,8 @@
 * After logged-in successfully, I go to Shared space.
 
 #### Description
-**UC1. Get Sharing link**
-* When I click three-dots button of a workgroup that I am admin of, I can see option "Get sharing link" 
-* I select this option, a new screen will be opened:
-* In this new screen, I can see:
-  - A link: this link is generated automatically when sharing first time by the system. I can click button Copy next to this link. Another button should let me renew this link.
-  - Checkbox "Expiration":
-     - When I select this checkbox, a date picker will be shown and I can select an expiry date for this share.
-     - The expiry date must > today. 
-     - On the expiry date, the sharing link will be removed. 
-  - Checkbox: Allow people with this link to request access
-     - When I select this checkbox, people with this link can send a request to access the workgroup.
 
-**UC2. Add a member who is not yet an user to a workgroup**
+**UC1. Add a member who is not yet an user to a workgroup**
 
 - Given that I am a workgroup admin
 - I click button Add member, then the Member tab of that workgroup will be opened.
@@ -39,9 +28,17 @@
 - If I choose Yes, the inputted email will be added as a guest account automatically, and there will be a toast message :"The guest account was created successfully"
 - The external email now become a guest and added as a member to the workgroup.
 
-#### Postconditions
+**UC2 Receiver can access to a shared workgroup**
 
-* After a sharing link of a workgroup is created, if I click on three dot button of that workgroup, the option "Get sharing link" will be replaced by "Manage sharing link"
+- Given that I am an external user who have not had LinShare account and  a LinShare user granted me access to a LinShare workgroup
+- I received an email notification via email about the share.
+- If I am an external user with no LinShare account: I receive 2 emails:
+   - The first email to inform that I am invited to a LinShare with a guest account. I need to activate guest account by clicking on the link and change password. 
+   - The second email is to inform that I am invited to a workgoup. There will be a link to the shared workgroup. When I click to this link:
+      - If I am logging in LinShare with activated guest account, I am redirected to the shared workgroup in Shared space
+      - If I have not logged in LinShare, the log-in screen will be opened.
+
+#### Postconditions
 
 [Back to Summary](#summary)
 
