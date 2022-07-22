@@ -1,3 +1,65 @@
+## [5.1.1](https://github.com/linagora/linshare/compare/5.1.0...5.1.1) (2022-07-22) [Download link](http://download.linshare.org/versions/5.1.1/)
+
+**The 5.1.1 release of LinShare is out**
+
+- **core** : 5.1.1 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.0...5.1.1)
+- **ui-user** : 5.1.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.0...v5.1.1)
+- **ui-admin** : 5.1.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.0...v5.1.1)
+- **ui-upload-request** : 5.1.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.0...v5.1.1)
+
+#### Bug fixes and improvements
+
+* Core:
+
+  * Add missing value WORKSPACE_DELETION to enum LogActionCause for Upgrade tasks
+  * Fix log4j2 configuration
+  * Trying to fix cast issue between ShareEntry and AnonymousShareEntry
+  * Do not fail upload in workgroups when some members' emails do not exist.
+  * Fix NPE in audit (missing domain field)
+  * Do not fail CloseExpiredUploadRequestBatchImpl batch when there is unreachable email.
+  * Add information about Tomcat temporary folder
+  * Set expiration policy to 24h for new password link when creating guests
+  * Guests optimization: do not load guest author for all guests on findAll.
+  * Guests optimization: do not load restricted contacts on findAll.
+  * Do not return removed and expired guests on /user/v5/guests endpoint
+
+* UI-Admin:
+
+  * Issue #290: Remove number type in validate form
+  * Issue #267: add reset event to clear filter and sort
+  * Issue #281: Include backspace to remove latest critial search
+  * Issue #281: Add search button on token input
+  * Issue #281: Update fr locale
+  * Issue #281: Fix issue on not receiving default option even though option selected
+  * Issue #281: Improvel backspace action handler to remove only part of token
+  * Issue #281: account type: root should never appear
+  * Issue #281: Upload right criteria/Guest creation rights is expecting yes or no, but i can provide anything
+  * Issue #281: Handle default active first option
+  * Issue #283: No hyperlink toward welcome message in Domain details view
+  * Issue #268: Fix User details grid layout on md screen
+  * Issue #277: Missing french,vietnamese and russian  translation for DOMAIN.FIELDS.PARENT_DOMAIN
+  * Issue #284: Add hyperlinks to guest moderator list item
+  * Issue #270: Use css variable for icon fill color
+  * Correct the usage of a-table for User List
+  * Issue #270 Change shared space list to a table, add hyperlink to fields
+  * Issue #282: Fix APIError not using default message when there is no translated error message
+  * Issue #282: Fix unable to save restricted contacts for guest
+  * Issue #271: Sort functionalities by name
+  * Issue #212: Fix issue share space filter not working
+  * Issue #212: fix role selector notworking on share-spaces add member modal
+
+* UI-User:
+
+  * Issue #1153: Fix hover color of header icon button
+  * Issue #1154: User can update external user's notification language
+  * Issue #1150: Add missing audit log
+  * Issue #1152: Add warning text in guest moderator tab
+  * Issue #1151: Change default guest filter
+
+* UI-Upload-Request:
+    * nothing to report
+
+
 ## [5.1.0](https://github.com/linagora/linshare/compare/5.0.4...5.1.0) (2022-06-30) [Download link](http://download.linshare.org/versions/5.1.0/)
 
 **The 5.1.0 release of LinShare is out**
