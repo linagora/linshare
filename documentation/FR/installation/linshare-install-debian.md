@@ -16,10 +16,11 @@
    * [Premier accès](#firstAccess)
    * [Invitation de dépôt](#uploadRequest)
 
-Ce guide propose l'installation de la version __LinShare__ 5 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
+Ce guide propose l'installation de la version __LinShare__ 5.1 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
 
 > Note :<br/>
 > Les guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 5.0](https://github.com/linagora/linshare/blob/maintenance-5.0.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/FR/installation/linshare-install-debian.md)
@@ -68,6 +69,8 @@ Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
   inflating: /etc/linshare/log4j.properties
 mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
+chown root:tomcat /etc/linshare/*
+chmod 640 /etc/linshare/*
 ```
 
 ## <a name="instalOpenJDK">Installation de OpenJDK Java JRE</a>
