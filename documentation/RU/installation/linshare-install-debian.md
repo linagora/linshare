@@ -73,6 +73,8 @@ __LinShare__ можно бесплатно и просто скачать по �
 [root@localhost ~]$ mv linshare-core-{VERSION}.war linshare.war
 [root@localhost ~]$ mkdir -p /etc/linshare
 [root@localhost ~]$ unzip -j -d /etc/linshare/ linshare.war WEB-INF/classes/{linshare,log4j}.*
+[root@localhost ~]$ chown root:tomcat /etc/linshare/*
+[root@localhost ~]$ chmod 640 /etc/linshare/*
 ```
 
 ### Исполнительная среда JAVA (JVM)
