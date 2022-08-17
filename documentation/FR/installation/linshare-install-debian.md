@@ -16,10 +16,11 @@
    * [Premier accès](#firstAccess)
    * [Invitation de dépôt](#uploadRequest)
 
-Ce guide propose l'installation de la version __LinShare__ 5.1 sur *Debian buster 10* Les versions Debian antérieures à la version 8 ne sont pas prises en charge).
+Ce guide propose l'installation de la version __LinShare__ 6.0 sur *Debian bullseye 11*
 
 > Note :<br/>
 > Les guides d'installation des versions précédentes sont disponibles ici:
+> - [LinShare 5.1](https://github.com/linagora/linshare/blob/maintenance-5.1.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 5.0](https://github.com/linagora/linshare/blob/maintenance-5.0.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/FR/installation/linshare-install-debian.md)
 > - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/FR/installation/linshare-install-debian.md)
@@ -99,7 +100,7 @@ Historiquement LinShare était développé sur PostgreSQL. Les nouvelles fonctio
 
 __Linshare__ requière l’utilisation d’une base de données (PostgreSQL) pour ses fichiers et sa configuration. Ce guide présente une installation avec PostgreSQL.
 
-- La version installée pour est PostgreSQL 11, vous pouvez l'installer avec :
+- La version installée pour est PostgreSQL 13, vous pouvez l'installer avec :
 
 ```bash
 apt update
@@ -191,18 +192,18 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ### <a name="mongo">Installation de MongoDB</a>
 
 Pour l'installation de __LinShare__, il est nécessaire d'installer une base de données mongoDB.
-**LinShare** requiert MongoDB 4.2
+**LinShare** requiert MongoDB 5.0
 > Vous pouvez trouver les versions des dépendances pour le bon fonctionnement  LinShare [ici](./requirements.md)
 
 - Importer la clé GPG MongoDB
 
 ```bash
 sudo apt -y install gnupg2
-wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 ```
 - Ajouter l'URL du dépôt à votre Debian :
 ```bash
-echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
 ```
 - Installation mongodb:
 
@@ -210,20 +211,11 @@ echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo
 sudo apt update
 sudo apt -y install mongodb-org
 ```
-Regargder le [guide officiel](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-debian/).
+Regargder le [guide officiel](https://docs.mongodb.com/v5.0/tutorial/install-mongodb-on-debian/).
 
 - Démarrer le serveur MongoDB
 ```bash
 sudo systemctl start mongod
-```
-> Au cas des erreurs en démarrant le serveur mongoDB, vous pouvez essayer:
-```bash
-chown -R mongodb:mongodb /var/lib/mongodb
-chown mongodb:mongodb /tmp/mongodb-27017.sock
-```
-Après redémarrer :
-```bash
- sudo systemctl restart  mongod.service
 ```
 Maintenant le serveur MongoDB est disponible et prêt à être utilisé.
 
