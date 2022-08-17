@@ -62,7 +62,7 @@ As for appenders, loggers are now defined in two lines:
 # version 1.x
 log4j.category.org.linagora.linshare=info
 # version 2.x
-logger.linshare = INFO, CONSOLE, LINSHARE
+logger.linshare = INFO, ${LOG4J2_APPENDER}
 logger.linshare.name = org.linagora.linshare
 ```
 
