@@ -1,3 +1,30 @@
+## [5.1.2](https://github.com/linagora/linshare/compare/5.1.1...5.1.2) (2022-08-31) [Download link](http://download.linshare.org/versions/5.1.2/)
+
+**The 5.1.2 release of LinShare is out**
+
+- **core** : 5.1.2 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.1...5.1.2)
+- **ui-user** : 5.1.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.1...v5.1.2)
+- **ui-admin** : 5.1.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.1...v5.1.2)
+- **ui-upload-request** : 5.1.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.1...v5.1.2)
+
+#### Bug fixes and improvements
+
+* Core:
+
+  * Fix: allow deletion of a list of revisions even if there is no revision.
+  * Fix: Return proper error code when trying to dowload missing workgroup revison.
+  * Fix: allow workgroup file deletion even if there is no revisions. 
+  
+* UI-Admin:
+  * nothing to report
+
+* UI-User:
+  * nothing to report
+
+* UI-Upload-Request:
+  * nothing to report
+
+
 ## [5.1.1](https://github.com/linagora/linshare/compare/5.1.0...5.1.1) (2022-07-22) [Download link](http://download.linshare.org/versions/5.1.1/)
 
 **The 5.1.1 release of LinShare is out**
