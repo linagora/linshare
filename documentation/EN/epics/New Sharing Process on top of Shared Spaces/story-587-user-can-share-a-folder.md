@@ -32,7 +32,7 @@
    - Full access: The receiver can view, upload, download and delete the files of shared folder
 - When I start to type in the field "Add recipient", the system will display a suggestion list:
 - I can select one user from the list: 
-   - If I select one user who is already a member of parent workgroup of the folder, there will be a message:" This user is already had access permission to this folder because a member of Parent workgroup :[workgroup name]."
+   - If I select one user who is already a member of parent workgroup of the folder, there will be toast message:" This user is already had access permission to this folder because a member of Parent workgroup :[workgroup name]." I can continue adding this user as a recipient of the shared folder by link.  After sharing, this user can access to the folder in 2 ways: In Shared Space as a workgroup member and in Shared by links as a recipient of shared folder.
    - If the user is not a member of parent workgroup of the folder, I can select this user from suggestion list. 
 - If I can not find the user I am looking for (because it does not exist), the system should propose to me a specific entry in the auto-complete result list to create an guest account : "Create guest account?"
 - I select this button, then there will be a popup:"You will invite [inputted email] to be a guest" and Yes/No button
