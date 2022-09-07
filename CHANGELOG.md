@@ -1,3 +1,31 @@
+## [6.0.0-alpha1](https://github.com/linagora/linshare/compare/5.1.2...6.0.0-alpha1) (2022-09-07) [Download link](http://download.linshare.org/versions/6.0.0-alpha1/)
+
+**The 6.0.0-alpha1 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.0-alpha1 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.2...6.0.0-alpha1)
+- **ui-user** : 6.0.0-alpha1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.2...v6.0.0-alpha1)
+- **ui-admin** : 6.0.0-alpha1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.2...v6.0.0-alpha1)
+- **ui-upload-request** : 6.0.0-alpha1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.2...v6.0.0-alpha1)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **PostgreSQL 13**
+We switched to PostgreSQL 13 from PostgreSQL 11. Upgrade guide will be provided by the release of LinShare 6.0.0.
+
+* **MongoDB**
+We switched from Mongo 4.2 to 5.0 version. Upgrade guide will be provided by the release of LinShare 6.0.0.
+
+#### Main features:
+* **Dashboard**
+
+  There id new reporting dashboard and later we will provide more images and description about this feature.
+
+
 ## [5.1.2](https://github.com/linagora/linshare/compare/5.1.1...5.1.2) (2022-08-31) [Download link](http://download.linshare.org/versions/5.1.2/)
 
 **The 5.1.2 release of LinShare is out**
