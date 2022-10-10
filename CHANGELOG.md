@@ -1,3 +1,35 @@
+## [6.0.0](https://github.com/linagora/linshare/compare/5.1.2...6.0.0) (2022-10-10) [Download link](http://download.linshare.org/versions/6.0.0/)
+
+**The 6.0.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.2...6.0.0)
+- **ui-user** : 6.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.2...v6.0.0)
+- **ui-admin** : 6.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.2...v6.0.0)
+- **ui-upload-request** : 6.0.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.2...v6.0.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **PostgreSQL 13**
+We switched to PostgreSQL 13 from PostgreSQL 11. [Upgrade Guide](https://www.postgresql.org/docs/13/upgrading.html)
+
+* **MongoDB**
+We switched from Mongo 4.2 to 5.0 version. [Upgrade Guide](https://www.mongodb.com/docs/manual/release-notes/5.0-upgrade-standalone/)
+
+#### Main features:
+* **Dashboard**
+We created new reporting page in admin UI with the following information:
+- Number of users per domain
+- Number of guests per domain
+- A list of the top 100 of users by their quota
+- Statistics about creationor deletion different domain entities
+- Dynamic of storage consumption
+- Storage consumption by file type
+
 ## [6.0.0-alpha1](https://github.com/linagora/linshare/compare/5.1.2...6.0.0-alpha1) (2022-09-07) [Download link](http://download.linshare.org/versions/6.0.0-alpha1/)
 
 **The 6.0.0-alpha1 release of LinShare is out**
