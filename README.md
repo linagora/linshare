@@ -1,5 +1,9 @@
 # LinShare
 
+## Licanse
+Linshare is released under the terms of the license GNU AGPLv3. For more information please see [here](LICENSE.md)
+
+
 ## Description
 
 Specially designed to secure paperless file sharings within companies that put
