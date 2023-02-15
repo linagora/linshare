@@ -1,3 +1,26 @@
+# [6.0.2](https://github.com/linagora/linshare/compare/6.0.0...6.0.2) (2023-02-15) [Download link](http://download.linshare.org/versions/6.0.2/)
+
+**The 6.0.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.0...6.0.2) 
+- **ui-user** : 6.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.0...v6.0.2)
+- **ui-admin** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.0...v6.0.2)
+- **ui-upload-request** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.0...v6.0.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Features:
+- Added ability to use special characters of special("-", "'") for the file names, directory names, and upload requests 
+- We've change LinShare license to pure GPLv3
+- Support of the JWT tokens for the OIDC auth flow with PKCE
+
+#### Bug Fixes:
+- Ability ot update guest profile with an account (with simple moderator access)  
+
 ## [6.0.0](https://github.com/linagora/linshare/compare/5.1.2...6.0.0) (2022-10-10) [Download link](http://download.linshare.org/versions/6.0.0/)
 
 **The 6.0.0 release of LinShare is out**
