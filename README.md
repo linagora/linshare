@@ -1,6 +1,6 @@
 # LinShare
 
-## Licanse
+## License
 Linshare is released under the terms of the license GNU AGPLv3. For more information please see [here](LICENSE.md)
 
 
