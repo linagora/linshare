@@ -8,6 +8,8 @@ This is the documentation for a new LinShare installation :
 
 * [Integration with LemonLDAP::NG using headers](sso-lemonldap-using-headers.md).
 
-* [Integration with LemonLDAP::NG using OpenID Connect (OIDC)](sso-lemonldap-using-OIDC.md).
- 
+* [Integration with LemonLDAP::NG using OpenID Connect (OIDC)](sso-lemonldap-using-OIDC.md)
+.
+* [Integration with Microsoft Azure using OpenID Connect (OIDC)](sso-microsoft-azure-using-OIDC.md)
+
 * [Required versions of LinShare's dependencies](requirements.md)
