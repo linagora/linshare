@@ -13,6 +13,7 @@ Each LinShare version folder, contains the dependencies required to install the 
 * [Note about LinShare versions](#lversions)
 * [Required artifacts](#artifacts)
 * [Backups](#backup)
+* [Upgrade dependencies](#upgrade-dependencies)
 * [Upgrade LinShare core](#core)
 * [Upgrade LinShare ui-admin](#ui-admin)
 * [Upgrade LinShare ui-user](#ui-user)
@@ -49,17 +50,17 @@ Only bug fixes. No database schema modification.
 In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
 Our goal for the future is to implement all features in the old interface into the new one.
 
-For this migration, download the following files from this address: http://download.linshare.org/versions/6.0.2 :
+For this migration, download the following files from this address: http://download.linshare.org/versions/6.0.0 :
 
-  * __linshare-core-6.0.2.war__
+  * __linshare-core-6.0.0.war__
 
-  * __linshare-ui-admin-6.0.2.tar.bz2__
+  * __linshare-ui-admin-6.0.0.tar.bz2__
 
   * __linshare-ui-admin-4.2.7-legacy1.tar.bz2__
 
-  * __linshare-ui-user-6.0.2.tar.bz2__
+  * __linshare-ui-user-6.0.0.tar.bz2__
 
-  * __linshare-ui-upload-request-6.0.2.tar.bz2__
+  * __linshare-ui-upload-request-6.0.0.tar.bz2__
 
 > Note :</br>
  - In this upgrade guide we suppose that all components are downloaded on `/root/downloads` directory</br>
@@ -91,6 +92,19 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
          mongodump --host `host` --port `port` --db=linshare
 ```
 
+<a name="upgrade-dependencies">
+
+## Upgrade dependencies
+
+</a>
+
+* **PostgreSQL 13**
+We switched to PostgreSQL 13 from PostgreSQL 11. [Upgrade Guide](https://www.postgresql.org/docs/13/upgrading.html)
+
+* **MongoDB**
+We switched from Mongo 4.2 to 5.0 version. [Upgrade Guide](https://www.mongodb.com/docs/manual/release-notes/5.0-upgrade-standalone/)
+
+
  <a name="core">
 
  ## Upgrade LinShare-core
@@ -107,12 +121,12 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  ```  
 
 
-The next step, you should replace the `linShare.war` with `LinShare-core-6.0.2.war`:
+The next step, you should replace the `linShare.war` with `LinShare-core-6.0.0.war`:
 
  ```bash
  $ rm /var/lib/tomcat9/webapps/linshare.war
  $ rm -fr /var/lib/tomcat9/webapps/linshare
- $ cp  /root/downloads/linshare-core-6.0.2.war /var/lib/tomcat9/webapps/linshare.war
+ $ cp  /root/downloads/linshare-core-6.0.0.war /var/lib/tomcat9/webapps/linshare.war
  ```
 
 If you have defined a custom Log4j configuration, you should migrate it as we upgrade to Log4J version 2.x.  
@@ -127,7 +141,7 @@ You can follow the [migration guide](../administration/how-to-migrate-log4j-conf
 ## Upgrade UI applications
 In this versions we've changed the format for the URLs of the SPA applications to remove '#' symbol from URLs due to 
 some of the OIDC providers don't support it in the callback urls. So you will need to change your Apache configuration 
-and add a rewrite rule to serve `index.html` for every path except static resources.
+and add a rewrite rule to serve index.html for every path except static resources.
 
 ### LinShare-ui-admin Apache configuration
 ```apache
@@ -165,7 +179,7 @@ and add a rewrite rule to serve `index.html` for every path except static resour
  $ tar xjvf /root/downloads/linshare-ui-admin-4.2.7-legacy1.tar.bz2
  $ chown -R www-data: linshare-ui-admin
  $ cd linshare-ui-admin
- $ tar xjf /tmp/linshare_data/linshare-ui-admin-6.0.2.tar.bz2
+ $ tar xjf /tmp/linshare_data/linshare-ui-admin-6.0.0.tar.bz2
  $ mv linshare-ui-admin new
 
  ```
@@ -181,7 +195,7 @@ and add a rewrite rule to serve `index.html` for every path except static resour
  ```
  $ cd /var/www/
  $ rm -rf linshare-ui-user
- $ tar xjvf  /root/downloads/linshare-ui-user-6.0.2.tar.bz2
+ $ tar xjvf  /root/downloads/linshare-ui-user-6.0.0.tar.bz2
  $ chown -R www-data: linshare-ui-user
  ```
 
@@ -195,7 +209,7 @@ and add a rewrite rule to serve `index.html` for every path except static resour
  ```
  $ cd /var/www/
  $ rm -rf linShare-ui-upload-request
- $ tar xjvf  /root/downloads/linshare-ui-upload-request-6.0.2.tar.bz2
+ $ tar xjvf  /root/downloads/linshare-ui-upload-request-6.0.0.tar.bz2
  $ chown -R www-data: linshare-ui-upload-request
  ```
 
