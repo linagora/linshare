@@ -1,4 +1,3 @@
-
 # Integration with Microsoft AZURE ACTIVE DIRECTORY
 
 Microsoft Azure Active Directory is an enterprise identity service that provides single sign-on, multifactor authentication, and conditional access.
@@ -60,15 +59,27 @@ When registration finishes, the Azure portal displays the app registration's Ove
 
 13. Enter a Redirect URI for your app : https://linshare-user.local/oidc/callback
 
+14. Under Implicit grant and hybrid flows, unselect Access tokens and ID tokens
+
 
 ##  Claims creation 
+
    Microsoft Documentation : https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-jwt-claims-customization
 
 1. select Azure Active Directory.
 
-2. select Entreprise applications > your app > Single sign-on > Attributes & Claims
+2. in App registrations, select your application.
 
-3. Add new claim
+3. Under Manage, select Manifest.
+ 
+   Change those attributes from null :
+   "acceptMappedClaims": true,
+   "accessTokenAcceptedVersion": 2,
+   
+
+4. select Entreprise applications > your app > Single sign-on > Attributes & Claims
+
+5. Add new claim
    Name: domain_discriminator
    Source: Attribute
    Source Attribute : "linshare_domain_name"
