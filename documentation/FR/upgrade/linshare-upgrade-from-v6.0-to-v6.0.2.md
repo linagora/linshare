@@ -136,9 +136,18 @@ et ajoutez une règle de réécriture pour servir `index.html` pour chaque chemi
 ```apache
 <Directory /usr/local/apache2/htdocs/linshare-ui-admin/new>
       RewriteEngine on
+
+      RewriteRule  "^(.*)config\.js" "config/config.js"
+      RewriteRule  "^(.*)beta\.png" "beta.png"
+      RewriteRule  "^(.*)favicon\.ico" "favicon.ico"
+      RewriteRule  "^(.*)assets/(.*)" "assets/$2"
+
+      # Don't rewrite files or directories
       RewriteCond %{REQUEST_FILENAME} -f [OR]
       RewriteCond %{REQUEST_FILENAME} -d
       RewriteRule ^ - [L]
+
+      # Rewrite everything else to index.html to allow html5 state links
       RewriteRule ^ index.html [L]
     </Directory>
 ```
@@ -148,8 +157,8 @@ et ajoutez une règle de réécriture pour servir `index.html` pour chaque chemi
 <Directory /usr/local/apache2/htdocs/linshare-ui-user>
     RewriteEngine on
     RewriteBase /
-    RewriteCond %{REQUEST_FILENAME} !-f [OR]
-    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
     RewriteRule ^ index.html [L]
 </Directory>
