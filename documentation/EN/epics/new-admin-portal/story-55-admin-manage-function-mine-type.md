@@ -37,6 +37,8 @@ The rule is as same as Post-condition of Story 43. Admin manage function anonymo
 
 #### Mockups
 
+https://www.figma.com/proto/cxt7NfZNneW8yJB4SMlM1B/%5BAdmin%5D-System-%26-Configuration?node-id=1824%3A57205&scaling=min-zoom&page-id=1823%3A49247
+
 #### Final design
 
 [Back to Summary](#summary)
