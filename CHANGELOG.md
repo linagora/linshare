@@ -1,3 +1,39 @@
+# [6.0.3](https://github.com/linagora/linshare/compare/6.0.0...6.0.3) (2023-04-07) [Download link](http://download.linshare.org/versions/6.0.3/)
+
+**The 6.0.3 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.3) 
+- **ui-user** : 6.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.3)
+- **ui-admin** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.3)
+- **ui-upload-request** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.3)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * We've added CRUD API for users creation
+  
+
+* UI-Admin:
+  * Implement the MIME Policies configuration
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug When sharing a file with an external email, receiver cannot download file
+  * Ability to update guest profile with an account (with simple moderator access)  
+
+
 # [6.0.2](https://github.com/linagora/linshare/compare/6.0.0...6.0.2) (2023-02-15) [Download link](http://download.linshare.org/versions/6.0.2/)
 
 **The 6.0.2 release of LinShare is out**
