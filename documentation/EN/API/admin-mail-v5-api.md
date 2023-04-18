@@ -4,7 +4,7 @@ This guide provides a sample requests to LinShare mail admin V5 api.
 
 To find the official documentation you can follow this [link](http://download.linshare.org/versions/).
 
-## Mail configuration endpoint
+## Mail configuration
 Here is a sample of the mail configuration data transfer object that this API uses:
 
 ```json
@@ -84,8 +84,22 @@ Notes: here, a domain configuration is a configuration created on this domain. (
 * **onlyCurrentDomain** default value is _false_.
 * If no domain is specified, user's own domain will be used.
 
+### Assign to domain
 
-## Mail layout endpoint
+```bash
+curl -X POST 'https://<host>/linshare/webservice/rest/admin/v5//domains/<domainUuid>/mail_config/<configUuid>/assign' \
+-u "login:password" 
+```
+
+Notes: here, a domain configuration is a configuration created on this domain. (Regardless of where it is assigned)
+
+* Both **domainUuid** and **configUuid** are mandatory
+* User must be allowed to manage requested domain to assign a configuration.
+* Public configuration from current domain or any of its parents can be assigned
+* Private configuration can only be assigne on their own domain
+
+
+## Mail layout
 Here is a sample of the mail layout data transfer object that this API uses:
 
 ```json
@@ -113,12 +127,11 @@ curl -G 'https://<host>/linshare/webservice/rest/admin/v5/mail_layouts' \
 -d "onlyCurrentDomain:<onlyCurrentDomain>" 
 ```
 
-Notes: here, a domain layout is a layout created on this domain. (Regardless of where it is assigned)
-
 * Both **domainId** and **onlyCurrentDomain** are optional
 * User must be allowed to manage requested domain to see its layouts.
 * All layouts (private and public) are returned for requested domain.
 * If **onlyCurrentDomain** flag is set to false, all parent domains public layouts are returned as well.
 * **onlyCurrentDomain** default value is _false_.
 * If no domain is specified, user's own domain will be used.
+
 
