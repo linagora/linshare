@@ -10,7 +10,10 @@ Here is a sample of the mail configuration data transfer object that this API us
 ```json
 {
 "uuid": "946b190d-4c95-485f-bfe6-d288a2de1edd",
-"domain": "LinShareRootDomain",
+"domain": {
+  "name": "LinShareRootDomain",
+  "uuid": "LinShareRootDomain"
+},
 "name": "Default mail config",
 "visible": true,
 "readonly": true,
@@ -105,7 +108,10 @@ Here is a sample of the mail layout data transfer object that this API uses:
 ```json
 {
 "uuid": "e858b7f3-aae2-45f3-ad96-0830417d13a7",
-"domain": "LinShareRootDomain",
+"domain": {
+    "name": "LinShareRootDomain",
+    "uuid": "LinShareRootDomain"
+},
 "description": "Layout 1",
 "layout": "<html-template>",
 "visible": true,
