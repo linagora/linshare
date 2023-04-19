@@ -87,6 +87,19 @@ Notes: here, a domain configuration is a configuration created on this domain. (
 * **onlyCurrentDomain** default value is _false_.
 * If no domain is specified, user's own domain will be used.
 
+
+### Get ALL associated domains
+This endpoint will return all domains that currently have this mail configuration assigned.
+
+```bash
+curl -G 'https://<host>/linshare/webservice/rest/admin/v5/mail_configs/<configUuid>/associated_domains' \
+-u "login:password" 
+```
+
+* User must be root or nested admin
+* User must have administration rights on the mail config's domain
+
+
 ### Assign to domain
 
 ```bash
