@@ -118,6 +118,27 @@ The next step, you should replace the `linShare.war` with `LinShare-core-6.0.2.w
 If you have defined a custom Log4j configuration, you should migrate it as we upgrade to Log4J version 2.x.  
 You can follow the [migration guide](../administration/how-to-migrate-log4j-configuration.md) for this purpose.
 
+### Update `linshare-default.properties` guide
+
+`ui-user` urls changed for OIDC, we removed the `#!` charaters into `linshare-default.properties` except for `uploadrequests` urls.
+
+```
+linshare.user.url.download.receivedshares=/files/received?fileUuid=%1$s
+linshare.user.url.fragment.param.file.uuid=&fileUuid=%1$s
+linshare.user.url.download.documents=/files/list?fileUuid=%1$s
+linshare.user.url.anonymousurl.link=/external/anonymous/
+linshare.user.url.guest.reset=/external/reset/%1$s
+linshare.user.url.workgroup.link=/sharedspace/workgroups/%1$s
+linshare.user.url.workgroup.folder.link=/sharedspace/workgroups/%1$s/%2$s/%3$s/%4$s
+linshare.user.url.workgroup.document.link=/sharedspace/workgroups/%1$s/%2$s/%3$s/%4$s?fileUuid=%5$s
+linshare.user.url.workspace.link=/sharedspace/workspace/%1$s
+linshare.user.url.download.uploadrequests.entries=/#!/uploadrequests/list?fileUuid=%1$s
+linshare.user.url.download.uploadrequests.upload.file=/#!/upload_request_groups/%1$s/upload_requests/%2$s/entries?entryUuid=%3$s
+linshare.user.jwt.token.link=/token
+linshare.user.guest.link=/administration/adminguests?guestUuid=%1$s
+
+```
+
  ```bash
  $ systemctl start tomcat9.service
  ```
