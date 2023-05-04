@@ -27,13 +27,12 @@ Through a user's result, you can edit the information related to him. By selecti
 - A consistent user is a user that exists in DB of a domain but not exist in LDAP server of that domain
 - All inconsistent users of the whole platform will be displayed in the below list:
 - The list includes:
-    - Full Name and email address of user
+    - First name 
+    - Last name 
+    - Email
     - Domain name and ID: Name of the domain in DB that user is currently associated to
-
-- In the result report of an email , when I click on 1 row:
-    - If the email exists in DB/GUEST, the user profile page in the domain of selected row will be displayed.
-    - If the email exists in LDAP server but not exist in DB/GUEST, there will be a message: "This user does not have a LinShare profile. Would you like to create it in the database ?". If I choose Yes, user'profile will be created in DB and the Profile page of user will be displayed. If I choose No, the popup closes and I will not see the User profile in that domain.
-    - A user can exist ins different domains in DB
+    - Role of the user in his domain: Admin or Simple 
+- I can sort by every column, ascending descending
 
 **UC2. Search inconsistent user**
 - In the list of inconsistent users, I can see a Search field
