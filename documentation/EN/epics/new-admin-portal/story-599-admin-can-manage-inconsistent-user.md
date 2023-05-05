@@ -42,7 +42,7 @@ Through a user's result, you can edit the information related to him. By selecti
 **UC3 Migrate user to another domain**
 - In the list of inconsistent user, I can select one or multiple user, then the actions bar will be enabled
 - Action bar includes button Migrate, Delete, I select action Migrate 
-- There will be a field "New domain" with a drop-down list of all available top domains and sub-domains.
+- There will be a field "New domain" with a drop-down list of all available top domains and sub-domains (without guest domains).
 - I select one domain in the list and click button Apply
 - If the selected domain is current domain, or the user already exists in the targeted domain, there will be a notification message: "user already exists in the targeted domain"
 - If the user has not existed in the targeted domain, the user will be migrated to the new domain and no longer exists in the old domain. There will be a successful notification message.
