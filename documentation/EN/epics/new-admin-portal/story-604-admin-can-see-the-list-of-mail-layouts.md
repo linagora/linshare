@@ -42,25 +42,31 @@
 - I can see a tooltip icon on screen name, which I can click on and see the explanation text.
 - The Mail layouts list includes columns:
     - Name
-    - Read-only: True/False. If false, this Mail layouts is created by the current selected domain. If true, this  Mail layouts is created by the higher-level domain.
+    - Read-only:
+       - Default mail layout is read-only for both root admin and nested admin
+       - Root admin can edit every mail layout (except Default mail layout )
+       - Nested admin can edit only mail layout of his domain and nested domains. For mail layout of root admin, he can read-only
     - Domain: The name of domain that created the Mail layouts
     - Creation date
     - Modification date
     - Visibility: Public/Private: If mail layout is public, lower-level domain will appear in the layout list of lower-level domain. And lower-level domain can use this mail layout. If mail layout is private, lower-level domain will not appear in the layout list of lower-level domain.
-    - Action: When I click on three-dot button, I can see actions: Duplicate, Edit, Delete.
+    - Action: When I click on three-dot button, I can see actions: Duplicate, Edit, Delete(except for default mail layout where we will have Duplicate and view).
 
 **UC2.Nested-admin view the list of  Mail layouts**
 - As a nested admin, I can select one of my nested domains and view the list of Mail layouts that created for that domain and Mail layouts from higher-level domain.
 - The Mail layouts list includes columns:
-    - Name
-    - Read-only: True/False. If false, this Mail layout is created by the selected domain. If true, this Mail layout is created by the higher-level domain.
-    - Domain: The name of domain that created the Mail layout
-    - Creation date
-    - Modification date
-    - Visibility: Public/Private: If mail layout is public, lower-level domain will appear in the layout list of lower-level domain. And lower-level domain can use this mail layout. If mail layout is private, lower-level domain will not appear in the layout list of lower-level domain. 
+  - Name
+  - Read-only:
+     - Default mail layout is read-only for both root admin and nested admin
+     - Root admin can edit every mail layout (except Default mail layout )
+     - Nested admin can edit only mail layout of his domain and nested domains. For mail layout of root admin, he can read-only
+  - Domain: The name of domain that created the Mail layout
+  - Creation date
+  - Modification date
+  - Visibility: Public/Private: If mail layout is public, lower-level domain will appear in the layout list of lower-level domain. And lower-level domain can use this mail layout. If mail layout is private, lower-level domain will not appear in the layout list of lower-level domain. 
 - Action: When I click on three-dot button, I can see actions:
     - If the Mail layout is from my higher-level domain (eg: i am admin of Top domain and the Mail layout is from Root domain), I can see the action: Duplicate, View
-    - If the Mail layout is from my domain or lower-level domain, I can see the action: Duplicate, Edit, Delete
+    - If the Mail layout is from my domain or lower-level domain, I can see the action: Duplicate, Edit, Delete (except for default mail layout where we will have Duplicate and view).
 
 #### Postconditions
 
