@@ -35,11 +35,11 @@
 
 **UC2. Edit mail layout**.
 - If I am super-admin, I can edit all mail layouts
-- If I am nested admin, I can only edit the mail layout created by me and my lower-level domain.
+- If I am nested admin, I can only edit the mail layout created for my domain and my lower-level domain.
+- The Default mail layout detail will be in View mode and cannot be edited by any user. (there is no button Edit for this Default mail layout)
 - There are 2 ways to access a mail layouts screen:
     - In the mail layouts listing screen, I click on three dot-button of a mail layout and select option Edit from the drop-down list
-    - Or I can click on the mail layout  row in the mail configuration listing table.
-- By default, the mail layout detail screen will be in View mode
+    - Or I can click on the mail layout  row in the mail layout listing table.
 - If I have permission to Edit, there will be button Edit, I click on this button, the Edit mode will be enabled
 - I can edit all fields including:
     - Name
@@ -50,15 +50,17 @@
 - The non-editable fields include:
     - Domain
     - Creation date
-    -Modification date
-- After editing I click button Save, The system will validate if field "Name" is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
+    - Modification date
+- After editing mail layout I click button Save, The system will validate:
+   - If field "Name" is blank, it will be highlighted in red and a message:"[field name] cannot be blank"
+   - If I removed the copyright footer section in Mail layout, there will be an error message "You do not have the right to remove copyright footer."
 - If there is no error, the updates will be saved and there will be a successful toast message.
 - If I click button Reset, all the updates will be reset to the before values.
 
 **UC3. View email layout**
 - If I am nested admin, On email layout listing screen,  when I click on three-dot button of a email layout from higher level domain,
   I can see the option "View"
-- When I click on this button, the screen email layiut detail will be displayed in mode "view"
+- When I click on this button, the screen email layout detail will be displayed in mode "view"
 - I can not update any field, and there is no button Delete, Save, Reset as Edit screen
 
 **UC4. Delete an Email layout**
