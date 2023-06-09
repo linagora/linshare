@@ -1,3 +1,41 @@
+# [6.0.4](https://github.com/linagora/linshare/compare/6.0.0...6.0.4) (2023-06-09) [Download link](http://download.linshare.org/versions/6.0.4/)
+
+**The 6.0.4 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.4) 
+- **ui-user** : 6.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.4)
+- **ui-admin** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.4)
+- **ui-upload-request** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.4)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Create workspaces with delegation APIs
+  
+
+* UI-Admin:
+  * We've added inconsistent users management
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug Ldap_uid not set when creating user with API
+  * Fixing the bug of creating Workgroup with special character in name 
+  * Fixing the bug of OIDC authentication with Opaque token
+
+
+
 # [6.0.3](https://github.com/linagora/linshare/compare/6.0.0...6.0.3) (2023-04-07) [Download link](http://download.linshare.org/versions/6.0.3/)
 
 **The 6.0.3 release of LinShare is out**
