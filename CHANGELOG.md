@@ -33,7 +33,7 @@
   * Fixing the bug Ldap_uid not set when creating user with API
   * Fixing the bug of creating Workgroup with special character in name 
   * Fixing the bug of OIDC authentication with Opaque token
-
+  * Fixing the bug of displaying user profile in mobile for Web application
 
 
 # [6.0.3](https://github.com/linagora/linshare/compare/6.0.0...6.0.3) (2023-04-07) [Download link](http://download.linshare.org/versions/6.0.3/)
