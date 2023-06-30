@@ -2,7 +2,9 @@
 
 * Generic LinShare upgrade [documentation](linshare-upgrade.md).
 
-* How to upgrade LinShare from  [__V6.0__ to __V6.0.2__](linshare-upgrade-from-v6.0-to-v6.0.2.md).
+* How to upgrade LinShare from  [__V6.0.2__ to __V6.1.0__](linshare-upgrade-from-v6.0.2-to-v6.1.0.md).
+* 
+* How to upgrade LinShare from  [__V6.0__ to __V6.0.2__](linshare-upgrade-from-v6.0.0-to-v6.0.2.md).
 
 * How to upgrade LinShare from  [__V5.1__ to __V6.0__](linshare-upgrade-from-v5.1-to-v6.0.md).
 
