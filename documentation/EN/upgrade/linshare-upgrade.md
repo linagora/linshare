@@ -107,4 +107,8 @@ The required tasks can take some time depending on amount of data to upgrade.
 
 Once all these tasks are done, your LinShare will be operational.
 
+> Note:  
+> Some task will require you to have a temporary configuration in your properties file.   
+> For instance the task `OPTIONAL_MIGRATE_FILE_DATA_STORAGE_TO_A_NEW_ONE` (which copies files from gridfs storage to jcloud storage), needs to have both filesystem configured at the same time. you can later remove the old configuration.
+
 
