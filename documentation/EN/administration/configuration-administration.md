@@ -122,29 +122,39 @@ See [linshare-admin](../../EN/administration/how-to-use-jwt.md) for more details
 
 ## <a name="num9">Document storage (JCloud)</a>
 
--   linshare.documents.storage.mode
+> Remember to set your profile to `jcloud` to use those storages. `gridfs` is deprecated.
+
+### Storage mode selection
+- **linshare.documents.storage.mode**
     - `filesystem`: stores documents on file system for local storage (by default)
     - `swift-keystone`: stores documents into swift without region support (generic) (maximum file size is 5GB).
     - `openstack-swift`: stores documents into openstack swift with region support(regionId will be mandatory) (maximum file size is 5GB).
-    - `s3`: stores documents into Amazon S3 (maximum file size is 5GB).
+    - `aws-s3`: stores documents into Amazon S3 (maximum file size is 5GB). (`s3` is possible but not recommended, try only if experiencing issues with `aws-s3`)
+- **linshare.documents.storage.providers**: is a list of supported providers, for which we tested and/or provided a specific connector. But you can try to add jcloud compatible storage modes to be used by our default implementation. Storage mode selected in `linshare.documents.storage.mode` must be available in this property.
 
+### Storage parameters
 * For local storage (by default)
-  - linshare.documents.storage.filesystem: path to the local storage (`directory=/var/lib/linshare/filesystemstorage` by default)
+  - **linshare.documents.storage.filesystem**: path to the local storage (`directory=/var/lib/linshare/filesystemstorage` by default)
 
 * For online storage:
-  - linshare.documents.storage.endpoint: online storage IP address (`http://127.0.0.1:5000/v2.0` by default)
-  - linshare.documents.storage.identity: online storage username (`identity` by default)
-  - linshare.documents.storage.credential: online storage password (`password` by default)
-  - linshare.documents.storage.bucket: online storage bucket (`e0531829-8a75-49f8-bb30-4539574d66c7` by default)
-  - linshare.documents.storage.providers: is a list of supported providers, for which we tested and provided a connector. But you can try to add compatible jcloud storage mode to be used by our default implementation.
-  - linshare.documents.storage.multipartupload: do you want multipart upload (`false` by default)
+  - **linshare.documents.storage.endpoint**: online storage IP address (`http://127.0.0.1:5000/v2.0` by default)
+  - **linshare.documents.storage.identity**: online storage username (`identity` by default)
+  - **linshare.documents.storage.credential**: online storage password (`password` by default)
+  - **linshare.documents.storage.bucket**: online storage bucket (`e0531829-8a75-49f8-bb30-4539574d66c7` by default)
+  - **linshare.documents.storage.multipartupload**: do you want multipart upload (`false` by default)  
   - If using `openstack-swift` :
-    - linshare.documents.storage.regionId: region id to use 
-    - linshare.documents.storage.keystone.version: keystone version to use
-    - linshare.documents.storage.project.name: project name to use
+    - **linshare.documents.storage.regionId**: region id to use 
+    - **linshare.documents.storage.keystone.version**: keystone version to use
+    - **linshare.documents.storage.project.name**: project name to use
+    - **linshare.documents.storage.multipartupload**: should be set to `true`
+  - If using`s3` or `aws-s3` : 
+    - **linshare.documents.storage.endpoint**: becomes optional. If absent, `identity` and `credential` will be used to connect.
     
 > Note: `linshare.documents.storage.identity` can be replaced by `linshare.documents.storage.user.domain` & `linshare.documents.storage.user.name` (both must be present)
 
+### Additional jcloud parameters
+There are additional jcloud properties that can be added though a configuration file inside `linshare.war` that you can edit `/WEB-INF/classes/OPTIONAL-springContext-storage-jcloud.xml` :
+Here are default added properties :
 ```		
 <property name="jcloudProperties">
     <map>
@@ -156,6 +166,7 @@ See [linshare-admin](../../EN/administration/how-to-use-jwt.md) for more details
     </map>
 </property>
 ```
+`key` must correspond to a jcloud property, `value` can be added to you Linshare property file as any other property. You can modify this list at will to add new properties to jcloud configuration.
 
 ## <a name="num10">Thumbnail engine</a>
 
