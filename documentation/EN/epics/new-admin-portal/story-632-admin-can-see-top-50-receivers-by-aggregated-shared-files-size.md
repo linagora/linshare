@@ -33,9 +33,10 @@ When I click on Filter button, I can see a filter screen
     - Then the result will be calculated in selected domain.
       Time: I can select one time range then the result will be calculated based on selected time.
 
-- After I select filters Domain/Time then click Enter, there will be a new a table "Top 50 Receivers by aggregated shared file size" with two columns will be displayed accordingly  :
+- After I select filters Domain/Time then click Enter, there will be a new a table "Top 50 Receivers by aggregated shared file size" with four columns will be displayed accordingly:
+    - Order
     - Share receiver: Name and email of receiver
-    - Domain name (of the receiver)
+    - Domain name: Domain of the receiver, if the receiver is external users, the name of domain will be blank.
     - Size of aggregated shared files
 
 #### Postconditions
