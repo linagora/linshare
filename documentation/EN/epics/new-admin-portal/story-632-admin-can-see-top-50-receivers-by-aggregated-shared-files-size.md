@@ -35,6 +35,7 @@ When I click on Filter button, I can see a filter screen
 
 - After I select filters Domain/Time then click Enter, there will be a new a table "Top 50 Receivers by aggregated shared file size" with two columns will be displayed accordingly  :
     - Share receiver: Name and email of receiver
+    - Domain name (of the receiver)
     - Size of aggregated shared files
 
 #### Postconditions
