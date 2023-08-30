@@ -49,17 +49,17 @@ Only bug fixes. No database schema modification.
 In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
 Our goal for the future is to implement all features in the old interface into the new one.
 
-For this migration, download the following files from this address: http://download.linshare.org/versions/6.1.0 :
+For this migration, download the following files from this address: http://download.linshare.org/versions/6.0.4 :
 
-  * __linshare-core-6.1.0.war__
+  * __linshare-core-6.0.4.war__
 
-  * __linshare-ui-admin-6.1.0.tar.bz2__
+  * __linshare-ui-admin-6.0.4.tar.bz2__
 
   * __linshare-ui-admin-4.2.7-legacy1.tar.bz2__
 
-  * __linshare-ui-user-6.1.0.tar.bz2__
+  * __linshare-ui-user-6.0.4.tar.bz2__
 
-  * __linshare-ui-upload-request-6.1.0.tar.bz2__
+  * __linshare-ui-upload-request-6.0.4.tar.bz2__
 
 > Note :</br>
  - In this upgrade guide we suppose that all components are downloaded on `/root/downloads` directory</br>
@@ -100,41 +100,82 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  First you need to stop Apache and Tomcat services:
 
  ```bash
- $ systemctl stop apache2
- ```
- ```bash
  $ systemctl stop tomcat9.service
  ```  
 
 
-The next step, you should replace the `linShare.war` with `LinShare-core-6.1.0.war`:
+The next step, you should replace the `linShare.war` with `LinShare-core-6.0.4.war`:
 
  ```bash
  $ rm /var/lib/tomcat9/webapps/linshare.war
  $ rm -fr /var/lib/tomcat9/webapps/linshare
- $ cp  /root/downloads/linshare-core-6.1.0.war /var/lib/tomcat9/webapps/linshare.war
+ $ cp  /root/downloads/linshare-core-6.0.4.war /var/lib/tomcat9/webapps/linshare.war
  ```
 
-If you have defined a custom Log4j configuration, you should migrate it as we upgrade to Log4J version 2.x.  
-You can follow the [migration guide](../administration/how-to-migrate-log4j-configuration.md) for this purpose.
-
-### Update `linshare.properties` guide
-
-Two properties have been introduced:
-```
-oidc.ldap.connectionUuid=76ef5ee0-6513-4a64-b711-90a1bbdbfc55
-oidc.ldap.provider.patternUuid=cd02e600-f324-4cea-9724-21d8647e9533
-```
-They allow to link every oidc connection to a ldap connection and pattern to be used as backup user provider (to retrieve client informations if absent from the DB)
 
 
  ```bash
  $ systemctl start tomcat9.service
  ```
 
- <a name="ui-admin">
+ 
 
-## Upgrade UI applications
+ ## Upgrade LinShare-ui-admin
+
+ </a>
+
+
+ As mentioned before for application __LinShare UI Admin__ we will need two components, you can follow the steps bellow to deploy them in the apache2 repository :
+
+ ```
+ $ cd /var/www/
+ $ rm -rf linshare-ui-admin
+ $ tar xjvf /root/downloads/linshare-ui-admin-4.2.7-legacy1.tar.bz2
+ $ chown -R www-data: linshare-ui-admin
+ $ cd linshare-ui-admin
+ $ tar xjf /tmp/linshare_data/linshare-ui-admin-6.0.4.tar.bz2
+ $ mv linshare-ui-admin new
+
+ ```
+
+
+ <a name="ui-user">
+
+ ## Upgrade LinShare-ui-user
+ </a>
+
+ Deploy the archive of the application __LinShare UI User__ in the Apache2 repository :
+
+ ```
+ $ cd /var/www/
+ $ rm -rf linshare-ui-user
+ $ tar xjvf  /root/downloads/linshare-ui-user-6.0.4.tar.bz2
+ $ chown -R www-data: linshare-ui-user
+ ```
+
+ <a name="ui-upload-request">
+
+ ## Upgrade LinShare-ui-upload-request
+ </a>
+
+ Deploy the archive of the application __LinShare UI Upload Request__ in the Apache2 repository :
+
+ ```
+ $ cd /var/www/
+ $ rm -rf linShare-ui-upload-request
+ $ tar xjvf  /root/downloads/linshare-ui-upload-request-6.0.4.tar.bz2
+ $ chown -R www-data: linshare-ui-upload-request
+ ```
+
+ Now you can start your Apache service again.
+
+ ```
+ $ systemctl start apache2
+ ```
+
+ <a name="tasks">
+
+
 
 
 

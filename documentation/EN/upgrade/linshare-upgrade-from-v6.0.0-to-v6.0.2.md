@@ -1,3 +1,4 @@
+
 # LinShare upgrade guide
 
 > Note :
@@ -13,6 +14,7 @@ Each LinShare version folder, contains the dependencies required to install the 
 * [Note about LinShare versions](#lversions)
 * [Required artifacts](#artifacts)
 * [Backups](#backup)
+* [Upgrade dependencies](#upgrade-dependencies)
 * [Upgrade LinShare core](#core)
 * [Upgrade LinShare ui-admin](#ui-admin)
 * [Upgrade LinShare ui-user](#ui-user)
@@ -91,11 +93,6 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
          mongodump --host `host` --port `port` --db=linshare
 ```
 
- <a name="core">
-
- ## Upgrade LinShare-core
-
- </a>
 
  First you need to stop Apache and Tomcat services:
 
@@ -107,7 +104,7 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  ```  
 
 
-The next step, you should replace the `linShare.war` with `LinShare-core-6.0.2.war`:
+The next step, you should replace the `linShare.war` with `LinShare-core-6.0.0.war`:
 
  ```bash
  $ rm /var/lib/tomcat9/webapps/linshare.war
@@ -115,29 +112,7 @@ The next step, you should replace the `linShare.war` with `LinShare-core-6.0.2.w
  $ cp  /root/downloads/linshare-core-6.0.2.war /var/lib/tomcat9/webapps/linshare.war
  ```
 
-If you have defined a custom Log4j configuration, you should migrate it as we upgrade to Log4J version 2.x.  
-You can follow the [migration guide](../administration/how-to-migrate-log4j-configuration.md) for this purpose.
 
-### Update `linshare-default.properties` guide
-
-`ui-user` urls changed for OIDC, we removed the `#!` charaters into `linshare-default.properties` except for `uploadrequests` urls.
-
-```
-linshare.user.url.download.receivedshares=/files/received?fileUuid=%1$s
-linshare.user.url.fragment.param.file.uuid=&fileUuid=%1$s
-linshare.user.url.download.documents=/files/list?fileUuid=%1$s
-linshare.user.url.anonymousurl.link=/external/anonymous/
-linshare.user.url.guest.reset=/external/reset/%1$s
-linshare.user.url.workgroup.link=/sharedspace/workgroups/%1$s
-linshare.user.url.workgroup.folder.link=/sharedspace/workgroups/%1$s/%2$s/%3$s/%4$s
-linshare.user.url.workgroup.document.link=/sharedspace/workgroups/%1$s/%2$s/%3$s/%4$s?fileUuid=%5$s
-linshare.user.url.workspace.link=/sharedspace/workspace/%1$s
-linshare.user.url.download.uploadrequests.entries=/#!/uploadrequests/list?fileUuid=%1$s
-linshare.user.url.download.uploadrequests.upload.file=/#!/upload_request_groups/%1$s/upload_requests/%2$s/entries?entryUuid=%3$s
-linshare.user.jwt.token.link=/token
-linshare.user.guest.link=/administration/adminguests?guestUuid=%1$s
-
-```
 
  ```bash
  $ systemctl start tomcat9.service
@@ -148,24 +123,15 @@ linshare.user.guest.link=/administration/adminguests?guestUuid=%1$s
 ## Upgrade UI applications
 In this versions we've changed the format for the URLs of the SPA applications to remove '#' symbol from URLs due to 
 some of the OIDC providers don't support it in the callback urls. So you will need to change your Apache configuration 
-and add a rewrite rule to serve `index.html` for every path except static resources.
+and add a rewrite rule to serve index.html for every path except static resources.
 
 ### LinShare-ui-admin Apache configuration
 ```apache
 <Directory /usr/local/apache2/htdocs/linshare-ui-admin/new>
       RewriteEngine on
-
-      RewriteRule  "^(.*)config\.js" "config/config.js"
-      RewriteRule  "^(.*)beta\.png" "beta.png"
-      RewriteRule  "^(.*)favicon\.ico" "favicon.ico"
-      RewriteRule  "^(.*)assets/(.*)" "assets/$2"
-
-      # Don't rewrite files or directories
       RewriteCond %{REQUEST_FILENAME} -f [OR]
       RewriteCond %{REQUEST_FILENAME} -d
       RewriteRule ^ - [L]
-
-      # Rewrite everything else to index.html to allow html5 state links
       RewriteRule ^ index.html [L]
     </Directory>
 ```
