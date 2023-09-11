@@ -1,0 +1,4 @@
+Sender mail,Sender name,Sender uid,Sender Domain,Receiver mail,Receiver type ,Receiver name,Receiver uid,Receiver Domain ,File name,File uid,Size of shared file (Kb),Date and time of share
+abbey.curry@linshare.org,Abbey CURRY,3932b3b4-7d94-4a8e-bfd5-10788b0f388t,Domaine1,amy.wolsh@linshare.org,internal,Amy WOLSH,fa3fe32a-ea1f-42e6-9224-b6b5056337f9,Domaine2,file1.pdf,8dacf652-5dfe-4521-b313-c1ca307eb2f,100,2023-08-28T14:50:44
+abbey.curry@linshare.org,Abbey CURRY,3932b3b4-7d94-4a8e-bfd5-10788b0f388t,Domaine1,amy.wolsh@linshare.org,internal,Amy WOLSH,fa3fe32a-ea1f-42e6-9224-b6b5056337f9,Domaine2,file2.pdf,5bcdf652-5dfe-4521-b313-c1ca307zmn,300,2023-08-28T14:50:44
+dawson.waterfield@linshare.org,Dawson WATERFIELD,sl3fe32a-ea1f-42e6-9224-b6b505633888,Domaine2,peter.wilson@linshare.org,external,Peter WILSON,2932b3b4-7d94-4a8e-bfd5-10788b0f388t,,file3.odt,7ghdf652-5dfe-4521-b313-c1ca307pkt,200,2023-06-14T16:45:33
