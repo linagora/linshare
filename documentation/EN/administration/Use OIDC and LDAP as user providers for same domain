@@ -1,5 +1,5 @@
 
-# Using OIDC as user provider for domain and LDAP server to search non synchronized users
+# Using OIDC and LDAP server as user providers for domain  to search  users
 
 When you configure the domain user provider as OIDC provider you will face the problem when you share file with another internal user that is not already authenticated and in this case he will be considered as external or guest user.
 
