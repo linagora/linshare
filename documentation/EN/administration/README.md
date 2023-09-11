@@ -27,3 +27,7 @@
 * How to [put log configuration in debug](how-to-put-log-configuration-in-debug.md).
 
 * How to [activate GDPR on LinShare](how-to-activate-gdpr.md)
+
+* How to [Use OIDC and LDAP providers for same domain](Use-OIDC-and-LDAP-same-domain.md)
+
+
