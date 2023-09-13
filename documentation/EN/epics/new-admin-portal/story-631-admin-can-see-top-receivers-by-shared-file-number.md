@@ -34,14 +34,12 @@ When I click on Filter button, I can see a filter screen
     Time: I can select one time range then the result will be calculated based on selected time.
 
 - After I select filters Domain/Time then click Enter, there will be a new a table "Top 50 Receivers by shared file count" with four columns will be displayed accordingly  :
-  - Order
-  - Share receiver: Name and email
-  - Domain :Domain of the receiver, if the receiver is external users, the name of domain will be blank.
+  - Receiver email
   - Number of shared files
   
 #### Postconditions
 
-- Rows should by shared file number in descending order
+- Rows should be sorted by shared file size in descending order by default
 - Rows should be displayed with pagination
 
 [Back to Summary](#summary)
