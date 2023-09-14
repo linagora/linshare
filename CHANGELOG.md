@@ -17,10 +17,10 @@
 #### Main features:
 * Core:
   * Support AWS integration with V4 signature
-  * Support LDAP as second user provider
+  * Support LDAP as second user provider with OIDC 
     
 
-* UI-Admin:
+* UI-Admin: New admin portal
   * User diagnostic
   * Email Templates with vietnamese language support
     
@@ -33,7 +33,7 @@
 
 #### Bug Fixes:
 * Core:  
-  * Fixing the bug of OIDC authentication with Opaque token
+  * Fixing the bug of OIDC authentication with Opaque token of setting a list of domains
   * Fixing the bug of displaying user profile in mobile for Web applicatione
 
 * UI-User:
