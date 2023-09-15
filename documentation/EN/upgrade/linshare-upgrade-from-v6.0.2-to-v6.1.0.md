@@ -49,17 +49,17 @@ Only bug fixes. No database schema modification.
 In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
 Our goal for the future is to implement all features in the old interface into the new one.
 
-For this migration, download the following files from this address: http://download.linshare.org/versions/6.0.4 :
+For this migration, download the following files from this address: http://download.linshare.org/versions/6.1.0 :
 
-  * __linshare-core-6.0.4.war__
+  * __linshare-core-6.1.0.war__
 
-  * __linshare-ui-admin-6.0.4.tar.bz2__
+  * __linshare-ui-admin-6.1.0.tar.bz2__
 
   * __linshare-ui-admin-4.2.7-legacy1.tar.bz2__
 
-  * __linshare-ui-user-6.0.4.tar.bz2__
+  * __linshare-ui-user-6.1.0.tar.bz2__
 
-  * __linshare-ui-upload-request-6.0.4.tar.bz2__
+  * __linshare-ui-upload-request-6.1.0.tar.bz2__
 
 > Note :</br>
  - In this upgrade guide we suppose that all components are downloaded on `/root/downloads` directory</br>
@@ -100,16 +100,32 @@ In this upgrade guide we consider that the default databases PostgreSQL and Mong
  First you need to stop Apache and Tomcat services:
 
  ```bash
+ $ systemctl stop apache2
+ ```
+ ```bash
  $ systemctl stop tomcat9.service
  ```  
+ Once your Tomcat service is stopped, you should extract the content of `linshare-core-6.1.0-sql.tar.bz2` by using this command:
 
+ ```bash
+ $ tar xjvf  /root/downloads/linshare-core-6.1.0-sql.tar.bz2
+ ```
+ Then you will find the required file for the migration, named `linshare-core-6.1.0-sql/postgresql/Migration_6.0.0_to_6.1.0.sql`
 
-The next step, you should replace the `linShare.war` with `LinShare-core-6.0.4.war`:
+ In order to upgrade LinShare from 6.0.2 to 6.1.0 you need to run the migration script as follow:
 
+ ```bash
+ $ psql -h `host` -d linshare -U linshare -f Migration_6.0.0_to_6.1.0.sql
+ ```
+ Once the migration script is done, you can check the database's version through the following query: `select * from version`.
+
+ The next step, you should replace the `linShare.war` with `LinShare-core-6.1.0.war`:
+
+ 
  ```bash
  $ rm /var/lib/tomcat9/webapps/linshare.war
  $ rm -fr /var/lib/tomcat9/webapps/linshare
- $ cp  /root/downloads/linshare-core-6.0.4.war /var/lib/tomcat9/webapps/linshare.war
+ $ cp  /root/downloads/linshare-core-6.1.0.war /var/lib/tomcat9/webapps/linshare.war
  ```
 
 
@@ -133,7 +149,7 @@ The next step, you should replace the `linShare.war` with `LinShare-core-6.0.4.w
  $ tar xjvf /root/downloads/linshare-ui-admin-4.2.7-legacy1.tar.bz2
  $ chown -R www-data: linshare-ui-admin
  $ cd linshare-ui-admin
- $ tar xjf /tmp/linshare_data/linshare-ui-admin-6.0.4.tar.bz2
+ $ tar xjf /tmp/linshare_data/linshare-ui-admin-6.1.0.tar.bz2
  $ mv linshare-ui-admin new
 
  ```
@@ -149,7 +165,7 @@ The next step, you should replace the `linShare.war` with `LinShare-core-6.0.4.w
  ```
  $ cd /var/www/
  $ rm -rf linshare-ui-user
- $ tar xjvf  /root/downloads/linshare-ui-user-6.0.4.tar.bz2
+ $ tar xjvf  /root/downloads/linshare-ui-user-6.1.0.tar.bz2
  $ chown -R www-data: linshare-ui-user
  ```
 
@@ -163,7 +179,7 @@ The next step, you should replace the `linShare.war` with `LinShare-core-6.0.4.w
  ```
  $ cd /var/www/
  $ rm -rf linShare-ui-upload-request
- $ tar xjvf  /root/downloads/linshare-ui-upload-request-6.0.4.tar.bz2
+ $ tar xjvf  /root/downloads/linshare-ui-upload-request-6.1.0.tar.bz2
  $ chown -R www-data: linshare-ui-upload-request
  ```
 
