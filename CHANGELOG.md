@@ -38,7 +38,7 @@
 
 * UI-User:
   * Fixing the bug in ui-user for displaying user history
-  * Fixing the bug in ui-user for guest and moderator notification language
+  * Fixing the bug in ui-user for guests and moderators notification language
 
 
 # [6.0.4](https://github.com/linagora/linshare/compare/6.0.0...6.0.4) (2023-06-09) [Download link](http://download.linshare.org/versions/6.0.4/)
