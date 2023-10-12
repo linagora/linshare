@@ -2,7 +2,7 @@
 
 LemonLDAP::NG is an open source Web Single Sign On (WebSSO) supporting multiple
 protocoles, like CAS, SAML, header injections, OIDC, ... In this case, we are
-going to use OIDC which is the recommended protocole.
+going to use OIDC  which is the recommended protocol with opaque access tokens.
 
 
 ## Resume
@@ -96,30 +96,19 @@ oidc.client.id=linshare
 oidc.client.secret=linshare
 ```
 
-### Token setting before 6.2
+### Token setting after 6.0.2
 
 To use OIDC opaque token :   
 - property `oidc.on=true`
 - property `oidc.opaqueToken.lengh` must be strictly greater than your token length 
 
-To use OIDC JWT token :  
-- property `oidc.on=true`
-- property `oidc.opaqueToken.lengh` must be strictly lesser or equal to your token length
-- request header `X-LinShare-Client-App` must be equal to `Linshare-Web`
-- request header `X-LinShare-ID-Token` must contain the token
 
 If neither of these sets of conditions are met, authentication will try to default to legacy JWT.
 
 > Note:   
 > Be wary that until now property `oidc.opaqueToken.lengh` has a spelling mistake, but you must use `lengh` instead of `length`. This will be corrected in a future release.
 
-### Token setting since 6.2
 
-SSO authentication has been simplified, but remains backward compatible with previous system. You can now rely on fewer properties:
-
-- property `oidc.on=true` to use OIDC auth
-- request header `X-LinShare-Auth-Provider` can be set to `Oidc-Jwt`, `Oidc-Opaque` or `Jwt`
-- request header `X-LinShare-ID-Token` must still contain the token if choosing `Oidc-Jwt`
 
 ### Restart
 Finally just restart Tomcat : `systemctl restart tomcat`.
