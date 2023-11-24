@@ -127,9 +127,10 @@ See [linshare-admin](../../EN/administration/how-to-use-jwt.md) for more details
 ### Storage mode selection
 - **linshare.documents.storage.mode**
     - `filesystem`: stores documents on file system for local storage (by default)
-    - `swift-keystone`: stores documents into swift without region support (generic) (maximum file size is 5GB).
-    - `openstack-swift`: stores documents into openstack swift with region support(regionId will be mandatory) (maximum file size is 5GB).
-    - `aws-s3`: stores documents into Amazon S3 (maximum file size is 5GB). (`s3` is possible but not recommended, try only if experiencing issues with `aws-s3`)
+    - `swift-keystone`: stores documents into swift without region support (generic).
+    - `openstack-swift`: stores documents into openstack swift with region support(regionId will be mandatory).
+    - `aws-s3`: stores documents into Amazon S3. 
+    - `s3` :  stores document through s3 protocols
 - **linshare.documents.storage.providers**: is a list of supported providers, for which we tested and/or provided a specific connector. But you can try to add jcloud compatible storage modes to be used by our default implementation. Storage mode selected in `linshare.documents.storage.mode` must be available in this property.
 
 ### Storage parameters
@@ -148,6 +149,7 @@ See [linshare-admin](../../EN/administration/how-to-use-jwt.md) for more details
     - **linshare.documents.storage.project.name**: project name to use
     - **linshare.documents.storage.multipartupload**: should be set to `true`
   - If using`s3` or `aws-s3` : 
+    - **linshare.documents.storage.forceS3SignatureVersion**: integer forcing a specific signature version. Accepted values are 2 or 4; others will be ignored and version will be chosen automatically by jcloud (default is 0)
     - **linshare.documents.storage.endpoint**: becomes optional. If absent, `identity` and `credential` will be used to connect.
     
 > Note: `linshare.documents.storage.identity` can be replaced by `linshare.documents.storage.user.domain` & `linshare.documents.storage.user.name` (both must be present)
