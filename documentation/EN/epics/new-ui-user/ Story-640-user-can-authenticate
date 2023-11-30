@@ -12,6 +12,8 @@
 ## Definition
 
 ### Preconditions
+- The login should respect the email format (please enter an email address)
+- The login and password should be correct (authentication fails : login or password is incorrect)
 
 ### Description 
 
