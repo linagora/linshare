@@ -26,7 +26,6 @@ As a user, I want to be able to authenticate using my existing credentials from 
 - The system should create a user account for the user if they do not already have one.
 - The system should associate the user account with the user's credentials from the user provider.
 - The user should be able to log in to the application using their credentials from the user provider.
-- The user should be able to manage their user account settings, including their user provider credentials.
 
 
 
