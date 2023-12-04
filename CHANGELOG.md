@@ -40,6 +40,8 @@
   * Fixing the bug for mobile authentication with permanent token
   * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
   * Fixing the bug of filtering the user history data by date 
+  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him
+
   
 
 # [6.0.2](https://github.com/linagora/linshare/compare/6.0.0...6.0.2) (2023-02-15) [Download link](http://download.linshare.org/versions/6.0.2/)
