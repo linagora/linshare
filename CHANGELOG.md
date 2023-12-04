@@ -1,3 +1,83 @@
+# [6.2](https://github.com/linagora/linshare/compare/6.1...6.2) (2023-12-05) [Download link](http://download.linshare.org/versions/6.2/)
+
+**The 6.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.1-to-v6.2.md).
+
+- **core** : 6.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.1...6.2) 
+- **ui-user** : 6.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.1...v6.2)
+- **ui-admin** : 6.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.1...v6.2)
+- **ui-upload-request** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.1...v6.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Support S3 storage with V4 signature
+  * Update the list od supported mime types 
+  * Add support for OpenID Connect on LinShare mobile appication
+  * Adding a job task for sending share operations in CSV format to a list of persons
+  * Moving activities filters to the backend side to avoid timeouts for large responses
+  
+
+* UI-Admin:
+  * New Admin portal is completely rewritten with new UI/UX
+  * New dashbord in reporting topic for top share recipients based on number and volume shares
+  * Add new columns for activities topic (recipient, file size)
+  
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug for mobile authentication with permanent token
+  * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
+  * Fixing the bug of filtering the user history data by date 
+  
+
+# [6.0.2](https://github.com/linagora/linshare/compare/6.0.0...6.0.2) (2023-02-15) [Download link](http://download.linshare.org/versions/6.0.2/)
+
+**The 6.0.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.2) 
+- **ui-user** : 6.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.2)
+- **ui-admin** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.2)
+- **ui-upload-request** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * We've change LinShare license to pure GPLv3
+  * Support of the JWT tokens for the OIDC auth flow with PKCE
+
+* UI-Admin:
+  * New domain treeview selection to a better UX
+  * New Configuration page per tabs for domain Details, Parameters (aka Functionalities), Type mime policies, Welcome messages, Quota, Remote servers, Remote filters, Public keys (JWT)
+
+* UI-User:
+  * Improve and update FreeOTP UI and UX 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Added ability to use special characters of special("-", "'") for the file names, directory names, and upload requests 
+  * Ability to update guest profile with an account (with simple moderator access)  
+
 # [6.1.0](https://github.com/linagora/linshare/compar#)  (2023-09-13) [Download link](http://download.linshare.org/versions/6.1.0/)
 
 **The 6.1.0 release of LinShare is out**
