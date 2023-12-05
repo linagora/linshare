@@ -8,7 +8,7 @@
 - **core** : 6.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.1...6.2) 
 - **ui-user** : 6.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.1...v6.2)
 - **ui-admin** : 6.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.1...v6.2)
-- **ui-upload-request** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.1...v6.2)
+- **ui-upload-request** : 6.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.1...v6.2)
 
 >**NB:**
 >Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
