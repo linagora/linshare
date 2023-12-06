@@ -2,6 +2,8 @@ This file provides a list of dependencies's versions required by **LinShare**
 
 | LinShare Version | OS                  | JAVA JRE    | PostgreSQL    | MongoDB     | Tomcat   | Apache  HTTPD   |
 |------------------|---------------------|---------|---------------|-------------|----------|----------|
+| 6.2   | Debian 11   | OpenJDK 11 | postgreSql 13 | MongoDB 5.0 | Tomcat 9 | Apache 2.4 |
+| 6.1   | Debian 11   | OpenJDK 11 | postgreSql 13 | MongoDB 5.0 | Tomcat 9 | Apache 2.4 |
 | 6.0   | Debian 11   | OpenJDK 11 | postgreSql 13 | MongoDB 5.0 | Tomcat 9 | Apache 2.4 |
 | 5.1   | Debian 10   | OpenJDK 11 | postgreSql 11 | MongoDB 4.2 | Tomcat 9 | Apache 2.4 |
 | 5.0   | Debian 10   | OpenJDK 11 | postgreSql 11 | MongoDB 4.2 | Tomcat 9 | Apache 2.4 |
