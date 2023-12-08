@@ -12,21 +12,27 @@
 ## Definition
 
 ### Preconditions
-- The login should respect the email format (please enter an email address)
-- The login and password should be correct (authentication fails : login or password is incorrect)
+
+- Given that I (the user) already have log-in credentials from the user provider 
+- Given that the user provider that contains my account is an external user providers such as openID Connect provider and SSO is configed to login LinShare. 
 
 ### Description 
 
-As a user, I want to be able to authenticate using my existing credentials from various user providers, such as many openID Connect providers.
+- When I open LinShare UI-User URL of my company, I am redirected to the OIDC provider log-in screen
+ I need to inout my log-in credentials including:
+   - Email
+   - Password
+ then click Sign-in
+- The  OIDC provider will validate if my email and password are correct or not :
+   - If the inputted credendials are incorrect, there will be error message
+   - If the inputted credentials are correct, I logged-in successfully in the  OIDC provider. 
+- Then the system will redirect me back to the LinShare application.
 
 ### Postcondition 
 
-- Once the user has successfully authenticated with the user provider, the system should redirect them back to the application.
-- The system should create a user account for the user if they do not already have one.
-- The system should associate the user account with the user's credentials from the user provider (ldap).
-- The user should be able to log in to the application using their credentials from the user provider.
-- The user should be able to reset his password (based on identity provider)
-
+- From my UI-user URL, the system can automatically detect if it is using SSO and redirect me to the SSO log-in page. 
+- Once I have successfully authenticated with the user provider, the system should redirect me back to the application.
+- The system should create a LinShare user account for me if I do not already have one. 
 
 
 [Back to Summary](#summary)
