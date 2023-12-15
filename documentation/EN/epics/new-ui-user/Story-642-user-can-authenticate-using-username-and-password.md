@@ -37,6 +37,8 @@
    * After 15 attempts : account locked indefinitely
 
 - Error (1) and error (2) are not counted as failed authentication 
+- When account is locked, I can see a message: "Your account has been locked for [locked time] due to failed login attempts"
+
 ### Postcondition 
 
 - If I input correct log-in credentials, I am logged in and  redirected to LinShare homepage. 
