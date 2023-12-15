@@ -23,7 +23,9 @@ As a user, I want to have a clear and concise home page that provides me with an
 
 - The menu should be located at the top of the page and serve as the gateway to different sections. The menu will be structured into the following categories:
 
-   - Home: Directs users to the main landing page.
+   - Home: Directs users to the main landing page. 
+   
+   - Quick share: A new feature that allows to share file quickly and can be turn on/off.
 
    - Current Uploads: Provides a quick link to recently uploaded files.
 
