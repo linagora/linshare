@@ -24,11 +24,19 @@
    - Keep me Signed-in: A checkbox
    - Forgot password: A link 
 - After input fields, I click Log-in button, the system will validate:
-   - If field email or password is blank, there will be an error message: This field cannot be blank 
-   - If email format is invalid, there will be an error message: Invalid email format 
-   - IF the email or password is incorrect, there will be an error message: Authentication failed, either the email or the password is invalid
-- If there is no error, I am logged-in successfully to LinShare 
+   - If field email or password is blank, there will be an error message: This field cannot be blank (error1)
+   - If email format is invalid, there will be an error message: Invalid email format (error 2)
 
+- If there is no error, I am logged-in successfully to LinShare 
+- IF the email or password is incorrect, there will be an error message: Authentication failed, either the email or the password is invalid. 
+- If the authentication is failed for multiple times, the account will be locked by following rules :
+   * After 3 attempts : account locked for 10 minutes
+   * After 6 attempts : account locked for 20 minutes
+   * After 9 attempts : account locked for 60 minutes (1 hour)
+   * After 12 attempts : account locked for 1440 minutes (1 day)
+   * After 15 attempts : account locked indefinitely
+
+- Error (1) and error (2) are not counted as failed authentication 
 ### Postcondition 
 
 - If I input correct log-in credentials, I am logged in and  redirected to LinShare homepage. 
