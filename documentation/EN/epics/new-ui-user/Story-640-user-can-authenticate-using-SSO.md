@@ -20,7 +20,7 @@
 
 - When I open LinShare UI-User URL of my company, I am redirected to the OIDC provider log-in screen
  I need to inout my log-in credentials including:
-   - Email
+   - Login (Email, UPN, ...) depending on the IDP
    - Password
  then click Sign-in
 - The  OIDC provider will validate if my email and password are correct or not :
