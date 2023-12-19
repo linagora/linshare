@@ -21,8 +21,28 @@ As a user, I want to have a clear and concise home page that provides me with an
 
 ### Postcondition 
 
-- The menu should be located at the top of the page.
-- The menu should be organized into categories, such as "Home," "Current uploads," "Received shares,", "My space", "Upload requests", "Contacts", "Activity logs"
+- The menu should be located at the left of the page and serve as the gateway to different sections. The menu will be structured into the following categories:
+
+   - Home: Directs users to the main landing page. 
+   
+   - Quick share: A new feature that allows to share file quickly and can be turn on/off.
+
+   - Current Uploads: Provides a quick link to recently uploaded files.
+
+   - Received Shares: Displays shared content received from other users. There are only files in Received shares
+
+   - My Space: Offers a personalized section for user-specific content. There are only files in My space
+
+   - Shared space: Presents a collaborative area for files shared among users. Sub-categories are Workspaces and workgroups.
+   
+   A Workspace contains workgroups. A workgoup can contain folders/files.  User should be able to navigate easily to child-level of file/folder, e.g using breadcrumbs. 
+
+   - Upload Requests: Lists  upload requests. Sub-categories include Pending, Active/Close, Expired
+
+   - Contacts: Sub-categories include Contact lists and Guests 
+
+   - Activity Logs: Displays a record of recent user activities.
+
 - Each category should have a drop-down menu that lists all of the available subcategories.
 - The menu should be responsive and easy to use on all devices.
 
