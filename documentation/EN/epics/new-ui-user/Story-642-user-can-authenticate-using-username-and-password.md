@@ -44,6 +44,7 @@
 - If I input correct log-in credentials, I am logged in and  redirected to LinShare homepage. 
 - The system should create a LinShare user account for me if I do not already have one. 
 
+**NB: Possibility for the user to change logo, background images and colors : We will have a dedicated story for this 
 
 [Back to Summary](#summary)
 
