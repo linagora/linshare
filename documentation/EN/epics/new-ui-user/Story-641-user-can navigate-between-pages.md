@@ -21,7 +21,7 @@ As a user, I want to have a clear and concise home page that provides me with an
 
 ### Postcondition 
 
-- The menu should be located at the top of the page and serve as the gateway to different sections. The menu will be structured into the following categories:
+- The menu should be located at the left of the page and serve as the gateway to different sections. The menu will be structured into the following categories:
 
    - Home: Directs users to the main landing page. 
    
