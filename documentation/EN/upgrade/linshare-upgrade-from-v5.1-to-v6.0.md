@@ -120,6 +120,18 @@ We switched from Mongo 4.2 to 5.0 version. [Upgrade Guide](https://www.mongodb.c
  $ systemctl stop tomcat9.service
  ```  
 
+ Once your Tomcat service is stopped, you should extract the content of `linshare-core-6.0.0-sql.tar.bz2` by using this command:
+
+ ```bash
+ $ tar xjvf  /root/downloads/linshare-core-6.0.0-sql.tar.bz2
+ ```
+ Then you will find the required file for the migration, named `linshare-core-6.0.0-sql/postgresql/Migration_5.1.0_to_6.0.0.sql`
+
+ In order to upgrade LinShare from 5.0 to 5.1 you need to run the migration script as follow:
+
+ ```bash
+ $ psql -h `host` -d linshare -U linshare -f Migration_5.0.0_to_5.1.0.sql
+ ```
 
 The next step, you should replace the `linShare.war` with `LinShare-core-6.0.0.war`:
 
