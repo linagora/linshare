@@ -233,4 +233,27 @@ and add a rewrite rule to serve index.html for every path except static resource
 
  <a name="tasks">
 
+ ## Upgrade task execution in the administration interface
+ </a>
 
+ For this new version, you need to run further upgrade tasks in the
+ admin interface : http://`YourServerName`/#/upgradetasks/list.
+
+ All the tasks must be executed by order and succeed in order to complete the upgrade.
+
+ NB: A task can finish with a successful status but errors can be noticed during the progress.
+     It is necessary to check the execution reports found in the console.
+     In case of errors, you must read the logs of Tomcat server for more details,
+     resolve the problems and re-launch the task.
+
+ * As long as the tasks with status `Mandatory` are not completed, the users can not
+ use the system.
+
+ * As long as the tasks with status `Required` are not completed,
+ the system will work partially (Some functionalities might be deactivated).
+ These tasks can be executed simultaneously without disrupting the user's activity.
+
+ Once the mandatory tasks have been executed, you can switch to the next step if you want to re-establish quickly the LinShare service.
+ The required tasks can take some time depending on amount of data to upgrade.
+
+ Once all these tasks are done, your LinShare will be operational.
