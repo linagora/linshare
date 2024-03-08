@@ -2,7 +2,7 @@
 
    * [LinShare Download](#dlLinshare)
    * [Archive and files configuration Deployment](#installFile)
-   * [JDK Installation](#installOpenJDK)
+   * [JVM Installation](#installOpenJDK)
    * [Databases Installation](#bdd)
      * [PostgreSQL Installation](#postgre)
      * [MongoDB Installation](#mongo)
@@ -76,15 +76,16 @@ chown root:tomcat /etc/linshare/*
 chmod 640 /etc/linshare/*
 
 ```
-## <a name="installOpenJDK">JDK Installation</a>
+## <a name="installOpenJDK">JVM Installation</a>
 
-**LinShare** requires OpendJDK 11
-> You can find the required versions of LinShare's dependencies [here](./requirements.md)
-You can install OpenJDK11 from Debian official packages:
+**LinShare** requires a Java Virtual Machine.
+> You can find the required and recommended JVM distribution in LinShare's system requirements [here](./requirements.md)
+
+For example, you can install the JVM provided by Debian community based on OpenJDK 17 from Debian official packages:
 
 ```bash
 apt update
-apt install openjdk-11-jdk
+apt install openjdk-17-jre
 ```
 ## <a name="bdd">Databases Installation</a>
 
