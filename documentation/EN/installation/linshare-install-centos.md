@@ -4,7 +4,7 @@
 
    * [LinShare Download](#dlLinshare)
    * [Archive and files configuration Deployment](#installFile)
-   * [OpenJDK Java JRE Installation](#instalOpenJDK)
+   * [JVM Installation](#installOpenJDK)
    * [Databases Installation](#bdd)
      * [PostgreSQL Installation](#postgre)
      * [MongoDB Installation](#mongo)
@@ -87,13 +87,13 @@ Check the following log file location
 log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 ```
 
-## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
+## <a name="installOpenJDK">JVM Installation</a>
 
-__LinShare__  works with OpenJDK or Sun/Oracle Java 11. Install it and activate it from the repositories :
-> You can find the required versions of LinShare's dependencies [here](./requirements.md)
+**LinShare** requires a Java Virtual Machine.
+> You can find the required and recommended JVM distribution in LinShare's system requirements [here](./requirements.md)
 
 ```bash
-yum install java-11-openjdk-devel
+yum install java-17-openjdk-devel
 ```
 
 To update Java version you can set:
