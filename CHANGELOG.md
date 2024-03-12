@@ -3,7 +3,7 @@
 **The 6.2 release of LinShare is out**
 
 > **NB :**
-> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.1-to-v6.2.md).
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.1.0-to-v6.2.0.md).
 
 - **core** : 6.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.1...6.2) 
 - **ui-user** : 6.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.1...v6.2)
