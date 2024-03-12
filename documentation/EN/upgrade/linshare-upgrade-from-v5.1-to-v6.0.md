@@ -120,6 +120,18 @@ We switched from Mongo 4.2 to 5.0 version. [Upgrade Guide](https://www.mongodb.c
  $ systemctl stop tomcat9.service
  ```  
 
+ Once your Tomcat service is stopped, you should extract the content of `linshare-core-6.0.0-sql.tar.bz2` by using this command:
+
+ ```bash
+ $ tar xjvf  /root/downloads/linshare-core-6.0.0-sql.tar.bz2
+ ```
+ Then you will find the required file for the migration, named `linshare-core-6.0.0-sql/postgresql/Migration_5.1.0_to_6.0.0.sql`
+
+ In order to upgrade LinShare from 5.0 to 5.1 you need to run the migration script as follow:
+
+ ```bash
+ $ psql -h `host` -d linshare -U linshare -f Migration_5.0.0_to_5.1.0.sql
+ ```
 
 The next step, you should replace the `linShare.war` with `LinShare-core-6.0.0.war`:
 
@@ -221,4 +233,27 @@ and add a rewrite rule to serve index.html for every path except static resource
 
  <a name="tasks">
 
+ ## Upgrade task execution in the administration interface
+ </a>
 
+ For this new version, you need to run further upgrade tasks in the
+ admin interface : http://`YourServerName`/#/upgradetasks/list.
+
+ All the tasks must be executed by order and succeed in order to complete the upgrade.
+
+ NB: A task can finish with a successful status but errors can be noticed during the progress.
+     It is necessary to check the execution reports found in the console.
+     In case of errors, you must read the logs of Tomcat server for more details,
+     resolve the problems and re-launch the task.
+
+ * As long as the tasks with status `Mandatory` are not completed, the users can not
+ use the system.
+
+ * As long as the tasks with status `Required` are not completed,
+ the system will work partially (Some functionalities might be deactivated).
+ These tasks can be executed simultaneously without disrupting the user's activity.
+
+ Once the mandatory tasks have been executed, you can switch to the next step if you want to re-establish quickly the LinShare service.
+ The required tasks can take some time depending on amount of data to upgrade.
+
+ Once all these tasks are done, your LinShare will be operational.
