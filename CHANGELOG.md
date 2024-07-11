@@ -1,3 +1,62 @@
+# [6.3](https://github.com/linagora/linshare/compare/6.2...6.3) (2024-07-11) [Download link](http://download.linshare.org/versions/6.3.0/)
+
+**The 6.3 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.2-to-v6.3.md).
+
+- **core** : 6.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.2...6.3) 
+- **ui-user** : 6.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.2...v6.3)
+- **ui-admin** : 6.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.2...v6.3)
+- **ui-upload-request** : 6.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.2...v6.3)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Convert a guest to internal user 
+  * Synchronize user information with OIDC provider 
+  * Support external ID as user identifier for OIDC user provider
+   
+  
+
+* UI-Admin:
+  * Add the possibility to create blackList/whiteList to manage MIME types
+  * Modifying root user password
+  
+  
+* UI-User:
+  * Add log activity when user information changed on OIDC provider ( First name, Last name and Email)  
+  * Add log activity related to guest conversion
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug for mobile authentication with permanent token
+  * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
+  * Fixing the bug of filtering the user history data by date 
+  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him
+
+* UI-Admin: 
+  * Activities - improve `ANONYMOUS_SHARE_ENTRY` type display
+  * Problem authentication with Second factor authentication
+  * Activities - improve actor search filter to be able to search by a query pattern and not only a selected user returned by the autocomplete
+    
+  
+* UI-User:
+  * When Delete all items you will be redirected to a blank page 
+  * Incorrect legend in details of activity logs (guest moderator actions)
+
+* UI-Upload-Request:
+  * Recipient cannot receive password to access upload request when delay befor activation is enabled
+  * Cannot Edit The activation date of upload request
+  * Download file when upload request is protected by password
+
+
 # [6.2](https://github.com/linagora/linshare/compare/6.1...6.2) (2023-12-04) [Download link](http://download.linshare.org/versions/6.2.0/)
 
 **The 6.2 release of LinShare is out**
@@ -37,12 +96,10 @@
 
 #### Bug Fixes:
 * Core:
-  * Fixing the bug for mobile authentication with permanent token
-  * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
-  * Fixing the bug of filtering the user history data by date 
-  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him
-
-  
+  * Fixing Cookie default value for anonymous share when not protected by password 
+  * Fixing the bug; password not sent in mail activation when delay before notification is enabled for upload request
+  * Fixing the bug of too important latency to display user guests when the number of guests is important 
+ 
 
 
 
