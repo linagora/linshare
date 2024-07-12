@@ -49,7 +49,7 @@ Only bug fixes. No database schema modification.
 In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
 Our goal for the future is to implement all features in the old interface into the new one.
 
-For this migration, download the following files from this address: http://download.linshare.org/versions/6.2.0 :
+For this migration, download the following files from this address: http://download.linshare.org/versions/6.3.0 :
 
   * __linshare-core-6.3.0.war__
 
