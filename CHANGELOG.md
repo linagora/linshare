@@ -19,9 +19,8 @@
 
   * Convert a guest to internal user 
   * Synchronize user information with OIDC provider 
-  * Support external ID as user identifier for OIDC user provider   
+  * Support external ID as user identifier for OIDC user provider
 
-    
 
 * UI-Admin:
 
@@ -29,7 +28,6 @@
   * Modifying root user password  
 
 
-  
 * UI-User:
 
   * Add log activity when user information changed on OIDC provider ( First name, Last name and Email)  
@@ -41,27 +39,30 @@
   * nothing to report  
 
 
-#### Bug Fixes:
+#### Bug Fixes and improvements:
 * Core:
 
   * Fixing the bug for mobile authentication with permanent token
   * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
   * Fixing the bug of filtering the user history data by date 
-  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him  
+  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him
+  * Fixing the bug of displayed password and date time of upload request emails 
+  * Improve performance of listing guests API
 
 
 * UI-Admin: 
 
   * Activities - improve `ANONYMOUS_SHARE_ENTRY` type display
   * Problem authentication with Second factor authentication
-  * Activities - improve actor search filter to be able to search by a query pattern and not only a selected user returned by the autocomplete  
+  * Activities - improve actor search filter to be able to search by a query pattern and not only a selected user returned by the autocomplete
+  * Authentification - fix 2FA authentification
 
-    
   
 * UI-User:
 
-  * When Delete all items you will be redirected to a blank page 
-  * Incorrect legend in details of activity logs (guest moderator actions)  
+  * When Delete all items you will be redirected to the previous page 
+  * Incorrect legend in details of activity logs (guest moderator actions)
+  * Upload Request - fix creation workflow with a delay and displayed date and time in list
 
 
 * UI-Upload-Request:
