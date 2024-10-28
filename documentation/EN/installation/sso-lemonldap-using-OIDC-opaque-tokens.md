@@ -134,6 +134,22 @@ and add the following keys:
     oidcEnabled: true,
 
 ```
+Since LinShare 6.3:
+
+```
+    ...
+    homePage: 'home',
+    ...
+    oidcSetting: {
+      authority: 'http://auth.linshare.local',
+      oidcToken: 'Oidc-Opaque',
+      client_id: 'linshare',
+      client_secret: 'linshare',
+      scope: 'openid email profile'
+    },
+    oidcEnabled: true,
+
+```
 
 ## Step 3.2: LinShare frontend configuration : Ui-Admin
 
@@ -151,7 +167,22 @@ and add the following keys:
     oidcEnabled: true,
 
 ```
+Since LinShare 6.3:
 
+```
+    ...
+    homePage: 'home',
+    ...
+    oidcSetting: {
+      authority: 'http://auth.linshare.local',
+      oidcToken: 'Oidc-Opaque',
+      client_id: 'linshare',
+      client_secret: 'linshare',
+      scope: 'openid email profile'
+    },
+    oidcEnabled: true,
+
+```
 ## Step 3.3: LinShare mobile app configuration:
 
 You can add this if you want to enable OIDC for the mobile app:
@@ -167,6 +198,22 @@ You can add this if you want to enable OIDC for the mobile app:
       scope: 'openid email profile'
     },
     ...
+```
+Since LinShare 6.3:
+
+```
+    ...
+    homePage: 'home',
+    ...
+    oidcSetting: {
+      authority: 'http://auth.linshare.local',
+      oidcToken: 'Oidc-Opaque',
+      client_id: 'linshare',
+      client_secret: 'linshare',
+      scope: 'openid email profile'
+    },
+    oidcEnabled: true,
+
 ```
 
 ## Step 4: OIDC User Provider (Optional)
