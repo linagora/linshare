@@ -154,6 +154,24 @@ and add the following keys:
       },
 
 ```
+Since LinShare 6.3:
+
+```
+    ...
+    homePage: 'home',
+    ...
+    oidcEnabled: true,
+      oidcForceRedirection: false,
+      oidcSetting: {
+        authority: 'https://login.microsoftonline.com/{teant id}/v2.0/',
+        oidcToken: 'Oidc-Jwt',
+        client_id: '{client_id}',
+        client_secret: null,
+        scope: 'openid email profile api://{client_id}/linshare-scope',
+        loadUserInfo: false
+      },
+
+```
 
 ## Step 3.2: LinShare frontend configuration : Ui-Admin
 
@@ -179,7 +197,26 @@ window.APP_CONFIGURATION = Object.freeze({
 });
 
 ```
+Since LinShare 6.3:
 
+```
+if (typeof window === 'undefined') {
+  global.window = {};
+}
+
+window.APP_CONFIGURATION = Object.freeze({
+  beta: true,
+  legacyAppUrl: '/',
+  oidcEnabled: true,
+  oidcSetting: {
+    authority: 'https://login.microsoftonline.com/{teant_id}/v2.0/',
+    oidcToken: 'Oidc-Jwt',
+    client_id: '{client_id}',
+    client_secret: null,
+    scope: 'openid email profile api://{client_id}/linshare-scope',
+    loadUserInfo: false,
+  },
+});
 
 ## Step 4: OIDC User Provider (Optional)
 
