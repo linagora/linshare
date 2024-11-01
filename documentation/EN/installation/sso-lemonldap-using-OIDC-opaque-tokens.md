@@ -38,6 +38,11 @@ do:
     * email => mail
     * family_name => sn
     * given_name => givenName
+    * for LinShare >= 6.3 :
+    * email => mail
+    * last_name => sn
+    * first_name => givenName
+
   * Options/Basic
     * ClientID: linshare
     * Client secret: linshare
