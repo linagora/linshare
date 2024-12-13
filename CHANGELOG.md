@@ -1,3 +1,60 @@
+
+# [6.4](https://github.com/linagora/linshare/compare/6.3...6.4) (2024-12-12) [Download link](http://download.linshare.org/versions/6.4.0/)
+
+**The 6.4 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.3-to-v6.4.md).
+
+- **core** : 6.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.3...6.4) 
+- **ui-user** : 6.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.3...v6.4)
+- **ui-admin** : 6.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.3...v6.4)
+- **ui-upload-request** : 6.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.3...v6.4)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+
+  * Guest can share files through autorized contact lists 
+  * Add time fiels for upload request email notification 
+
+* UI-Admin:
+
+  * Add functionality for Guest restriction by contact lists
+
+* UI-User:
+
+  * Guest can share files through autorized contact lists 
+  * Add log activity related to guest conversion  
+
+* UI-Upload-Request:
+
+  * nothing to report  
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  *
+
+
+* UI-Admin: 
+
+  * 
+  
+* UI-User:
+
+  * 
+
+* UI-Upload-Request:
+
+  * 
+
+
+
 # [6.3](https://github.com/linagora/linshare/compare/6.2...6.3) (2024-07-11) [Download link](http://download.linshare.org/versions/6.3.0/)
 
 **The 6.3 release of LinShare is out**
