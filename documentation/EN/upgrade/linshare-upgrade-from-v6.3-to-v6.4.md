@@ -110,7 +110,19 @@ INSERT INTO version (id, version, creation_date) VALUES ((SELECT nextVal('hibern
  ```bash
  $ systemctl stop tomcat9.service
  ```  
- 
+ Once your Tomcat service is stopped, you should extract the content of `linshare-core-6.4.0-sql.tar.bz2` by using this command:
+
+ ```bash
+ $ tar xjvf  /root/downloads/linshare-core-6.4.0-sql.tar.bz2
+ ```
+ Then you will find the required file for the migration, named `linshare-core-6.4.0-sql/postgresql/Migration_6.3.0_to_6.4.0.sql`
+
+ In order to upgrade LinShare from 6.3.0 to 6.4.0 you need to run the migration script as follow:
+
+ ```bash
+ $ psql -h `host` -d linshare -U linshare -f Migration_6.3.0_to_6.4.0.sql
+ ```
+ Once the migration script is done, you can check the database's version through the following query: `select * from version`.
 
  The next step, you should replace the `linShare.war` with `LinShare-core-6.4.0.war`:
 
