@@ -1,6 +1,7 @@
 # LinShare
 
-![LinShare](https://static.tildacdn.net/tild3134-3337-4764-a439-393563343934/Group_1321315060.svg)
+![LinShare](https://optim.tildacdn.net/tild3962-3433-4761-b463-636136316436/-/format/webp/linshare-platforms_1.png)
+
 
 ## License
 Linshare is released under the terms of the license GNU AGPLv3. For more information please see [here](LICENSE.md)
