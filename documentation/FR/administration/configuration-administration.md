@@ -26,7 +26,7 @@ Voici une liste des clés de paramétrage présentes dans les fichiers __propert
 ## <a name="num1">Chemins et Fichiers</a>
 
 -   java.io.tmpdir (par défaut `/tmp/`).
--   log4j.configuration (par défaut `file:/etc/linshare/log4j.properties`).
+-   log4j2.configuration (par défaut `file:/etc/linshare/log4j2.properties`).
 -   linshare.config.path (par défaut `file:/etc/linshare/`).
 
 ## <a name="num2">Bases de Données</a>

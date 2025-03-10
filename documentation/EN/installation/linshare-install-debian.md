@@ -2,7 +2,7 @@
 
    * [LinShare Download](#dlLinshare)
    * [Archive and files configuration Deployment](#installFile)
-   * [JDK Installation](#installOpenJDK)
+   * [JVM Installation](#installOpenJDK)
    * [Databases Installation](#bdd)
      * [PostgreSQL Installation](#postgre)
      * [MongoDB Installation](#mongo)
@@ -16,10 +16,13 @@
    * [First Access](#firstAccess)
    * [Upload Request](#uploadRequest)
 
-Welcome to LinShare installation Guide, This page provides a __LinShare__ version 4.2 installation on *Debian buster 10* (Debian versions older than version 8 are not supported).
+Welcome to LinShare installation Guide, This page provides a __LinShare__ version 6.0 installation on *Debian bullseye 11*
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 5.1](https://github.com/linagora/linshare/blob/maintenance-5.1.x/documentation/EN/installation/linshare-install-debian.md)
+> - [LinShare 5.0](https://github.com/linagora/linshare/blob/maintenance-5.0.x/documentation/EN/installation/linshare-install-debian.md)
+> - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-debian.md)
@@ -33,9 +36,10 @@ __LinShare__  can be downloaded here :
 
 [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
-> Note:<br/>
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
+In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
+Our goal for the future is to implement all features in the old interface into the new one.
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -44,8 +48,15 @@ For this installation, download the following files in `/tmp/linshare_data`:
   * linshare-core-{VERSION}.war
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
+  * linshare-ui-admin-{VERSION}-legacy.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
   * linshare-ui-upload-request-{VERSION}.tar.bz2
+
+For this installation process, be sure that your system has it's default locale set to `en_US.UTF-8`.  
+You can use this command to configure it:
+```bash
+dpkg-reconfigure locales
+```
 
 To manipulate the archives, it is necessary to install `unzip` and `bzip2`:
 ```bash
@@ -56,21 +67,25 @@ apt install unzip bzip2
 
 ```bash
 mkdir -p /etc/linshare
-unzip -j -d /etc/linshare/ /tmp/linshare_data/linshare-core-{VERSION}.war WEB-INF/classes/{linshare,log4j}.*
+unzip -j -d /etc/linshare/ /tmp/linshare_data/linshare-core-{VERSION}.war WEB-INF/classes/{linshare,log4j2}.*
 Archive:  linshare.war
   inflating: /etc/linshare/linshare.properties.sample  
-  inflating: /etc/linshare/log4j.properties
+  inflating: /etc/linshare/log4j2.properties
 mv /etc/linshare/linshare.properties.sample /etc/linshare/linshare.properties
-```
-## <a name="installOpenJDK">JDK Installation</a>
+chown root:tomcat /etc/linshare/*
+chmod 640 /etc/linshare/*
 
-**LinShare** requires OpendJDK 11
-> You can find the required versions of LinShare's dependencies [here](./requirements.md)
-You can install OpenJDK11 from Debian official packages:
+```
+## <a name="installOpenJDK">JVM Installation</a>
+
+**LinShare** requires a Java Virtual Machine.
+> You can find the required and recommended JVM distribution in LinShare's system requirements [here](./requirements.md)
+
+For example, you can install the JVM provided by Debian community based on OpenJDK 17 from Debian official packages:
 
 ```bash
 apt update
-apt install openjdk-11-jdk
+apt install openjdk-17-jre
 ```
 ## <a name="bdd">Databases Installation</a>
 
@@ -82,8 +97,9 @@ At the beginning, LinShare was developped with PostgreSQL. New functionalities h
 
 __Linshare__ requires the use of PostgreSQL for its files and configuration. This section gives details about the PostgreSQL installation.
 
-- Installed version for is PostgreSQL 11, you can install it with:
+- Installed version for is PostgreSQL 13, you can install it with:
 ```bash
+apt update
 apt install postgresql
 ```
 > You can find the required versions of LinShare's dependencies [here](./requirements.md)
@@ -154,18 +170,18 @@ linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect
 ### <a name="mongo">MongoDB Installation</a>
 
 For the __LinShare__ installation, it is required to install a MongoDB database.
-**LinShare** requires MongoDB 4.2
+**LinShare** requires MongoDB 5.0
 > You can find the required versions of LinShare's dependencies [here](./requirements.md)
 
 - Import MongoDB GPG Key
 
 ```bash
 sudo apt -y install gnupg2
-wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 ```
 - Add repository URL to your Debian:
 ```bash
-echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
 ```
 - Install mongodb package
 
@@ -173,20 +189,11 @@ echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo
 sudo apt update
 sudo apt -y install mongodb-org
 ```
-See the [official guide](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-debian/) if needed.
+See the [official guide](https://docs.mongodb.com/v5.0/tutorial/install-mongodb-on-debian/) if needed.
 
 - start MongoDB server 
 ```bash
 sudo systemctl start mongod
-```
-> In case you have erros launching mongoDB try:
-```bash
-chown -R mongodb:mongodb /var/lib/mongodb
-chown mongodb:mongodb /tmp/mongodb-27017.sock
-```
-Than restart :
-```bash
- sudo systemctl restart  mongod.service
 ```
 Now MongoDB server is available and ready to be used.
 
@@ -286,8 +293,8 @@ linshare.documents.thumbnail.pdf.enable=true
 This will allow to generate previews after each file upload.
 
 To use it, download the following files from [http://download.linshare.org/versions/](http://download.linshare.org/versions/) :
-* linshare-thumbnail-server-{VERSION}.jar
-* linshare-thumbnail-server-{VERSION}.yml
+* thumbnail-server-{VERSION}.jar
+* thumbnail-server-{VERSION}.yml
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -295,10 +302,10 @@ In this process, it is considered that the files are downloaded in the `/tmp/lin
 > Note <br>
 By default the server is configured to listens on port 80, it is possible to change it.
 
-Install the file `linshare-thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and install the java archive `linshare-thumbnail-server-{VERSION}.jar` into the repository `/usr/local/sbin/linshare-thumbnail-server.jar` :
+Install the file `thumbnail-server-{VERSION}.yml` into `/etc/linshare/linshare-thumbnail-server.yml` and install the java archive `thumbnail-server-{VERSION}.jar` into the repository `/usr/local/sbin/linshare-thumbnail-server.jar` :
 ```java
-mv /tmp/linshare_data/linshare-thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
-mv /tmp/linshare_data/linshare-thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
+mv /tmp/linshare_data/thumbnail-server-*.yml /etc/linshare/linshare-thumbnail-server.yml
+mv /tmp/linshare_data/thumbnail-server-*.jar /usr/local/sbin/linshare-thumbnail-server.jar
 ```
 
 Creating a systemd service can be useful to automcatically start the thumbnail engine in background at system boot. Create the file `/lib/systemd/system/linshare-thumbnail-server.service`, and add the following content :
@@ -339,13 +346,16 @@ options, get the commented lines in the header of the `linshare.properties` file
 
 All starting needful options by default to LinShare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
-  * `/etc/linshare/log4j.properties`
+  * `/etc/linshare/log4j2.properties`
+
+N.B.: if you are using __LinShare__ version >= 5.1.0, then the `log4j.properties` should be replaced by `log4j2.properties`
+
 It is required to add the following lines in: `/etc/default/tomcat9`:
 
 ```conf
 JAVA_OPTS="${JAVA_OPTS} -Xms512m -Xmx2048m"
 JAVA_OPTS="${JAVA_OPTS} -Dlinshare.config.path=file:/etc/linshare/"
-JAVA_OPTS="${JAVA_OPTS} -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
+JAVA_OPTS="${JAVA_OPTS} -Dlog4j2.configurationFile=file:/etc/linshare/log4j2.properties"
 ```
 If you want to change the location of tmp directory you need to override the default directory used by Tomcat9 which is `/tmp`, by editing `/etc/default/tomcat9` and add:
 
@@ -383,7 +393,7 @@ Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of 
 
 Deploy the __LinShare__ application archive into the Tomcat server:
 ```bash
-mv /tmp/linshare_data/linshare.{VERSION}.war /var/lib/tomcat9/webapps/linshare.war
+mv /tmp/linshare_data/linshare-core-{VERSION}.war /var/lib/tomcat9/webapps/linshare.war
 ```
 
 ## <a name="apache">Web Server Installation</a>
@@ -444,11 +454,15 @@ CustomLog /var/log/apache2/linshare-user-access.log combined
 
 ### <a name="ui-admin">ui-admin vhost Configuration</a>
 
-Deploy the archive of the application __LinShare__ UI Admin in the apache 2 repository :
+As mentioned before for application __LinShare__ UI Admin we will need two components, you can follow the steps bellow to deploy them in the apache2 repository :
+
 ```bash
 cd /var/www/
-tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}-legacy.tar.bz2
 chown -R www-data: linshare-ui-admin
+cd linshare-ui-admin
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+mv linshare-ui-admin new
 ```
 
 Moreover, it is necessary to add the following configuration:
@@ -496,8 +510,7 @@ First, go [here](#uploadRequest) to download the upload request module.
 To deploy the Upload-Request interface of __LinShare__, you need to open your linshare-ui-upload-request.conf virtualhost file :
 
 ```
-cp /etc/apache2/sites-available/000-default.conf
-/etc/apache2/sites-available/linshare-ui-upload-request.conf
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/linshare-ui-upload-request.conf
 sudo a2dissite 000-default
 sudo a2enmod ssl
 sudo a2enmod headers
@@ -628,7 +641,7 @@ Then restart the Apache service :
 __LinShare__ service is now reachable at the following adresses:
 
 For the user interface:
-  * http://linshare-user.local/linshare
+  * http://linshare-user.local/
 
 ![linshare-user-000002010000047E01400157A9D6C9G6](../../img/linshare-user-000002010000047E01400157A9D6C9G6.png)
 
@@ -645,6 +658,13 @@ Please change the password in the administration interface.
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
+
+To access to the new admin interface :
+   * http://linshare-admin.local/new/
+
+![linshare-authentication-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
+
+![linshare-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
 
 ### <a name="uploadRequest">Upload Request component installation</a>
 

@@ -1,3 +1,1074 @@
+
+# [6.4](https://github.com/linagora/linshare/compare/6.3...6.4) (2024-12-12) [Download link](http://download.linshare.org/versions/6.4.0/)
+
+**The 6.4 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.3-to-v6.4.md).
+
+- **core** : 6.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.3...6.4) 
+- **ui-user** : 6.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.3...v6.4)
+- **ui-admin** : 6.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.3...v6.4)
+- **ui-upload-request** : 6.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.3...v6.4)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+
+  * Guest can share files through autorized contact lists 
+  * Add time fiels for upload request email notification 
+
+* UI-Admin:
+
+  * Add functionality for Guest restriction by contact lists
+
+* UI-User:
+
+  * Guest can share files through autorized contact lists 
+  * Add log activity related to guest conversion  
+
+* UI-Upload-Request:
+
+  * nothing to report  
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  *
+
+
+* UI-Admin: 
+
+  * 
+  
+* UI-User:
+
+  * 
+
+* UI-Upload-Request:
+
+  * 
+
+
+
+# [6.3](https://github.com/linagora/linshare/compare/6.2...6.3) (2024-07-11) [Download link](http://download.linshare.org/versions/6.3.0/)
+
+**The 6.3 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.2-to-v6.3.md).
+
+- **core** : 6.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.2...6.3) 
+- **ui-user** : 6.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.2...v6.3)
+- **ui-admin** : 6.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.2...v6.3)
+- **ui-upload-request** : 6.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.2...v6.3)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+
+  * Convert a guest to internal user 
+  * Synchronize user information with OIDC provider 
+  * Support external ID as user identifier for OIDC user provider
+
+
+* UI-Admin:
+
+  * Add the possibility to create blackList/whiteList to manage MIME types
+  * Modifying root user password  
+
+
+* UI-User:
+
+  * Add log activity when user information changed on OIDC provider ( First name, Last name and Email)  
+  * Add log activity related to guest conversion  
+
+
+* UI-Upload-Request:
+
+  * nothing to report  
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  * Fixing the bug for mobile authentication with permanent token
+  * Fixing the bug; can't Edit a guest's information when the guest is created on the fly 
+  * Fixing the bug of filtering the user history data by date 
+  * Fixing the bug when the user can't add an external contact to a contact list after sharing a file with him
+  * Fixing the bug of displayed password and date time of upload request emails 
+  * Improve performance of listing guests API
+
+
+* UI-Admin: 
+
+  * Activities - improve `ANONYMOUS_SHARE_ENTRY` type display
+  * Problem authentication with Second factor authentication
+  * Activities - improve actor search filter to be able to search by a query pattern and not only a selected user returned by the autocomplete
+  * Authentification - fix 2FA authentification
+
+  
+* UI-User:
+
+  * When Delete all items you will be redirected to the previous page 
+  * Incorrect legend in details of activity logs (guest moderator actions)
+  * Upload Request - fix creation workflow with a delay and displayed date and time in list
+
+
+* UI-Upload-Request:
+
+  * Recipient cannot receive password to access upload request when delay befor activation is enabled
+  * Cannot Edit The activation date of upload request
+  * Download file when upload request is protected by password  
+  
+
+
+# [6.2](https://github.com/linagora/linshare/compare/6.1...6.2) (2023-12-04) [Download link](http://download.linshare.org/versions/6.2.0/)
+
+**The 6.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.1-to-v6.2.md).
+
+- **core** : 6.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.1...6.2) 
+- **ui-user** : 6.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.1...v6.2)
+- **ui-admin** : 6.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.1...v6.2)
+- **ui-upload-request** : 6.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.1...v6.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Support S3 storage with V4 signature
+  * Update the list od supported mime types 
+  * Add support for OpenID Connect on LinShare mobile appication
+  * Adding a job task for sending share operations in CSV format to a list of persons
+  * Moving activities filters to the backend side to avoid timeouts for large responses
+  
+
+* UI-Admin:
+  * New Admin portal is completely rewritten with new UI/UX
+  * New dashbord in reporting topic for top share recipients based on number and volume shares
+  * Add new columns for activities topic (recipient, file size)
+  
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing Cookie default value for anonymous share when not protected by password 
+  * Fixing the bug; password not sent in mail activation when delay before notification is enabled for upload request
+  * Fixing the bug of too important latency to display user guests when the number of guests is important 
+ 
+
+
+
+# [6.1.0](https://github.com/linagora/linshare/compar#)  (2023-09-13) [Download link](http://download.linshare.org/versions/6.1.0/)
+
+**The 6.1.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.0.2-to-v6.1.0.md).
+
+- **core** : 6.1.0 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.1.0) 
+- **ui-user** : 6.1.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.1.0)
+- **ui-admin** : 6.1.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.1.0)
+- **ui-upload-request** : 6.1.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.1.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Support AWS integration with V4 signature
+  * Support LDAP as second user provider with OIDC 
+    
+
+* UI-Admin: New admin portal
+  * User diagnostic
+  * Email Templates with vietnamese language support
+    
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:  
+  * Fixing the bug of OIDC authentication with Opaque token of setting a list of domains
+  * Fixing the bug of displaying user profile in mobile for Web applicatione
+
+* UI-User:
+  * Fixing the bug in ui-user for displaying user history
+  * Fixing the bug in ui-user for guest and moderator notification language
+
+
+# [6.0.4](https://github.com/linagora/linshare/compare/6.0.0...6.0.4) (2023-06-09) [Download link](http://download.linshare.org/versions/6.0.4/)
+
+**The 6.0.4 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.4 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.4) 
+- **ui-user** : 6.0.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.4)
+- **ui-admin** : 6.0.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.4)
+- **ui-upload-request** : 6.0.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.4)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * Create workspaces with delegation APIs
+  
+
+* UI-Admin:
+  * We've added inconsistent users management
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug Ldap_uid not set when creating user with API
+  * Fixing the bug of creating Workgroup with special character in name 
+  * Fixing the bug of OIDC authentication with Opaque token
+  * Fixing the bug of displaying user profile in mobile for Web application
+
+
+# [6.0.3](https://github.com/linagora/linshare/compare/6.0.0...6.0.3) (2023-04-07) [Download link](http://download.linshare.org/versions/6.0.3/)
+
+**The 6.0.3 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.3) 
+- **ui-user** : 6.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.3)
+- **ui-admin** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.3)
+- **ui-upload-request** : 6.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.3)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * We've added CRUD API for users creation
+  
+
+* UI-Admin:
+  * Implement the MIME Policies configuration
+  
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Fixing the bug When sharing a file with an external email, receiver cannot download file
+  * Ability to update guest profile with an account (with simple moderator access)  
+
+
+# [6.0.2](https://github.com/linagora/linshare/compare/6.0.0...6.0.2) (2023-02-15) [Download link](http://download.linshare.org/versions/6.0.2/)
+
+**The 6.0.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.1...6.0.2) 
+- **ui-user** : 6.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.1...v6.0.2)
+- **ui-admin** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.1...v6.0.2)
+- **ui-upload-request** : 6.0.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.1...v6.0.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+  * We've change LinShare license to pure GPLv3
+  * Support of the JWT tokens for the OIDC auth flow with PKCE
+
+* UI-Admin:
+  * New domain treeview selection to a better UX
+  * New Configuration page per tabs for domain Details, Parameters (aka Functionalities), Type mime policies, Welcome messages, Quota, Remote servers, Remote filters, Public keys (JWT)
+
+* UI-User:
+  * Improve and update FreeOTP UI and UX 
+
+* UI-Upload-Request:
+  * nothing to report
+
+#### Bug Fixes:
+* Core:
+  * Added ability to use special characters of special("-", "'") for the file names, directory names, and upload requests 
+  * Ability to update guest profile with an account (with simple moderator access)  
+
+# [6.0.1](https://github.com/linagora/linshare/compare/6.0.0...6.0.1) (2022-12-22) [Download link](http://download.linshare.org/versions/6.0.1/)
+
+**The 6.0.1 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.1 - [changelog](https://github.com/linagora/linshare-core/compare/6.0.0...6.0.1) 
+- **ui-user** : 6.0.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.0.0...v6.0.1)
+- **ui-admin** : 6.0.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.0.0...v6.0.1)
+- **ui-upload-request** : 6.0.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.0.0...v6.0.1)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Bug fixes and improvements
+* Core:
+  * Fix: guest moderator access update a guest information profile
+
+* UI-Admin:
+  * remove beta label
+
+* UI-User:
+  * nothing to report 
+
+* UI-Upload-Request:
+  * nothing to report
+
+## [6.0.0](https://github.com/linagora/linshare/compare/5.1.2...6.0.0) (2022-10-10) [Download link](http://download.linshare.org/versions/6.0.0/)
+
+**The 6.0.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.2...6.0.0)
+- **ui-user** : 6.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.2...v6.0.0)
+- **ui-admin** : 6.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.2...v6.0.0)
+- **ui-upload-request** : 6.0.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.2...v6.0.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **PostgreSQL 13**
+We switched to PostgreSQL 13 from PostgreSQL 11. [Upgrade Guide](https://www.postgresql.org/docs/13/upgrading.html)
+
+* **MongoDB**
+We switched from Mongo 4.2 to 5.0 version. [Upgrade Guide](https://www.mongodb.com/docs/manual/release-notes/5.0-upgrade-standalone/)
+
+#### Main features:
+* **Dashboard**
+We created new reporting page in admin UI with the following information:
+- Number of users per domain
+- Number of guests per domain
+- A list of the top 100 of users by their quota
+- Statistics about creationor deletion different domain entities
+- Dynamic of storage consumption
+- Storage consumption by file type
+
+## [6.0.0-alpha1](https://github.com/linagora/linshare/compare/5.1.2...6.0.0-alpha1) (2022-09-07) [Download link](http://download.linshare.org/versions/6.0.0-alpha1/)
+
+**The 6.0.0-alpha1 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.1-to-v6.0.md).
+
+- **core** : 6.0.0-alpha1 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.2...6.0.0-alpha1)
+- **ui-user** : 6.0.0-alpha1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.2...v6.0.0-alpha1)
+- **ui-admin** : 6.0.0-alpha1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.2...v6.0.0-alpha1)
+- **ui-upload-request** : 6.0.0-alpha1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.2...v6.0.0-alpha1)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **PostgreSQL 13**
+We switched to PostgreSQL 13 from PostgreSQL 11. Upgrade guide will be provided by the release of LinShare 6.0.0.
+
+* **MongoDB**
+We switched from Mongo 4.2 to 5.0 version. Upgrade guide will be provided by the release of LinShare 6.0.0.
+
+#### Main features:
+* **Dashboard**
+
+  There id new reporting dashboard and later we will provide more images and description about this feature.
+
+
+## [5.1.2](https://github.com/linagora/linshare/compare/5.1.1...5.1.2) (2022-08-31) [Download link](http://download.linshare.org/versions/5.1.2/)
+
+**The 5.1.2 release of LinShare is out**
+
+- **core** : 5.1.2 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.1...5.1.2)
+- **ui-user** : 5.1.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.1...v5.1.2)
+- **ui-admin** : 5.1.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.1...v5.1.2)
+- **ui-upload-request** : 5.1.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.1...v5.1.2)
+
+#### Bug fixes and improvements
+
+* Core:
+
+  * Fix: allow deletion of a list of revisions even if there is no revision.
+  * Fix: Return proper error code when trying to dowload missing workgroup revison.
+  * Fix: allow workgroup file deletion even if there is no revisions. 
+  
+* UI-Admin:
+  * nothing to report
+
+* UI-User:
+  * nothing to report
+
+* UI-Upload-Request:
+  * nothing to report
+
+
+## [5.1.1](https://github.com/linagora/linshare/compare/5.1.0...5.1.1) (2022-07-22) [Download link](http://download.linshare.org/versions/5.1.1/)
+
+**The 5.1.1 release of LinShare is out**
+
+- **core** : 5.1.1 - [changelog](https://github.com/linagora/linshare-core/compare/5.1.0...5.1.1)
+- **ui-user** : 5.1.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.1.0...v5.1.1)
+- **ui-admin** : 5.1.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.1.0...v5.1.1)
+- **ui-upload-request** : 5.1.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.1.0...v5.1.1)
+
+#### Bug fixes and improvements
+
+* Core:
+
+  * Add missing value WORKSPACE_DELETION to enum LogActionCause for Upgrade tasks
+  * Fix log4j2 configuration
+  * Trying to fix cast issue between ShareEntry and AnonymousShareEntry
+  * Do not fail upload in workgroups when some members' emails do not exist.
+  * Fix NPE in audit (missing domain field)
+  * Do not fail CloseExpiredUploadRequestBatchImpl batch when there is unreachable email.
+  * Add information about Tomcat temporary folder
+  * Set expiration policy to 24h for new password link when creating guests
+  * Guests optimization: do not load guest author for all guests on findAll.
+  * Guests optimization: do not load restricted contacts on findAll.
+  * Do not return removed and expired guests on /user/v5/guests endpoint
+
+* UI-Admin:
+
+  * Issue #290: Remove number type in validate form
+  * Issue #267: add reset event to clear filter and sort
+  * Issue #281: Include backspace to remove latest critial search
+  * Issue #281: Add search button on token input
+  * Issue #281: Update fr locale
+  * Issue #281: Fix issue on not receiving default option even though option selected
+  * Issue #281: Improvel backspace action handler to remove only part of token
+  * Issue #281: account type: root should never appear
+  * Issue #281: Upload right criteria/Guest creation rights is expecting yes or no, but i can provide anything
+  * Issue #281: Handle default active first option
+  * Issue #283: No hyperlink toward welcome message in Domain details view
+  * Issue #268: Fix User details grid layout on md screen
+  * Issue #277: Missing french,vietnamese and russian  translation for DOMAIN.FIELDS.PARENT_DOMAIN
+  * Issue #284: Add hyperlinks to guest moderator list item
+  * Issue #270: Use css variable for icon fill color
+  * Correct the usage of a-table for User List
+  * Issue #270 Change shared space list to a table, add hyperlink to fields
+  * Issue #282: Fix APIError not using default message when there is no translated error message
+  * Issue #282: Fix unable to save restricted contacts for guest
+  * Issue #271: Sort functionalities by name
+  * Issue #212: Fix issue share space filter not working
+  * Issue #212: fix role selector notworking on share-spaces add member modal
+
+* UI-User:
+
+  * Issue #1153: Fix hover color of header icon button
+  * Issue #1154: User can update external user's notification language
+  * Issue #1150: Add missing audit log
+  * Issue #1152: Add warning text in guest moderator tab
+  * Issue #1151: Change default guest filter
+
+* UI-Upload-Request:
+    * nothing to report
+
+
+## [5.1.0](https://github.com/linagora/linshare/compare/5.0.4...5.1.0) (2022-06-30) [Download link](http://download.linshare.org/versions/5.1.0/)
+
+**The 5.1.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v5.0-to-v5.1.md).
+
+- **core** : 5.1.0 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.4...5.1.0)
+- **ui-user** : 5.1.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.4...v5.1.0)
+- **ui-admin** : 5.1.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.4...v5.1.0)
+- **ui-upload-request** : 5.1.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.4...v5.1.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+* **Log4j configuration**
+
+  As many of you have requested, we have upgraded the Log4J version from 1.x to the latest 2.x.  
+  This change comes with a new log4j configuration file, in order to help you take a look on the [migration guide](documentation/EN/administration/how-to-migrate-log4j-configuration.md).
+
+  If you are deploying LinShare in Docker, then the Dockerfile has been changed according to this modification.  
+  Be aware the both environment variable and its value has to be changed if you are using a custom Docker image.
+
+  For docker images, the log format has changed:
+
+    * We added more details to each record for linshare-ui-user and linshare-ui-admin, see [here](https://github.com/linagora/linshare-ui-user-dockerfile/commit/aab2741f0636d2900db4b095b224021e1d42067b)
+    * For linshare-backend image, we provide new appenders, see [here](https://github.com/linagora/linshare-backend-dockerfile), parameter: LOG4J2_APPENDER
+
+#### Main features:
+* **Moderator**
+
+  This new feature is bringing a new way for managing Guests. Rather than having one owner for each guest, now you can have multiple moderator for each guest.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/01.new.moderator.png" alt="LinShare Moderator" width="600"/>
+
+* **GDPR**
+
+  The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy in the European Union (EU) and the European Economic Area (EEA).  
+Hence, data such as **first name**, **last name**, **mail** will be anonymized after one year of inactivity in LinShare.  
+  You can [activate this feature in the backend configuration.](documentation/EN/administration/how-to-activate-gdpr.md)
+
+* **SAAS Limitations**
+
+  Using LinShare as a SAAS service for free users may cost a lot to a company.  
+  We introduced some configuration in order to limit:
+  * number of workspaces that can be created by domain
+  * number of workgroup that can be created in a workspace
+  * number of opened/closed upload requests per users  
+
+  This can be configured on the admin side at functionalities level.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/02.new.saas-limitation.png" alt="LinShare SAAS limitation" width="600"/>
+
+* **Profile page**
+
+  The profile page for users and guests has been enhanced:
+  * adding favorite recipients list for users
+  * adding favorite recipients list and restricted contacts list for guests
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/03.guest-profile-page.png" alt="LinShare Guest profile page" width="600"/>
+
+* **New Admin portal**
+
+  We are continuing the migration of LinShare admin portal to the new design.
+
+* Functionalities
+  In this version, the functionalities management has been rewritten.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/04.new-functionalities.png" alt="LinShare new Functionalities admin portal" width="600"/>
+
+* Welcome Messages
+  Also, the welcome messages has been rewritten.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/04.new-welcome-messages.png" alt="LinShare new Functionalities admin portal" width="600"/>
+
+* **New emails**
+
+  We have defined new kinds of emails when a user is uploading a file or a new revision in a work group.
+
+  <img src="http://download.linshare.org/screenshots/5.1.0/05.new-email-new-revision.png" alt="LinShare new mail - New revision" width="600"/>
+  <img src="http://download.linshare.org/screenshots/5.1.0/05.new-email-new-document.png" alt="LinShare new mail - New document" width="600"/>
+
+* **New upgrade task**
+
+  A new kind of upgrade task has been introduced: OPTIONAL.  
+  Such task might be processed by the admin of LinShare if he needs to.  
+  They are non-blocking, and the upgrade icon will not blink.  
+  Tasks regarding special behaviour / process will use this kind of upgrade task.
+
+## [5.0.4](https://github.com/linagora/linshare/compare/5.0.3...5.0.4) (2022-05-30) [Download link](http://download.linshare.org/versions/5.0.4/)
+
+**The 5.0.4 release of LinShare is out**
+
+- **core** : 5.0.4 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.3...5.0.4)
+- **ui-user** : 5.0.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.3...v5.0.4)
+- **ui-admin** : 5.0.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.3...v5.0.4)
+- **ui-upload-request** : 5.0.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.3...v5.0.4)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Downloading should not fail when mail notification to document owners fail.
+    * Add support of unlimited expiry date for user api.
+    * Fix update of unlimited parameter of integer functionalities
+    * Fix wrong number of remaining days of UR
+    * Raising exception when user belong to multiple domains (domain discriminator)
+    * Fix usage of given_name for OIDC claim.
+    * Fix OIDC provider creation and update
+    * Add debug traces for OIDC provider.
+    * Add specific error code when OIDC user provider is not found by its discriminant.
+    * Add default available languages for functionalities.
+
+* UI-User:
+    * Issue #1136: French translation issue for upload request
+    * Issue #1132: Add more OIDC errors handling
+    * Issue #1131: Do not authRedirect for oidc authentication route
+
+* UI-Admin:
+    * Issue #258: Fix unable to create workspace filter
+    * Issue #249: Add error translation for OIDC error
+    * Issue #238: Handle properly 403 http code
+    * Issue #247: Fix oidc redirect uri, it should be adapt to webserver origin and path
+    * Issue #243: Rename oidc callback url
+    * Issue #243: Move config.js to a config folder
+
+* UI-Upload-Request:
+    * nothing to report
+
+## [5.0.3](https://github.com/linagora/linshare/compare/5.0.2...5.0.3) (2022-04-06) [Download link](http://download.linshare.org/versions/5.0.3/)
+
+**The 5.0.3 release of LinShare is out**
+
+- **core** : 5.0.3 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.2...5.0.3)
+- **ui-user** : 5.0.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.2...v5.0.3)
+- **ui-admin** : 5.0.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.2...v5.0.3)
+- **ui-upload-request** : 5.0.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.2...v5.0.3)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix Spring security issue: CVE-2022-22965
+    * Fix retrieving sharedSpace audits
+    * Fix UserProvider findAll (prevent from NPE)
+
+* UI-User:
+    * Add missing file version.properties
+
+* UI-Admin:
+    * Issue #239: Make home route configurable, change it to Administration page
+    * Issue #232: Add editable fields and date fields to OIDC provider form
+    * Fix inconsistent type of error code between api errors and auth error
+
+* UI-Upload-Request:
+    * nothing to report
+
+## [4.2.6](https://github.com/linagora/linshare/compare/4.2.5...4.2.6) (2022-04-05) [Download link](http://download.linshare.org/versions/4.2.6/)
+
+**The 4.2.6 release of LinShare is out**
+
+- **core** : 4.2.6 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.5...4.2.6)
+- **ui-user** : 4.2.6 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.5...v4.2.6)
+- **ui-admin** : 4.2.6 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.5...v4.2.6)
+- **ui-upload-request** : 4.2.6 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.5...v4.2.6)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix Spring security issue: CVE-2022-22965
+
+* UI-User:
+    * nothing to report
+
+* UI-Admin:
+    * Issue #231: Add translation for weak password error
+
+* UI-Upload-Request:
+    * nothing to report
+
+## [4.1.5](https://github.com/linagora/linshare/compare/4.1.4...4.1.5) (2022-04-05) [Download link](http://download.linshare.org/versions/4.1.5/)
+
+**The 4.1.5 release of LinShare is out**
+
+- **core** : 4.1.5 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.4...4.1.5)
+- **ui-user** : 4.1.5 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.4...v4.1.5)
+- **ui-admin** : 4.1.5 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.4...v4.1.5)
+- **ui-upload-request** : 4.1.5 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.4...v4.1.5)
+
+#### Bug fixes and improvements
+
+* Core:
+    * New endpoint added: SupportedApiVersionImpl
+    * Fix Spring security issue: CVE-2022-22965
+
+* UI-User:
+    * Issue #1092: Correct locale keys in extLink default config
+
+* UI-Upload-Request:
+    * nothing to report
+
+* UI-Admin:
+    * Issue #171: Show max value input for guest expiration functionality
+
+## [4.2.5](https://github.com/linagora/linshare/compare/4.2.4...4.2.5) (2022-03-29) [Download link](http://download.linshare.org/versions/4.2.5/)
+
+**The 4.2.5 release of LinShare is out**
+
+- **core** : 4.2.5 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.4...4.2.5)
+- **ui-user** : 4.2.5 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.4...v4.2.5)
+- **ui-admin** : 4.2.5 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.4...v4.2.5)
+- **ui-upload-request** : 4.2.5 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.4...v4.2.5)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * New endpoint added: SupportedApiVersionImpl
+    * Fix delete user method of admin v5 API
+    * Update modification date when creating or deleting folder
+    * Recalculate account quota on migration script
+    * Add patch to recalculate user quota after ure deletion
+
+  * UI-User:
+    * Issue #1093: Use completion functionality value for typeahead min length
+    * Issue #1093: Use functionality value for max char autocompletion
+    * Issue #1111: Show an error when url is invalid
+
+  * UI-Admin:
+    * Issue #225: Show medium date as tooltip for audit logs
+    * Issue #229: Hide domain provider management only, instead of hiding entire domain management
+
+
+## [5.0.2](https://github.com/linagora/linshare/compare/5.0.1...5.0.2) (2022-03-15) [Download link](http://download.linshare.org/versions/5.0.2/)
+
+**The 5.0.2 release of LinShare is out**
+
+- **core** : 5.0.2 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.1...5.0.2)
+- **ui-user** : 5.0.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.1...v5.0.2)
+- **ui-admin** : 5.0.2 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.1...v5.0.2)
+- **ui-upload-request** : 5.0.2 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.1...v5.0.2)
+
+#### Bug fixes and improvements
+
+* Core:
+    * Fix init permissions and roles.
+
+* UI-User:
+
+* UI-Admin:
+
+* UI-Upload-Request:
+
+## [5.0.1](https://github.com/linagora/linshare/compare/5.0.0...5.0.1) (2022-03-02) [Download link](http://download.linshare.org/versions/5.0.1/)
+
+**The 5.0.1 release of LinShare is out**
+
+- **core** : 5.0.1 - [changelog](https://github.com/linagora/linshare-core/compare/5.0.0...5.0.1)
+- **ui-user** : 5.0.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v5.0.0...v5.0.1)
+- **ui-admin** : 5.0.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v5.0.0...v5.0.1)
+- **ui-upload-request** : 5.0.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v5.0.0...v5.0.1)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Fix upgrade task of renaming workgroup deletion audit traces.
+    * Fix init permissions and roles.
+    * Add new endpoint to get supported API version, we will see a sample below.
+    * Fix user provider mapping (using lazy loading)
+    * Fix delete user admin v5
+    * Fix updating modification date when creating or deleting sharedSpace node
+    * Recalculate account quota
+
+  * UI-User:
+    * Update LinShare logo and theme color
+    * Fix autocomplete search
+    * Show button for support link(Crisp Integration)
+    * Show an error when anonymous URL is invalid
+    * Fix an error of not being able to change logo images
+      * **Breaking change** Update the path of default logo images. Now all images are stored inside `images` folder after bundled. If you are using default logo images, update the image configurations as following:
+      ``` javascript
+      applicationLogo : {
+        small: 'images/linshare-logo-white.svg',
+        large : 'images/ls-logo-big.svg'
+      },
+      loginBackground : 'images/bg-linshare-desktop.png',
+      ```
+
+  * UI-Admin:
+    * Fix bug domain creation with empty description
+    * Fix undefined functionality on logout
+    * Fix redirect to users list after user deletion
+    * Support loading certain domain on configuration routes
+    * Support managing role of workspace members
+    * Fix checking invalid guest max expiration date
+
+  * UI-Upload-Request:
+    * Update logo and theme color
+
+**Add new endpoint to get supported API version**
+
+* To retrieve all supported API versions, the returned list is ordered by the most recent created API, we can see:
+
+`curl  "http://{your_server}/linshare/webservice/rest/api-versions" -H "accept: application/json" -s |jq`
+
+```
+    {
+  "USER": {
+    "name": "USER",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 2
+      },
+      {
+        "version": 1
+      }
+    ]
+  },
+  "ADMIN": {
+    "name": "ADMIN",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 1
+      }
+    ]
+  },
+  "DELEGATION": {
+    "name": "DELEGATION",
+    "versions": [
+      {
+        "version": 2
+      }
+    ]
+  },
+  "UPLOADREQUEST": {
+    "name": "UPLOADREQUEST",
+    "versions": [
+      {
+        "version": 4
+      }
+    ]
+  }
+}
+```
+
+* To retrieve just one API we can see:
+
+`curl  "http://{your_server}/linshare/webservice/rest/api-versions?type=USER" -H "accept: application/json" -s |jq`
+
+```
+{
+  "USER": {
+    "name": "USER",
+    "versions": [
+      {
+        "version": 5
+      },
+      {
+        "version": 4
+      },
+      {
+        "version": 2
+      },
+      {
+        "version": 1
+      }
+    ]
+  }
+}
+```
+
+## [5.0.0](https://github.com/linagora/linshare/compare/4.2.4...5.0.0) (2022-02-01) [Download link](http://download.linshare.org/versions/5.0.0/)
+
+**The 5.0.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade).
+
+- **core** : 5.0.0 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.4...5.0.0)
+- **ui-user** : 5.0.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.4...v5.0.0)
+- **ui-admin** : 5.0.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.4...v5.0.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+#### Breaking changes:
+  * **OIDC Authentication**
+    * Drop supports for some **ui-user** oidc settings in **config.js**. Now only following settings are required: `authority`, `client_id`, `client_secret`, `scope`.
+    * Update redirection address for **ui-user**, the relative path of redirection address is now `#!/oidc/callback`. You are required to update settings of your OIDC Provider. See [LemonLDAP OIDC configurations](documentation/EN/installation/sso-lemonldap-using-OIDC.md#step-1-lemonldapng-configuration) for more details.
+
+#### Main features:
+
+* **Appearance**
+
+    The logo of LinShare was updated along of the general theme:
+
+  <img src="http://download.linshare.org/screenshots/5.0.0/03.LinShare.User.Home.page.png" alt="LinShare User Home page" width="600"/>
+
+
+* **New administration interface (Beta)**
+
+    With this new version, we had to introduce a new API (admin/v5) and its new
+interface. Our main goal is to backport every old features of the old interface
+but using up to date technologies (Vue.js 3). Of course, this will allow us to
+redesign the whole interface, the whole user experience and to also bring new features.
+
+* **Workspaces**
+
+It was introduced in version 4.2 as  **Drive**, it was finally renamed as
+**Workspace** to make more sense.
+
+*Tiny remember of the feature:*
+
+In LinShare we have workgroups in shared spaces. These groups are designed to make a team works together on one topic. If you have multiple topics in a team, you have to create one workgroup per team. This allows you to add different external people for each workgroup.
+
+The main goals of `Workspace` are :
+
+  * Regroup all worgkoups of a team in one item
+  * Define default team members in the Workspace to avoid workgroup members redefinition
+  * Manage globally team members rigths (right should be applied from workspace to its workgroups)
+  * A workgroup can belong to a workspace or be standalone
+
+
+* **User providers**
+
+At first, LinShare was designed to retrieve users from a LDAP directory. These
+users were called *Internal users*, they were able to create some temporary
+accounts, called *guest users*.
+
+In this version of LinShare, we added more user providers:
+
+* OIDC user provider
+
+This provider allows LinShare to create users "on-the-fly" at the first log in (using OIDC).
+
+* Twake Console user provider
+
+This provider allows LinShare to retrieve users from the Twake Console app, which is the portal of our new SAAS offer.
+
+
+## [4.2.4](https://github.com/linagora/linshare/compare/4.2.3...4.2.4) (2022-02-01) [Download link](http://download.linshare.org/versions/4.2.4/)
+
+**The 4.2.4 release of LinShare is out**
+
+- **core** : 4.2.4 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.3...4.2.4)
+- **ui-user** : 4.2.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.3...v4.2.4)
+- **ui-admin** : 4.2.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.3...v4.2.4)
+- **ui-upload-request** : 4.2.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.3...v4.2.4)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Max integer values does not exist on functionality endpoint v1.
+    * Fix issue with UPGRADE_4_2_ADD_MISSING_PROPERTIES_TO_WORK_GROUP_NODE
+      (missing wokgroup)
+
+  * UI-User:
+    * Issue #1108: Fix webpack configuration for common images
+      * **Breaking change** Update the path of default logo images. Now all images are stored inside `images` folder after bundled. If you are using default logo images, update the image configurations as following:
+      ``` javascript
+      applicationLogo : {
+        small: 'images/linshare-logo-white.png',
+        large : 'images/ls-logo-big.png'
+      },
+      loginBackground : 'images/bg-linshare-desktop.png',
+      ```
+
+  * UI-Admin:
+    * Translate upgrade tasks keys
+    * Issue #208: Fix audit log translation key
+    * Issue #208: Add translation for WORKSPACE
+    * Issue #205: Hide following features on legacy mode ( LDAP connections Domain patterns Manage domains Workgroups Workgroup patterns)
+    * Translate missing upgrade tasks keys
+    * Fix missing key translation
+    * Issue #201: Update JWT functionality
+    * Issue #196: Add shared space functionality translation
+    * Issue #194: Add collected emails expiration functionality
+    * Refactor internal can upload functionality
+    * Issue #171: Show max value input for guest expiration functionality
+
+  * UI-Upload-Request:
+    * Issue #101: Fix Fr translation
+
+
+## [4.2.3](https://github.com/linagora/linshare/compare/4.2.2...4.2.3) (2021-10-28) [Download link](http://download.linshare.org/versions/4.2.3/)
+
+**The 4.2.3 release of LinShare is out**
+
+- **core** : 4.2.3 - [changelog](https://github.com/linagora/linshare-core/compare/4.2.2...4.2.3)
+- **ui-user** : 4.2.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.2.2...v4.2.3)
+- **ui-admin** : 4.2.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.2.2...v4.2.3)
+- **ui-upload-request** : 4.2.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.2.2...v4.2.3)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Fix issue of checking entry size and max deposit size
+    * Fix checking max count number of upload request entries
+    * Change TLS default version + document
+    * Add SSL protocols configuration in mail notification
+    * Fix undownloaded share mail notification
+    * Adding more traces to flow api to debug stuck upload.
+    * Using spring-framework-bom 5.2.16.RELEASE
+    * Upgrading tika-parsers to 1.27
+    * Removing useless pdfbox dependencies
+    * Upgrading xstream to 1.4.17
+
+  * UI-User:
+    * Fix the validation range of share expiration date and USDA notification date
+    * Allow editing contacts list description
+    * Fix shared space fetching error
+    * Fix error of unable to override file when clicking the option in preview dialog
+    * Fix error of workgroup member can not see current list in browse dialog
+    * Show secured sharing option for guests
+    * Fix incorrect refetch shared space permission behavior
+
+  * UI-Admin:
+    * Fix delete contact
+
+  * UI-Upload-Request:
+    * Rework selected items toolbar
+    * Fix warning on vue-i18n
+
+## [4.1.4](https://github.com/linagora/linshare/compare/4.1.3...4.1.4) (2021-10-22) [Download link](http://download.linshare.org/versions/4.1.4/)
+
+**The 4.1.4 release of LinShare is out**
+
+- **core** : 4.1.4 - [changelog](https://github.com/linagora/linshare-core/compare/4.1.3...4.1.4)
+- **ui-user** : 4.1.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v4.1.3...v4.1.4)
+- **ui-admin** : 4.1.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v4.1.3...v4.1.4)
+- **ui-upload-request** : 4.1.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v4.1.3...v4.1.4)
+
+#### Bug fixes and improvements
+
+  * Core:
+    * Change TLS default version + document
+    * Add SSL protocols configuration in mail notification
+    * Adding more traces to flow api to debug stuck upload.
+    * Improving TimingOutInterceptor (error code, decrease verbosity)
+    * Using spring-framework-bom 5.2.16.RELEASE
+    * Upgrading tika-parsers to 1.27
+    * Removing useless pdfbox dependencies
+    * Upgrading xstream to 1.4.17
+
+  * UI-User:
+    * Issue #1091: Fix the validation range of share expiration date and USDA notification date
+
+  * UI-Upload-Request:
+    * nothing to report
+
+  * UI-Admin:
+    * nothing to report
+
 ## [4.2.2](https://github.com/linagora/linshare/compare/4.2.1...4.2.2) (2021-08-16) [Download link](http://download.linshare.org/versions/4.2.2/)
 
 **The 4.2.2 release of LinShare is out**
@@ -519,7 +1590,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
   * UI-Admin:
     * Fix translate Upload request sub-functionalities description
-    * Fix delete domain patterns 
+    * Fix delete domain patterns
 
 # [4.0.1](https://github.com/linagora/linshare/compare/4.0.0...4.0.1) (2020-09-07) [Download link](http://download.linshare.org/versions/4.0.1/)
 
@@ -552,10 +1623,10 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 Here we can see the new interface where the administrator will be able to unlock the blocked user.
 
-  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="unlock_accounts_screeshot" width="600"/> 
-  
-For more information about lockout feature [here](documentation/EN/administration/lockout.md)  
-  
+  <img src="http://download.linshare.org/screenshots/4.0.0/04.unblock_user.png" alt="unlock_accounts_screeshot" width="600"/>
+
+For more information about lockout feature [here](documentation/EN/administration/lockout.md)
+
 
 
 ## [4.0.0](https://github.com/linagora/linshare/compare/2.3.5...4.0.0) (2020-07-16) [Download link](http://download.linshare.org/versions/4.0.0/)
@@ -674,7 +1745,7 @@ To upgrade LinShare to 4.0.0 version you can [see](https://github.com/linagora/l
   * Issue #1009: Disable clicking eyes icon in folder detail sidebar
   * Issue #1008: hide options menu after clicking on details option of a shared space node
   * Issue #1009: Hide preview option for folders
-  * Issue #997: Fix initial value when renaming a shared space 
+  * Issue #997: Fix initial value when renaming a shared space
   * Issue #992: Reset state after create new workgroup
   * Issue #970: Fix move files between workgroups
   * Issue #626: Fix view details file in preview mode
@@ -1388,7 +2459,7 @@ You can find the upgrade documentation [here](documentation/EN/upgrade).
 
 * UI-User:
    * Fix out-dated LinShare licence link
-   * Fix user Long name displaying in dropdown list on ui-user in my-space interface  
+   * Fix user Long name displaying in dropdown list on ui-user in my-space interface
    * Fix autocomplete item html template and related css
 
 uI-Admin:

@@ -1,161 +1,114 @@
-##Summary
-
-###LINSHARE UPGRADE
-
-#### 1. [LinShare Core upgrade version](#upgradecore)
-   * [Download of LinShare](#dlLinshare)
-   * [Deployment of the archive](#deploy)
-   * [Database upgrade](#bdd)
-   * [Restart of your services](#restart)
-
-#### 2. [LinShare Ui-admin upgrade version](#upgradeadmin)
-   * [Download of LinShare Admin](#dlLinshareadmin)
-   * [Deployment of the archive](#deployadmin)
-
-#### 3. [LinShare UI-User upgrade version](#upgradeuser)
-   * [Download of LinShare User](#dlLinshareuser)
-   * [Deployment of the archive](#deployuser)
-
-
-###LINSHARE UPGRADE
+# LinShare upgrade guide
 
 > Note :
+- We explain in this file how to upgrade your LinShare's version. </br>
+- Please note that all the components found in each LinShare's version
+  (http://download.linshare.org/versions/{VERSION}) must be upgraded together.  
+  Each LinShare version folder, contains the dependencies required to install the version properly. </br>
+- You can find the required versions of LinShare's dependencies [here](../installation/requirements.md)
+- This documentation is only a general guide, each specific actions to perform for each migration will be detailed in its file `linshare-upgrade-from-X-to-Y.md` 
 
- - In this document, we explain how to upgrade your LinShare version.
- - You can find the required versions of LinShare's dependencies [here](../installation/requirements.md)
- - The core and the admin must be both upgraded at the same time. Indeed for each core version, there is an Admin version (CF ...)
- 
-<a name="upgradecore">
-###__Linshare__ Upgrade
+
+## Overview
+
+* [Note about LinShare versions](#lversions)
+* [Migration scripts](#scripts)
+* [Backups](#backup)
+* [Upgrade tasks](#tasks)
+
+<a name="lversions">
+
+## LinShare Versions
+
 </a>
 
-<a name="dlLinshare">
-###Download of __LinShare__
+LinShare versions number are named according to the [following pattern](https://semver.org/)
+
+X.Y.Z.
+
+* X : Major release
+  A major version can bring disruptive changes, among which addition/replacement/removal of technologies used in the product.
+  They could break compatibility between two versions of LinShare.
+
+* Y : Minor release
+  A minor version brings new functionalities and possibly database schema modification.
+
+* Z : Maintenance release
+  Only bug fixes. No database schema modification.
+
+
+<a name="scripts">
+
+## Migration scripts
+
 </a>
+Migration scripts are specific for each database management system.
+You have one directory by supported database management system.
+All scripts are named according to the following pattern
+"Migration_X.A.0_to_X.B.0.sql".
 
-__LinShare__ is avaible at the following address :
+In order to upgrade LinShare from 1.1 to 1.4 you ALWAYS need to run all scripts :
+1. Migration_1.1.0_to_1.2.0.sql
+2. Migration_1.2.0_to_1.3.0.sql
+3. Migration_1.3.0_to_1.4.0.sql
 
-  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
 
-You can download the latest release of the core version you want to upgrade to.
+ <a name="backup">
 
-  * __linshare-core-{VERSION}.war__
+## Backups :
 
-<a name="deploy">
-###Deployment of the archive
-</a>
+ </a>
 
-To deploy the archive you downloaded and upgrade your __LinShare core__ version, you must rename it and copy it in your tomcat webapps repository :
+To avoid any side effect of these critical operations, it is better to store a backup of your databases `PostgreSQL` and `MongoDB`.
 
-```
-[root@localhost ~]$ service tomcat7 stop
-[root@localhost ~]$ cp linshare-core-{VERSION}.war /var/lib/tomcat7/webapps/linshare.war
-```
+> Note :  
+In this upgrade guide we consider that the default databases PostgreSQL and MongoDB are named `linshare`
 
-<a name="bdd">
-###Database Upgrade
-</a>
+To do that please execute these commands :
 
-> Note :
+* Postgres `linshare` dump:
 
-  - This is an postgres upgrade exemple. It is the same for mysql.
-
-If you are doing an upgrade to a minor version (i.e from 1.X to 1.Y), you will need to upgrade your database.
-
-You have then to update your database as the following :
-
-```
-[root@localhost ~]$ cd linshare.war /var/lib/tomcat7/webapps/
-[root@localhost ~]$ unzip -c linshare.war WEB-INF/classes/sql/postgresql/Migration_<your-actual-version>_to_<the-next-version>.sql | psql -U linshare -W -d linshare
+```bash
+         pg_dump -h `host` -p `port` -U linshare -W  -f dump-linshare.sql
 ```
 
-> Note :
+* MongoDb `linshare` dump:
 
-  - If you are upgrading for example from the 1.6.0 to the 1.9.0, you must run the following scripts :
-    * Migration_1.6.0_to_1.7.0.sql
-    * Migration_1.7.0_to_1.8.0.sql
-    * Migration_1.8.0_to_1.9.0.sql
+For mongo you can just dump `linshare` database and avoid dumping `linshare-files` because it contains only thumbnail and mail attachments, it won't be impacted by the upgrade process.
 
-> Note :
-  - you must read the following file which contains some particularities about each migration : https://github.com/linagora/linshare-core/blob/master/UPGRADE.md
-
-<a name="restart">
-###Restart of your service
-</a>
-
-You can now restart your tomcat service :
-
-`[root@localhost ~]$ service tomcat7 start`
-
-<a name="upgradeadmin">
-###LinShare ui-admin upgrade version
-</a>
-
-To upgrade your LinShare admin version you have to download it at the following address :
-
-  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
-
-<a name="deployadmin">
-###Deployment of the archive
-</a>
-
-Deploy the archive of the application __LinShare UI Admin__ in the Apache 2 repository :
-
-```
-[root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-admin /var/www/linshare-ui-admin-{VERSION}
-```
-Change the DocumentRoot in your vhost file :
-
-```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-admin.conf
-
-<VirtualHost *:80>
-...
-DocumentRoot /var/www/linshare-ui-admin-{VERSION}
-...
-</Virtualhost>
-```
-Now reload your apache2 server :
-
-`[root@localhost ~]$ sudo service apache2 reload`
-
-Your LinShare core and admin are now both upgraded and available at them addresses.
-
-<a name="dlLinshareuser">
-###Download of LinShare Ui User
-</a>
-
-To upgrade your LinShare Ui-User version you have to download it at the following address :
-
-  * [http://download.linshare.org/versions/](http://download.linshare.org/versions/)
-
-<a name="deployuser">
-###Deployment of the archive
-</a>
-
-Deploy the archive of the application __LinShare Ui-User__ in the Apache 2 repository :
-
-```
-[root@localhost ~]$ cd /var/www/
-[root@localhost ~]$ tar xjf /tmp/linshare_data/linshare-ui-user-{VERSION}.tar.bz2
-[root@localhost ~]$ mv linshare-ui-upload-request /var/www/linshare-ui-user-{VERSION}
-```
-Change the DocumentRoot in your vhost file :
-
-```
-[root@localhost ~]$ vim /etc/apache2/sites-available/linshare-user.conf
-
-<VirtualHost *:80>
-...
-DocumentRoot /var/www/linshare-ui-user-{VERSION}
-...
-</Virtualhost>
+```bash
+         mongodump --host `host` --port `port` --db=linshare
 ```
 
-Now reload your apache2 server :
 
-`[root@localhost ~]$ sudo service apache2 reload`
+ <a name="tasks">
 
-Your LinShare Ui-User is now upgraded and available at its address.
+## Upgrade task execution in the administration interface
+ </a>
+
+These are automated task, that you must launch from the administration interface : http://`YourServerName`/#/upgradetasks/list.
+
+All the tasks must be executed by order and succeed in order to complete the upgrade.
+
+NB: A task can finish with a successful status but errors can be noticed during the progress.
+It is necessary to check the execution reports found in the console.
+In case of errors, you must read the logs of Tomcat server for more details,
+resolve the problems and re-launch the task.
+
+* As long as the tasks with status `Mandatory` are not completed, the users can not
+  use the system.
+
+* As long as the tasks with status `Required` are not completed,
+  the system will work partially (Some functionalities might be deactivated).
+  These tasks can be executed simultaneously without disrupting the user's activity.
+
+Once the mandatory tasks have been executed, you can switch to the next step if you want to re-establish quickly the LinShare service.
+The required tasks can take some time depending on amount of data to upgrade.
+
+Once all these tasks are done, your LinShare will be operational.
+
+> Note:  
+> Some task will require you to have a temporary configuration in your properties file.   
+> For instance the task `OPTIONAL_MIGRATE_FILE_DATA_STORAGE_TO_A_NEW_ONE` (which copies files from gridfs storage to jcloud storage), needs to have both filesystem configured at the same time. you can later remove the old configuration.
+
+

@@ -1,31 +1,27 @@
 # Summary
 
-* [Related EPIC](#related-epic)
 * [Definition](#definition)
-* [Technical issues](#technical-issues)
+* [Related issues / Linked issues](#related-issues)
 * [Misc](#misc)
-
-## Related EPIC
-
-> Link to the epic issue
-
-* [Name of the epic]()
+* [TODO](#todo)
 
 ## Definition
 
-* [link towards the final markdown file]()
-
-> Once the MR merged, we can add link for master to the markdown file containing the story.
-
-[Back to Summary](#summary)
-
-## Technical issues
-
-* TODO
+* TODO: link towards the final markdown file (master branch)
 
 [Back to Summary](#summary)
 
 ## Misc
+
+[Back to Summary](#summary)
+
+## TODO
+
+* [ ] link added towards EPIC to "linked issues" section
+* [ ] links added towards backend technical issues to "linked issues" section AND label BACKEND:TODO
+* [ ] links added towards frontend technical issues to "linked issues" section AND label FRONTEND:TODO
+* [ ] checked if design is done or not needed
+
 
 [Back to Summary](#summary)
 

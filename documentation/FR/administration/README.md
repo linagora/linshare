@@ -17,3 +17,13 @@
 * How to [use file versioning on LinShare](../../EN/administration/how-to-use-file-versioning.md) (`EN`).
 
 * [Verrouillage des comptes](account-lockout-policy.md)
+
+* [Configuration de la complexité des mot de passe](configuration-password-policy.md)
+
+* How to [login into LinShare without email](how-to-login-without-email.md).
+
+* How to [migrate your Log4j 1.x configuration to Log4j 2.x](how-to-migrate-log4j-configuration.md).
+
+* How to [put log configuration in debug](how-to-put-log-configuration-in-debug.md).
+
+* How to [activate GDPR on LinShare](how-to-activate-gdpr.md)

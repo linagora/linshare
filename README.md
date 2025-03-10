@@ -1,16 +1,24 @@
 # LinShare
 
-## Description
+![LinShare](https://optim.tildacdn.net/tild3962-3433-4761-b463-636136316436/-/format/webp/linshare-platforms_1.png)
+
+
+## License
+Linshare is released under the terms of the license GNU AGPLv3. For more information please see [here](LICENSE.md)
+
+
+## Description    
+
+ ![LinShare](https://static.tildacdn.net/tild3134-3337-4764-a439-393563343934/Group_1321315060.svg)
 
 Specially designed to secure paperless file sharings within companies that put
 privacy and traceability in the heart of their problems of exchange, LinShare
-provides a simple solution completely intuitive.
-
+provides a simple solution completely intuitive.                                           
 * Linshare allows employees to upload files into their space
 * Linshare can share files with internal or external collaborators
 * Linshare offers several features to securely exchange
 
-More information on http://www.linshare.org/
+More information on http://linshare.app/
 
 ## Live demo:
 
@@ -43,7 +51,7 @@ In order to see emails sent by LinShare, we also put at your disposal a webmail
 available at *https://demo-webmail.linshare.org*.
 
 Webmail passwords :
- * user1@linshare.org : password1
+ * abbey.curry@linshare.org : secret
  * ...
  * external1@linshare.org : password1
  * ...

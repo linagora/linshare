@@ -1,5 +1,11 @@
 # LinShare Developer Guide
 
+## System requirements
+
+See the [compatibility matrix](../installation/requirements.md) to known which system requirements are required per version of Linshare for a test or production environment.
+
+See the [system requirements](linshare-core/dev-requirements.md) to develop Linshare Core.
+
 ## How to configure your IDE for LinShare-Core
 
 You can install and configure eclipse using this

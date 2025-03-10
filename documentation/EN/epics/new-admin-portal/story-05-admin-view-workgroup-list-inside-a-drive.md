@@ -24,6 +24,7 @@
 - I click on a Drive in the list, the screen Manage Drives is opened. 
 - Under Drive information part, i can see 2 tabs, and the First one is Workgroups list, including all workgoups created inside this Drive
 - Each role represents a workgroup with Workgroup icon, Workgroup name and modification date. 
+- The workgroup list is paginated and the default number of displayed items is 25, I can change this number at the bottom of page
 - The default order of worksgroup is last modification time.
 - I can change the sort criteria by selecting from drop-down list: Modification date, Creation date, Name 
 - Search bar:

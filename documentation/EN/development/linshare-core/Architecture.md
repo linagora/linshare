@@ -2,11 +2,10 @@
 
 ## Resume
 
-Since LinShare 2.4, the project is using Java 11. Before this version, all
-versions 2.x are using Java 8.
-
 LinShare is based around Spring (Spring, SpringSecurity, SpringData, ...),
 Apache CXF and Hibernates.
+
+See the [compatibility matrix](../../installation/requirements.md) to known the system requirements.
 
 ## Layers
 

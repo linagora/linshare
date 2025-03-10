@@ -1,8 +1,10 @@
+# WARNING: deprecated
+
 # LinShare Installation on CentOS
 
    * [LinShare Download](#dlLinshare)
    * [Archive and files configuration Deployment](#installFile)
-   * [OpenJDK Java JRE Installation](#instalOpenJDK)
+   * [JVM Installation](#installOpenJDK)
    * [Databases Installation](#bdd)
      * [PostgreSQL Installation](#postgre)
      * [MongoDB Installation](#mongo)
@@ -16,10 +18,12 @@
    * [LinShare Configuration and Launching](#linconf)
    * [First Access](#firstAccess)
 
-Welcome to LinShare installation Guide, This page provides a LinShare version 4.1 installation on *Centos 7* (older CentOS versions are not supported).
+Welcome to LinShare installation Guide, This page provides a LinShare version 5 installation on *CentOs 7* (older CentOS versions are not supported).
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/EN/installation/linshare-install-centos.md)
+> - [LinShare 4.1](https://github.com/linagora/linshare/blob/maintenance-4.1.x/documentation/EN/installation/linshare-install-centos.md)
 > - [LinShare 4.0](https://github.com/linagora/linshare/blob/maintenance-4.0.x/documentation/EN/installation/linshare-install-centos.md)
 > - [LinShare 2.3](https://github.com/linagora/linshare/blob/maintenance-2.3.x/documentation/EN/installation/linshare-install-centos.md)
 > - [LinShare 2.2](https://github.com/linagora/linshare/blob/maintenance-2.2.x/documentation/EN/installation/linshare-install-centos-7.md)
@@ -36,11 +40,16 @@ __LinShare__  can be downloaded here:
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
 
+In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
+Our goal for the future is to implement all features in the old interface into the new one.
+
 For this installation, download the following files :
   * linshare-core-{VERSION}.war
   * linshare-core-{VERSION}-sql.tar.bz2
   * linshare-ui-admin-{VERSION}.tar.bz2
+  * linshare-ui-admin-{VERSION}-legacy.tar.bz2
   * linshare-ui-user-{VERSION}.tar.bz2
+  * linshare-ui-upload-request-{VERSION}.tar.bz2
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -78,13 +87,13 @@ Check the following log file location
 log4j.appender.LINSHARE.File=/var/log/tomcat/linshare.log
 ```
 
-## <a name="installOpenJDK">OpenJDK Java JRE Installation</a>
+## <a name="installOpenJDK">JVM Installation</a>
 
-__LinShare__  works with OpenJDK or Sun/Oracle Java 11. Install it and activate it from the repositories :
-> You can find the required versions of LinShare's dependencies [here](./requirements.md)
+**LinShare** requires a Java Virtual Machine.
+> You can find the required and recommended JVM distribution in LinShare's system requirements [here](./requirements.md)
 
 ```bash
-yum install java-11-openjdk-devel
+yum install java-17-openjdk-devel
 ```
 
 To update Java version you can set:
@@ -217,6 +226,34 @@ yum install -y mongodb-org
 
 See the [official guide](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-red-hat/) if needed.
 
+- start MongoDB server
+```bash
+sudo systemctl start mongod
+```
+
+- Configure MongoDB Authentication:  
+Execute following commands to enable authentication
+
+```bash
+mongo
+```
+```bash
+> use admin;
+```
+```bash
+> db.createUser(
+  {
+    user: "linshare",
+    pwd: "linshare",
+    roles: [
+      { role: "readWrite", db: "linshare" },
+      { role: "readWrite", db: "linshare-files" } ]
+  }
+)
+```
+> sample password is **linshare** used for convenience, it should be changed
+- LinShare MongoDB related configuration
+
 By default, MongoDB is configured with the following __LinShare__ configuration in the file `/etc/linshare/linshare.properties` :
 
 ```java
@@ -236,20 +273,13 @@ linshare.mongo.write.concern=MAJORITY
 linshare.mongo.data.replicaset=127.0.0.1:27017
 linshare.mongo.data.database=linshare
 # linshare.mongo.data.credentials=[user:password[@database]]
-linshare.mongo.data.credentials=
+linshare.mongo.data.credentials=linshare:linshare@admin
 
 #### connection for small files
 # Using MongoDb to store very small files (thumbnails, mail attachments, ...)
 linshare.mongo.smallfiles.replicaset=127.0.0.1:27017
 linshare.mongo.smallfiles.database=linshare-files
-linshare.mongo.smallfiles.credentials=
-
-# The connection for bigfiles is used just if the `gridfs` spring profile is enabled.
-#### connection for big files.
-# Store all files in MongoDB GridFS. Not recommended.
-linshare.mongo.bigfiles.replicaset=127.0.0.1:27017
-linshare.mongo.bigfiles.database=linshare-bigfiles
-linshare.mongo.bigfiles.credentials=
+linshare.mongo.smallfiles.credentials=linshare:linshare@admin
 ```
 
 Before starting the MongoDB service, check that the file `/etc/mongod.conf` has the bind ip address: 127.0.0.1.
@@ -337,19 +367,19 @@ systemctl start linshare-thumbnail-server.service
 
 __LinShare__ is a Java application compiled and embedded under the WAR (**W** eb **A** pplication a **R** chive) format, so it needs a servlet container Java (Tomcat or Jetty) to run. This section describes its installation and configuration.
 > You can find the required versions of LinShare's dependencies [here](./requirements.md)
-Install Tomcat from the repositories:
-```bash
-yum install -y tomcat
-```
+
+This LinShare version is using Java 11 so it requires at least the version 8.5 of __Tomcat__. On CentOs __Tomcat__ does not exist any more on the OS default packages.  
+
+So you can search on internet how to install it manually. And then add the server configurations bellow.
 
 To specify the location of the __LinShare__ configuration (_linshare.properties_ file) and also the default start
-options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat file (`/etc/sysconfig/tomcat`):
+options, get the commented lines in the header of the `linshare.properties` file and copy-paste them in the tomcat configuration file (Example: /etc/sysconfig/tomcat).
 
 All starting needful options by default to Linshare are indicated in the header of the following configuration files :
   * `/etc/linshare/linshare.properties`
   * `/etc/linshare/log4j.properties`
 
-It is required to add the following lines in: `/etc/sysconfig/tomcat`:
+It is required to add the following lines in the tomcat configuration file (Example: /etc/sysconfig/tomcat):
 
 ```conf
 JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare/ -Dlog4j.configuration=file:/etc/linshare/log4j.properties"
@@ -453,13 +483,15 @@ CustomLog /var/log/httpd/linshare-user-access.log combined
 
 ### <a name="ui-admin">ui-admin vhost Configuration</a>
 
-Deploy the archive of the application __LinShare__ UI Admin in the httpd repository :
+As mentioned before for application __LinShare__ UI Admin we will need two components, you can follow the steps bellow to deploy them in the apache2 repository :
+
 ```bash
-mv /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2 /var/www
 cd /var/www/
-tar xjf linshare-ui-admin-{VERSION}.tar.bz2
-chown -R apache: linshare-ui-admin
-rm -fr /var/www/linshare-ui-admin-<VERSION>.tar.bz2
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}-legacy.tar.bz2
+chown -R www-data: linshare-ui-admin
+cd linshare-ui-admin
+tar xjf /tmp/linshare_data/linshare-ui-admin-{VERSION}.tar.bz2
+mv linshare-ui-admin new
 ```
 
 To deploy the __LinShare__ administration interface, it is necessary to create the virtualhost configuration file. Add the file `/etc/httpd/conf.d/linshare-ui-admin.conf` with the following content:

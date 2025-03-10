@@ -1,6 +1,9 @@
 # Integration with LemonLDAP::NG
 
-LemonLDAP::NG is an open source Web Single Sign On (WebSSO) on Debian Jessie.
+LemonLDAP::NG is an open source Web Single Sign On (WebSSO) supporting multiple
+protocoles, like CAS, SAML, header injections, OIDC, ... In this case, we are
+going to use header injections. NB: This method is deprecated, and does not work
+very well with SPA. The recommended protocole is OIDC (see other guide)
 
 
 ## Resume
