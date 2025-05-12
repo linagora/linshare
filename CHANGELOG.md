@@ -1,5 +1,5 @@
 
-# [6.4.1](https://github.com/linagora/linshare/compare/6.4...6.4.1) (2025-12-05) [Download link](http://download.linshare.org/versions/6.4.1/)
+# [6.4.1](https://github.com/linagora/linshare/compare/6.4...6.4.1) (2025-05-12) [Download link](http://download.linshare.org/versions/6.4.1/)
 
 **The 6.4.1 release of LinShare is out**
 
@@ -38,13 +38,18 @@
 #### Bug Fixes and improvements:
 * Core:
 
-  * Fixing problems on guest restriction by contact list 
-  * Fixed file upload/download issues when a workgroup member is blocked in LDAP used by the SMTP relay
+  * Fixing bugs on guest restriction by contact list 
+  * Fixing file upload/download issues when a workgroup member is blocked in LDAP used by the SMTP relay
+  * Fixing bug of using LDAP as autocomplete source provider when using OIDC as domain user provider
 
 * UI-User:
 
-  *   * Fixing problems on guest restriction by contact list 
+  * Fixing problems on guest restriction by contact list 
  
+* UI-Admin:
+
+  * Fixing missing "Unlimited" checkbox for guest expiration.
+
 
 
 
