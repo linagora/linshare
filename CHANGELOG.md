@@ -1,4 +1,54 @@
 
+# [6.4.1](https://github.com/linagora/linshare/compare/6.4...6.4.1) (2025-12-05) [Download link](http://download.linshare.org/versions/6.4.1/)
+
+**The 6.4.1 release of LinShare is out**
+
+> **NB :**
+> You can fœind the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.4-to-v6.4.1.md).
+
+- **core** : 6.4.1 - [changelog](https://github.com/linagora/linshare-core/compare/6.4...6.4.1) 
+- **ui-user** : 6.4.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.4...v6.4.1)
+- **ui-admin** : 6.4.1 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.4...v6.4.1)
+- **ui-upload-request** : 6.4.1 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.4...v6.4.1)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+
+  * Support of Clamav 1.x
+
+* UI-Admin:
+
+  * Updated libraries to fix security vulnerabilities
+
+* UI-User:
+
+  * Updated libraries to fix security vulnerabilities.
+
+* UI-Upload-Request:
+
+  * Updated libraries to fix security vulnerabilities.
+
+  
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  * Fixing problems on guest restriction by contact list 
+  * Fixed file upload/download issues when a workgroup member is blocked in LDAP used by the SMTP relay
+
+* UI-User:
+
+  *   * Fixing problems on guest restriction by contact list 
+ 
+
+
+
+
 # [6.4](https://github.com/linagora/linshare/compare/6.3...6.4) (2024-12-12) [Download link](http://download.linshare.org/versions/6.4.0/)
 
 **The 6.4 release of LinShare is out**
@@ -6,10 +56,10 @@
 > **NB :**
 > You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.3-to-v6.4.md).
 
-- **core** : 6.3 - [changelog](https://github.com/linagora/linshare-core/compare/6.3...6.4) 
-- **ui-user** : 6.3 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.3...v6.4)
-- **ui-admin** : 6.3 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.3...v6.4)
-- **ui-upload-request** : 6.3 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.3...v6.4)
+- **core** : 6.4 - [changelog](https://github.com/linagora/linshare-core/compare/6.3...6.4) 
+- **ui-user** : 6.4 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.3...v6.4)
+- **ui-admin** : 6.4 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.3...v6.4)
+- **ui-upload-request** : 6.4 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.3...v6.4)
 
 >**NB:**
 >Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
