@@ -1,11 +1,15 @@
 
-# Using OIDC and LDAP server as user providers for domain  to search  users
+# Using LDAP server as search provider in case of OIDC user provider
+
+## Description
+
+Searching internal users (autocomplete) not already authenticated in case of OIDC user provider can be done if users are stored in LDAP server.
 
 ## Key Limitations
 
 - **No Auto-Provisioning**: LDAP search only - users won't be auto-created
 
-- **Anonymous Shares**: Unprovisioned users receive guest-like shares
+- **Anonymous Shares**: Unprovisioned users can get anonymous shares
 
 - **Search Scope**: Limited to LDAP branch defined in `baseDn`
 
