@@ -1,3 +1,54 @@
+# [6.5.0](https://github.com/linagora/linshare/compare/6.4.1...6.5.0) (2025-07-20) [Download link](http://download.linshare.org/versions/6.5.0/)
+
+**The 6.5.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.4.1-to-v6.5.0.md).
+
+- **core** : 6.5.0 - [changelog](https://github.com/linagora/linshare-core/compare/6.4.1...6.5.0) 
+- **ui-user** : 6.5.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.4...v6.4.1)
+- **ui-admin** : 6.5.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.4...v6.4.1)
+- **ui-upload-request** : 6.5.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.4.1...v6.5.0)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Main features:
+* Core:
+
+  * Implement member visibility control for guests restricted contact lists 
+
+* UI-Admin:
+
+  * Add functionality to manager member visibility control for guests restricted contact lists feature
+
+* UI-User:
+
+  * Implement member visibility control for guests restricted contact lists 
+
+  
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  * Fixing bugs on guest restriction by contact list 
+  * Fixing file upload/download issues when a workgroup member is blocked in LDAP used by the SMTP relay
+  * Fixing bug of using LDAP as autocomplete source provider when using OIDC as domain user provider
+
+* UI-User:
+
+  * Fixing problems on guest restriction by contact list 
+  * Fixing problems of getting blank page after refresh
+
+ 
+* UI-Admin:
+
+  * Fixing quota sharespace calculation display.
+
+
+
 
 # [6.4.1](https://github.com/linagora/linshare/compare/6.4...6.4.1) (2025-05-12) [Download link](http://download.linshare.org/versions/6.4.1/)
 
