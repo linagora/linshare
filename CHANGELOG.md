@@ -6,8 +6,8 @@
 > You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.4.1-to-v6.5.0.md).
 
 - **core** : 6.5.0 - [changelog](https://github.com/linagora/linshare-core/compare/6.4.1...6.5.0) 
-- **ui-user** : 6.5.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.4...v6.4.1)
-- **ui-admin** : 6.5.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.4...v6.4.1)
+- **ui-user** : 6.5.0 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.4.1...v6.5.0)
+- **ui-admin** : 6.5.0 [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.4.1...v6.5.0)
 - **ui-upload-request** : 6.5.0 [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.4.1...v6.5.0)
 
 >**NB:**
@@ -17,15 +17,16 @@
 #### Main features:
 * Core:
 
-  * Implement member visibility control for guests restricted contact lists 
+  * Implement members visibility control for guests restricted contacts lists 
 
 * UI-Admin:
 
-  * Add functionality to manager member visibility control for guests restricted contact lists feature
+  * Add functionality to manager members visibility control for guests restricted contacts lists feature
 
 * UI-User:
 
-  * Implement member visibility control for guests restricted contact lists 
+  * Implement member visibility control for guests restricted contacts lists 
+  * Implement hide logout option
 
   
 
@@ -33,19 +34,17 @@
 #### Bug Fixes and improvements:
 * Core:
 
-  * Fixing bugs on guest restriction by contact list 
-  * Fixing file upload/download issues when a workgroup member is blocked in LDAP used by the SMTP relay
-  * Fixing bug of using LDAP as autocomplete source provider when using OIDC as domain user provider
+  * Fixing bugs for guests restricted by contacts lists feature
 
 * UI-User:
 
-  * Fixing problems on guest restriction by contact list 
+  * Fixing problems for guests restricted by contacts lists feature
   * Fixing problems of getting blank page after refresh
 
  
 * UI-Admin:
 
-  * Fixing quota sharespace calculation display.
+  * Fixing quota sharespace calculation display
 
 
 
