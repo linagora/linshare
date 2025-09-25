@@ -661,7 +661,6 @@ Please change the password in the administration interface.
 > Note :<br/>
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
-![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
 
 To access to the admin interface :
    * http://linshare-admin.local/
