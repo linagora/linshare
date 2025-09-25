@@ -20,6 +20,7 @@ Welcome to LinShare installation Guide, This page provides a __LinShare__ versio
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 6.0](https://github.com/linagora/linshare/blob/maintenance-6.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 5.1](https://github.com/linagora/linshare/blob/maintenance-5.1.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 5.0](https://github.com/linagora/linshare/blob/maintenance-5.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/EN/installation/linshare-install-debian.md)
