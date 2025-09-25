@@ -663,12 +663,12 @@ It is not possible to add other LinShare standard users locally without LDAP. Pl
 
 ![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
 
-To access to the new admin interface :
-   * http://linshare-admin.local/new/
+To access to the admin interface :
+   * http://linshare-admin.local/
 
-![linshare-authentication-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
+![linshare-authentication-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
 
-![linshare-new-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
+![linshare-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
 
 ### <a name="uploadRequest">Upload Request component installation</a>
 
