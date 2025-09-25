@@ -16,10 +16,11 @@
    * [First Access](#firstAccess)
    * [Upload Request](#uploadRequest)
 
-Welcome to LinShare installation Guide, This page provides a __LinShare__ version 6.0 installation on *Debian bullseye 11*
+Welcome to LinShare installation Guide, This page provides a __LinShare__ version 6.x installation on *Debian Bookworm 12*
 
 > Note :<br/>
 > Installation of previous supported versions of __LinShare__ are available at github branches:
+> - [LinShare 6.0](https://github.com/linagora/linshare/blob/maintenance-6.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 5.1](https://github.com/linagora/linshare/blob/maintenance-5.1.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 5.0](https://github.com/linagora/linshare/blob/maintenance-5.0.x/documentation/EN/installation/linshare-install-debian.md)
 > - [LinShare 4.2](https://github.com/linagora/linshare/blob/maintenance-4.2.x/documentation/EN/installation/linshare-install-debian.md)
@@ -38,6 +39,8 @@ __LinShare__  can be downloaded here :
 
 There are several versions of __LinShare__. Choose the version of __LinShare__ that is in agreement with the installation guide.
 Do not install and use a component version which is different from the ones you'll find within the folder itself. Otherwise you will meet dependencies problems.
+In this new version of LinShare a new admin interface is introduced, so we will need two ui-admin components (old component and new one), as it will be explained later.
+Our goal for the future is to implement all features in the old interface into the new one.
 
 > Note :<br/>
 In this process, it is considered that the files are downloaded in the `/tmp/linshare_data` temporary directory. Of course, it is possible to use another temporary directory.
@@ -62,7 +65,14 @@ apt install unzip bzip2
 
 ## <a name="installFile">Archive and files configuration Deployment</a>
 
+**LinShare war conversion**
+> Note :<br />
+To make LinShare 6.x compatible with Tomcat 10 we need to convert LinShare war with the Apache Tomcat® Migration tool for Jakarta EE software.
+
 ```bash
+wget https://dlcdn.apache.org/tomcat/jakartaee-migration/v1.0.9/binaries/jakartaee-migration-1.0.9-bin.tar.gz
+tar xzf jakartaee-migration-1.0.9.tar.gz
+java -jar  jakartaee-migration-1.0.9/lib/jakartaee-migration-1.0.9.jar /tmp/linshare_data/linshare-core-{VERSION}.war  /tmp/linshare_data/liinshare.war
 mkdir -p /etc/linshare
 unzip -j -d /etc/linshare/ /tmp/linshare_data/linshare-core-{VERSION}.war WEB-INF/classes/{linshare,log4j2}.*
 Archive:  linshare.war
@@ -388,18 +398,6 @@ In the tomcat file `/var/lib/tomcat10/conf/catalina.properties` There is a key n
 
 Add `jclouds-bouncycastle-1.9.2.jar,bcprov-*.jar,\` somewhere in the section of this key.
 
-#### Migrator:
-On convertit l'archive war de LinShare pour qu'il soit compatible avec Tomcat 10:
-    • Télécharger l’outil de conversion :
-
-wget https://dlcdn.apache.org/tomcat/jakartaee-migration/v1.0.9/binaries/jakartaee-migration-1.0.9-bin.tar.gz
-    • Convertir linshare.war
-      tar xzf jakartaee-migration-1.0.9.tar.gz
-      java -jar  jakartaee-migration-1.0.9/lib/jakartaee-migration-1.0.9.jar /tmp/linshare-core-6.5.0.war  /tmp/linshare.war
-    • Déployer le war converti:
-      rm -fr /var/lib/tomcat9/webapps/linshare
-      cp  /tmp/linshare.war /var/lib/tomcat9/webapps/linshare.war
-
 Deploy the __LinShare__ application archive into the Tomcat server:
 ```bash
 mv /tmp/linshare_data/linshare-core-{VERSION}.war /var/lib/tomcat10/webapps/linshare.war
@@ -664,8 +662,13 @@ Please change the password in the administration interface.
 > Note :<br/>
 It is not possible to add other LinShare standard users locally without LDAP. Please see the dedicated page for the LDAP configuration in the [application parameters](../administration/linshare-admin.md).
 
-![linshare-admin-000002010000047E01400157A9D6C9G6](../../img/linshare-admin-000002010000047E01400157A9D6C9G6.png)
 
+To access to the admin interface :
+   * http://linshare-admin.local/
+
+![linshare-authentication-admin-interface](http://download.linshare.org/screenshots/5.0.0/01.authentication.new.admin.portal.png)
+
+![linshare-admin-interface](http://download.linshare.org/screenshots/5.0.0/02.new.admin.portal.png)
 
 ### <a name="uploadRequest">Upload Request component installation</a>
 
