@@ -166,3 +166,114 @@ curl -G 'http://<host>/linshare/webservice/rest/admin/v5/users/autocomplete/<pat
     * _OIDC_ : from database (+ ldap, if it is configured by `oidc.ldap.connectionUuid` and `oidc.ldap.provider.patternUuid` application properties).
     * _TWAKE_ & _TWAKE_GUEST_ : twake user provider endpoint is used.
 
+### Create a guest 
+Guests APIs use the following guest data transfer object, represented in this document by <guestDto>
+```json
+{
+  "uuid": "string",
+  "creationDate": "2025-09-23T03:28:06.000Z",
+  "modificationDate": "2025-09-23T03:28:06.000Z",
+  "locale": "ENGLISH",
+  "externalMailLocale": "ENGLISH",
+  "domain": "string",
+  "domainName": "string",
+  "secondFAUuid": "string",
+  "secondFAEnabled": true,
+  "secondFARequired": true,
+  "locked": true,
+  "firstName": "string",
+  "lastName": "string",
+  "mail": "string",
+  "canUpload": true,
+  "restricted": true,
+  "comment": "string",
+  "expirationDate": "2025-09-23T03:28:06.000Z",
+  "restrictedContacts": [
+    {
+      "uuid": "string",
+      "domain": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "mail": "string",
+      "accountType": "INTERNAL",
+      "external": true
+    }
+  ],
+  "owner": {
+    "uuid": "string",
+    "domain": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "mail": "string",
+    "accountType": "INTERNAL",
+    "external": true
+  },
+  "author": {
+    "uuid": "string",
+    "name": "string",
+    "email": "string",
+    "domain": {
+      "uuid": "string",
+      "name": "string"
+    }
+  },
+  "restrictedContactList": [
+    {
+      "name": "string",
+      "description": "string",
+      "owner": {
+        "uuid": "string",
+        "domain": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "mail": "string",
+        "accountType": "INTERNAL",
+        "external": true
+      },
+      "uuid": "string",
+      "domain": {
+        "label": "string",
+        "identifier": "string",
+        "type": "ROOTDOMAIN"
+      },
+      "creationDate": "2025-09-23T03:28:06.000Z",
+      "modificationDate": "2025-09-23T03:28:06.000Z",
+      "canViewContactListMembers": true,
+      "contacts": [
+        {
+          "mail": "string",
+          "uuid": "string",
+          "firstName": "string",
+          "lastName": "string",
+          "mailingListUuid": "string",
+          "creationDate": "2025-09-23T03:28:06.000Z",
+          "modificationDate": "2025-09-23T03:28:06.000Z"
+        }
+      ],
+      "public": true
+    }
+  ],
+  "myModeratorRole": "ADMIN",
+  "contactListViewPermissions": {
+    "additionalProp1": true,
+    "additionalProp2": true,
+    "additionalProp3": true
+  }
+}
+```
+This endpoint is used to create a new guest user within the LinShare system. 
+```bash
+curl -X 'POST' \
+  'http://<host>/linshare/webservice/rest/admin/v5/guests' \
+  -u "login:password" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d <guestDto>
+  ```
+
+* The body of the POST request must be a JSON object containing the details of the guest to be created.'<guestDto`>
+* "mail" is mandatory field 
+* The response body will contain a JSON array with a single element representing the newly created Guest object. This response object includes all the information provided in the request, plus server-generated fields like the uuid, creationDate, and the creator's moderator role (myRole)... 
+* The user making this API call (the owner) must have the permission to create guests and he can create the guest account for himself only. 
+* The root admin is not allowed to create guests 
+
