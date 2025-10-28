@@ -129,9 +129,18 @@ and add a rewrite rule to serve index.html for every path except static resource
 ```apache
 <Directory /usr/local/apache2/htdocs/linshare-ui-admin/new>
       RewriteEngine on
+
+      RewriteRule  "^(.*)config\.js" "config/config.js"
+      RewriteRule  "^(.*)beta\.png" "beta.png"
+      RewriteRule  "^(.*)favicon\.ico" "favicon.ico"
+      RewriteRule  "^(.*)assets/(.*)" "assets/$2"
+
+      # Don't rewrite files or directories
       RewriteCond %{REQUEST_FILENAME} -f [OR]
       RewriteCond %{REQUEST_FILENAME} -d
       RewriteRule ^ - [L]
+
+      # Rewrite everything else to index.html to allow html5 state links
       RewriteRule ^ index.html [L]
     </Directory>
 ```
