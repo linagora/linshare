@@ -4,7 +4,7 @@
   <groupId>org.linagora.linshare</groupId>
   <artifactId>linshare</artifactId>
   <packaging>pom</packaging>
-  <version>6.5.2-SNAPSHOT</version>
+  <version>6.5.1</version>
   <name>linshare</name>
   <url>https://github.com/linagora/linshare</url>
   <properties>
