@@ -1,3 +1,43 @@
+# [6.5.1](https://github.com/linagora/linshare/compare/6.5.0...6.5.1) (2025-07-20) [Download link](http://download.linshare.org/versions/6.5.1/)
+
+**The 6.5.0 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.5.0-to-v6.5.1.md).
+
+- **core** : 6.5.1 - [changelog](https://github.com/linagora/linshare-core/compare/6.5.0...6.5.1) 
+- **ui-user** : 6.5.1 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.5.0...v6.5.1)
+- **ui-admin** : 6.5.1 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.5.0...v6.5.1)
+- **ui-upload-request** : 6.5.1 - [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.5.0...v6.5.1)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  * Fixed an issue where upload requests configured with a delayed activation incorrectly required a password even when the creator had not set one.
+  * Fixed a bug preventing files from being copied from Received Shares to My Space or Share Space.
+
+* UI-User:
+
+  * Upgraded several libraries to address security vulnerabilities.
+ 
+* UI-Admin:
+
+  * Fields are now correctly reset after modifying the root user’s password.
+  * Added automatic redirection to the login page after session expiration.
+  * Upgraded several libraries to address security vulnerabilities.
+  * Trim whitespace from the username field on the login page to prevent authentication issues.
+
+* UI-Upload request:
+ 
+  * Fixed an issue where updating the password of an upload request failed with a 500 error when using the "€" character.
+  * Upgraded several libraries to address security vulnerabilities.
+
+
+
 # [6.5.0](https://github.com/linagora/linshare/compare/6.4.1...6.5.0) (2025-07-20) [Download link](http://download.linshare.org/versions/6.5.0/)
 
 **The 6.5.0 release of LinShare is out**
