@@ -442,6 +442,11 @@ To deploy the __LinShare__ application, it is necessary to create the virtualhos
 <VirtualHost *:80>
 ServerName linshare-user.local
 DocumentRoot /var/www/linshare-ui-user
+
+# Deny access to admin API
+<LocationMatch "^/linshare/webservice/rest/admin/">
+        Require all denied
+</LocationMatch>
 <Location /linshare>
     ProxyPass http://127.0.0.1:8080/linshare
     ProxyPassReverse http://127.0.0.1:8080/linshare
