@@ -1,6 +1,40 @@
-# [6.5.1](https://github.com/linagora/linshare/compare/6.5.0...6.5.1) (2025-11-13) [Download link](http://download.linshare.org/versions/6.5.1/)
+# [6.5.2](https://github.com/linagora/linshare/compare/6.5.1...6.5.2) (2025-11-13) [Download link](http://download.linshare.org/versions/6.5.2/)
 
-**The 6.5.0 release of LinShare is out**
+**The 6.5.2 release of LinShare is out**
+
+> **NB :**
+> You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.5.1-to-v6.5.2.md).
+
+- **core** : 6.5.2 - [changelog](https://github.com/linagora/linshare-core/compare/6.5.1...6.5.2) 
+- **ui-user** : 6.5.2 - [changelog](https://github.com/linagora/linshare-ui-user/compare/v6.5.1...v6.5.2)
+- **ui-admin** : 6.5.2 - [changelog](https://github.com/linagora/linshare-ui-admin/compare/v6.5.1...v6.5.2)
+- **ui-upload-request** : 6.5.2 - [changelog](https://github.com/linagora/linshare-ui-upload-request/compare/v6.5.1...v6.5.2)
+
+>**NB:**
+>Before launching the upgrade process it is recommended to do a backup on the existing data in your Database.
+
+
+#### Bug Fixes and improvements:
+* Core:
+
+  * Added support for sharing via contact lists, with the option to hide list members from the guest in email notifications and activity logs.
+
+* UI-User:
+
+  * Added UI support for sharing via contact lists, including the option to hide list members from the guest in notifications and activity views.
+ 
+* UI-Admin:
+
+  * nothing to report
+
+* UI-Upload request:
+ 
+  * nothing to report
+
+
+ [6.5.1](https://github.com/linagora/linshare/compare/6.5.0...6.5.1) (2025-11-13) [Download link](http://download.linshare.org/versions/6.5.1/)
+
+**The 6.5.1 release of LinShare is out**
 
 > **NB :**
 > You can find the upgrade documentation [here](documentation/EN/upgrade/linshare-upgrade-from-v6.5.0-to-v6.5.1.md).
