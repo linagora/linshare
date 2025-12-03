@@ -1,4 +1,4 @@
-# [6.5.2](https://github.com/linagora/linshare/compare/6.5.1...6.5.2) (2025-11-13) [Download link](http://download.linshare.org/versions/6.5.2/)
+# [6.5.2](https://github.com/linagora/linshare/compare/6.5.1...6.5.2) (2025-11-27) [Download link](http://download.linshare.org/versions/6.5.2/)
 
 **The 6.5.2 release of LinShare is out**
 
