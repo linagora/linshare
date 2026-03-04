@@ -27,14 +27,7 @@
       <artifactId>linshare-ui-admin</artifactId>
       <version>${linshare-ui-admin}</version>
       <type>tar.bz2</type>
-    </dependency>
-    <dependency>
-      <groupId>org.linagora.linshare</groupId>
-      <artifactId>linshare-ui-admin</artifactId>
-      <version>${linshare-ui-admin-legacy}</version>
-      <classifier>legacy</classifier>
-      <type>tar.bz2</type>
-    </dependency>
+    </dependency>    
     <dependency>
       <groupId>org.linagora.linshare</groupId>
       <artifactId>linshare-core</artifactId>
