@@ -68,6 +68,18 @@ Pour cette migration, il faut télécharger les fichiers suivants à partir de c
 
 <a name="backup">
 
+## Prérequis :
+</a>
+Afin d'éviter que les tâches lancées via l'interface d'administration durent beaucoup trop longtemps, il faut s'assurer que les indexes sont présents sur la base mongo.
+Pour les créer :
+
+```bash
+mongosh --host IP --port PORT
+use linshare;
+db.audit_log_entries.createIndex({"domain.uuid":1})
+db.audit_log_entries.createIndex({"actor.uuid":1})
+```
+
 ## Backups :
 
 </a>
